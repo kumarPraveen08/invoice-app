@@ -1,0 +1,112 @@
+{
+  ".claude/settings.json": {
+    "mtime": 1784620074.426648,
+    "ast_hash": "dc580fca35a0e98ed20777ede5e545a1",
+    "semantic_hash": ""
+  },
+  "app.json": {
+    "mtime": 1784620474.749554,
+    "ast_hash": "e3156af76d47076d4c0cf5e4de437a0d",
+    "semantic_hash": ""
+  },
+  "package.json": {
+    "mtime": 1784709448.8144343,
+    "ast_hash": "eff0fba17158a3d410a96bb6c3118725",
+    "semantic_hash": ""
+  },
+  "src/app/_layout.tsx": {
+    "mtime": 1784709645.3609695,
+    "ast_hash": "652b2b7414d7250d444e9cf592a76d87",
+    "semantic_hash": ""
+  },
+  "src/app/index.tsx": {
+    "mtime": 1784709646.1509926,
+    "ast_hash": "ea69a4d78d5a72ee9d1bb4b5cc3fdaa6",
+    "semantic_hash": ""
+  },
+  "tsconfig.json": {
+    "mtime": 1784709648.6530955,
+    "ast_hash": "29da186e2cb529d3c772678fc32594c0",
+    "semantic_hash": ""
+  },
+  "AGENTS.md": {
+    "mtime": 1784620074.4259415,
+    "ast_hash": "963888ec05f17b13375386f058dd621e",
+    "semantic_hash": ""
+  },
+  "CLAUDE.md": {
+    "mtime": 1784620074.4262314,
+    "ast_hash": "5c27369b226fcf2be8a6cfe52224e767",
+    "semantic_hash": ""
+  },
+  "docs/REQUIREMENT.md": {
+    "mtime": 1784705987.6377811,
+    "ast_hash": "3ba81bb7b3be21347d894a9c06cbc4cb",
+    "semantic_hash": ""
+  },
+  "docs/SUBSCRIPTION.md": {
+    "mtime": 1784706701.804867,
+    "ast_hash": "c56ccdf3125b440c615ed77909962fdc",
+    "semantic_hash": ""
+  },
+  "assets/android-icon-background.png": {
+    "mtime": 1784620074.3766203,
+    "ast_hash": "2d65569cc0e2afdcea0af9f9902d4173",
+    "semantic_hash": ""
+  },
+  "assets/android-icon-foreground.png": {
+    "mtime": 1784620074.3804035,
+    "ast_hash": "72e71a9c846c6aa4ae32476641a00e18",
+    "semantic_hash": ""
+  },
+  "assets/android-icon-monochrome.png": {
+    "mtime": 1784620074.3842745,
+    "ast_hash": "1e097dab989759fc0b69440092ca22cd",
+    "semantic_hash": ""
+  },
+  "assets/favicon.png": {
+    "mtime": 1784620074.3862293,
+    "ast_hash": "d9f444efbdfbe7931aa93beada07318a",
+    "semantic_hash": ""
+  },
+  "assets/icon.png": {
+    "mtime": 1784620074.39528,
+    "ast_hash": "cb975bba2216ce10a60e6c0ffe9941a2",
+    "semantic_hash": ""
+  },
+  "assets/splash-icon.png": {
+    "mtime": 1784620074.398167,
+    "ast_hash": "97dae5a0e62ad8551d8a31897b425e63",
+    "semantic_hash": ""
+  },
+  "src/features/customers/index.ts": {
+    "mtime": 1784709647.1256459,
+    "ast_hash": "e2ebd7ddedcadeeadbf819c35985c768",
+    "semantic_hash": ""
+  },
+  "src/features/invoices/index.ts": {
+    "mtime": 1784709646.9255528,
+    "ast_hash": "869c6be7ef4ce0a369d7c7b73ef16ccb",
+    "semantic_hash": ""
+  },
+  "src/shared/constants/index.ts": {
+    "mtime": 1784709648.3786545,
+    "ast_hash": "e2ebd7ddedcadeeadbf819c35985c768",
+    "semantic_hash": ""
+  },
+  "src/shared/lib/index.ts": {
+    "mtime": 1784709647.7048812,
+    "ast_hash": "e2ebd7ddedcadeeadbf819c35985c768",
+    "semantic_hash": ""
+  },
+  "src/shared/ui/index.ts": {
+    "mtime": 1784709647.3319159,
+    "ast_hash": "e2ebd7ddedcadeeadbf819c35985c768",
+    "semantic_hash": ""
+  },
+  "src/features/invoices/screens/HomeScreen.tsx": {
+    "mtime": 1784709646.614962,
+    "ast_hash": "70780e1a7532d7cecaf33e8f0640eecd",
+    "semantic_hash": ""
+  }
+}

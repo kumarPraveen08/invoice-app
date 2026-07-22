@@ -1,0 +1,2564 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "label": "settings.json",
+      "file_type": "code",
+      "source_file": ".claude/settings.json",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "claude_settings",
+      "community": 10,
+      "norm_label": "settings.json"
+    },
+    {
+      "label": "enabledPlugins",
+      "file_type": "code",
+      "source_file": ".claude/settings.json",
+      "source_location": "L2",
+      "_origin": "ast",
+      "id": "claude_settings_enabledplugins",
+      "community": 10,
+      "norm_label": "enabledplugins"
+    },
+    {
+      "label": "expo@claude-plugins-official",
+      "file_type": "code",
+      "source_file": ".claude/settings.json",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "claude_settings_enabledplugins_expo_claude_plugins_official",
+      "community": 10,
+      "norm_label": "expo@claude-plugins-official"
+    },
+    {
+      "label": "app.json",
+      "file_type": "code",
+      "source_file": "app.json",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "app",
+      "community": 2,
+      "norm_label": "app.json"
+    },
+    {
+      "label": "expo",
+      "file_type": "code",
+      "source_file": "app.json",
+      "source_location": "L2",
+      "_origin": "ast",
+      "id": "app_expo",
+      "community": 2,
+      "norm_label": "expo"
+    },
+    {
+      "label": "name",
+      "file_type": "code",
+      "source_file": "app.json",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "app_expo_name",
+      "community": 2,
+      "norm_label": "name"
+    },
+    {
+      "label": "slug",
+      "file_type": "code",
+      "source_file": "app.json",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "app_expo_slug",
+      "community": 2,
+      "norm_label": "slug"
+    },
+    {
+      "label": "version",
+      "file_type": "code",
+      "source_file": "app.json",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "app_expo_version",
+      "community": 2,
+      "norm_label": "version"
+    },
+    {
+      "label": "orientation",
+      "file_type": "code",
+      "source_file": "app.json",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "app_expo_orientation",
+      "community": 2,
+      "norm_label": "orientation"
+    },
+    {
+      "label": "icon",
+      "file_type": "code",
+      "source_file": "app.json",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "app_expo_icon",
+      "community": 2,
+      "norm_label": "icon"
+    },
+    {
+      "label": "userInterfaceStyle",
+      "file_type": "code",
+      "source_file": "app.json",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "app_expo_userinterfacestyle",
+      "community": 2,
+      "norm_label": "userinterfacestyle"
+    },
+    {
+      "label": "ios",
+      "file_type": "code",
+      "source_file": "app.json",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "app_expo_ios",
+      "community": 2,
+      "norm_label": "ios"
+    },
+    {
+      "label": "supportsTablet",
+      "file_type": "code",
+      "source_file": "app.json",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "app_ios_supportstablet",
+      "community": 2,
+      "norm_label": "supportstablet"
+    },
+    {
+      "label": "android",
+      "file_type": "code",
+      "source_file": "app.json",
+      "source_location": "L12",
+      "_origin": "ast",
+      "id": "app_expo_android",
+      "community": 13,
+      "norm_label": "android"
+    },
+    {
+      "label": "adaptiveIcon",
+      "file_type": "code",
+      "source_file": "app.json",
+      "source_location": "L13",
+      "_origin": "ast",
+      "id": "app_android_adaptiveicon",
+      "community": 13,
+      "norm_label": "adaptiveicon"
+    },
+    {
+      "label": "backgroundColor",
+      "file_type": "code",
+      "source_file": "app.json",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "app_adaptiveicon_backgroundcolor",
+      "community": 13,
+      "norm_label": "backgroundcolor"
+    },
+    {
+      "label": "foregroundImage",
+      "file_type": "code",
+      "source_file": "app.json",
+      "source_location": "L15",
+      "_origin": "ast",
+      "id": "app_adaptiveicon_foregroundimage",
+      "community": 13,
+      "norm_label": "foregroundimage"
+    },
+    {
+      "label": "backgroundImage",
+      "file_type": "code",
+      "source_file": "app.json",
+      "source_location": "L16",
+      "_origin": "ast",
+      "id": "app_adaptiveicon_backgroundimage",
+      "community": 13,
+      "norm_label": "backgroundimage"
+    },
+    {
+      "label": "monochromeImage",
+      "file_type": "code",
+      "source_file": "app.json",
+      "source_location": "L17",
+      "_origin": "ast",
+      "id": "app_adaptiveicon_monochromeimage",
+      "community": 13,
+      "norm_label": "monochromeimage"
+    },
+    {
+      "label": "predictiveBackGestureEnabled",
+      "file_type": "code",
+      "source_file": "app.json",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "app_android_predictivebackgestureenabled",
+      "community": 13,
+      "norm_label": "predictivebackgestureenabled"
+    },
+    {
+      "label": "web",
+      "file_type": "code",
+      "source_file": "app.json",
+      "source_location": "L21",
+      "_origin": "ast",
+      "id": "app_expo_web",
+      "community": 2,
+      "norm_label": "web"
+    },
+    {
+      "label": "favicon",
+      "file_type": "code",
+      "source_file": "app.json",
+      "source_location": "L22",
+      "_origin": "ast",
+      "id": "app_web_favicon",
+      "community": 2,
+      "norm_label": "favicon"
+    },
+    {
+      "label": "bundler",
+      "file_type": "code",
+      "source_file": "app.json",
+      "source_location": "L23",
+      "_origin": "ast",
+      "id": "app_web_bundler",
+      "community": 2,
+      "norm_label": "bundler"
+    },
+    {
+      "label": "scheme",
+      "file_type": "code",
+      "source_file": "app.json",
+      "source_location": "L25",
+      "_origin": "ast",
+      "id": "app_expo_scheme",
+      "community": 2,
+      "norm_label": "scheme"
+    },
+    {
+      "label": "plugins",
+      "file_type": "code",
+      "source_file": "app.json",
+      "source_location": "L26",
+      "_origin": "ast",
+      "id": "app_expo_plugins",
+      "community": 2,
+      "norm_label": "plugins"
+    },
+    {
+      "label": "package.json",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "package",
+      "community": 7,
+      "norm_label": "package.json"
+    },
+    {
+      "label": "name",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L2",
+      "_origin": "ast",
+      "id": "package_name",
+      "community": 7,
+      "norm_label": "name"
+    },
+    {
+      "label": "version",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "package_version",
+      "community": 7,
+      "norm_label": "version"
+    },
+    {
+      "label": "main",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "package_main",
+      "community": 7,
+      "norm_label": "main"
+    },
+    {
+      "label": "dependencies",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "package_dependencies",
+      "community": 4,
+      "norm_label": "dependencies"
+    },
+    {
+      "label": "@hookform/resolvers",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "package_dependencies_hookform_resolvers",
+      "community": 4,
+      "norm_label": "@hookform/resolvers"
+    },
+    {
+      "label": "date-fns",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "package_dependencies_date_fns",
+      "community": 4,
+      "norm_label": "date-fns"
+    },
+    {
+      "label": "expo",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "package_dependencies_expo",
+      "community": 4,
+      "norm_label": "expo"
+    },
+    {
+      "label": "expo-constants",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "package_dependencies_expo_constants",
+      "community": 4,
+      "norm_label": "expo-constants"
+    },
+    {
+      "label": "expo-linking",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "package_dependencies_expo_linking",
+      "community": 4,
+      "norm_label": "expo-linking"
+    },
+    {
+      "label": "expo-router",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "package_dependencies_expo_router",
+      "community": 4,
+      "norm_label": "expo-router"
+    },
+    {
+      "label": "expo-status-bar",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L12",
+      "_origin": "ast",
+      "id": "package_dependencies_expo_status_bar",
+      "community": 4,
+      "norm_label": "expo-status-bar"
+    },
+    {
+      "label": "react",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L13",
+      "_origin": "ast",
+      "id": "package_dependencies_react",
+      "community": 4,
+      "norm_label": "react"
+    },
+    {
+      "label": "react-dom",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "package_dependencies_react_dom",
+      "community": 4,
+      "norm_label": "react-dom"
+    },
+    {
+      "label": "react-hook-form",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L15",
+      "_origin": "ast",
+      "id": "package_dependencies_react_hook_form",
+      "community": 4,
+      "norm_label": "react-hook-form"
+    },
+    {
+      "label": "react-native",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L16",
+      "_origin": "ast",
+      "id": "package_dependencies_react_native",
+      "community": 4,
+      "norm_label": "react-native"
+    },
+    {
+      "label": "react-native-safe-area-context",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L17",
+      "_origin": "ast",
+      "id": "package_dependencies_react_native_safe_area_context",
+      "community": 4,
+      "norm_label": "react-native-safe-area-context"
+    },
+    {
+      "label": "react-native-screens",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L18",
+      "_origin": "ast",
+      "id": "package_dependencies_react_native_screens",
+      "community": 4,
+      "norm_label": "react-native-screens"
+    },
+    {
+      "label": "react-native-web",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "package_dependencies_react_native_web",
+      "community": 4,
+      "norm_label": "react-native-web"
+    },
+    {
+      "label": "uuid",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L20",
+      "_origin": "ast",
+      "id": "package_dependencies_uuid",
+      "community": 4,
+      "norm_label": "uuid"
+    },
+    {
+      "label": "zod",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L21",
+      "_origin": "ast",
+      "id": "package_dependencies_zod",
+      "community": 4,
+      "norm_label": "zod"
+    },
+    {
+      "label": "zustand",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L22",
+      "_origin": "ast",
+      "id": "package_dependencies_zustand",
+      "community": 4,
+      "norm_label": "zustand"
+    },
+    {
+      "label": "devDependencies",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L24",
+      "_origin": "ast",
+      "id": "package_devdependencies",
+      "community": 7,
+      "norm_label": "devdependencies"
+    },
+    {
+      "label": "@types/react",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L25",
+      "_origin": "ast",
+      "id": "package_devdependencies_types_react",
+      "community": 7,
+      "norm_label": "@types/react"
+    },
+    {
+      "label": "@types/uuid",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L26",
+      "_origin": "ast",
+      "id": "package_devdependencies_types_uuid",
+      "community": 7,
+      "norm_label": "@types/uuid"
+    },
+    {
+      "label": "typescript",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L27",
+      "_origin": "ast",
+      "id": "package_devdependencies_typescript",
+      "community": 7,
+      "norm_label": "typescript"
+    },
+    {
+      "label": "scripts",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L29",
+      "_origin": "ast",
+      "id": "package_scripts",
+      "community": 7,
+      "norm_label": "scripts"
+    },
+    {
+      "label": "start",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L30",
+      "_origin": "ast",
+      "id": "package_scripts_start",
+      "community": 7,
+      "norm_label": "start"
+    },
+    {
+      "label": "android",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L31",
+      "_origin": "ast",
+      "id": "package_scripts_android",
+      "community": 7,
+      "norm_label": "android"
+    },
+    {
+      "label": "ios",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L32",
+      "_origin": "ast",
+      "id": "package_scripts_ios",
+      "community": 7,
+      "norm_label": "ios"
+    },
+    {
+      "label": "web",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L33",
+      "_origin": "ast",
+      "id": "package_scripts_web",
+      "community": 7,
+      "norm_label": "web"
+    },
+    {
+      "label": "private",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L35",
+      "_origin": "ast",
+      "id": "package_private",
+      "community": 7,
+      "norm_label": "private"
+    },
+    {
+      "label": "packageManager",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L36",
+      "_origin": "ast",
+      "id": "package_packagemanager",
+      "community": 7,
+      "norm_label": "packagemanager"
+    },
+    {
+      "label": "_layout.tsx",
+      "file_type": "code",
+      "source_file": "src/app/_layout.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "app_layout",
+      "community": 1,
+      "norm_label": "_layout.tsx"
+    },
+    {
+      "label": "RootLayout()",
+      "file_type": "code",
+      "source_file": "src/app/_layout.tsx",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "app_layout_rootlayout",
+      "community": 1,
+      "norm_label": "rootlayout()"
+    },
+    {
+      "label": "index.tsx",
+      "file_type": "code",
+      "source_file": "src/app/index.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "app_index",
+      "community": 15,
+      "norm_label": "index.tsx"
+    },
+    {
+      "label": "index.ts",
+      "file_type": "code",
+      "source_file": "src/features/customers/index.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "customers_index",
+      "community": 16,
+      "norm_label": "index.ts"
+    },
+    {
+      "label": "index.ts",
+      "file_type": "code",
+      "source_file": "src/features/invoices/index.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "invoices_index",
+      "community": 15,
+      "norm_label": "index.ts"
+    },
+    {
+      "label": "HomeScreen.tsx",
+      "file_type": "code",
+      "source_file": "src/features/invoices/screens/HomeScreen.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "screens_homescreen",
+      "community": 15,
+      "norm_label": "homescreen.tsx"
+    },
+    {
+      "label": "HomeScreen()",
+      "file_type": "code",
+      "source_file": "src/features/invoices/screens/HomeScreen.tsx",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "screens_homescreen_homescreen",
+      "community": 15,
+      "norm_label": "homescreen()"
+    },
+    {
+      "label": "index.ts",
+      "file_type": "code",
+      "source_file": "src/shared/constants/index.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "constants_index",
+      "community": 1,
+      "norm_label": "index.ts"
+    },
+    {
+      "label": "index.ts",
+      "file_type": "code",
+      "source_file": "src/shared/lib/index.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "lib_index",
+      "community": 3,
+      "norm_label": "index.ts"
+    },
+    {
+      "label": "index.ts",
+      "file_type": "code",
+      "source_file": "src/shared/ui/index.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "ui_index",
+      "community": 8,
+      "norm_label": "index.ts"
+    },
+    {
+      "label": "tsconfig.json",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "tsconfig",
+      "community": 9,
+      "norm_label": "tsconfig.json"
+    },
+    {
+      "label": "extends",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L2",
+      "_origin": "ast",
+      "id": "tsconfig_extends",
+      "community": 9,
+      "norm_label": "extends"
+    },
+    {
+      "label": "compilerOptions",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "tsconfig_compileroptions",
+      "community": 9,
+      "norm_label": "compileroptions"
+    },
+    {
+      "label": "strict",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "tsconfig_compileroptions_strict",
+      "community": 9,
+      "norm_label": "strict"
+    },
+    {
+      "label": "paths",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "tsconfig_compileroptions_paths",
+      "community": 9,
+      "norm_label": "paths"
+    },
+    {
+      "label": "@/*",
+      "file_type": "code",
+      "source_file": "tsconfig.json",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "tsconfig_paths",
+      "community": 9,
+      "norm_label": "@/*"
+    },
+    {
+      "label": "AGENTS.md",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "agents",
+      "community": 11,
+      "norm_label": "agents.md"
+    },
+    {
+      "label": "Expo HAS CHANGED",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "agents_expo_has_changed",
+      "community": 11,
+      "norm_label": "expo has changed"
+    },
+    {
+      "label": "CLAUDE.md",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "claude",
+      "community": 14,
+      "norm_label": "claude.md"
+    },
+    {
+      "label": "REQUIREMENT.md",
+      "file_type": "document",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_requirement",
+      "community": 0,
+      "norm_label": "requirement.md"
+    },
+    {
+      "label": "Functional and Non-Functional Requirements",
+      "file_type": "document",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_requirement_functional_and_non_functional_requirements",
+      "community": 0,
+      "norm_label": "functional and non-functional requirements"
+    },
+    {
+      "label": "Invoice and Business Management Platform",
+      "file_type": "document",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "docs_requirement_invoice_and_business_management_platform",
+      "community": 0,
+      "norm_label": "invoice and business management platform"
+    },
+    {
+      "label": "1. Purpose",
+      "file_type": "document",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "docs_requirement_1_purpose",
+      "community": 0,
+      "norm_label": "1. purpose"
+    },
+    {
+      "label": "2. Functional Requirements",
+      "file_type": "document",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L13",
+      "_origin": "ast",
+      "id": "docs_requirement_2_functional_requirements",
+      "community": 5,
+      "norm_label": "2. functional requirements"
+    },
+    {
+      "label": "2.1 Business Profile",
+      "file_type": "document",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L15",
+      "_origin": "ast",
+      "id": "docs_requirement_2_1_business_profile",
+      "community": 5,
+      "norm_label": "2.1 business profile"
+    },
+    {
+      "label": "2.2 Catalogue and Item Management",
+      "file_type": "document",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L32",
+      "_origin": "ast",
+      "id": "docs_requirement_2_2_catalogue_and_item_management",
+      "community": 5,
+      "norm_label": "2.2 catalogue and item management"
+    },
+    {
+      "label": "2.3 Customer Management",
+      "file_type": "document",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L61",
+      "_origin": "ast",
+      "id": "docs_requirement_2_3_customer_management",
+      "community": 5,
+      "norm_label": "2.3 customer management"
+    },
+    {
+      "label": "2.4 Invoice Management",
+      "file_type": "document",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L90",
+      "_origin": "ast",
+      "id": "docs_requirement_2_4_invoice_management",
+      "community": 5,
+      "norm_label": "2.4 invoice management"
+    },
+    {
+      "label": "2.5 Invoice Template Customization",
+      "file_type": "document",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L143",
+      "_origin": "ast",
+      "id": "docs_requirement_2_5_invoice_template_customization",
+      "community": 5,
+      "norm_label": "2.5 invoice template customization"
+    },
+    {
+      "label": "2.6 Invoice Sharing and Tracking",
+      "file_type": "document",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L163",
+      "_origin": "ast",
+      "id": "docs_requirement_2_6_invoice_sharing_and_tracking",
+      "community": 5,
+      "norm_label": "2.6 invoice sharing and tracking"
+    },
+    {
+      "label": "2.7 Payment Management",
+      "file_type": "document",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L187",
+      "_origin": "ast",
+      "id": "docs_requirement_2_7_payment_management",
+      "community": 5,
+      "norm_label": "2.7 payment management"
+    },
+    {
+      "label": "2.8 Receipt Management",
+      "file_type": "document",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L216",
+      "_origin": "ast",
+      "id": "docs_requirement_2_8_receipt_management",
+      "community": 5,
+      "norm_label": "2.8 receipt management"
+    },
+    {
+      "label": "2.9 Payment Reminders",
+      "file_type": "document",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L241",
+      "_origin": "ast",
+      "id": "docs_requirement_2_9_payment_reminders",
+      "community": 5,
+      "norm_label": "2.9 payment reminders"
+    },
+    {
+      "label": "2.10 Reports",
+      "file_type": "document",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L264",
+      "_origin": "ast",
+      "id": "docs_requirement_2_10_reports",
+      "community": 5,
+      "norm_label": "2.10 reports"
+    },
+    {
+      "label": "2.11 Purchase Management",
+      "file_type": "document",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L308",
+      "_origin": "ast",
+      "id": "docs_requirement_2_11_purchase_management",
+      "community": 5,
+      "norm_label": "2.11 purchase management"
+    },
+    {
+      "label": "2.12 Purchase Order Management",
+      "file_type": "document",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L320",
+      "_origin": "ast",
+      "id": "docs_requirement_2_12_purchase_order_management",
+      "community": 5,
+      "norm_label": "2.12 purchase order management"
+    },
+    {
+      "label": "2.13 CSV Import and Export",
+      "file_type": "document",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L342",
+      "_origin": "ast",
+      "id": "docs_requirement_2_13_csv_import_and_export",
+      "community": 5,
+      "norm_label": "2.13 csv import and export"
+    },
+    {
+      "label": "2.14 Subscription and In-App Purchase",
+      "file_type": "document",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L360",
+      "_origin": "ast",
+      "id": "docs_requirement_2_14_subscription_and_in_app_purchase",
+      "community": 5,
+      "norm_label": "2.14 subscription and in-app purchase"
+    },
+    {
+      "label": "3. Suggested Plan Features",
+      "file_type": "document",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L388",
+      "_origin": "ast",
+      "id": "docs_requirement_3_suggested_plan_features",
+      "community": 0,
+      "norm_label": "3. suggested plan features"
+    },
+    {
+      "label": "4. User Roles and Permissions",
+      "file_type": "document",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L420",
+      "_origin": "ast",
+      "id": "docs_requirement_4_user_roles_and_permissions",
+      "community": 0,
+      "norm_label": "4. user roles and permissions"
+    },
+    {
+      "label": "Business Owner",
+      "file_type": "document",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L424",
+      "_origin": "ast",
+      "id": "docs_requirement_business_owner",
+      "community": 0,
+      "norm_label": "business owner"
+    },
+    {
+      "label": "Administrator",
+      "file_type": "document",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L438",
+      "_origin": "ast",
+      "id": "docs_requirement_administrator",
+      "community": 0,
+      "norm_label": "administrator"
+    },
+    {
+      "label": "Staff Member",
+      "file_type": "document",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L442",
+      "_origin": "ast",
+      "id": "docs_requirement_staff_member",
+      "community": 0,
+      "norm_label": "staff member"
+    },
+    {
+      "label": "Customer",
+      "file_type": "document",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L446",
+      "_origin": "ast",
+      "id": "docs_requirement_customer",
+      "community": 0,
+      "norm_label": "customer"
+    },
+    {
+      "label": "5. Business Rules",
+      "file_type": "document",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L459",
+      "_origin": "ast",
+      "id": "docs_requirement_5_business_rules",
+      "community": 0,
+      "norm_label": "5. business rules"
+    },
+    {
+      "label": "6. Non-Functional Requirements",
+      "file_type": "document",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L474",
+      "_origin": "ast",
+      "id": "docs_requirement_6_non_functional_requirements",
+      "community": 12,
+      "norm_label": "6. non-functional requirements"
+    },
+    {
+      "label": "6.1 Performance",
+      "file_type": "document",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L476",
+      "_origin": "ast",
+      "id": "docs_requirement_6_1_performance",
+      "community": 12,
+      "norm_label": "6.1 performance"
+    },
+    {
+      "label": "6.2 Security",
+      "file_type": "document",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L483",
+      "_origin": "ast",
+      "id": "docs_requirement_6_2_security",
+      "community": 12,
+      "norm_label": "6.2 security"
+    },
+    {
+      "label": "6.3 Privacy",
+      "file_type": "document",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L494",
+      "_origin": "ast",
+      "id": "docs_requirement_6_3_privacy",
+      "community": 12,
+      "norm_label": "6.3 privacy"
+    },
+    {
+      "label": "6.4 Reliability",
+      "file_type": "document",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L501",
+      "_origin": "ast",
+      "id": "docs_requirement_6_4_reliability",
+      "community": 12,
+      "norm_label": "6.4 reliability"
+    },
+    {
+      "label": "6.5 Scalability",
+      "file_type": "document",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L508",
+      "_origin": "ast",
+      "id": "docs_requirement_6_5_scalability",
+      "community": 12,
+      "norm_label": "6.5 scalability"
+    },
+    {
+      "label": "6.6 Usability",
+      "file_type": "document",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L513",
+      "_origin": "ast",
+      "id": "docs_requirement_6_6_usability",
+      "community": 12,
+      "norm_label": "6.6 usability"
+    },
+    {
+      "label": "6.7 Accessibility",
+      "file_type": "document",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L520",
+      "_origin": "ast",
+      "id": "docs_requirement_6_7_accessibility",
+      "community": 12,
+      "norm_label": "6.7 accessibility"
+    },
+    {
+      "label": "6.8 Compatibility",
+      "file_type": "document",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L527",
+      "_origin": "ast",
+      "id": "docs_requirement_6_8_compatibility",
+      "community": 12,
+      "norm_label": "6.8 compatibility"
+    },
+    {
+      "label": "6.9 Backup and Recovery",
+      "file_type": "document",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L534",
+      "_origin": "ast",
+      "id": "docs_requirement_6_9_backup_and_recovery",
+      "community": 12,
+      "norm_label": "6.9 backup and recovery"
+    },
+    {
+      "label": "6.10 Audit and Monitoring",
+      "file_type": "document",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L541",
+      "_origin": "ast",
+      "id": "docs_requirement_6_10_audit_and_monitoring",
+      "community": 12,
+      "norm_label": "6.10 audit and monitoring"
+    },
+    {
+      "label": "7. Recommended Development Phases",
+      "file_type": "document",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L564",
+      "_origin": "ast",
+      "id": "docs_requirement_7_recommended_development_phases",
+      "community": 0,
+      "norm_label": "7. recommended development phases"
+    },
+    {
+      "label": "Phase 1",
+      "file_type": "document",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L566",
+      "_origin": "ast",
+      "id": "docs_requirement_phase_1",
+      "community": 0,
+      "norm_label": "phase 1"
+    },
+    {
+      "label": "Phase 2",
+      "file_type": "document",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L577",
+      "_origin": "ast",
+      "id": "docs_requirement_phase_2",
+      "community": 0,
+      "norm_label": "phase 2"
+    },
+    {
+      "label": "Phase 3",
+      "file_type": "document",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L586",
+      "_origin": "ast",
+      "id": "docs_requirement_phase_3",
+      "community": 0,
+      "norm_label": "phase 3"
+    },
+    {
+      "label": "Phase 4",
+      "file_type": "document",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L594",
+      "_origin": "ast",
+      "id": "docs_requirement_phase_4",
+      "community": 0,
+      "norm_label": "phase 4"
+    },
+    {
+      "label": "SUBSCRIPTION.md",
+      "file_type": "document",
+      "source_file": "docs/SUBSCRIPTION.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_subscription",
+      "community": 6,
+      "norm_label": "subscription.md"
+    },
+    {
+      "label": "Subscription Plans and Country-Wise Pricing",
+      "file_type": "document",
+      "source_file": "docs/SUBSCRIPTION.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_subscription_subscription_plans_and_country_wise_pricing",
+      "community": 6,
+      "norm_label": "subscription plans and country-wise pricing"
+    },
+    {
+      "label": "1. Plan Overview",
+      "file_type": "document",
+      "source_file": "docs/SUBSCRIPTION.md",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "docs_subscription_1_plan_overview",
+      "community": 6,
+      "norm_label": "1. plan overview"
+    },
+    {
+      "label": "2. Billing Duration",
+      "file_type": "document",
+      "source_file": "docs/SUBSCRIPTION.md",
+      "source_location": "L33",
+      "_origin": "ast",
+      "id": "docs_subscription_2_billing_duration",
+      "community": 6,
+      "norm_label": "2. billing duration"
+    },
+    {
+      "label": "3. Recommended Pricing by Country",
+      "file_type": "document",
+      "source_file": "docs/SUBSCRIPTION.md",
+      "source_location": "L49",
+      "_origin": "ast",
+      "id": "docs_subscription_3_recommended_pricing_by_country",
+      "community": 6,
+      "norm_label": "3. recommended pricing by country"
+    },
+    {
+      "label": "India",
+      "file_type": "document",
+      "source_file": "docs/SUBSCRIPTION.md",
+      "source_location": "L51",
+      "_origin": "ast",
+      "id": "docs_subscription_india",
+      "community": 6,
+      "norm_label": "india"
+    },
+    {
+      "label": "United States",
+      "file_type": "document",
+      "source_file": "docs/SUBSCRIPTION.md",
+      "source_location": "L69",
+      "_origin": "ast",
+      "id": "docs_subscription_united_states",
+      "community": 6,
+      "norm_label": "united states"
+    },
+    {
+      "label": "United Kingdom",
+      "file_type": "document",
+      "source_file": "docs/SUBSCRIPTION.md",
+      "source_location": "L87",
+      "_origin": "ast",
+      "id": "docs_subscription_united_kingdom",
+      "community": 6,
+      "norm_label": "united kingdom"
+    },
+    {
+      "label": "United Arab Emirates",
+      "file_type": "document",
+      "source_file": "docs/SUBSCRIPTION.md",
+      "source_location": "L105",
+      "_origin": "ast",
+      "id": "docs_subscription_united_arab_emirates",
+      "community": 6,
+      "norm_label": "united arab emirates"
+    },
+    {
+      "label": "4. Pricing Screen Layout",
+      "file_type": "document",
+      "source_file": "docs/SUBSCRIPTION.md",
+      "source_location": "L123",
+      "_origin": "ast",
+      "id": "docs_subscription_4_pricing_screen_layout",
+      "community": 6,
+      "norm_label": "4. pricing screen layout"
+    },
+    {
+      "label": "5. Country and Currency Detection",
+      "file_type": "document",
+      "source_file": "docs/SUBSCRIPTION.md",
+      "source_location": "L146",
+      "_origin": "ast",
+      "id": "docs_subscription_5_country_and_currency_detection",
+      "community": 6,
+      "norm_label": "5. country and currency detection"
+    },
+    {
+      "label": "6. Taxes",
+      "file_type": "document",
+      "source_file": "docs/SUBSCRIPTION.md",
+      "source_location": "L160",
+      "_origin": "ast",
+      "id": "docs_subscription_6_taxes",
+      "community": 6,
+      "norm_label": "6. taxes"
+    },
+    {
+      "label": "7. SMS, WhatsApp, and Payment Charges",
+      "file_type": "document",
+      "source_file": "docs/SUBSCRIPTION.md",
+      "source_location": "L175",
+      "_origin": "ast",
+      "id": "docs_subscription_7_sms_whatsapp_and_payment_charges",
+      "community": 6,
+      "norm_label": "7. sms, whatsapp, and payment charges"
+    },
+    {
+      "label": "8. Additional Users",
+      "file_type": "document",
+      "source_file": "docs/SUBSCRIPTION.md",
+      "source_location": "L195",
+      "_origin": "ast",
+      "id": "docs_subscription_8_additional_users",
+      "community": 6,
+      "norm_label": "8. additional users"
+    },
+    {
+      "label": "9. Launch Recommendation",
+      "file_type": "document",
+      "source_file": "docs/SUBSCRIPTION.md",
+      "source_location": "L210",
+      "_origin": "ast",
+      "id": "docs_subscription_9_launch_recommendation",
+      "community": 6,
+      "norm_label": "9. launch recommendation"
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/settings.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "claude_settings",
+      "target": "claude_settings_enabledplugins"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".claude/settings.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "claude_settings_enabledplugins",
+      "target": "claude_settings_enabledplugins_expo_claude_plugins_official"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app",
+      "target": "app_expo"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app.json",
+      "source_location": "L12",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_expo",
+      "target": "app_expo_android"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app.json",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_expo",
+      "target": "app_expo_icon"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app.json",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_expo",
+      "target": "app_expo_ios"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_expo",
+      "target": "app_expo_name"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_expo",
+      "target": "app_expo_orientation"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app.json",
+      "source_location": "L26",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_expo",
+      "target": "app_expo_plugins"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app.json",
+      "source_location": "L25",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_expo",
+      "target": "app_expo_scheme"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app.json",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_expo",
+      "target": "app_expo_slug"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app.json",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_expo",
+      "target": "app_expo_userinterfacestyle"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app.json",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_expo",
+      "target": "app_expo_version"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app.json",
+      "source_location": "L21",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_expo",
+      "target": "app_expo_web"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app.json",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_expo_ios",
+      "target": "app_ios_supportstablet"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app.json",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_expo_android",
+      "target": "app_android_adaptiveicon"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app.json",
+      "source_location": "L19",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_expo_android",
+      "target": "app_android_predictivebackgestureenabled"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app.json",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_android_adaptiveicon",
+      "target": "app_adaptiveicon_backgroundcolor"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app.json",
+      "source_location": "L16",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_android_adaptiveicon",
+      "target": "app_adaptiveicon_backgroundimage"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app.json",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_android_adaptiveicon",
+      "target": "app_adaptiveicon_foregroundimage"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app.json",
+      "source_location": "L17",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_android_adaptiveicon",
+      "target": "app_adaptiveicon_monochromeimage"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app.json",
+      "source_location": "L23",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_expo_web",
+      "target": "app_web_bundler"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app.json",
+      "source_location": "L22",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_expo_web",
+      "target": "app_web_favicon"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package",
+      "target": "package_dependencies"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L24",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package",
+      "target": "package_devdependencies"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package",
+      "target": "package_main"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package",
+      "target": "package_name"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L36",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package",
+      "target": "package_packagemanager"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L35",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package",
+      "target": "package_private"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L29",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package",
+      "target": "package_scripts"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package",
+      "target": "package_version"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_date_fns"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_expo"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_expo_constants"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_expo_linking"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L11",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_expo_router"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L12",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_expo_status_bar"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_hookform_resolvers"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_react"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_react_dom"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_react_hook_form"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L16",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_react_native"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L17",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_react_native_safe_area_context"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L18",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_react_native_screens"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L19",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_react_native_web"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L20",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_uuid"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L21",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_zod"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L22",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_zustand"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L25",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_types_react"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L26",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_types_uuid"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L27",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_typescript"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L31",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_android"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L32",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_ios"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L30",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_start"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L33",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "package_scripts",
+      "target": "package_scripts_web"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/_layout.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_layout",
+      "target": "app_layout_rootlayout"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/_layout.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_layout",
+      "target": "constants_index"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/index.tsx",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "app_index",
+      "target": "invoices_index",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "re_exports",
+      "context": "export",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/index.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "invoices_index",
+      "target": "screens_homescreen",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/screens/HomeScreen.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "screens_homescreen",
+      "target": "screens_homescreen_homescreen",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tsconfig",
+      "target": "tsconfig_compileroptions"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tsconfig",
+      "target": "tsconfig_extends"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tsconfig_compileroptions",
+      "target": "tsconfig_compileroptions_paths"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tsconfig_compileroptions",
+      "target": "tsconfig_compileroptions_strict"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tsconfig.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "tsconfig_compileroptions_paths",
+      "target": "tsconfig_paths"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "AGENTS.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "agents",
+      "target": "agents_expo_has_changed"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_requirement",
+      "target": "docs_requirement_2_functional_requirements"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L388",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_requirement",
+      "target": "docs_requirement_3_suggested_plan_features"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L420",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_requirement",
+      "target": "docs_requirement_4_user_roles_and_permissions"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L459",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_requirement",
+      "target": "docs_requirement_5_business_rules"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L474",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_requirement",
+      "target": "docs_requirement_6_non_functional_requirements"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L564",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_requirement",
+      "target": "docs_requirement_7_recommended_development_phases"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_requirement",
+      "target": "docs_requirement_functional_and_non_functional_requirements"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_requirement_functional_and_non_functional_requirements",
+      "target": "docs_requirement_1_purpose"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_requirement_functional_and_non_functional_requirements",
+      "target": "docs_requirement_invoice_and_business_management_platform"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L264",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_requirement_2_functional_requirements",
+      "target": "docs_requirement_2_10_reports"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L308",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_requirement_2_functional_requirements",
+      "target": "docs_requirement_2_11_purchase_management"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L320",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_requirement_2_functional_requirements",
+      "target": "docs_requirement_2_12_purchase_order_management"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L342",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_requirement_2_functional_requirements",
+      "target": "docs_requirement_2_13_csv_import_and_export"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L360",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_requirement_2_functional_requirements",
+      "target": "docs_requirement_2_14_subscription_and_in_app_purchase"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_requirement_2_functional_requirements",
+      "target": "docs_requirement_2_1_business_profile"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L32",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_requirement_2_functional_requirements",
+      "target": "docs_requirement_2_2_catalogue_and_item_management"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L61",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_requirement_2_functional_requirements",
+      "target": "docs_requirement_2_3_customer_management"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L90",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_requirement_2_functional_requirements",
+      "target": "docs_requirement_2_4_invoice_management"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L143",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_requirement_2_functional_requirements",
+      "target": "docs_requirement_2_5_invoice_template_customization"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L163",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_requirement_2_functional_requirements",
+      "target": "docs_requirement_2_6_invoice_sharing_and_tracking"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L187",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_requirement_2_functional_requirements",
+      "target": "docs_requirement_2_7_payment_management"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L216",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_requirement_2_functional_requirements",
+      "target": "docs_requirement_2_8_receipt_management"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L241",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_requirement_2_functional_requirements",
+      "target": "docs_requirement_2_9_payment_reminders"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L438",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_requirement_4_user_roles_and_permissions",
+      "target": "docs_requirement_administrator"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L424",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_requirement_4_user_roles_and_permissions",
+      "target": "docs_requirement_business_owner"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L446",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_requirement_4_user_roles_and_permissions",
+      "target": "docs_requirement_customer"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L442",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_requirement_4_user_roles_and_permissions",
+      "target": "docs_requirement_staff_member"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L541",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_requirement_6_non_functional_requirements",
+      "target": "docs_requirement_6_10_audit_and_monitoring"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L476",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_requirement_6_non_functional_requirements",
+      "target": "docs_requirement_6_1_performance"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L483",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_requirement_6_non_functional_requirements",
+      "target": "docs_requirement_6_2_security"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L494",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_requirement_6_non_functional_requirements",
+      "target": "docs_requirement_6_3_privacy"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L501",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_requirement_6_non_functional_requirements",
+      "target": "docs_requirement_6_4_reliability"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L508",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_requirement_6_non_functional_requirements",
+      "target": "docs_requirement_6_5_scalability"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L513",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_requirement_6_non_functional_requirements",
+      "target": "docs_requirement_6_6_usability"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L520",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_requirement_6_non_functional_requirements",
+      "target": "docs_requirement_6_7_accessibility"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L527",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_requirement_6_non_functional_requirements",
+      "target": "docs_requirement_6_8_compatibility"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L534",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_requirement_6_non_functional_requirements",
+      "target": "docs_requirement_6_9_backup_and_recovery"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L566",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_requirement_7_recommended_development_phases",
+      "target": "docs_requirement_phase_1"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L577",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_requirement_7_recommended_development_phases",
+      "target": "docs_requirement_phase_2"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L586",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_requirement_7_recommended_development_phases",
+      "target": "docs_requirement_phase_3"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/REQUIREMENT.md",
+      "source_location": "L594",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_requirement_7_recommended_development_phases",
+      "target": "docs_requirement_phase_4"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/SUBSCRIPTION.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_subscription",
+      "target": "docs_subscription_subscription_plans_and_country_wise_pricing"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/SUBSCRIPTION.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_subscription_subscription_plans_and_country_wise_pricing",
+      "target": "docs_subscription_1_plan_overview"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/SUBSCRIPTION.md",
+      "source_location": "L33",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_subscription_subscription_plans_and_country_wise_pricing",
+      "target": "docs_subscription_2_billing_duration"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/SUBSCRIPTION.md",
+      "source_location": "L49",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_subscription_subscription_plans_and_country_wise_pricing",
+      "target": "docs_subscription_3_recommended_pricing_by_country"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/SUBSCRIPTION.md",
+      "source_location": "L123",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_subscription_subscription_plans_and_country_wise_pricing",
+      "target": "docs_subscription_4_pricing_screen_layout"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/SUBSCRIPTION.md",
+      "source_location": "L146",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_subscription_subscription_plans_and_country_wise_pricing",
+      "target": "docs_subscription_5_country_and_currency_detection"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/SUBSCRIPTION.md",
+      "source_location": "L160",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_subscription_subscription_plans_and_country_wise_pricing",
+      "target": "docs_subscription_6_taxes"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/SUBSCRIPTION.md",
+      "source_location": "L175",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_subscription_subscription_plans_and_country_wise_pricing",
+      "target": "docs_subscription_7_sms_whatsapp_and_payment_charges"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/SUBSCRIPTION.md",
+      "source_location": "L195",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_subscription_subscription_plans_and_country_wise_pricing",
+      "target": "docs_subscription_8_additional_users"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/SUBSCRIPTION.md",
+      "source_location": "L210",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_subscription_subscription_plans_and_country_wise_pricing",
+      "target": "docs_subscription_9_launch_recommendation"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/SUBSCRIPTION.md",
+      "source_location": "L51",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_subscription_3_recommended_pricing_by_country",
+      "target": "docs_subscription_india"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/SUBSCRIPTION.md",
+      "source_location": "L105",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_subscription_3_recommended_pricing_by_country",
+      "target": "docs_subscription_united_arab_emirates"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/SUBSCRIPTION.md",
+      "source_location": "L87",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_subscription_3_recommended_pricing_by_country",
+      "target": "docs_subscription_united_kingdom"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/SUBSCRIPTION.md",
+      "source_location": "L69",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_subscription_3_recommended_pricing_by_country",
+      "target": "docs_subscription_united_states"
+    }
+  ],
+  "hyperedges": [],
+  "built_at_commit": "3818822d6beaee7b7920dbe3025edd1c712e3297"
+}
