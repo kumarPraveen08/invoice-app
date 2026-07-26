@@ -40,3 +40,5 @@ pnpm-debug.*
 # generated native folders
 /ios
 /android
+
+.pnpm-store/
