@@ -1,17 +1,13 @@
-import { useColorScheme, View } from 'react-native';
-import { colors } from '@/shared/constants';
+import { Screen } from '@/shared/design-system';
 import { EmptyState, FloatingAddButton } from '@/shared/ui';
 
 export default function ClientsScreen() {
-  const scheme = useColorScheme() === 'dark' ? 'dark' : 'light';
-  const theme = colors[scheme];
-
   const onCreate = () => {
     // TODO: navigate to add client
   };
 
   return (
-    <View style={{ flex: 1, backgroundColor: theme.screenBg }}>
+    <Screen>
       <EmptyState
         icon="people-outline"
         title="No clients yet"
@@ -23,6 +19,6 @@ export default function ClientsScreen() {
         onPress={onCreate}
         accessibilityLabel="Add client"
       />
-    </View>
+    </Screen>
   );
 }

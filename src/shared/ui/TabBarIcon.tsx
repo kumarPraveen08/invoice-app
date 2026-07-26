@@ -1,6 +1,6 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import type { ColorValue } from 'react-native';
-import { tabBar } from '@/shared/constants';
+import { tabBar } from '@/shared/design-system';
 
 type IconPair = {
   active: keyof typeof Ionicons.glyphMap;

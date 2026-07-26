@@ -1,21 +1,20 @@
 import { Tabs } from 'expo-router';
-import { useColorScheme, View } from 'react-native';
-import { colors } from '@/shared/constants';
+import { View } from 'react-native';
+import { useTheme } from '@/shared/design-system';
 import { FloatingTabBar } from '@/shared/ui';
 
 export default function TabsLayout() {
-  const scheme = useColorScheme() === 'dark' ? 'dark' : 'light';
-  const theme = colors[scheme];
+  const { colors } = useTheme();
 
   return (
-    <View style={{ flex: 1, backgroundColor: theme.screenBg }}>
+    <View style={{ flex: 1, backgroundColor: colors.background }}>
       <Tabs
         tabBar={(props) => <FloatingTabBar {...props} />}
         screenOptions={{
           headerShadowVisible: false,
-          headerStyle: { backgroundColor: theme.screenBg },
-          headerTintColor: theme.text,
-          sceneStyle: { backgroundColor: theme.screenBg },
+          headerStyle: { backgroundColor: colors.background },
+          headerTintColor: colors.onSurface,
+          sceneStyle: { backgroundColor: colors.background },
         }}
       >
         <Tabs.Screen name="index" options={{ title: 'Invoices' }} />

@@ -1,17 +1,13 @@
-import { useColorScheme, View } from 'react-native';
-import { colors } from '@/shared/constants';
+import { Screen } from '@/shared/design-system';
 import { EmptyState, FloatingAddButton } from '@/shared/ui';
 
 export default function EstimatesScreen() {
-  const scheme = useColorScheme() === 'dark' ? 'dark' : 'light';
-  const theme = colors[scheme];
-
   const onCreate = () => {
     // TODO: navigate to create estimate
   };
 
   return (
-    <View style={{ flex: 1, backgroundColor: theme.screenBg }}>
+    <Screen>
       <EmptyState
         icon="document-text-outline"
         title="No estimates yet"
@@ -23,6 +19,6 @@ export default function EstimatesScreen() {
         onPress={onCreate}
         accessibilityLabel="Create estimate"
       />
-    </View>
+    </Screen>
   );
 }

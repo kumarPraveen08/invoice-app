@@ -1,9 +1,9 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Tabs } from 'expo-router';
 import type { ComponentProps } from 'react';
-import { Pressable, StyleSheet, Text, useColorScheme, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { colors, tabBar } from '@/shared/constants';
+import { applyElevation, useTheme } from '@/shared/design-system';
 import type { TabName } from './TabBarIcon';
 
 type FloatingTabBarProps = Parameters<
@@ -30,8 +30,8 @@ const ICONS: Record<
 };
 
 export function FloatingTabBar({ state, descriptors, navigation }: FloatingTabBarProps) {
-  const scheme = useColorScheme() === 'dark' ? 'dark' : 'light';
-  const theme = colors[scheme];
+  const { colors, layout, radii } = useTheme();
+  const { tabBar } = layout;
   const insets = useSafeAreaInsets();
   const bottom = Math.max(insets.bottom, tabBar.marginBottom) + 5;
 
@@ -45,10 +45,10 @@ export function FloatingTabBar({ state, descriptors, navigation }: FloatingTabBa
           styles.capsule,
           {
             height: tabBar.height,
-            backgroundColor: theme.tabBarBg,
-            borderRadius: tabBar.borderRadius,
-            shadowColor: theme.shadow,
+            backgroundColor: colors.tabBar,
+            borderRadius: radii.full,
           },
+          applyElevation('lg', colors.shadow),
         ]}
       >
         {state.routes.map((route, index) => {
@@ -88,7 +88,7 @@ export function FloatingTabBar({ state, descriptors, navigation }: FloatingTabBa
                   style={[
                     styles.pill,
                     {
-                      backgroundColor: theme.primary,
+                      backgroundColor: colors.primary,
                       paddingHorizontal: tabBar.pillPaddingH,
                       paddingVertical: tabBar.pillPaddingV,
                     },
@@ -97,12 +97,12 @@ export function FloatingTabBar({ state, descriptors, navigation }: FloatingTabBa
                   <Ionicons
                     name={icon.active}
                     size={tabBar.iconSize}
-                    color={theme.primaryContrast}
+                    color={colors.onPrimary}
                   />
                   <Text
                     style={[
                       styles.label,
-                      { color: theme.primaryContrast, fontSize: tabBar.labelSize },
+                      { color: colors.onPrimary, fontSize: tabBar.labelSize },
                     ]}
                     numberOfLines={1}
                   >
@@ -113,7 +113,7 @@ export function FloatingTabBar({ state, descriptors, navigation }: FloatingTabBa
                 <Ionicons
                   name={icon.inactive}
                   size={tabBar.iconSize}
-                  color={theme.tabInactive}
+                  color={colors.tabInactive}
                 />
               )}
             </Pressable>
@@ -135,10 +135,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-around',
     paddingHorizontal: 8,
-    elevation: tabBar.elevation,
-    shadowOffset: { width: 0, height: 8 },
-    shadowOpacity: 0.28,
-    shadowRadius: 16,
   },
   item: {
     alignItems: 'center',

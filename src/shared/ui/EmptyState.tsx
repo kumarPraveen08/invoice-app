@@ -1,6 +1,6 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { Pressable, StyleSheet, Text, useColorScheme, View } from 'react-native';
-import { colors } from '@/shared/constants';
+import { StyleSheet, View } from 'react-native';
+import { Button, Text, useTheme } from '@/shared/design-system';
 
 type Props = {
   icon: keyof typeof Ionicons.glyphMap;
@@ -17,34 +17,20 @@ export function EmptyState({
   actionLabel,
   onAction,
 }: Props) {
-  const scheme = useColorScheme() === 'dark' ? 'dark' : 'light';
-  const theme = colors[scheme];
+  const { colors } = useTheme();
 
   return (
     <View style={styles.container}>
-      <View style={[styles.iconWrap, { backgroundColor: theme.iconBg }]}>
-        <Ionicons name={icon} size={36} color={theme.primary} />
+      <View style={[styles.iconWrap, { backgroundColor: colors.iconSoft }]}>
+        <Ionicons name={icon} size={36} color={colors.primary} />
       </View>
-      <Text style={[styles.title, { color: theme.text }]}>{title}</Text>
-      <Text style={[styles.description, { color: theme.textMuted }]}>
+      <Text variant="title" style={styles.title}>
+        {title}
+      </Text>
+      <Text variant="body" muted style={styles.description}>
         {description}
       </Text>
-      <Pressable
-        onPress={onAction}
-        accessibilityRole="button"
-        style={({ pressed }) => [
-          styles.button,
-          {
-            backgroundColor: theme.primary,
-            opacity: pressed ? 0.88 : 1,
-          },
-        ]}
-      >
-        <Ionicons name="add" size={18} color={theme.primaryContrast} />
-        <Text style={[styles.buttonLabel, { color: theme.primaryContrast }]}>
-          {actionLabel}
-        </Text>
-      </Pressable>
+      <Button label={actionLabel} icon="add" onPress={onAction} />
     </View>
   );
 }
@@ -66,28 +52,12 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   title: {
-    fontSize: 20,
-    fontWeight: '700',
     textAlign: 'center',
     marginBottom: 8,
   },
   description: {
-    fontSize: 15,
-    lineHeight: 22,
     textAlign: 'center',
     marginBottom: 24,
     maxWidth: 280,
-  },
-  button: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 6,
-    paddingHorizontal: 20,
-    paddingVertical: 12,
-    borderRadius: 999,
-  },
-  buttonLabel: {
-    fontSize: 15,
-    fontWeight: '600',
   },
 });
