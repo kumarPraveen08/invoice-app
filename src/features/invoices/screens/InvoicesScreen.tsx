@@ -1,10 +1,12 @@
+import { useState } from 'react';
+import { CreateInvoiceSheet } from '@/features/invoices/components/CreateInvoiceSheet';
 import { Screen } from '@/shared/design-system';
 import { EmptyState, FloatingAddButton } from '@/shared/ui';
 
 export default function InvoicesScreen() {
-  const onCreate = () => {
-    // TODO: navigate to create invoice
-  };
+  const [sheetOpen, setSheetOpen] = useState(false);
+
+  const onCreate = () => setSheetOpen(true);
 
   return (
     <Screen>
@@ -18,6 +20,10 @@ export default function InvoicesScreen() {
       <FloatingAddButton
         onPress={onCreate}
         accessibilityLabel="Create invoice"
+      />
+      <CreateInvoiceSheet
+        visible={sheetOpen}
+        onClose={() => setSheetOpen(false)}
       />
     </Screen>
   );
