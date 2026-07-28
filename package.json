@@ -5,6 +5,7 @@
   "dependencies": {
     "@expo/vector-icons": "^15.1.1",
     "@hookform/resolvers": "^5.4.0",
+    "@lodev09/react-native-true-sheet": "^3.11.9",
     "date-fns": "^4.4.0",
     "expo": "~57.0.7",
     "expo-constants": "~57.0.6",
