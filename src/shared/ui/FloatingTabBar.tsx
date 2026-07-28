@@ -33,18 +33,27 @@ export function FloatingTabBar({ state, descriptors, navigation }: FloatingTabBa
   const { colors, layout, radii } = useTheme();
   const { tabBar } = layout;
   const insets = useSafeAreaInsets();
-  const bottom = Math.max(insets.bottom, tabBar.marginBottom) + 5;
+  const bottomInset = insets.bottom;
+  const capsuleBottom = Math.max(bottomInset, tabBar.marginBottom) + 5;
 
   return (
     <View
       pointerEvents="box-none"
-      style={[styles.wrap, { bottom, paddingHorizontal: tabBar.marginHorizontal }]}
+      style={[
+        styles.wrap,
+        {
+          paddingBottom: bottomInset,
+          paddingHorizontal: tabBar.marginHorizontal,
+          backgroundColor: colors.background,
+        },
+      ]}
     >
       <View
         style={[
           styles.capsule,
           {
             height: tabBar.height,
+            marginBottom: capsuleBottom - bottomInset,
             backgroundColor: colors.tabBar,
             borderRadius: radii.full,
           },
@@ -127,6 +136,7 @@ export function FloatingTabBar({ state, descriptors, navigation }: FloatingTabBa
 const styles = StyleSheet.create({
   wrap: {
     position: 'absolute',
+    bottom: 0,
     left: 0,
     right: 0,
   },

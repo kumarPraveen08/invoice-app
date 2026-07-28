@@ -1,7 +1,7 @@
-import { Tabs } from 'expo-router';
-import { View } from 'react-native';
-import { useTheme } from '@/shared/design-system';
-import { FloatingTabBar } from '@/shared/ui';
+import { Tabs } from "expo-router";
+import { View } from "react-native";
+import { useTheme } from "@/shared/design-system";
+import { FloatingTabBar } from "@/shared/ui";
 
 export default function TabsLayout() {
   const { colors } = useTheme();
@@ -17,11 +17,11 @@ export default function TabsLayout() {
           sceneStyle: { backgroundColor: colors.background },
         }}
       >
-        <Tabs.Screen name="index" options={{ title: 'Invoices' }} />
-        <Tabs.Screen name="estimates" options={{ title: 'Estimates' }} />
-        <Tabs.Screen name="clients" options={{ title: 'Clients' }} />
-        <Tabs.Screen name="reports" options={{ title: 'Reports' }} />
-        <Tabs.Screen name="tools" options={{ title: 'Tools' }} />
+        <Tabs.Screen name="index" options={{ title: "Invoices" }} />
+        <Tabs.Screen name="estimates" options={{ title: "Estimates" }} />
+        <Tabs.Screen name="clients" options={{ title: "Clients" }} />
+        <Tabs.Screen name="reports" options={{ title: "Reports" }} />
+        <Tabs.Screen name="tools" options={{ title: "Tools" }} />
       </Tabs>
     </View>
   );

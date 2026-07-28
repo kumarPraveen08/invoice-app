@@ -9,6 +9,7 @@
     "expo": "~57.0.7",
     "expo-constants": "~57.0.6",
     "expo-linking": "~57.0.3",
+    "expo-navigation-bar": "~57.0.2",
     "expo-router": "~57.0.7",
     "expo-status-bar": "~57.0.1",
     "react": "19.2.3",
@@ -34,5 +35,5 @@
     "web": "expo start --web"
   },
   "private": true,
-  "packageManager": "pnpm@11.15.1"
+  "packageManager": "pnpm@11.17.0+sha512.cca3cea332ad254bb84145f966d19f4879615210346fc92c79a047f23a0d7b3cca3c3792f0076ba1f1831d277efbcf0a9119b31a9a60eca7fb3d6231f331ef72"
 }

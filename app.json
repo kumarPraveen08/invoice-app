@@ -23,9 +23,17 @@
       "bundler": "metro"
     },
     "scheme": "invoiceapp",
+    "backgroundColor": "#121212",
     "plugins": [
       "expo-router",
-      "expo-status-bar"
+      "expo-status-bar",
+      [
+        "expo-navigation-bar",
+        {
+          "enforceContrast": false,
+          "style": "dark"
+        }
+      ]
     ]
   }
 }
