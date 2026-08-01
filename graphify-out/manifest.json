@@ -15,8 +15,8 @@
     "semantic_hash": ""
   },
   "src/app/_layout.tsx": {
-    "mtime": 1785615420.385364,
-    "ast_hash": "20b8af76e5847aec7be3e948ea61a62e",
+    "mtime": 1785618145.369617,
+    "ast_hash": "0807fcb068928908f3f7dc4d0bf33f57",
     "semantic_hash": ""
   },
   "tsconfig.json": {
@@ -95,8 +95,8 @@
     "semantic_hash": ""
   },
   "src/shared/ui/index.ts": {
-    "mtime": 1785617006.506969,
-    "ast_hash": "9effee65e8c998ee8002f0a53d4df7b1",
+    "mtime": 1785618139.5165803,
+    "ast_hash": "f9e310a19f2eb8214e1f52faaafac0b1",
     "semantic_hash": ""
   },
   "src/app/(tabs)/_layout.tsx": {
@@ -290,8 +290,8 @@
     "semantic_hash": ""
   },
   "src/features/settings/components/SettingsField.tsx": {
-    "mtime": 1785606919.6880145,
-    "ast_hash": "03a544a04646ca6af9e80c2eede20c64",
+    "mtime": 1785618134.2835102,
+    "ast_hash": "1128ed5a8ee047aea1fdefc5766d5345",
     "semantic_hash": ""
   },
   "src/features/settings/components/SettingsList.tsx": {
@@ -320,8 +320,8 @@
     "semantic_hash": ""
   },
   "src/features/settings/screens/BrandingScreen.tsx": {
-    "mtime": 1785606919.6931834,
-    "ast_hash": "df0c6b5de75a4e71c629d4fc3e1714ab",
+    "mtime": 1785618195.7229004,
+    "ast_hash": "ba2b84cfc8426c5d08d8bdd8997ac7df",
     "semantic_hash": ""
   },
   "src/features/settings/screens/BusinessDetailsScreen.tsx": {
@@ -340,8 +340,8 @@
     "semantic_hash": ""
   },
   "src/features/settings/screens/SettingsScreen.tsx": {
-    "mtime": 1785617926.8760293,
-    "ast_hash": "04ca9ee9e242b494f3a06295438b8a38",
+    "mtime": 1785618192.327777,
+    "ast_hash": "635deeefba453c59ac3b15796491c7e5",
     "semantic_hash": ""
   },
   "src/features/settings/store.ts": {
@@ -420,8 +420,8 @@
     "semantic_hash": ""
   },
   "src/features/catalogue/components/CatalogueRow.tsx": {
-    "mtime": 1785615926.0095663,
-    "ast_hash": "d4a422ad9492735a19f2d5c1991d7520",
+    "mtime": 1785618180.0693016,
+    "ast_hash": "ba1e69f77b8f37286600704a6cf11066",
     "semantic_hash": ""
   },
   "src/features/catalogue/index.ts": {
@@ -445,8 +445,8 @@
     "semantic_hash": ""
   },
   "src/features/catalogue/screens/NewCatalogueScreen.tsx": {
-    "mtime": 1785616563.6368048,
-    "ast_hash": "add1cc679ba53bd0bbc661941fb2fb0e",
+    "mtime": 1785618164.6626806,
+    "ast_hash": "f8d2de2f21f7d6efb053c8f3757064d0",
     "semantic_hash": ""
   },
   "src/features/catalogue/store.ts": {
@@ -460,8 +460,8 @@
     "semantic_hash": ""
   },
   "src/features/customers/components/ClientRow.tsx": {
-    "mtime": 1785615924.4812992,
-    "ast_hash": "7e0bb924815aa74b40fca4d3a98ae68f",
+    "mtime": 1785618177.8087878,
+    "ast_hash": "b93caf0b53cbdc87dc564e3dc96ad86d",
     "semantic_hash": ""
   },
   "src/features/customers/screens/ClientDetailScreen.tsx": {
@@ -475,8 +475,8 @@
     "semantic_hash": ""
   },
   "src/features/customers/screens/NewClientScreen.tsx": {
-    "mtime": 1785616562.6260695,
-    "ast_hash": "098fcbce8f1fceee4376827aed7dc6b0",
+    "mtime": 1785618164.6624446,
+    "ast_hash": "c793367ef46ece4cbb5284a03a97eb8d",
     "semantic_hash": ""
   },
   "src/features/customers/store.ts": {
@@ -495,8 +495,8 @@
     "semantic_hash": ""
   },
   "src/features/invoices/components/InvoiceRow.tsx": {
-    "mtime": 1785615984.850525,
-    "ast_hash": "be1258d84739b4b26e1929ec61bf763a",
+    "mtime": 1785618182.4822302,
+    "ast_hash": "46b13ca234259c03e73ecfdefdf8660f",
     "semantic_hash": ""
   },
   "src/features/invoices/components/MoreCreateSheet.tsx": {
@@ -525,8 +525,8 @@
     "semantic_hash": ""
   },
   "src/features/invoices/screens/NewInvoiceScreen.tsx": {
-    "mtime": 1785617050.241182,
-    "ast_hash": "529d13e5fef6e7f7e4fc62b6b9b7da2e",
+    "mtime": 1785618285.9846718,
+    "ast_hash": "fd852c58dc3247ea451c334e0992e557",
     "semantic_hash": ""
   },
   "src/features/invoices/store.ts": {
@@ -575,8 +575,8 @@
     "semantic_hash": ""
   },
   "src/shared/ui/BulkImportGuide.tsx": {
-    "mtime": 1785617050.3963861,
-    "ast_hash": "cdfcd3065afa2bf98278ca1383eb5040",
+    "mtime": 1785618208.5699978,
+    "ast_hash": "60819533bda2e2d89c1e4a7d456efe3d",
     "semantic_hash": ""
   },
   "src/shared/ui/SearchField.tsx": {
@@ -620,8 +620,18 @@
     "semantic_hash": ""
   },
   "src/features/settings/screens/SubscriptionScreen.tsx": {
-    "mtime": 1785617916.7183187,
-    "ast_hash": "013f2de313479fde596d2e5a57be07b4",
+    "mtime": 1785618195.2256322,
+    "ast_hash": "08085f03e7551ad1fa50e9b8741f299a",
+    "semantic_hash": ""
+  },
+  "src/shared/ui/SnackbarHost.tsx": {
+    "mtime": 1785618297.336428,
+    "ast_hash": "ceb263edf0cf2a33112460ca78be1b9a",
+    "semantic_hash": ""
+  },
+  "src/shared/ui/snackbarStore.ts": {
+    "mtime": 1785618126.8632088,
+    "ast_hash": "3cfa153880600f0a2c5353e3e0e1a652",
     "semantic_hash": ""
   }
 }

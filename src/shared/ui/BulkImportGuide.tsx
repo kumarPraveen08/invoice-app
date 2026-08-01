@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Alert, View } from 'react-native';
+import { View } from 'react-native';
 import * as DocumentPicker from 'expo-document-picker';
 import { Button, Text, useTheme } from '@/shared/design-system';
 import {
@@ -14,6 +14,7 @@ import type { Client } from '@/features/customers/types';
 import { parseCsv, toCsv } from '@/shared/lib/csv';
 import { readPickedText, shareTextFile } from '@/shared/lib/files';
 import { createId } from '@/shared/lib/id';
+import { showSnackbar } from '@/shared/ui';
 
 type Props = {
   kind: 'catalogue' | 'clients';
@@ -134,9 +135,8 @@ export function BulkImportGuide({ kind }: Props) {
         'text/csv',
       );
     } catch (error) {
-      Alert.alert(
-        'Could not share template',
-        error instanceof Error ? error.message : 'Unknown error',
+      showSnackbar(
+        error instanceof Error ? error.message : 'Could not share template.',
       );
     }
   };
@@ -145,7 +145,12 @@ export function BulkImportGuide({ kind }: Props) {
     try {
       setBusy(true);
       const picked = await DocumentPicker.getDocumentAsync({
-        type: ['text/csv', 'text/comma-separated-values', 'public.comma-separated-values-text', '*/*'],
+        type: [
+          'text/csv',
+          'text/comma-separated-values',
+          'public.comma-separated-values-text',
+          '*/*',
+        ],
         copyToCacheDirectory: true,
         multiple: false,
       });
@@ -154,17 +159,16 @@ export function BulkImportGuide({ kind }: Props) {
       const text = await readPickedText(picked.assets[0].uri);
       const rows = parseCsv(text);
       if (rows.length < 2) {
-        Alert.alert('Empty file', 'Add a header row and at least one data row.');
+        showSnackbar('Add a header row and at least one data row.');
         return;
       }
 
       if (kind === 'catalogue') {
         const { items, skipped, errors } = parseCatalogueRows(rows);
         if (items.length) addItems(items);
-        Alert.alert(
-          'Import complete',
+        showSnackbar(
           `Imported ${items.length}. Skipped ${skipped}.${
-            errors.length ? `\n\n${errors.slice(0, 5).join('\n')}` : ''
+            errors.length ? ` ${errors[0]}` : ''
           }`,
         );
         return;
@@ -172,16 +176,14 @@ export function BulkImportGuide({ kind }: Props) {
 
       const { clients, skipped, errors } = parseClientRows(rows);
       if (clients.length) addClients(clients);
-      Alert.alert(
-        'Import complete',
+      showSnackbar(
         `Imported ${clients.length}. Skipped ${skipped}.${
-          errors.length ? `\n\n${errors.slice(0, 5).join('\n')}` : ''
+          errors.length ? ` ${errors[0]}` : ''
         }`,
       );
     } catch (error) {
-      Alert.alert(
-        'Import failed',
-        error instanceof Error ? error.message : 'Unknown error',
+      showSnackbar(
+        error instanceof Error ? error.message : 'Import failed.',
       );
     } finally {
       setBusy(false);

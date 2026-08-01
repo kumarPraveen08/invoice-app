@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { Alert, Pressable, StyleSheet, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 import { router } from 'expo-router';
 import { Text, useTheme } from '@/shared/design-system';
-import { ActionSheet, SwipeableRow } from '@/shared/ui';
+import { ActionSheet, showSnackbar, SwipeableRow } from '@/shared/ui';
 import { formatMoney } from '@/features/invoices/format';
 import { useCatalogueStore } from '../store';
 import type { CatalogueItem } from '../types';
@@ -17,6 +17,7 @@ type Props = {
 export function CatalogueRow({ item, currency, last = false }: Props) {
   const { colors, radii, space } = useTheme();
   const removeItem = useCatalogueStore((s) => s.removeItem);
+  const upsertItem = useCatalogueStore((s) => s.upsertItem);
   const [actionsOpen, setActionsOpen] = useState(false);
 
   const onOpen = () => router.push(`/catalogue/${item.id}`);
@@ -24,14 +25,14 @@ export function CatalogueRow({ item, currency, last = false }: Props) {
     router.push({ pathname: '/catalogue/new', params: { id: item.id } });
   };
   const onDelete = () => {
-    Alert.alert('Delete item', `Remove “${item.name}”?`, [
-      { text: 'Cancel', style: 'cancel' },
-      {
-        text: 'Delete',
-        style: 'destructive',
-        onPress: () => removeItem(item.id),
+    const snapshot = item;
+    removeItem(item.id);
+    showSnackbar('Item deleted', {
+      action: {
+        label: 'Undo',
+        onPress: () => upsertItem(snapshot),
       },
-    ]);
+    });
   };
 
   return (

@@ -7,5 +7,7 @@ export {
   SearchablePickerSheet,
   type PickerOption,
 } from './SearchablePickerSheet';
+export { SnackbarHost } from './SnackbarHost';
+export { showSnackbar, useSnackbarStore } from './snackbarStore';
 export { SwipeableRow } from './SwipeableRow';
 export { TabBarIcon, type TabName } from './TabBarIcon';

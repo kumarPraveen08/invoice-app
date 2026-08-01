@@ -1,5 +1,5 @@
-import { Alert } from 'react-native';
 import { Button, Text, useTheme } from '@/shared/design-system';
+import { showSnackbar } from '@/shared/ui';
 import { SettingsGroup, SettingsRow } from '../components/SettingsList';
 import { SettingsScroll } from '../components/SettingsScroll';
 
@@ -55,10 +55,7 @@ export function SubscriptionScreen() {
         label="Upgrade"
         icon="diamond-outline"
         onPress={() =>
-          Alert.alert(
-            'Coming soon',
-            'In-app purchases will be available in a later update.',
-          )
+          showSnackbar('In-app purchases will be available in a later update.')
         }
         style={{
           alignSelf: 'stretch',

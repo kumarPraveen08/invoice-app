@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import { Alert, Platform } from 'react-native';
+import { Platform } from 'react-native';
 import { router, useLocalSearchParams, useNavigation } from 'expo-router';
 import { Button, useTheme } from '@/shared/design-system';
 import { createId } from '@/shared/lib/id';
+import { showSnackbar } from '@/shared/ui';
 import { SettingsField } from '@/features/settings/components/SettingsField';
 import { SettingsScroll } from '@/features/settings/components/SettingsScroll';
 import { useClientsStore } from '../store';
@@ -21,6 +22,7 @@ export default function NewClientScreen() {
   const [businessName, setBusinessName] = useState(existing?.businessName ?? '');
   const [email, setEmail] = useState(existing?.email ?? '');
   const [phone, setPhone] = useState(existing?.phone ?? '');
+  const [nameError, setNameError] = useState('');
 
   useEffect(() => {
     navigation.setOptions({
@@ -38,10 +40,7 @@ export default function NewClientScreen() {
         status = requested.status;
       }
       if (status !== 'granted') {
-        Alert.alert(
-          'Contacts access needed',
-          'Allow contacts access in Settings to import a client.',
-        );
+        showSnackbar('Allow contacts access in Settings to import a client.');
         return;
       }
 
@@ -57,7 +56,7 @@ export default function NewClientScreen() {
         '';
 
       if (!nextName && !nextBusiness && !nextEmail && !nextPhone) {
-        Alert.alert('No details', 'That contact has no name, phone, or email.');
+        showSnackbar('That contact has no name, phone, or email.');
         return;
       }
 
@@ -65,14 +64,14 @@ export default function NewClientScreen() {
       setBusinessName(nextBusiness || nextName);
       setEmail(nextEmail);
       setPhone(nextPhone);
+      setNameError('');
     } catch (error) {
       const message =
         error instanceof Error ? error.message : 'Could not open contacts.';
       const needsRebuild =
         /ExpoContacts|native module/i.test(message) ||
         message.includes('Cannot find native module');
-      Alert.alert(
-        'Contacts unavailable',
+      showSnackbar(
         Platform.OS === 'web'
           ? 'Contact import is not available on web.'
           : needsRebuild
@@ -85,16 +84,16 @@ export default function NewClientScreen() {
   useEffect(() => {
     if (editing || from !== 'contacts') return;
     void importFromContacts();
-    // Open picker once when entered via contacts shortcut.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [editing, from]);
 
   const onSave = () => {
     const trimmedName = name.trim();
     if (!trimmedName) {
-      Alert.alert('Name required', 'Enter a client name.');
+      setNameError('Enter a client name.');
       return;
     }
+    setNameError('');
     upsertClient({
       id: existing?.id ?? createId('client'),
       name: trimmedName,
@@ -123,9 +122,13 @@ export default function NewClientScreen() {
       <SettingsField
         label="Customer name"
         value={name}
-        onChangeText={setName}
+        onChangeText={(value) => {
+          setName(value);
+          if (nameError) setNameError('');
+        }}
         placeholder="Aisha Khan"
         autoCapitalize="words"
+        error={nameError}
       />
       <SettingsField
         label="Business name"

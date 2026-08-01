@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { Alert, Pressable, Share, StyleSheet, View } from 'react-native';
+import { Pressable, Share, StyleSheet, View } from 'react-native';
 import { router } from 'expo-router';
 import { Text, useTheme } from '@/shared/design-system';
 import { shareTextFile } from '@/shared/lib/files';
-import { ActionSheet, type SheetAction } from '@/shared/ui';
+import { ActionSheet, showSnackbar, type SheetAction } from '@/shared/ui';
 import { STATUS_LABEL, outstandingOf } from '../constants';
 import { formatInvoiceDate, formatMoney } from '../format';
 import { useInvoicesStore } from '../store';
@@ -76,8 +76,7 @@ export function InvoiceRow({ invoice, currency, last = false, onPress }: Props) 
         message: invoiceSummary(invoice, currency),
       });
     } catch (error) {
-      Alert.alert(
-        'Share failed',
+      showSnackbar(
         error instanceof Error ? error.message : 'Could not share invoice.',
       );
     }
@@ -91,9 +90,8 @@ export function InvoiceRow({ invoice, currency, last = false, onPress }: Props) 
         'text/plain',
       );
     } catch (error) {
-      Alert.alert(
-        'Download failed',
-        error instanceof Error ? error.message : 'Could not share invoice.',
+      showSnackbar(
+        error instanceof Error ? error.message : 'Could not download invoice.',
       );
     }
   };

@@ -1,4 +1,4 @@
-import { Alert, Linking, Platform, Share } from 'react-native';
+import { Linking, Platform, Share } from 'react-native';
 import Constants from 'expo-constants';
 import { router } from 'expo-router';
 import { CURRENCIES } from '../constants';
@@ -9,6 +9,7 @@ import { useCatalogueStore } from '@/features/catalogue/store';
 import { useClientsStore } from '@/features/customers/store';
 import { useInvoicesStore } from '@/features/invoices/store';
 import { shareTextFile } from '@/shared/lib/files';
+import { showSnackbar } from '@/shared/ui';
 
 type Props = {
   withTabBar?: boolean;
@@ -61,9 +62,8 @@ export function SettingsScreen({ withTabBar = false }: Props) {
         'application/json',
       );
     } catch (error) {
-      Alert.alert(
-        'Backup failed',
-        error instanceof Error ? error.message : 'Unknown error',
+      showSnackbar(
+        error instanceof Error ? error.message : 'Backup failed.',
       );
     }
   };
@@ -72,7 +72,7 @@ export function SettingsScreen({ withTabBar = false }: Props) {
     const url = `mailto:${SUPPORT_EMAIL}?subject=${encodeURIComponent(`${APP_NAME} support`)}`;
     const canOpen = await Linking.canOpenURL(url);
     if (!canOpen) {
-      Alert.alert('Support', `Email us at ${SUPPORT_EMAIL}`);
+      showSnackbar(`Email us at ${SUPPORT_EMAIL}`);
       return;
     }
     await Linking.openURL(url);
@@ -89,14 +89,12 @@ export function SettingsScreen({ withTabBar = false }: Props) {
   };
 
   const rateApp = () => {
-    Alert.alert(
-      'Rate the app',
+    showSnackbar(
       Platform.select({
-        ios: 'The App Store listing will open here once the app is published.',
-        android:
-          'The Play Store listing will open here once the app is published.',
-        default: 'Store rating will be available after release.',
-      }),
+        ios: 'App Store rating opens after publish.',
+        android: 'Play Store rating opens after publish.',
+        default: 'Store rating available after release.',
+      }) ?? 'Store rating available after release.',
     );
   };
 

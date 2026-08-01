@@ -1,5 +1,6 @@
-import { Alert, Pressable, StyleSheet, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 import { Text, useTheme } from '@/shared/design-system';
+import { showSnackbar } from '@/shared/ui';
 import { SettingsField } from '../components/SettingsField';
 import { SettingsScroll } from '../components/SettingsScroll';
 import { useSettingsStore } from '../store';
@@ -10,9 +11,10 @@ export function BrandingScreen() {
   const updateBranding = useSettingsStore((s) => s.updateBranding);
 
   const stubUpload = (kind: 'logo' | 'signature') => {
-    Alert.alert(
-      kind === 'logo' ? 'Business logo' : 'Authorized signature',
-      'Image upload will use the device picker in a follow-up build.',
+    showSnackbar(
+      kind === 'logo'
+        ? 'Logo picker coming in a follow-up build.'
+        : 'Signature picker coming in a follow-up build.',
     );
   };
 

@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import {
-  Alert,
   Pressable,
   StyleSheet,
   TextInput,
@@ -21,11 +20,31 @@ import { computeInvoiceTotals, formatMoney } from '../format';
 import { useInvoicesStore } from '../store';
 import type { Invoice, InvoiceLine, InvoiceStatus } from '../types';
 
+const ERROR = '#B3261E';
+
 type LineDraft = {
   id: string;
   name: string;
   quantity: string;
   unitPrice: string;
+};
+
+type LineErrors = {
+  name?: string;
+  quantity?: string;
+  unitPrice?: string;
+};
+
+type FormErrors = {
+  customer?: string;
+  number?: string;
+  issueDate?: string;
+  dueDate?: string;
+  items?: string;
+  discount?: string;
+  taxRate?: string;
+  additionalCharges?: string;
+  lines?: Record<string, LineErrors>;
 };
 
 function todayIso() {
@@ -65,6 +84,7 @@ function CompactInput({
   placeholder,
   keyboardType,
   style,
+  error,
   ...rest
 }: {
   value: string;
@@ -72,6 +92,7 @@ function CompactInput({
   placeholder?: string;
   keyboardType?: 'default' | 'decimal-pad';
   style?: object;
+  error?: boolean;
   autoCapitalize?: 'none' | 'sentences' | 'words' | 'characters';
 }) {
   const { colors } = useTheme();
@@ -87,7 +108,7 @@ function CompactInput({
         {
           color: colors.onSurface,
           borderBottomWidth: StyleSheet.hairlineWidth,
-          borderBottomColor: colors.onSurfaceMuted,
+          borderBottomColor: error ? ERROR : colors.onSurfaceMuted,
           fontSize: 15,
           paddingVertical: 6,
           paddingHorizontal: 0,
@@ -96,6 +117,15 @@ function CompactInput({
       ]}
       {...rest}
     />
+  );
+}
+
+function FieldError({ message }: { message?: string }) {
+  if (!message) return null;
+  return (
+    <Text variant="caption" style={{ color: ERROR, marginTop: 4 }}>
+      {message}
+    </Text>
   );
 }
 
@@ -151,6 +181,7 @@ export default function NewInvoiceScreen() {
   );
   const [clientOpen, setClientOpen] = useState(false);
   const [catalogueOpen, setCatalogueOpen] = useState(false);
+  const [errors, setErrors] = useState<FormErrors>({});
 
   useEffect(() => {
     navigation.setOptions({
@@ -228,72 +259,67 @@ export default function NewInvoiceScreen() {
   const buildInvoice = (status: InvoiceStatus): Invoice | null => {
     const trimmedCustomer = customerName.trim();
     const trimmedNumber = number.trim();
-    if (!trimmedCustomer) {
-      Alert.alert('Customer required', 'Select or enter a customer.');
-      return null;
+    const nextErrors: FormErrors = {};
+    const lineErrors: Record<string, LineErrors> = {};
+
+    if (!trimmedCustomer) nextErrors.customer = 'Select or enter a customer.';
+    if (!trimmedNumber) nextErrors.number = 'Enter an invoice number.';
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(issueDate)) {
+      nextErrors.issueDate = 'Use YYYY-MM-DD.';
     }
-    if (!trimmedNumber) {
-      Alert.alert('Invoice number required', 'Enter an invoice number.');
-      return null;
-    }
-    if (
-      !/^\d{4}-\d{2}-\d{2}$/.test(issueDate) ||
-      !/^\d{4}-\d{2}-\d{2}$/.test(dueDate)
-    ) {
-      Alert.alert('Invalid date', 'Use YYYY-MM-DD for issue and due dates.');
-      return null;
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(dueDate)) {
+      nextErrors.dueDate = 'Use YYYY-MM-DD.';
     }
 
     const taken = invoices.some(
       (row) => row.number === trimmedNumber && row.id !== existing?.id,
     );
-    if (taken) {
-      Alert.alert('Number in use', 'That invoice number already exists.');
-      return null;
+    if (trimmedNumber && taken) {
+      nextErrors.number = 'That invoice number already exists.';
     }
 
     if (parsedLines.length === 0) {
-      Alert.alert('Items required', 'Add at least one line item.');
-      return null;
+      nextErrors.items = 'Add at least one line item.';
     }
 
     const validLines: InvoiceLine[] = [];
     for (const line of parsedLines) {
-      if (!line.name) {
-        Alert.alert('Item name required', 'Every line needs a name.');
-        return null;
-      }
+      const row: LineErrors = {};
+      if (!line.name) row.name = 'Name required.';
       if (!Number.isFinite(line.quantity) || line.quantity <= 0) {
-        Alert.alert('Invalid quantity', 'Quantity must be greater than zero.');
-        return null;
+        row.quantity = 'Qty must be > 0.';
       }
       if (!Number.isFinite(line.unitPrice) || line.unitPrice < 0) {
-        Alert.alert('Invalid price', 'Enter a valid unit price.');
-        return null;
+        row.unitPrice = 'Enter a valid price.';
       }
-      validLines.push({
-        id: line.id,
-        name: line.name,
-        quantity: line.quantity,
-        unitPrice: line.unitPrice,
-      });
+      if (Object.keys(row).length > 0) {
+        lineErrors[line.id] = row;
+      } else {
+        validLines.push({
+          id: line.id,
+          name: line.name,
+          quantity: line.quantity,
+          unitPrice: line.unitPrice,
+        });
+      }
     }
+    if (Object.keys(lineErrors).length > 0) nextErrors.lines = lineErrors;
 
     const discountValue = parseAmount(discount);
     const taxRateValue = parseAmount(taxRate);
     const chargesValue = parseAmount(additionalCharges);
-    if (
-      !Number.isFinite(discountValue) ||
-      discountValue < 0 ||
-      !Number.isFinite(taxRateValue) ||
-      taxRateValue < 0 ||
-      !Number.isFinite(chargesValue) ||
-      chargesValue < 0
-    ) {
-      Alert.alert(
-        'Invalid amounts',
-        'Discount, tax, and charges must be valid.',
-      );
+    if (!Number.isFinite(discountValue) || discountValue < 0) {
+      nextErrors.discount = 'Enter a valid discount.';
+    }
+    if (!Number.isFinite(taxRateValue) || taxRateValue < 0) {
+      nextErrors.taxRate = 'Enter a valid tax %.';
+    }
+    if (!Number.isFinite(chargesValue) || chargesValue < 0) {
+      nextErrors.additionalCharges = 'Enter a valid amount.';
+    }
+
+    if (Object.keys(nextErrors).length > 0) {
+      setErrors(nextErrors);
       return null;
     }
 
@@ -304,9 +330,12 @@ export default function NewInvoiceScreen() {
       additionalCharges: chargesValue,
     });
     if (nextTotals.total < 0) {
-      Alert.alert('Invalid total', 'Invoice total cannot be negative.');
+      nextErrors.discount = 'Invoice total cannot be negative.';
+      setErrors(nextErrors);
       return null;
     }
+
+    setErrors({});
 
     const paid =
       existing?.status === 'paid'
@@ -374,78 +403,123 @@ export default function NewInvoiceScreen() {
   return (
     <SettingsScroll>
       {clients.length > 0 ? (
-        <Pressable
-          accessibilityRole="button"
-          accessibilityLabel="Select customer"
-          onPress={() => setClientOpen(true)}
-          style={[
-            styles.pickerField,
-            {
-              marginBottom: space.xl,
-              borderBottomColor: colors.onSurfaceMuted,
-            },
-          ]}
-        >
-          <View style={{ flex: 1, minWidth: 0 }}>
-            <Text variant="caption" muted style={styles.fieldLabel}>
-              Customer
-            </Text>
-            <Text
-              variant="body"
-              numberOfLines={1}
-              style={{
-                color: customerName ? colors.onSurface : colors.onSurfaceMuted,
-              }}
-            >
-              {customerName || 'Search and select a client'}
-            </Text>
-          </View>
-          <Ionicons
-            name="chevron-down"
-            size={18}
-            color={colors.onSurfaceMuted}
-          />
-        </Pressable>
+        <View style={{ marginBottom: space.xl }}>
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel="Select customer"
+            onPress={() => setClientOpen(true)}
+            style={[
+              styles.pickerField,
+              {
+                borderBottomColor: errors.customer
+                  ? ERROR
+                  : colors.onSurfaceMuted,
+              },
+            ]}
+          >
+            <View style={{ flex: 1, minWidth: 0 }}>
+              <Text
+                variant="caption"
+                muted={!errors.customer}
+                style={[
+                  styles.fieldLabel,
+                  errors.customer ? { color: ERROR } : null,
+                ]}
+              >
+                Customer
+              </Text>
+              <Text
+                variant="body"
+                numberOfLines={1}
+                style={{
+                  color: customerName
+                    ? colors.onSurface
+                    : colors.onSurfaceMuted,
+                }}
+              >
+                {customerName || 'Search and select a client'}
+              </Text>
+            </View>
+            <Ionicons
+              name="chevron-down"
+              size={18}
+              color={colors.onSurfaceMuted}
+            />
+          </Pressable>
+          <FieldError message={errors.customer} />
+        </View>
       ) : (
         <SettingsField
           label="Customer"
           value={customerName}
-          onChangeText={setCustomerName}
+          onChangeText={(value) => {
+            setCustomerName(value);
+            setErrors((prev) => ({ ...prev, customer: undefined }));
+          }}
           placeholder="Northwind Studio"
           autoCapitalize="words"
+          error={errors.customer}
         />
       )}
 
       <SettingsField
         label="Invoice number"
         value={number}
-        onChangeText={setNumber}
+        onChangeText={(value) => {
+          setNumber(value);
+          setErrors((prev) => ({ ...prev, number: undefined }));
+        }}
         placeholder="INV-1001"
         autoCapitalize="characters"
         autoCorrect={false}
+        error={errors.number}
       />
       <View style={[styles.dateRow, { gap: space.md, marginBottom: space.xl }]}>
         <View style={{ flex: 1 }}>
-          <Text variant="caption" muted style={styles.fieldLabel}>
+          <Text
+            variant="caption"
+            muted={!errors.issueDate}
+            style={[
+              styles.fieldLabel,
+              errors.issueDate ? { color: ERROR } : null,
+            ]}
+          >
             Issue date
           </Text>
           <CompactInput
             value={issueDate}
-            onChangeText={setIssueDate}
+            onChangeText={(value) => {
+              setIssueDate(value);
+              setErrors((prev) => ({ ...prev, issueDate: undefined }));
+            }}
             placeholder="YYYY-MM-DD"
             autoCapitalize="none"
+            error={Boolean(errors.issueDate)}
           />
+          <FieldError message={errors.issueDate} />
         </View>
         <View style={{ flex: 1 }}>
-          <Text variant="caption" muted style={styles.fieldLabel}>
+          <Text
+            variant="caption"
+            muted={!errors.dueDate}
+            style={[
+              styles.fieldLabel,
+              errors.dueDate ? { color: ERROR } : null,
+            ]}
+          >
             Due date
           </Text>
           <CompactInput
             value={dueDate}
-            onChangeText={setDueDate}
+            onChangeText={(value) => {
+              setDueDate(value);
+              setErrors((prev) => ({ ...prev, dueDate: undefined }));
+            }}
             placeholder="YYYY-MM-DD"
             autoCapitalize="none"
+            error={Boolean(errors.dueDate)}
           />
+          <FieldError message={errors.dueDate} />
         </View>
       </View>
 
@@ -457,13 +531,12 @@ export default function NewInvoiceScreen() {
       </View>
 
       {lines.length === 0 ? (
-        <Text
-          variant="body"
-          muted
-          style={{ marginBottom: space.md, marginTop: space.xs }}
-        >
-          Add products from catalogue or a blank line.
-        </Text>
+        <View style={{ marginBottom: space.md, marginTop: space.xs }}>
+          <Text variant="body" muted>
+            Add products from catalogue or a blank line.
+          </Text>
+          <FieldError message={errors.items} />
+        </View>
       ) : (
         <View
           style={[
@@ -480,6 +553,7 @@ export default function NewInvoiceScreen() {
             const price = parseAmount(line.unitPrice);
             const amount =
               Number.isFinite(qty) && Number.isFinite(price) ? qty * price : 0;
+            const lineError = errors.lines?.[line.id];
             return (
               <View
                 key={line.id}
@@ -498,10 +572,25 @@ export default function NewInvoiceScreen() {
                   <View style={styles.lineTop}>
                     <CompactInput
                       value={line.name}
-                      onChangeText={(name) => updateLine(line.id, { name })}
+                      onChangeText={(name) => {
+                        updateLine(line.id, { name });
+                        setErrors((prev) => {
+                          if (!prev.lines?.[line.id]?.name) return prev;
+                          const nextLines = { ...prev.lines };
+                          const row = { ...nextLines[line.id] };
+                          delete row.name;
+                          if (Object.keys(row).length === 0) {
+                            delete nextLines[line.id];
+                          } else {
+                            nextLines[line.id] = row;
+                          }
+                          return { ...prev, lines: nextLines };
+                        });
+                      }}
                       placeholder="Item name"
                       autoCapitalize="sentences"
                       style={{ flex: 1 }}
+                      error={Boolean(lineError?.name)}
                     />
                     <Pressable
                       accessibilityRole="button"
@@ -517,6 +606,7 @@ export default function NewInvoiceScreen() {
                       />
                     </Pressable>
                   </View>
+                  <FieldError message={lineError?.name} />
                   <View style={styles.lineMeta}>
                     <CompactInput
                       value={line.quantity}
@@ -526,6 +616,7 @@ export default function NewInvoiceScreen() {
                       placeholder="Qty"
                       keyboardType="decimal-pad"
                       style={{ width: 56, textAlign: 'center' }}
+                      error={Boolean(lineError?.quantity)}
                     />
                     <Text variant="caption" muted>
                       ×
@@ -538,6 +629,7 @@ export default function NewInvoiceScreen() {
                       placeholder="Price"
                       keyboardType="decimal-pad"
                       style={{ width: 88 }}
+                      error={Boolean(lineError?.unitPrice)}
                     />
                     <Text
                       variant="caption"
@@ -552,6 +644,9 @@ export default function NewInvoiceScreen() {
                       {formatMoney(amount, currency)}
                     </Text>
                   </View>
+                  <FieldError
+                    message={lineError?.quantity || lineError?.unitPrice}
+                  />
                 </View>
               </View>
             );
@@ -609,37 +704,76 @@ export default function NewInvoiceScreen() {
       </Text>
       <View style={[styles.adjustRow, { gap: space.md, marginBottom: space.xl }]}>
         <View style={{ flex: 1 }}>
-          <Text variant="caption" muted style={styles.fieldLabel}>
+          <Text
+            variant="caption"
+            muted={!errors.discount}
+            style={[
+              styles.fieldLabel,
+              errors.discount ? { color: ERROR } : null,
+            ]}
+          >
             Discount
           </Text>
           <CompactInput
             value={discount}
-            onChangeText={setDiscount}
+            onChangeText={(value) => {
+              setDiscount(value);
+              setErrors((prev) => ({ ...prev, discount: undefined }));
+            }}
             placeholder="0"
             keyboardType="decimal-pad"
+            error={Boolean(errors.discount)}
           />
+          <FieldError message={errors.discount} />
         </View>
         <View style={{ flex: 1 }}>
-          <Text variant="caption" muted style={styles.fieldLabel}>
+          <Text
+            variant="caption"
+            muted={!errors.taxRate}
+            style={[
+              styles.fieldLabel,
+              errors.taxRate ? { color: ERROR } : null,
+            ]}
+          >
             Tax %
           </Text>
           <CompactInput
             value={taxRate}
-            onChangeText={setTaxRate}
+            onChangeText={(value) => {
+              setTaxRate(value);
+              setErrors((prev) => ({ ...prev, taxRate: undefined }));
+            }}
             placeholder="18"
             keyboardType="decimal-pad"
+            error={Boolean(errors.taxRate)}
           />
+          <FieldError message={errors.taxRate} />
         </View>
         <View style={{ flex: 1 }}>
-          <Text variant="caption" muted style={styles.fieldLabel}>
+          <Text
+            variant="caption"
+            muted={!errors.additionalCharges}
+            style={[
+              styles.fieldLabel,
+              errors.additionalCharges ? { color: ERROR } : null,
+            ]}
+          >
             Extra
           </Text>
           <CompactInput
             value={additionalCharges}
-            onChangeText={setAdditionalCharges}
+            onChangeText={(value) => {
+              setAdditionalCharges(value);
+              setErrors((prev) => ({
+                ...prev,
+                additionalCharges: undefined,
+              }));
+            }}
             placeholder="0"
             keyboardType="decimal-pad"
+            error={Boolean(errors.additionalCharges)}
           />
+          <FieldError message={errors.additionalCharges} />
         </View>
       </View>
 
@@ -745,6 +879,7 @@ export default function NewInvoiceScreen() {
           const client = clients.find((row) => row.id === ids[0]);
           if (!client) return;
           setCustomerName(client.businessName || client.name);
+          setErrors((prev) => ({ ...prev, customer: undefined }));
         }}
       />
 
@@ -756,7 +891,10 @@ export default function NewInvoiceScreen() {
         options={catalogueOptions}
         multiple
         confirmLabel="Add items"
-        onSelect={addCatalogueItems}
+        onSelect={(ids) => {
+          addCatalogueItems(ids);
+          setErrors((prev) => ({ ...prev, items: undefined }));
+        }}
       />
     </SettingsScroll>
   );

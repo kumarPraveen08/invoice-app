@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { Alert, Pressable, StyleSheet, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 import { router } from 'expo-router';
 import { Text, useTheme } from '@/shared/design-system';
-import { ActionSheet, SwipeableRow } from '@/shared/ui';
+import { ActionSheet, showSnackbar, SwipeableRow } from '@/shared/ui';
 import { useClientsStore } from '../store';
 import type { Client } from '../types';
 
@@ -15,6 +15,7 @@ type Props = {
 export function ClientRow({ client, last = false }: Props) {
   const { colors, radii, space } = useTheme();
   const removeClient = useClientsStore((s) => s.removeClient);
+  const upsertClient = useClientsStore((s) => s.upsertClient);
   const [actionsOpen, setActionsOpen] = useState(false);
 
   const onOpen = () => router.push(`/clients/${client.id}`);
@@ -22,14 +23,14 @@ export function ClientRow({ client, last = false }: Props) {
     router.push({ pathname: '/clients/new', params: { id: client.id } });
   };
   const onDelete = () => {
-    Alert.alert('Delete client', `Remove “${client.name}”?`, [
-      { text: 'Cancel', style: 'cancel' },
-      {
-        text: 'Delete',
-        style: 'destructive',
-        onPress: () => removeClient(client.id),
+    const snapshot = client;
+    removeClient(client.id);
+    showSnackbar('Client deleted', {
+      action: {
+        label: 'Undo',
+        onPress: () => upsertClient(snapshot),
       },
-    ]);
+    });
   };
 
   return (

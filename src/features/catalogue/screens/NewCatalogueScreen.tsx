@@ -1,11 +1,16 @@
 import { useEffect, useState } from 'react';
-import { Alert } from 'react-native';
 import { router, useLocalSearchParams, useNavigation } from 'expo-router';
 import { Button, useTheme } from '@/shared/design-system';
 import { createId } from '@/shared/lib/id';
 import { SettingsField } from '@/features/settings/components/SettingsField';
 import { SettingsScroll } from '@/features/settings/components/SettingsScroll';
 import { useCatalogueStore } from '../store';
+
+type FieldErrors = {
+  name?: string;
+  sku?: string;
+  price?: string;
+};
 
 export default function NewCatalogueScreen() {
   const { space } = useTheme();
@@ -24,6 +29,7 @@ export default function NewCatalogueScreen() {
     existing ? String(existing.price) : '',
   );
   const [unit, setUnit] = useState(existing?.unit ?? '');
+  const [errors, setErrors] = useState<FieldErrors>({});
 
   useEffect(() => {
     navigation.setOptions({
@@ -31,23 +37,31 @@ export default function NewCatalogueScreen() {
     });
   }, [editing, navigation]);
 
+  const clearError = (key: keyof FieldErrors) => {
+    setErrors((prev) => {
+      if (!prev[key]) return prev;
+      const next = { ...prev };
+      delete next[key];
+      return next;
+    });
+  };
+
   const onSave = () => {
     const trimmedName = name.trim();
     const trimmedSku = sku.trim();
-    if (!trimmedName) {
-      Alert.alert('Name required', 'Enter an item name.');
-      return;
-    }
-    if (!trimmedSku) {
-      Alert.alert('SKU required', 'Enter a code or SKU.');
-      return;
-    }
+    const next: FieldErrors = {};
+    if (!trimmedName) next.name = 'Enter an item name.';
+    if (!trimmedSku) next.sku = 'Enter a code or SKU.';
     const parsedPrice = Number(price);
     if (!Number.isFinite(parsedPrice) || parsedPrice < 0) {
-      Alert.alert('Invalid price', 'Enter a valid selling price.');
+      next.price = 'Enter a valid selling price.';
+    }
+    if (Object.keys(next).length > 0) {
+      setErrors(next);
       return;
     }
 
+    setErrors({});
     upsertItem({
       id: existing?.id ?? createId('item'),
       name: trimmedName,
@@ -64,17 +78,25 @@ export default function NewCatalogueScreen() {
       <SettingsField
         label="Name"
         value={name}
-        onChangeText={setName}
+        onChangeText={(value) => {
+          setName(value);
+          clearError('name');
+        }}
         placeholder="Brand identity package"
         autoCapitalize="sentences"
+        error={errors.name}
       />
       <SettingsField
         label="SKU"
         value={sku}
-        onChangeText={setSku}
+        onChangeText={(value) => {
+          setSku(value);
+          clearError('sku');
+        }}
         placeholder="SRV-101"
         autoCapitalize="characters"
         autoCorrect={false}
+        error={errors.sku}
       />
       <SettingsField
         label="Category"
@@ -86,9 +108,13 @@ export default function NewCatalogueScreen() {
       <SettingsField
         label="Selling price"
         value={price}
-        onChangeText={setPrice}
+        onChangeText={(value) => {
+          setPrice(value);
+          clearError('price');
+        }}
         placeholder="45000"
         keyboardType="decimal-pad"
+        error={errors.price}
       />
       <SettingsField
         label="Unit"

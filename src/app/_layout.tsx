@@ -3,6 +3,7 @@ import { Stack } from "expo-router";
 import { StatusBar } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { ThemeProvider, useTheme } from "@/shared/design-system";
+import { SnackbarHost } from "@/shared/ui";
 
 function RootNavigator() {
   const { colors, mode } = useTheme();
@@ -112,6 +113,7 @@ function RootNavigator() {
         backgroundColor={colors.background}
         barStyle={statusBarStyle}
       />
+      <SnackbarHost />
     </>
   );
 }
