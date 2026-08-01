@@ -1,4 +1,5 @@
-import { Alert } from 'react-native';
+import { Alert, Linking, Platform, Share } from 'react-native';
+import Constants from 'expo-constants';
 import { router } from 'expo-router';
 import { CURRENCIES } from '../constants';
 import { SettingsGroup, SettingsRow } from '../components/SettingsList';
@@ -12,6 +13,18 @@ import { shareTextFile } from '@/shared/lib/files';
 type Props = {
   withTabBar?: boolean;
 };
+
+const SUPPORT_EMAIL = 'support@invoiceapp.example';
+const APP_NAME = 'Invoice App';
+
+function appVersion(): string {
+  const version = Constants.expoConfig?.version ?? '1.0.0';
+  const build =
+    Constants.nativeBuildVersion ??
+    Constants.expoConfig?.android?.versionCode?.toString() ??
+    Constants.expoConfig?.ios?.buildNumber;
+  return build ? `${version} (${build})` : version;
+}
 
 export function SettingsScreen({ withTabBar = false }: Props) {
   const business = useSettingsStore((s) => s.business);
@@ -53,6 +66,38 @@ export function SettingsScreen({ withTabBar = false }: Props) {
         error instanceof Error ? error.message : 'Unknown error',
       );
     }
+  };
+
+  const contactSupport = async () => {
+    const url = `mailto:${SUPPORT_EMAIL}?subject=${encodeURIComponent(`${APP_NAME} support`)}`;
+    const canOpen = await Linking.canOpenURL(url);
+    if (!canOpen) {
+      Alert.alert('Support', `Email us at ${SUPPORT_EMAIL}`);
+      return;
+    }
+    await Linking.openURL(url);
+  };
+
+  const shareApp = async () => {
+    try {
+      await Share.share({
+        message: `Try ${APP_NAME} — create invoices on the go.`,
+      });
+    } catch {
+      // user cancelled
+    }
+  };
+
+  const rateApp = () => {
+    Alert.alert(
+      'Rate the app',
+      Platform.select({
+        ios: 'The App Store listing will open here once the app is published.',
+        android:
+          'The Play Store listing will open here once the app is published.',
+        default: 'Store rating will be available after release.',
+      }),
+    );
   };
 
   return (
@@ -103,12 +148,80 @@ export function SettingsScreen({ withTabBar = false }: Props) {
         />
       </SettingsGroup>
 
+      <SettingsGroup title="Subscription">
+        <SettingsRow
+          icon="diamond-outline"
+          title="Plan & upgrades"
+          subtitle="Free · In-app purchases coming soon"
+          onPress={() => router.push('/settings/subscription')}
+          last
+        />
+      </SettingsGroup>
+
       <SettingsGroup title="Data">
         <SettingsRow
           icon="download-outline"
           title="Download backup"
           subtitle="Settings, invoices, catalogue, and clients as JSON"
           onPress={downloadBackup}
+          last
+        />
+      </SettingsGroup>
+
+      <SettingsGroup title="Support">
+        <SettingsRow
+          icon="mail-outline"
+          title="Contact support"
+          subtitle={SUPPORT_EMAIL}
+          onPress={() => {
+            void contactSupport();
+          }}
+        />
+        <SettingsRow
+          icon="share-outline"
+          title="Share app"
+          onPress={() => {
+            void shareApp();
+          }}
+        />
+        <SettingsRow
+          icon="star-outline"
+          title="Rate app"
+          onPress={rateApp}
+          last
+        />
+      </SettingsGroup>
+
+      <SettingsGroup title="Legal">
+        <SettingsRow
+          icon="shield-checkmark-outline"
+          title="Privacy policy"
+          onPress={() =>
+            router.push({
+              pathname: '/settings/legal',
+              params: { kind: 'privacy' },
+            })
+          }
+        />
+        <SettingsRow
+          icon="reader-outline"
+          title="Terms of use"
+          onPress={() =>
+            router.push({
+              pathname: '/settings/legal',
+              params: { kind: 'terms' },
+            })
+          }
+          last
+        />
+      </SettingsGroup>
+
+      <SettingsGroup title="About">
+        <SettingsRow
+          icon="information-circle-outline"
+          title="Version"
+          subtitle={appVersion()}
+          showChevron={false}
           last
         />
       </SettingsGroup>

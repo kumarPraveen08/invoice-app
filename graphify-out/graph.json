@@ -880,7 +880,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "catalogue_import",
-      "community": 3,
+      "community": 17,
       "norm_label": "import.tsx"
     },
     {
@@ -890,7 +890,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "catalogue_import_catalogueimportscreen",
-      "community": 3,
+      "community": 17,
       "norm_label": "catalogueimportscreen()"
     },
     {
@@ -930,7 +930,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "clients_import",
-      "community": 3,
+      "community": 17,
       "norm_label": "import.tsx"
     },
     {
@@ -940,7 +940,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "clients_import_clientsimportscreen",
-      "community": 3,
+      "community": 17,
       "norm_label": "clientsimportscreen()"
     },
     {
@@ -970,7 +970,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "invoice_id",
-      "community": 7,
+      "community": 8,
       "norm_label": "[id].tsx"
     },
     {
@@ -1064,6 +1064,16 @@
       "norm_label": "invoice-defaults.tsx"
     },
     {
+      "label": "legal.tsx",
+      "file_type": "code",
+      "source_file": "src/app/settings/legal.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "settings_legal",
+      "community": 5,
+      "norm_label": "legal.tsx"
+    },
+    {
       "label": "preferences.tsx",
       "file_type": "code",
       "source_file": "src/app/settings/preferences.tsx",
@@ -1072,6 +1082,16 @@
       "id": "settings_preferences",
       "community": 5,
       "norm_label": "preferences.tsx"
+    },
+    {
+      "label": "subscription.tsx",
+      "file_type": "code",
+      "source_file": "src/app/settings/subscription.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "settings_subscription",
+      "community": 8,
+      "norm_label": "subscription.tsx"
     },
     {
       "label": "CatalogueRow.tsx",
@@ -1370,7 +1390,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "screens_clientdetailscreen_clientdetailscreen",
-      "community": 7,
+      "community": 16,
       "norm_label": "clientdetailscreen()"
     },
     {
@@ -1510,7 +1530,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "estimates_index",
-      "community": 5,
+      "community": 13,
       "norm_label": "index.ts"
     },
     {
@@ -1520,7 +1540,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "screens_estimatesscreen",
-      "community": 5,
+      "community": 13,
       "norm_label": "estimatesscreen.tsx"
     },
     {
@@ -1530,7 +1550,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "screens_estimatesscreen_estimatesscreen",
-      "community": 5,
+      "community": 13,
       "norm_label": "estimatesscreen()"
     },
     {
@@ -1790,7 +1810,7 @@
       "source_location": "L134",
       "_origin": "ast",
       "id": "invoices_constants_outstandingof",
-      "community": 7,
+      "community": 12,
       "norm_label": "outstandingof()"
     },
     {
@@ -1820,7 +1840,7 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "invoices_format_formatinvoicedate",
-      "community": 7,
+      "community": 8,
       "norm_label": "formatinvoicedate()"
     },
     {
@@ -1880,7 +1900,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "screens_invoicedetailscreen",
-      "community": 7,
+      "community": 8,
       "norm_label": "invoicedetailscreen.tsx"
     },
     {
@@ -1890,7 +1910,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "screens_invoicedetailscreen_invoicedetailscreen",
-      "community": 7,
+      "community": 8,
       "norm_label": "invoicedetailscreen()"
     },
     {
@@ -2270,7 +2290,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "reports_index",
-      "community": 12,
+      "community": 8,
       "norm_label": "index.ts"
     },
     {
@@ -2300,7 +2320,7 @@
       "source_location": "L79",
       "_origin": "ast",
       "id": "screens_reportsscreen_snapshotcard",
-      "community": 12,
+      "community": 7,
       "norm_label": "snapshotcard()"
     },
     {
@@ -2400,7 +2420,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_settingslist",
-      "community": 3,
+      "community": 8,
       "norm_label": "settingslist.tsx"
     },
     {
@@ -2410,7 +2430,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "components_settingslist_settingsgroupprops",
-      "community": 3,
+      "community": 8,
       "norm_label": "settingsgroupprops"
     },
     {
@@ -2420,7 +2440,7 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "components_settingslist_settingsgroup",
-      "community": 3,
+      "community": 8,
       "norm_label": "settingsgroup()"
     },
     {
@@ -2430,7 +2450,7 @@
       "source_location": "L45",
       "_origin": "ast",
       "id": "components_settingslist_settingsrowprops",
-      "community": 3,
+      "community": 8,
       "norm_label": "settingsrowprops"
     },
     {
@@ -2440,7 +2460,7 @@
       "source_location": "L55",
       "_origin": "ast",
       "id": "components_settingslist_settingsrow",
-      "community": 3,
+      "community": 8,
       "norm_label": "settingsrow()"
     },
     {
@@ -2450,7 +2470,7 @@
       "source_location": "L116",
       "_origin": "ast",
       "id": "components_settingslist_styles",
-      "community": 3,
+      "community": 8,
       "norm_label": "styles"
     },
     {
@@ -2500,7 +2520,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_settingsselect",
-      "community": 5,
+      "community": 13,
       "norm_label": "settingsselect.tsx"
     },
     {
@@ -2510,7 +2530,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "components_settingsselect_option",
-      "community": 5,
+      "community": 13,
       "norm_label": "option"
     },
     {
@@ -2520,7 +2540,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "components_settingsselect_props",
-      "community": 5,
+      "community": 13,
       "norm_label": "props"
     },
     {
@@ -2530,7 +2550,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "components_settingsselect_settingsselect",
-      "community": 5,
+      "community": 13,
       "norm_label": "settingsselect()"
     },
     {
@@ -2540,7 +2560,7 @@
       "source_location": "L102",
       "_origin": "ast",
       "id": "components_settingsselect_styles",
-      "community": 5,
+      "community": 13,
       "norm_label": "styles"
     },
     {
@@ -2640,7 +2660,7 @@
       "source_location": "L55",
       "_origin": "ast",
       "id": "screens_brandingscreen_assetrow",
-      "community": 5,
+      "community": 8,
       "norm_label": "assetrow()"
     },
     {
@@ -2694,6 +2714,46 @@
       "norm_label": "invoicedefaultsscreen()"
     },
     {
+      "label": "LegalScreen.tsx",
+      "file_type": "code",
+      "source_file": "src/features/settings/screens/LegalScreen.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "screens_legalscreen",
+      "community": 5,
+      "norm_label": "legalscreen.tsx"
+    },
+    {
+      "label": "COPY",
+      "file_type": "code",
+      "source_file": "src/features/settings/screens/LegalScreen.tsx",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "screens_legalscreen_copy",
+      "community": 5,
+      "norm_label": "copy"
+    },
+    {
+      "label": "Kind",
+      "file_type": "code",
+      "source_file": "src/features/settings/screens/LegalScreen.tsx",
+      "source_location": "L29",
+      "_origin": "ast",
+      "id": "screens_legalscreen_kind",
+      "community": 5,
+      "norm_label": "kind"
+    },
+    {
+      "label": "LegalScreen()",
+      "file_type": "code",
+      "source_file": "src/features/settings/screens/LegalScreen.tsx",
+      "source_location": "L31",
+      "_origin": "ast",
+      "id": "screens_legalscreen_legalscreen",
+      "community": 5,
+      "norm_label": "legalscreen()"
+    },
+    {
       "label": "PreferencesScreen.tsx",
       "file_type": "code",
       "source_file": "src/features/settings/screens/PreferencesScreen.tsx",
@@ -2720,28 +2780,58 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "screens_settingsscreen",
-      "community": 3,
+      "community": 5,
       "norm_label": "settingsscreen.tsx"
     },
     {
       "label": "Props",
       "file_type": "code",
       "source_file": "src/features/settings/screens/SettingsScreen.tsx",
-      "source_location": "L12",
+      "source_location": "L13",
       "_origin": "ast",
       "id": "screens_settingsscreen_props",
-      "community": 3,
+      "community": 5,
       "norm_label": "props"
+    },
+    {
+      "label": "appVersion()",
+      "file_type": "code",
+      "source_file": "src/features/settings/screens/SettingsScreen.tsx",
+      "source_location": "L20",
+      "_origin": "ast",
+      "id": "screens_settingsscreen_appversion",
+      "community": 5,
+      "norm_label": "appversion()"
     },
     {
       "label": "SettingsScreen()",
       "file_type": "code",
       "source_file": "src/features/settings/screens/SettingsScreen.tsx",
-      "source_location": "L16",
+      "source_location": "L29",
       "_origin": "ast",
       "id": "screens_settingsscreen_settingsscreen",
       "community": 5,
       "norm_label": "settingsscreen()"
+    },
+    {
+      "label": "SubscriptionScreen.tsx",
+      "file_type": "code",
+      "source_file": "src/features/settings/screens/SubscriptionScreen.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "screens_subscriptionscreen",
+      "community": 8,
+      "norm_label": "subscriptionscreen.tsx"
+    },
+    {
+      "label": "SubscriptionScreen()",
+      "file_type": "code",
+      "source_file": "src/features/settings/screens/SubscriptionScreen.tsx",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "screens_subscriptionscreen_subscriptionscreen",
+      "community": 8,
+      "norm_label": "subscriptionscreen()"
     },
     {
       "label": "store.ts",
@@ -3230,7 +3320,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "tokens_elevation",
-      "community": 8,
+      "community": 13,
       "norm_label": "elevation.ts"
     },
     {
@@ -3240,7 +3330,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "tokens_elevation_elevationlevel",
-      "community": 8,
+      "community": 13,
       "norm_label": "elevationlevel"
     },
     {
@@ -3250,7 +3340,7 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "tokens_elevation_applyelevation",
-      "community": 8,
+      "community": 13,
       "norm_label": "applyelevation()"
     },
     {
@@ -3360,7 +3450,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "design_system_usetheme",
-      "community": 8,
+      "community": 1,
       "norm_label": "usetheme.ts"
     },
     {
@@ -3380,7 +3470,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_csv",
-      "community": 3,
+      "community": 17,
       "norm_label": "csv.ts"
     },
     {
@@ -3390,7 +3480,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "lib_csv_splitcsvline",
-      "community": 3,
+      "community": 17,
       "norm_label": "splitcsvline()"
     },
     {
@@ -3400,7 +3490,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "lib_csv_parsecsv",
-      "community": 3,
+      "community": 17,
       "norm_label": "parsecsv()"
     },
     {
@@ -3410,7 +3500,7 @@
       "source_location": "L39",
       "_origin": "ast",
       "id": "lib_csv_tocsv",
-      "community": 3,
+      "community": 17,
       "norm_label": "tocsv()"
     },
     {
@@ -3420,7 +3510,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_files",
-      "community": 3,
+      "community": 17,
       "norm_label": "files.ts"
     },
     {
@@ -3430,7 +3520,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "lib_files_sharetextfile",
-      "community": 3,
+      "community": 17,
       "norm_label": "sharetextfile()"
     },
     {
@@ -3440,7 +3530,7 @@
       "source_location": "L35",
       "_origin": "ast",
       "id": "lib_files_readpickedtext",
-      "community": 3,
+      "community": 17,
       "norm_label": "readpickedtext()"
     },
     {
@@ -3450,7 +3540,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_id",
-      "community": 3,
+      "community": 17,
       "norm_label": "id.ts"
     },
     {
@@ -3460,7 +3550,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "lib_id_createid",
-      "community": 3,
+      "community": 17,
       "norm_label": "createid()"
     },
     {
@@ -3510,7 +3600,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "ui_actionsheet",
-      "community": 8,
+      "community": 13,
       "norm_label": "actionsheet.tsx"
     },
     {
@@ -3520,7 +3610,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "ui_actionsheet_sheetaction",
-      "community": 8,
+      "community": 13,
       "norm_label": "sheetaction"
     },
     {
@@ -3530,7 +3620,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "ui_actionsheet_props",
-      "community": 8,
+      "community": 13,
       "norm_label": "props"
     },
     {
@@ -3540,7 +3630,7 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "ui_actionsheet_actionsheet",
-      "community": 8,
+      "community": 13,
       "norm_label": "actionsheet()"
     },
     {
@@ -3550,7 +3640,7 @@
       "source_location": "L69",
       "_origin": "ast",
       "id": "ui_actionsheet_styles",
-      "community": 8,
+      "community": 13,
       "norm_label": "styles"
     },
     {
@@ -3560,7 +3650,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "ui_bottomsheet",
-      "community": 8,
+      "community": 13,
       "norm_label": "bottomsheet.tsx"
     },
     {
@@ -3570,7 +3660,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ui_bottomsheet_props",
-      "community": 8,
+      "community": 13,
       "norm_label": "props"
     },
     {
@@ -3580,7 +3670,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "ui_bottomsheet_bottomsheet",
-      "community": 8,
+      "community": 13,
       "norm_label": "bottomsheet()"
     },
     {
@@ -3590,7 +3680,7 @@
       "source_location": "L88",
       "_origin": "ast",
       "id": "ui_bottomsheet_styles",
-      "community": 8,
+      "community": 13,
       "norm_label": "styles"
     },
     {
@@ -3600,7 +3690,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "ui_bulkimportguide",
-      "community": 3,
+      "community": 17,
       "norm_label": "bulkimportguide.tsx"
     },
     {
@@ -3610,7 +3700,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "ui_bulkimportguide_props",
-      "community": 3,
+      "community": 17,
       "norm_label": "props"
     },
     {
@@ -3620,7 +3710,7 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "ui_bulkimportguide_copy",
-      "community": 3,
+      "community": 17,
       "norm_label": "copy"
     },
     {
@@ -3630,7 +3720,7 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "ui_bulkimportguide_parsecataloguerows",
-      "community": 3,
+      "community": 17,
       "norm_label": "parsecataloguerows()"
     },
     {
@@ -3640,7 +3730,7 @@
       "source_location": "L81",
       "_origin": "ast",
       "id": "ui_bulkimportguide_parseclientrows",
-      "community": 3,
+      "community": 17,
       "norm_label": "parseclientrows()"
     },
     {
@@ -3650,7 +3740,7 @@
       "source_location": "L122",
       "_origin": "ast",
       "id": "ui_bulkimportguide_bulkimportguide",
-      "community": 3,
+      "community": 17,
       "norm_label": "bulkimportguide()"
     },
     {
@@ -3680,7 +3770,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "ui_emptystate_emptystate",
-      "community": 8,
+      "community": 13,
       "norm_label": "emptystate()"
     },
     {
@@ -3700,7 +3790,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "ui_floatingtabbar",
-      "community": 8,
+      "community": 13,
       "norm_label": "floatingtabbar.tsx"
     },
     {
@@ -3710,7 +3800,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "ui_floatingtabbar_floatingtabbarprops",
-      "community": 8,
+      "community": 13,
       "norm_label": "floatingtabbarprops"
     },
     {
@@ -3720,7 +3810,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ui_floatingtabbar_route_tab",
-      "community": 8,
+      "community": 13,
       "norm_label": "route_tab"
     },
     {
@@ -3730,7 +3820,7 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "ui_floatingtabbar_icons",
-      "community": 8,
+      "community": 13,
       "norm_label": "icons"
     },
     {
@@ -3740,7 +3830,7 @@
       "source_location": "L34",
       "_origin": "ast",
       "id": "ui_floatingtabbar_create_routes",
-      "community": 8,
+      "community": 13,
       "norm_label": "create_routes"
     },
     {
@@ -3750,7 +3840,7 @@
       "source_location": "L36",
       "_origin": "ast",
       "id": "ui_floatingtabbar_floatingtabbar",
-      "community": 8,
+      "community": 13,
       "norm_label": "floatingtabbar()"
     },
     {
@@ -3760,7 +3850,7 @@
       "source_location": "L164",
       "_origin": "ast",
       "id": "ui_floatingtabbar_styles",
-      "community": 8,
+      "community": 13,
       "norm_label": "styles"
     },
     {
@@ -3770,7 +3860,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "ui_searchfield",
-      "community": 8,
+      "community": 13,
       "norm_label": "searchfield.tsx"
     },
     {
@@ -3780,7 +3870,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "ui_searchfield_props",
-      "community": 8,
+      "community": 13,
       "norm_label": "props"
     },
     {
@@ -3790,7 +3880,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "ui_searchfield_searchfield",
-      "community": 8,
+      "community": 13,
       "norm_label": "searchfield()"
     },
     {
@@ -3800,7 +3890,7 @@
       "source_location": "L81",
       "_origin": "ast",
       "id": "ui_searchfield_styles",
-      "community": 8,
+      "community": 13,
       "norm_label": "styles"
     },
     {
@@ -3810,7 +3900,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "ui_searchablepickersheet",
-      "community": 8,
+      "community": 13,
       "norm_label": "searchablepickersheet.tsx"
     },
     {
@@ -3820,7 +3910,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "ui_searchablepickersheet_pickeroption",
-      "community": 8,
+      "community": 13,
       "norm_label": "pickeroption"
     },
     {
@@ -3830,7 +3920,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "ui_searchablepickersheet_props",
-      "community": 8,
+      "community": 13,
       "norm_label": "props"
     },
     {
@@ -3840,17 +3930,17 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "ui_searchablepickersheet_searchablepickersheet",
-      "community": 8,
+      "community": 13,
       "norm_label": "searchablepickersheet()"
     },
     {
       "label": "styles",
       "file_type": "code",
       "source_file": "src/shared/ui/SearchablePickerSheet.tsx",
-      "source_location": "L206",
+      "source_location": "L207",
       "_origin": "ast",
       "id": "ui_searchablepickersheet_styles",
-      "community": 8,
+      "community": 13,
       "norm_label": "styles"
     },
     {
@@ -3900,7 +3990,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "ui_tabbaricon",
-      "community": 8,
+      "community": 13,
       "norm_label": "tabbaricon.tsx"
     },
     {
@@ -3910,7 +4000,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "ui_tabbaricon_iconpair",
-      "community": 8,
+      "community": 13,
       "norm_label": "iconpair"
     },
     {
@@ -3920,7 +4010,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "ui_tabbaricon_tabname",
-      "community": 8,
+      "community": 13,
       "norm_label": "tabname"
     },
     {
@@ -3930,7 +4020,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "ui_tabbaricon_props",
-      "community": 8,
+      "community": 13,
       "norm_label": "props"
     },
     {
@@ -3940,7 +4030,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "ui_tabbaricon_tabbaricon",
-      "community": 8,
+      "community": 13,
       "norm_label": "tabbaricon()"
     },
     {
@@ -3950,7 +4040,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "ui_index",
-      "community": 8,
+      "community": 13,
       "norm_label": "index.ts"
     },
     {
@@ -6060,6 +6150,28 @@
       "target": "screens_invoicedefaultsscreen_invoicedefaultsscreen"
     },
     {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/settings/legal.tsx",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "settings_legal",
+      "target": "screens_legalscreen",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/settings/legal.tsx",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "settings_legal",
+      "target": "screens_legalscreen_legalscreen",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -6069,6 +6181,28 @@
       "confidence_score": 1.0,
       "source": "settings_preferences",
       "target": "screens_preferencesscreen_preferencesscreen"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/settings/subscription.tsx",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "settings_subscription",
+      "target": "screens_subscriptionscreen",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/settings/subscription.tsx",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "settings_subscription",
+      "target": "screens_subscriptionscreen_subscriptionscreen",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -11922,6 +12056,17 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "src/features/settings/screens/SubscriptionScreen.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "screens_subscriptionscreen",
+      "target": "components_settingslist",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "src/shared/ui/BulkImportGuide.tsx",
       "source_location": "L6",
       "weight": 1.0,
@@ -11955,6 +12100,17 @@
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "src/features/settings/screens/SubscriptionScreen.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "screens_subscriptionscreen",
+      "target": "components_settingslist_settingsgroup",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "src/shared/ui/BulkImportGuide.tsx",
       "source_location": "L6",
       "weight": 1.0,
@@ -11983,6 +12139,17 @@
       "confidence_score": 1.0,
       "source": "screens_settingsscreen",
       "target": "components_settingslist_settingsrow"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/settings/screens/SubscriptionScreen.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "screens_subscriptionscreen",
+      "target": "components_settingslist_settingsrow",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -12106,6 +12273,17 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "src/features/settings/screens/LegalScreen.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "screens_legalscreen",
+      "target": "components_settingsscroll",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "src/features/settings/screens/PreferencesScreen.tsx",
       "source_location": "L6",
       "weight": 1.0,
@@ -12123,6 +12301,17 @@
       "confidence_score": 1.0,
       "source": "screens_settingsscreen",
       "target": "components_settingsscroll"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/settings/screens/SubscriptionScreen.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "screens_subscriptionscreen",
+      "target": "components_settingsscroll",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -12194,6 +12383,17 @@
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "src/features/settings/screens/LegalScreen.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "screens_legalscreen",
+      "target": "components_settingsscroll_settingsscroll",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "src/features/settings/screens/PreferencesScreen.tsx",
       "source_location": "L6",
       "weight": 1.0,
@@ -12211,6 +12411,17 @@
       "confidence_score": 1.0,
       "source": "screens_settingsscreen",
       "target": "components_settingsscroll_settingsscroll"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/settings/screens/SubscriptionScreen.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "screens_subscriptionscreen",
+      "target": "components_settingsscroll_settingsscroll",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -12573,6 +12784,28 @@
       "context": "export",
       "confidence": "EXTRACTED",
       "source_file": "src/features/settings/index.ts",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "src_features_settings_index_ts_settings_index",
+      "target": "screens_legalscreen",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "re_exports",
+      "context": "re-export",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/settings/index.ts",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "src_features_settings_index_ts_settings_index",
+      "target": "screens_legalscreen_legalscreen",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "re_exports",
+      "context": "export",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/settings/index.ts",
       "source_location": "L5",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -12611,6 +12844,28 @@
       "confidence_score": 1.0,
       "source": "src_features_settings_index_ts_settings_index",
       "target": "screens_settingsscreen_settingsscreen"
+    },
+    {
+      "relation": "re_exports",
+      "context": "export",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/settings/index.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "src_features_settings_index_ts_settings_index",
+      "target": "screens_subscriptionscreen",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "re_exports",
+      "context": "re-export",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/settings/index.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "src_features_settings_index_ts_settings_index",
+      "target": "screens_subscriptionscreen_subscriptionscreen",
+      "confidence_score": 1.0
     },
     {
       "relation": "re_exports",
@@ -12915,6 +13170,80 @@
       "target": "settings_store_usesettingsstore"
     },
     {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/settings/screens/LegalScreen.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "screens_legalscreen",
+      "target": "components_text_text",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/settings/screens/LegalScreen.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "screens_legalscreen",
+      "target": "design_system_index",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/settings/screens/LegalScreen.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "screens_legalscreen",
+      "target": "design_system_usetheme_usetheme",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/settings/screens/LegalScreen.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "screens_legalscreen",
+      "target": "screens_legalscreen_copy",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/settings/screens/LegalScreen.tsx",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "screens_legalscreen",
+      "target": "screens_legalscreen_kind",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/settings/screens/LegalScreen.tsx",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "screens_legalscreen",
+      "target": "screens_legalscreen_legalscreen",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/features/settings/screens/LegalScreen.tsx",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "screens_legalscreen_legalscreen",
+      "target": "design_system_usetheme_usetheme"
+    },
+    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/features/settings/screens/PreferencesScreen.tsx",
@@ -13016,6 +13345,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/features/settings/screens/SettingsScreen.tsx",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "screens_settingsscreen",
+      "target": "screens_settingsscreen_appversion",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/settings/screens/SettingsScreen.tsx",
       "source_location": "L12",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -13058,12 +13397,88 @@
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
+      "source_file": "src/features/settings/screens/SettingsScreen.tsx",
+      "source_location": "L223",
+      "weight": 1.0,
+      "source": "screens_settingsscreen_settingsscreen",
+      "target": "screens_settingsscreen_appversion",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/features/settings/screens/SettingsScreen.tsx",
       "source_location": "L8",
       "weight": 1.0,
       "source": "screens_settingsscreen_settingsscreen",
       "target": "settings_store_usesettingsstore"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/settings/screens/SubscriptionScreen.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "screens_subscriptionscreen",
+      "target": "components_button_button",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/settings/screens/SubscriptionScreen.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "screens_subscriptionscreen",
+      "target": "components_text_text",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/settings/screens/SubscriptionScreen.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "screens_subscriptionscreen",
+      "target": "design_system_index",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/settings/screens/SubscriptionScreen.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "screens_subscriptionscreen",
+      "target": "design_system_usetheme_usetheme",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/settings/screens/SubscriptionScreen.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "screens_subscriptionscreen",
+      "target": "screens_subscriptionscreen_subscriptionscreen",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/features/settings/screens/SubscriptionScreen.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "screens_subscriptionscreen_subscriptionscreen",
+      "target": "design_system_usetheme_usetheme"
     },
     {
       "relation": "imports_from",
@@ -16380,5 +16795,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "83cdd81b82d061e3ea9e48fd3fb114a1e43686f8"
+  "built_at_commit": "ba1141fb10e9a121bb31aafe5f2452d381e43530"
 }

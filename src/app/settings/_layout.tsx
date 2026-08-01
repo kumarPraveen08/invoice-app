@@ -25,6 +25,8 @@ export default function SettingsLayout() {
         name="invoice-defaults"
         options={{ title: 'Invoice defaults' }}
       />
+      <Stack.Screen name="subscription" options={{ title: 'Subscription' }} />
+      <Stack.Screen name="legal" options={{ title: 'Legal' }} />
     </Stack>
   );
 }

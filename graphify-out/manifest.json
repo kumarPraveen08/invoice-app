@@ -255,8 +255,8 @@
     "semantic_hash": ""
   },
   "src/app/settings/_layout.tsx": {
-    "mtime": 1785606919.6833117,
-    "ast_hash": "70dbaf202365dbd488fe8a07fd26c15b",
+    "mtime": 1785617929.1312137,
+    "ast_hash": "ca17b52b2c737a703ce2a5e83b06be2a",
     "semantic_hash": ""
   },
   "src/app/settings/bank.tsx": {
@@ -310,8 +310,8 @@
     "semantic_hash": ""
   },
   "src/features/settings/index.ts": {
-    "mtime": 1785606919.6912792,
-    "ast_hash": "cd6ffb204d9474c4a4df97e4d5ec0c3d",
+    "mtime": 1785617930.4205322,
+    "ast_hash": "3da322176646fe9fe7edea8c668ab1d8",
     "semantic_hash": ""
   },
   "src/features/settings/screens/BankDetailsScreen.tsx": {
@@ -340,8 +340,8 @@
     "semantic_hash": ""
   },
   "src/features/settings/screens/SettingsScreen.tsx": {
-    "mtime": 1785611073.1658566,
-    "ast_hash": "0cb01b5d8f07117696cd96fc5f33fb76",
+    "mtime": 1785617926.8760293,
+    "ast_hash": "04ca9ee9e242b494f3a06295438b8a38",
     "semantic_hash": ""
   },
   "src/features/settings/store.ts": {
@@ -600,8 +600,28 @@
     "semantic_hash": ""
   },
   "src/shared/ui/SearchablePickerSheet.tsx": {
-    "mtime": 1785617646.5415766,
-    "ast_hash": "d1b3435df2fb2a16945238fa27cfa419",
+    "mtime": 1785617701.3542151,
+    "ast_hash": "45d9475b111bf3d06317be343a7dc294",
+    "semantic_hash": ""
+  },
+  "src/app/settings/legal.tsx": {
+    "mtime": 1785617927.53019,
+    "ast_hash": "6e5c3bcaac9783fa3613c5c159990531",
+    "semantic_hash": ""
+  },
+  "src/app/settings/subscription.tsx": {
+    "mtime": 1785617926.9107544,
+    "ast_hash": "541723f1eb5960af76763269bc02244d",
+    "semantic_hash": ""
+  },
+  "src/features/settings/screens/LegalScreen.tsx": {
+    "mtime": 1785617925.741947,
+    "ast_hash": "4c1a41e6154fc16cc1590a7833ad4a8c",
+    "semantic_hash": ""
+  },
+  "src/features/settings/screens/SubscriptionScreen.tsx": {
+    "mtime": 1785617916.7183187,
+    "ast_hash": "013f2de313479fde596d2e5a57be07b4",
     "semantic_hash": ""
   }
 }
