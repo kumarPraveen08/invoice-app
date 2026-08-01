@@ -13,23 +13,25 @@ const CREATE_PATH: Record<string, '/invoice/new' | '/catalogue/new' | '/clients/
     clients: '/clients/new',
   };
 
-function HeaderImportButton({
-  href,
+function HeaderIcon({
+  icon,
   label,
+  onPress,
 }: {
-  href: '/catalogue/import' | '/clients/import';
+  icon: keyof typeof Ionicons.glyphMap;
   label: string;
+  onPress: () => void;
 }) {
   const { colors } = useTheme();
   return (
     <Pressable
       accessibilityRole="button"
       accessibilityLabel={label}
-      onPress={() => router.push(href)}
+      onPress={onPress}
       hitSlop={8}
-      style={{ marginRight: 16, padding: 4 }}
+      style={{ padding: 4 }}
     >
-      <Ionicons name="cloud-upload-outline" size={22} color={colors.onSurface} />
+      <Ionicons name={icon} size={22} color={colors.onSurface} />
     </Pressable>
   );
 }
@@ -65,15 +67,13 @@ export default function TabsLayout() {
           options={{
             title: 'Invoices',
             headerRight: () => (
-              <Pressable
-                accessibilityRole="button"
-                accessibilityLabel="Search invoices"
-                onPress={() => router.push('/invoice/search')}
-                hitSlop={8}
-                style={{ marginRight: 16, padding: 4 }}
-              >
-                <Ionicons name="search" size={22} color={colors.onSurface} />
-              </Pressable>
+              <View style={{ marginRight: 12 }}>
+                <HeaderIcon
+                  icon="search"
+                  label="Search invoices"
+                  onPress={() => router.push('/invoice/search')}
+                />
+              </View>
             ),
           }}
         />
@@ -82,10 +82,25 @@ export default function TabsLayout() {
           options={{
             title: 'Catalogue',
             headerRight: () => (
-              <HeaderImportButton
-                href="/catalogue/import"
-                label="Bulk import catalogue"
-              />
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  gap: 4,
+                  marginRight: 12,
+                }}
+              >
+                <HeaderIcon
+                  icon="search"
+                  label="Search catalogue"
+                  onPress={() => router.push('/catalogue/search')}
+                />
+                <HeaderIcon
+                  icon="cloud-upload-outline"
+                  label="Bulk import catalogue"
+                  onPress={() => router.push('/catalogue/import')}
+                />
+              </View>
             ),
           }}
         />
@@ -94,10 +109,25 @@ export default function TabsLayout() {
           options={{
             title: 'Clients',
             headerRight: () => (
-              <HeaderImportButton
-                href="/clients/import"
-                label="Bulk import clients"
-              />
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  gap: 4,
+                  marginRight: 12,
+                }}
+              >
+                <HeaderIcon
+                  icon="search"
+                  label="Search clients"
+                  onPress={() => router.push('/clients/search')}
+                />
+                <HeaderIcon
+                  icon="cloud-upload-outline"
+                  label="Bulk import clients"
+                  onPress={() => router.push('/clients/import')}
+                />
+              </View>
             ),
           }}
         />

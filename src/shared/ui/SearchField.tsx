@@ -12,13 +12,15 @@ import { useTheme } from '@/shared/design-system';
 type Props = TextInputProps & {
   value: string;
   onChangeText: (text: string) => void;
+  placeholder?: string;
   onClose?: () => void;
 };
 
-/** M3 expanded search field (full-screen search layer). */
-export function InvoiceSearchField({
+/** Full-screen search field with back + clear. */
+export function SearchField({
   value,
   onChangeText,
+  placeholder = 'Search',
   onClose,
   ...props
 }: Props) {
@@ -48,7 +50,7 @@ export function InvoiceSearchField({
         {...props}
         value={value}
         onChangeText={onChangeText}
-        placeholder="Search invoices"
+        placeholder={placeholder}
         placeholderTextColor={colors.onSurfaceMuted}
         autoFocus
         autoCorrect={false}

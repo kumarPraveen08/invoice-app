@@ -2,11 +2,11 @@ import { useMemo, useState } from 'react';
 import { View } from 'react-native';
 import { router } from 'expo-router';
 import { Text, useTheme } from '@/shared/design-system';
+import { SearchField } from '@/shared/ui';
 import { SettingsGroup } from '@/features/settings/components/SettingsList';
 import { SettingsScroll } from '@/features/settings/components/SettingsScroll';
 import { useSettingsStore } from '@/features/settings';
 import { InvoiceRow } from '../components/InvoiceRow';
-import { InvoiceSearchField } from '../components/InvoiceSearchField';
 import { groupInvoicesByDate } from '../format';
 import { useInvoicesStore } from '../store';
 
@@ -30,7 +30,11 @@ export default function InvoiceSearchScreen() {
 
   return (
     <SettingsScroll includeTopInset>
-      <InvoiceSearchField value={query} onChangeText={setQuery} />
+      <SearchField
+        value={query}
+        onChangeText={setQuery}
+        placeholder="Search invoices"
+      />
 
       <View style={{ marginTop: space.lg }}>
         {!q ? (

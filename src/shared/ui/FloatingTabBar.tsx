@@ -57,7 +57,6 @@ export function FloatingTabBar({
         {
           paddingBottom: bottomInset,
           paddingHorizontal: tabBar.marginHorizontal,
-          backgroundColor: colors.background,
         },
       ]}
     >

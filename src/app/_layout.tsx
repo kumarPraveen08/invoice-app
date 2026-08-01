@@ -61,6 +61,13 @@ function RootNavigator() {
           }}
         />
         <Stack.Screen
+          name="catalogue/search"
+          options={{
+            headerShown: false,
+            animation: 'fade',
+          }}
+        />
+        <Stack.Screen
           name="clients/new"
           options={{
             title: 'New client',
@@ -74,6 +81,13 @@ function RootNavigator() {
             title: 'Bulk import',
             headerShadowVisible: false,
             headerStyle: { backgroundColor: colors.background },
+          }}
+        />
+        <Stack.Screen
+          name="clients/search"
+          options={{
+            headerShown: false,
+            animation: 'fade',
           }}
         />
       </Stack>
