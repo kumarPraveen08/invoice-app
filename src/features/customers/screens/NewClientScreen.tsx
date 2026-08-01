@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Alert, Platform } from 'react-native';
 import { router, useLocalSearchParams, useNavigation } from 'expo-router';
-import * as Contacts from 'expo-contacts/legacy';
-import { v4 as uuid } from 'uuid';
 import { Button, useTheme } from '@/shared/design-system';
+import { createId } from '@/shared/lib/id';
 import { SettingsField } from '@/features/settings/components/SettingsField';
 import { SettingsScroll } from '@/features/settings/components/SettingsScroll';
 import { useClientsStore } from '../store';
@@ -31,6 +30,7 @@ export default function NewClientScreen() {
 
   const importFromContacts = async () => {
     try {
+      const Contacts = await import('expo-contacts/legacy');
       const current = await Contacts.getPermissionsAsync();
       let status = current.status;
       if (status !== 'granted') {
@@ -68,11 +68,16 @@ export default function NewClientScreen() {
     } catch (error) {
       const message =
         error instanceof Error ? error.message : 'Could not open contacts.';
+      const needsRebuild =
+        /ExpoContacts|native module/i.test(message) ||
+        message.includes('Cannot find native module');
       Alert.alert(
         'Contacts unavailable',
         Platform.OS === 'web'
           ? 'Contact import is not available on web.'
-          : message,
+          : needsRebuild
+            ? 'Rebuild the app to enable contacts (pnpm android).'
+            : message,
       );
     }
   };
@@ -91,7 +96,7 @@ export default function NewClientScreen() {
       return;
     }
     upsertClient({
-      id: existing?.id ?? uuid(),
+      id: existing?.id ?? createId('client'),
       name: trimmedName,
       businessName: businessName.trim() || trimmedName,
       email: email.trim(),

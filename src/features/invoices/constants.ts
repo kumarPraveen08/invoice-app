@@ -65,7 +65,16 @@ const DAY_OFFSETS = [
 function buildSampleInvoices(): Invoice[] {
   return DAY_OFFSETS.map((daysAgo, index) => {
     const status = STATUS_CYCLE[index % STATUS_CYCLE.length];
-    const total = 4500 + ((index * 3700) % 52000);
+    const unitPrice = 4500 + ((index * 3700) % 52000);
+    const lines = [
+      {
+        id: `line-${index + 1}`,
+        name: 'Professional services',
+        quantity: 1,
+        unitPrice,
+      },
+    ];
+    const total = unitPrice;
     const paid =
       status === 'paid'
         ? total
@@ -79,6 +88,13 @@ function buildSampleInvoices(): Invoice[] {
       customerName: CLIENTS[index % CLIENTS.length],
       issueDate: dayOffset(daysAgo),
       dueDate: dayOffset(daysAgo - 14),
+      lines,
+      discount: 0,
+      taxRate: 0,
+      additionalCharges: 0,
+      notes: '',
+      terms: '',
+      paymentInstructions: '',
       total,
       paid,
       status,

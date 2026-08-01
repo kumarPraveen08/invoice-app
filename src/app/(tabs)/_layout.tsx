@@ -1,17 +1,19 @@
-import { useState } from 'react';
-import Ionicons from '@expo/vector-icons/Ionicons';
-import { router, Tabs } from 'expo-router';
-import { Pressable, View } from 'react-native';
-import { MoreCreateSheet } from '@/features/invoices/components/MoreCreateSheet';
-import { useTheme } from '@/shared/design-system';
-import { FloatingTabBar } from '@/shared/ui';
+import { useState } from "react";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import { router, Tabs } from "expo-router";
+import { Pressable, View } from "react-native";
+import { MoreCreateSheet } from "@/features/invoices/components/MoreCreateSheet";
+import { useTheme } from "@/shared/design-system";
+import { FloatingTabBar } from "@/shared/ui";
 
-const CREATE_PATH: Record<string, '/invoice/new' | '/catalogue/new' | '/clients/new'> =
-  {
-    index: '/invoice/new',
-    catalogue: '/catalogue/new',
-    clients: '/clients/new',
-  };
+const CREATE_PATH: Record<
+  string,
+  "/invoice/new" | "/catalogue/new" | "/clients/new"
+> = {
+  index: "/invoice/new",
+  catalogue: "/catalogue/new",
+  clients: "/clients/new",
+};
 
 function HeaderIcon({
   icon,
@@ -65,13 +67,13 @@ export default function TabsLayout() {
         <Tabs.Screen
           name="index"
           options={{
-            title: 'Invoices',
+            title: "Invoices",
             headerRight: () => (
               <View style={{ marginRight: 12 }}>
                 <HeaderIcon
                   icon="search"
                   label="Search invoices"
-                  onPress={() => router.push('/invoice/search')}
+                  onPress={() => router.push("/invoice/search")}
                 />
               </View>
             ),
@@ -80,12 +82,12 @@ export default function TabsLayout() {
         <Tabs.Screen
           name="catalogue"
           options={{
-            title: 'Catalogue',
+            title: "Catalogue",
             headerRight: () => (
               <View
                 style={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
+                  flexDirection: "row",
+                  alignItems: "center",
                   gap: 4,
                   marginRight: 12,
                 }}
@@ -93,12 +95,12 @@ export default function TabsLayout() {
                 <HeaderIcon
                   icon="search"
                   label="Search catalogue"
-                  onPress={() => router.push('/catalogue/search')}
+                  onPress={() => router.push("/catalogue/search")}
                 />
                 <HeaderIcon
-                  icon="cloud-upload-outline"
+                  icon="file-tray-full-outline"
                   label="Bulk import catalogue"
-                  onPress={() => router.push('/catalogue/import')}
+                  onPress={() => router.push("/catalogue/import")}
                 />
               </View>
             ),
@@ -107,12 +109,12 @@ export default function TabsLayout() {
         <Tabs.Screen
           name="clients"
           options={{
-            title: 'Clients',
+            title: "Clients",
             headerRight: () => (
               <View
                 style={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
+                  flexDirection: "row",
+                  alignItems: "center",
                   gap: 4,
                   marginRight: 12,
                 }}
@@ -120,29 +122,29 @@ export default function TabsLayout() {
                 <HeaderIcon
                   icon="search"
                   label="Search clients"
-                  onPress={() => router.push('/clients/search')}
+                  onPress={() => router.push("/clients/search")}
                 />
                 <HeaderIcon
-                  icon="people-outline"
+                  icon="person-add-outline"
                   label="Add from contacts"
                   onPress={() =>
                     router.push({
-                      pathname: '/clients/new',
-                      params: { from: 'contacts' },
+                      pathname: "/clients/new",
+                      params: { from: "contacts" },
                     })
                   }
                 />
                 <HeaderIcon
-                  icon="cloud-upload-outline"
+                  icon="file-tray-full-outline"
                   label="Bulk import clients"
-                  onPress={() => router.push('/clients/import')}
+                  onPress={() => router.push("/clients/import")}
                 />
               </View>
             ),
           }}
         />
-        <Tabs.Screen name="reports" options={{ title: 'Reports' }} />
-        <Tabs.Screen name="tools" options={{ title: 'Settings' }} />
+        <Tabs.Screen name="reports" options={{ title: "Reports" }} />
+        <Tabs.Screen name="tools" options={{ title: "Settings" }} />
       </Tabs>
       <MoreCreateSheet visible={moreOpen} onClose={() => setMoreOpen(false)} />
     </View>

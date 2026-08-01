@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Alert, View } from 'react-native';
 import * as DocumentPicker from 'expo-document-picker';
-import { v4 as uuid } from 'uuid';
 import { Button, Text, useTheme } from '@/shared/design-system';
 import {
   SettingsGroup,
@@ -14,6 +13,7 @@ import { useClientsStore } from '@/features/customers/store';
 import type { Client } from '@/features/customers/types';
 import { parseCsv, toCsv } from '@/shared/lib/csv';
 import { readPickedText, shareTextFile } from '@/shared/lib/files';
+import { createId } from '@/shared/lib/id';
 
 type Props = {
   kind: 'catalogue' | 'clients';
@@ -66,7 +66,7 @@ function parseCatalogueRows(rows: string[][]): {
     }
     seen.add(key);
     items.push({
-      id: uuid(),
+      id: createId('item'),
       name: name.trim(),
       sku: sku.trim(),
       category: (category || 'General').trim(),
@@ -108,7 +108,7 @@ function parseClientRows(rows: string[][]): {
     }
     if (emailKey) seen.add(emailKey);
     clients.push({
-      id: uuid(),
+      id: createId('client'),
       name: name.trim(),
       businessName: (businessName || '').trim(),
       phone: (phone || '').trim(),
@@ -215,7 +215,7 @@ export function BulkImportGuide({ kind }: Props) {
         />
         <Button
           label={busy ? 'Importing…' : 'Upload CSV'}
-          icon="cloud-upload-outline"
+          icon="document-attach-outline"
           onPress={uploadCsv}
           disabled={busy}
         />

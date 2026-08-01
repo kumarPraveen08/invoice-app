@@ -740,7 +740,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "tabs_layout",
-      "community": 21,
+      "community": 8,
       "norm_label": "_layout.tsx"
     },
     {
@@ -750,7 +750,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "tabs_layout_create_path",
-      "community": 21,
+      "community": 8,
       "norm_label": "create_path"
     },
     {
@@ -760,7 +760,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "tabs_layout_headericon",
-      "community": 21,
+      "community": 8,
       "norm_label": "headericon()"
     },
     {
@@ -770,7 +770,7 @@
       "source_location": "L39",
       "_origin": "ast",
       "id": "tabs_layout_tabslayout",
-      "community": 21,
+      "community": 8,
       "norm_label": "tabslayout()"
     },
     {
@@ -800,7 +800,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "tabs_index",
-      "community": 7,
+      "community": 8,
       "norm_label": "index.tsx"
     },
     {
@@ -810,7 +810,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "tabs_reports",
-      "community": 18,
+      "community": 8,
       "norm_label": "reports.tsx"
     },
     {
@@ -820,7 +820,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "tabs_tools",
-      "community": 13,
+      "community": 8,
       "norm_label": "tools.tsx"
     },
     {
@@ -830,7 +830,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "tabs_tools_toolsscreen",
-      "community": 13,
+      "community": 8,
       "norm_label": "toolsscreen()"
     },
     {
@@ -880,7 +880,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "catalogue_import",
-      "community": 16,
+      "community": 3,
       "norm_label": "import.tsx"
     },
     {
@@ -890,7 +890,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "catalogue_import_catalogueimportscreen",
-      "community": 16,
+      "community": 3,
       "norm_label": "catalogueimportscreen()"
     },
     {
@@ -900,7 +900,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "catalogue_new",
-      "community": 3,
+      "community": 5,
       "norm_label": "new.tsx"
     },
     {
@@ -920,7 +920,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "clients_id",
-      "community": 7,
+      "community": 16,
       "norm_label": "[id].tsx"
     },
     {
@@ -930,7 +930,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "clients_import",
-      "community": 16,
+      "community": 3,
       "norm_label": "import.tsx"
     },
     {
@@ -940,7 +940,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "clients_import_clientsimportscreen",
-      "community": 16,
+      "community": 3,
       "norm_label": "clientsimportscreen()"
     },
     {
@@ -950,7 +950,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "clients_new",
-      "community": 16,
+      "community": 5,
       "norm_label": "new.tsx"
     },
     {
@@ -980,7 +980,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "invoice_new",
-      "community": 17,
+      "community": 7,
       "norm_label": "new.tsx"
     },
     {
@@ -1000,7 +1000,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "settings_layout",
-      "community": 17,
+      "community": 8,
       "norm_label": "_layout.tsx"
     },
     {
@@ -1010,7 +1010,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "settings_layout_settingslayout",
-      "community": 17,
+      "community": 8,
       "norm_label": "settingslayout()"
     },
     {
@@ -1220,7 +1220,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "screens_newcataloguescreen",
-      "community": 3,
+      "community": 5,
       "norm_label": "newcataloguescreen.tsx"
     },
     {
@@ -1350,7 +1350,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "screens_clientdetailscreen",
-      "community": 7,
+      "community": 16,
       "norm_label": "clientdetailscreen.tsx"
     },
     {
@@ -1360,7 +1360,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "screens_clientdetailscreen_invoicesforclient",
-      "community": 7,
+      "community": 16,
       "norm_label": "invoicesforclient()"
     },
     {
@@ -1430,14 +1430,14 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "screens_newclientscreen",
-      "community": 16,
+      "community": 5,
       "norm_label": "newclientscreen.tsx"
     },
     {
       "label": "NewClientScreen()",
       "file_type": "code",
       "source_file": "src/features/customers/screens/NewClientScreen.tsx",
-      "source_location": "L11",
+      "source_location": "L10",
       "_origin": "ast",
       "id": "screens_newclientscreen_newclientscreen",
       "community": 16,
@@ -1510,7 +1510,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "estimates_index",
-      "community": 20,
+      "community": 5,
       "norm_label": "index.ts"
     },
     {
@@ -1520,7 +1520,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "screens_estimatesscreen",
-      "community": 20,
+      "community": 5,
       "norm_label": "estimatesscreen.tsx"
     },
     {
@@ -1530,7 +1530,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "screens_estimatesscreen_estimatesscreen",
-      "community": 20,
+      "community": 5,
       "norm_label": "estimatesscreen()"
     },
     {
@@ -1650,7 +1650,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_morecreatesheet",
-      "community": 21,
+      "community": 8,
       "norm_label": "morecreatesheet.tsx"
     },
     {
@@ -1660,7 +1660,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "components_morecreatesheet_props",
-      "community": 21,
+      "community": 8,
       "norm_label": "props"
     },
     {
@@ -1670,7 +1670,7 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "components_morecreatesheet_morecreatesheet",
-      "community": 21,
+      "community": 8,
       "norm_label": "morecreatesheet()"
     },
     {
@@ -1680,7 +1680,7 @@
       "source_location": "L56",
       "_origin": "ast",
       "id": "components_morecreatesheet_styles",
-      "community": 21,
+      "community": 8,
       "norm_label": "styles"
     },
     {
@@ -1767,7 +1767,7 @@
       "label": "SAMPLE_INVOICES",
       "file_type": "code",
       "source_file": "src/features/invoices/constants.ts",
-      "source_location": "L89",
+      "source_location": "L105",
       "_origin": "ast",
       "id": "invoices_constants_sample_invoices",
       "community": 7,
@@ -1777,7 +1777,7 @@
       "label": "matchesFilter()",
       "file_type": "code",
       "source_file": "src/features/invoices/constants.ts",
-      "source_location": "L91",
+      "source_location": "L107",
       "_origin": "ast",
       "id": "invoices_constants_matchesfilter",
       "community": 7,
@@ -1787,7 +1787,7 @@
       "label": "outstandingOf()",
       "file_type": "code",
       "source_file": "src/features/invoices/constants.ts",
-      "source_location": "L118",
+      "source_location": "L134",
       "_origin": "ast",
       "id": "invoices_constants_outstandingof",
       "community": 7,
@@ -1824,10 +1824,30 @@
       "norm_label": "formatinvoicedate()"
     },
     {
-      "label": "dateSectionLabel()",
+      "label": "InvoiceTotals",
       "file_type": "code",
       "source_file": "src/features/invoices/format.ts",
       "source_location": "L31",
+      "_origin": "ast",
+      "id": "invoices_format_invoicetotals",
+      "community": 7,
+      "norm_label": "invoicetotals"
+    },
+    {
+      "label": "computeInvoiceTotals()",
+      "file_type": "code",
+      "source_file": "src/features/invoices/format.ts",
+      "source_location": "L41",
+      "_origin": "ast",
+      "id": "invoices_format_computeinvoicetotals",
+      "community": 7,
+      "norm_label": "computeinvoicetotals()"
+    },
+    {
+      "label": "dateSectionLabel()",
+      "file_type": "code",
+      "source_file": "src/features/invoices/format.ts",
+      "source_location": "L66",
       "_origin": "ast",
       "id": "invoices_format_datesectionlabel",
       "community": 7,
@@ -1837,7 +1857,7 @@
       "label": "groupInvoicesByDate()",
       "file_type": "code",
       "source_file": "src/features/invoices/format.ts",
-      "source_location": "L42",
+      "source_location": "L77",
       "_origin": "ast",
       "id": "invoices_format_groupinvoicesbydate",
       "community": 7,
@@ -1850,7 +1870,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "invoices_index",
-      "community": 7,
+      "community": 8,
       "norm_label": "index.ts"
     },
     {
@@ -1867,7 +1887,7 @@
       "label": "InvoiceDetailScreen()",
       "file_type": "code",
       "source_file": "src/features/invoices/screens/InvoiceDetailScreen.tsx",
-      "source_location": "L11",
+      "source_location": "L20",
       "_origin": "ast",
       "id": "screens_invoicedetailscreen_invoicedetailscreen",
       "community": 7,
@@ -1920,18 +1940,108 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "screens_newinvoicescreen",
-      "community": 17,
+      "community": 7,
       "norm_label": "newinvoicescreen.tsx"
+    },
+    {
+      "label": "LineDraft",
+      "file_type": "code",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L24",
+      "_origin": "ast",
+      "id": "screens_newinvoicescreen_linedraft",
+      "community": 7,
+      "norm_label": "linedraft"
+    },
+    {
+      "label": "todayIso()",
+      "file_type": "code",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L31",
+      "_origin": "ast",
+      "id": "screens_newinvoicescreen_todayiso",
+      "community": 7,
+      "norm_label": "todayiso()"
+    },
+    {
+      "label": "defaultDueIso()",
+      "file_type": "code",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L35",
+      "_origin": "ast",
+      "id": "screens_newinvoicescreen_defaultdueiso",
+      "community": 7,
+      "norm_label": "defaultdueiso()"
+    },
+    {
+      "label": "emptyLine()",
+      "file_type": "code",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L39",
+      "_origin": "ast",
+      "id": "screens_newinvoicescreen_emptyline",
+      "community": 7,
+      "norm_label": "emptyline()"
+    },
+    {
+      "label": "toLineDrafts()",
+      "file_type": "code",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L43",
+      "_origin": "ast",
+      "id": "screens_newinvoicescreen_tolinedrafts",
+      "community": 7,
+      "norm_label": "tolinedrafts()"
+    },
+    {
+      "label": "parseAmount()",
+      "file_type": "code",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L52",
+      "_origin": "ast",
+      "id": "screens_newinvoicescreen_parseamount",
+      "community": 7,
+      "norm_label": "parseamount()"
+    },
+    {
+      "label": "issuedStatusFor()",
+      "file_type": "code",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L57",
+      "_origin": "ast",
+      "id": "screens_newinvoicescreen_issuedstatusfor",
+      "community": 7,
+      "norm_label": "issuedstatusfor()"
+    },
+    {
+      "label": "CompactInput()",
+      "file_type": "code",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L62",
+      "_origin": "ast",
+      "id": "screens_newinvoicescreen_compactinput",
+      "community": 7,
+      "norm_label": "compactinput()"
     },
     {
       "label": "NewInvoiceScreen()",
       "file_type": "code",
       "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
-      "source_location": "L3",
+      "source_location": "L102",
       "_origin": "ast",
       "id": "screens_newinvoicescreen_newinvoicescreen",
-      "community": 17,
+      "community": 7,
       "norm_label": "newinvoicescreen()"
+    },
+    {
+      "label": "styles",
+      "file_type": "code",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L765",
+      "_origin": "ast",
+      "id": "screens_newinvoicescreen_styles",
+      "community": 7,
+      "norm_label": "styles"
     },
     {
       "label": "store.ts",
@@ -1957,7 +2067,7 @@
       "label": "useInvoicesStore",
       "file_type": "code",
       "source_file": "src/features/invoices/store.ts",
-      "source_location": "L10",
+      "source_location": "L12",
       "_origin": "ast",
       "id": "invoices_store_useinvoicesstore",
       "community": 7,
@@ -1984,10 +2094,20 @@
       "norm_label": "invoicestatus"
     },
     {
-      "label": "Invoice",
+      "label": "InvoiceLine",
       "file_type": "code",
       "source_file": "src/features/invoices/types.ts",
       "source_location": "L11",
+      "_origin": "ast",
+      "id": "invoices_types_invoiceline",
+      "community": 7,
+      "norm_label": "invoiceline"
+    },
+    {
+      "label": "Invoice",
+      "file_type": "code",
+      "source_file": "src/features/invoices/types.ts",
+      "source_location": "L18",
       "_origin": "ast",
       "id": "invoices_types_invoice",
       "community": 7,
@@ -1997,7 +2117,7 @@
       "label": "InvoiceFilter",
       "file_type": "code",
       "source_file": "src/features/invoices/types.ts",
-      "source_location": "L22",
+      "source_location": "L36",
       "_origin": "ast",
       "id": "invoices_types_invoicefilter",
       "community": 7,
@@ -2150,7 +2270,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "reports_index",
-      "community": 18,
+      "community": 12,
       "norm_label": "index.ts"
     },
     {
@@ -2170,7 +2290,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "screens_reportsscreen_chiprow",
-      "community": 17,
+      "community": 12,
       "norm_label": "chiprow()"
     },
     {
@@ -2180,7 +2300,7 @@
       "source_location": "L79",
       "_origin": "ast",
       "id": "screens_reportsscreen_snapshotcard",
-      "community": 17,
+      "community": 12,
       "norm_label": "snapshotcard()"
     },
     {
@@ -2190,7 +2310,7 @@
       "source_location": "L165",
       "_origin": "ast",
       "id": "screens_reportsscreen_monthbars",
-      "community": 17,
+      "community": 12,
       "norm_label": "monthbars()"
     },
     {
@@ -2200,7 +2320,7 @@
       "source_location": "L218",
       "_origin": "ast",
       "id": "screens_reportsscreen_metricrow",
-      "community": 17,
+      "community": 12,
       "norm_label": "metricrow()"
     },
     {
@@ -2220,7 +2340,7 @@
       "source_location": "L259",
       "_origin": "ast",
       "id": "screens_reportsscreen_reportsscreen",
-      "community": 12,
+      "community": 7,
       "norm_label": "reportsscreen()"
     },
     {
@@ -2280,7 +2400,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_settingslist",
-      "community": 13,
+      "community": 3,
       "norm_label": "settingslist.tsx"
     },
     {
@@ -2290,7 +2410,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "components_settingslist_settingsgroupprops",
-      "community": 13,
+      "community": 3,
       "norm_label": "settingsgroupprops"
     },
     {
@@ -2300,7 +2420,7 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "components_settingslist_settingsgroup",
-      "community": 7,
+      "community": 3,
       "norm_label": "settingsgroup()"
     },
     {
@@ -2310,7 +2430,7 @@
       "source_location": "L45",
       "_origin": "ast",
       "id": "components_settingslist_settingsrowprops",
-      "community": 13,
+      "community": 3,
       "norm_label": "settingsrowprops"
     },
     {
@@ -2320,7 +2440,7 @@
       "source_location": "L55",
       "_origin": "ast",
       "id": "components_settingslist_settingsrow",
-      "community": 13,
+      "community": 3,
       "norm_label": "settingsrow()"
     },
     {
@@ -2330,7 +2450,7 @@
       "source_location": "L116",
       "_origin": "ast",
       "id": "components_settingslist_styles",
-      "community": 13,
+      "community": 3,
       "norm_label": "styles"
     },
     {
@@ -2380,7 +2500,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_settingsselect",
-      "community": 22,
+      "community": 5,
       "norm_label": "settingsselect.tsx"
     },
     {
@@ -2390,7 +2510,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "components_settingsselect_option",
-      "community": 22,
+      "community": 5,
       "norm_label": "option"
     },
     {
@@ -2400,7 +2520,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "components_settingsselect_props",
-      "community": 22,
+      "community": 5,
       "norm_label": "props"
     },
     {
@@ -2410,7 +2530,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "components_settingsselect_settingsselect",
-      "community": 22,
+      "community": 5,
       "norm_label": "settingsselect()"
     },
     {
@@ -2420,7 +2540,7 @@
       "source_location": "L102",
       "_origin": "ast",
       "id": "components_settingsselect_styles",
-      "community": 22,
+      "community": 5,
       "norm_label": "styles"
     },
     {
@@ -2520,7 +2640,7 @@
       "source_location": "L55",
       "_origin": "ast",
       "id": "screens_brandingscreen_assetrow",
-      "community": 17,
+      "community": 5,
       "norm_label": "assetrow()"
     },
     {
@@ -2600,7 +2720,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "screens_settingsscreen",
-      "community": 5,
+      "community": 3,
       "norm_label": "settingsscreen.tsx"
     },
     {
@@ -2610,7 +2730,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "screens_settingsscreen_props",
-      "community": 5,
+      "community": 3,
       "norm_label": "props"
     },
     {
@@ -2840,7 +2960,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_button",
-      "community": 13,
+      "community": 8,
       "norm_label": "button.tsx"
     },
     {
@@ -2850,7 +2970,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "components_button_buttonvariant",
-      "community": 13,
+      "community": 8,
       "norm_label": "buttonvariant"
     },
     {
@@ -2860,7 +2980,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "components_button_props",
-      "community": 13,
+      "community": 8,
       "norm_label": "props"
     },
     {
@@ -2870,7 +2990,7 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "components_button_button",
-      "community": 20,
+      "community": 8,
       "norm_label": "button()"
     },
     {
@@ -2880,7 +3000,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_iconbutton",
-      "community": 18,
+      "community": 8,
       "norm_label": "iconbutton.tsx"
     },
     {
@@ -2890,7 +3010,7 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "components_iconbutton_iconbuttonsize",
-      "community": 18,
+      "community": 8,
       "norm_label": "iconbuttonsize"
     },
     {
@@ -2900,7 +3020,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "components_iconbutton_props",
-      "community": 18,
+      "community": 8,
       "norm_label": "props"
     },
     {
@@ -2910,7 +3030,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "components_iconbutton_iconbutton",
-      "community": 18,
+      "community": 8,
       "norm_label": "iconbutton()"
     },
     {
@@ -2920,7 +3040,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_screen",
-      "community": 18,
+      "community": 8,
       "norm_label": "screen.tsx"
     },
     {
@@ -2930,7 +3050,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "components_screen_props",
-      "community": 18,
+      "community": 8,
       "norm_label": "props"
     },
     {
@@ -2940,7 +3060,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "components_screen_screen",
-      "community": 18,
+      "community": 8,
       "norm_label": "screen()"
     },
     {
@@ -2950,7 +3070,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_text",
-      "community": 13,
+      "community": 8,
       "norm_label": "text.tsx"
     },
     {
@@ -2960,7 +3080,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "components_text_textvariant",
-      "community": 13,
+      "community": 8,
       "norm_label": "textvariant"
     },
     {
@@ -2970,7 +3090,7 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "components_text_props",
-      "community": 13,
+      "community": 8,
       "norm_label": "props"
     },
     {
@@ -2980,7 +3100,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "components_text_text",
-      "community": 13,
+      "community": 8,
       "norm_label": "text()"
     },
     {
@@ -2990,7 +3110,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_index",
-      "community": 18,
+      "community": 8,
       "norm_label": "index.ts"
     },
     {
@@ -3110,7 +3230,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "tokens_elevation",
-      "community": 19,
+      "community": 8,
       "norm_label": "elevation.ts"
     },
     {
@@ -3120,7 +3240,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "tokens_elevation_elevationlevel",
-      "community": 19,
+      "community": 8,
       "norm_label": "elevationlevel"
     },
     {
@@ -3130,7 +3250,7 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "tokens_elevation_applyelevation",
-      "community": 19,
+      "community": 8,
       "norm_label": "applyelevation()"
     },
     {
@@ -3240,7 +3360,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "design_system_usetheme",
-      "community": 1,
+      "community": 8,
       "norm_label": "usetheme.ts"
     },
     {
@@ -3250,7 +3370,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "design_system_usetheme_usetheme",
-      "community": 17,
+      "community": 8,
       "norm_label": "usetheme()"
     },
     {
@@ -3260,7 +3380,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_csv",
-      "community": 16,
+      "community": 3,
       "norm_label": "csv.ts"
     },
     {
@@ -3270,7 +3390,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "lib_csv_splitcsvline",
-      "community": 16,
+      "community": 3,
       "norm_label": "splitcsvline()"
     },
     {
@@ -3280,7 +3400,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "lib_csv_parsecsv",
-      "community": 16,
+      "community": 3,
       "norm_label": "parsecsv()"
     },
     {
@@ -3290,7 +3410,7 @@
       "source_location": "L39",
       "_origin": "ast",
       "id": "lib_csv_tocsv",
-      "community": 16,
+      "community": 3,
       "norm_label": "tocsv()"
     },
     {
@@ -3300,7 +3420,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_files",
-      "community": 16,
+      "community": 3,
       "norm_label": "files.ts"
     },
     {
@@ -3310,7 +3430,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "lib_files_sharetextfile",
-      "community": 16,
+      "community": 3,
       "norm_label": "sharetextfile()"
     },
     {
@@ -3320,8 +3440,28 @@
       "source_location": "L35",
       "_origin": "ast",
       "id": "lib_files_readpickedtext",
-      "community": 16,
+      "community": 3,
       "norm_label": "readpickedtext()"
+    },
+    {
+      "label": "id.ts",
+      "file_type": "code",
+      "source_file": "src/shared/lib/id.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "lib_id",
+      "community": 3,
+      "norm_label": "id.ts"
+    },
+    {
+      "label": "createId()",
+      "file_type": "code",
+      "source_file": "src/shared/lib/id.ts",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "lib_id_createid",
+      "community": 3,
+      "norm_label": "createid()"
     },
     {
       "label": "index.ts",
@@ -3460,7 +3600,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "ui_bulkimportguide",
-      "community": 16,
+      "community": 3,
       "norm_label": "bulkimportguide.tsx"
     },
     {
@@ -3470,7 +3610,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "ui_bulkimportguide_props",
-      "community": 16,
+      "community": 3,
       "norm_label": "props"
     },
     {
@@ -3480,7 +3620,7 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "ui_bulkimportguide_copy",
-      "community": 16,
+      "community": 3,
       "norm_label": "copy"
     },
     {
@@ -3490,7 +3630,7 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "ui_bulkimportguide_parsecataloguerows",
-      "community": 16,
+      "community": 3,
       "norm_label": "parsecataloguerows()"
     },
     {
@@ -3500,7 +3640,7 @@
       "source_location": "L81",
       "_origin": "ast",
       "id": "ui_bulkimportguide_parseclientrows",
-      "community": 16,
+      "community": 3,
       "norm_label": "parseclientrows()"
     },
     {
@@ -3510,7 +3650,7 @@
       "source_location": "L122",
       "_origin": "ast",
       "id": "ui_bulkimportguide_bulkimportguide",
-      "community": 16,
+      "community": 3,
       "norm_label": "bulkimportguide()"
     },
     {
@@ -3520,7 +3660,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "ui_emptystate",
-      "community": 20,
+      "community": 8,
       "norm_label": "emptystate.tsx"
     },
     {
@@ -3530,7 +3670,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "ui_emptystate_props",
-      "community": 20,
+      "community": 8,
       "norm_label": "props"
     },
     {
@@ -3540,7 +3680,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "ui_emptystate_emptystate",
-      "community": 20,
+      "community": 8,
       "norm_label": "emptystate()"
     },
     {
@@ -3550,7 +3690,7 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "ui_emptystate_styles",
-      "community": 20,
+      "community": 8,
       "norm_label": "styles"
     },
     {
@@ -3560,7 +3700,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "ui_floatingtabbar",
-      "community": 19,
+      "community": 8,
       "norm_label": "floatingtabbar.tsx"
     },
     {
@@ -3570,7 +3710,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "ui_floatingtabbar_floatingtabbarprops",
-      "community": 19,
+      "community": 8,
       "norm_label": "floatingtabbarprops"
     },
     {
@@ -3580,7 +3720,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "ui_floatingtabbar_route_tab",
-      "community": 19,
+      "community": 8,
       "norm_label": "route_tab"
     },
     {
@@ -3590,7 +3730,7 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "ui_floatingtabbar_icons",
-      "community": 19,
+      "community": 8,
       "norm_label": "icons"
     },
     {
@@ -3600,7 +3740,7 @@
       "source_location": "L34",
       "_origin": "ast",
       "id": "ui_floatingtabbar_create_routes",
-      "community": 19,
+      "community": 8,
       "norm_label": "create_routes"
     },
     {
@@ -3610,7 +3750,7 @@
       "source_location": "L36",
       "_origin": "ast",
       "id": "ui_floatingtabbar_floatingtabbar",
-      "community": 19,
+      "community": 8,
       "norm_label": "floatingtabbar()"
     },
     {
@@ -3620,7 +3760,7 @@
       "source_location": "L164",
       "_origin": "ast",
       "id": "ui_floatingtabbar_styles",
-      "community": 19,
+      "community": 8,
       "norm_label": "styles"
     },
     {
@@ -3664,13 +3804,63 @@
       "norm_label": "styles"
     },
     {
+      "label": "SearchablePickerSheet.tsx",
+      "file_type": "code",
+      "source_file": "src/shared/ui/SearchablePickerSheet.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "ui_searchablepickersheet",
+      "community": 8,
+      "norm_label": "searchablepickersheet.tsx"
+    },
+    {
+      "label": "PickerOption",
+      "file_type": "code",
+      "source_file": "src/shared/ui/SearchablePickerSheet.tsx",
+      "source_location": "L13",
+      "_origin": "ast",
+      "id": "ui_searchablepickersheet_pickeroption",
+      "community": 8,
+      "norm_label": "pickeroption"
+    },
+    {
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "src/shared/ui/SearchablePickerSheet.tsx",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "ui_searchablepickersheet_props",
+      "community": 8,
+      "norm_label": "props"
+    },
+    {
+      "label": "SearchablePickerSheet()",
+      "file_type": "code",
+      "source_file": "src/shared/ui/SearchablePickerSheet.tsx",
+      "source_location": "L31",
+      "_origin": "ast",
+      "id": "ui_searchablepickersheet_searchablepickersheet",
+      "community": 8,
+      "norm_label": "searchablepickersheet()"
+    },
+    {
+      "label": "styles",
+      "file_type": "code",
+      "source_file": "src/shared/ui/SearchablePickerSheet.tsx",
+      "source_location": "L196",
+      "_origin": "ast",
+      "id": "ui_searchablepickersheet_styles",
+      "community": 8,
+      "norm_label": "styles"
+    },
+    {
       "label": "SwipeableRow.tsx",
       "file_type": "code",
       "source_file": "src/shared/ui/SwipeableRow.tsx",
       "source_location": "L1",
       "_origin": "ast",
       "id": "ui_swipeablerow",
-      "community": 17,
+      "community": 8,
       "norm_label": "swipeablerow.tsx"
     },
     {
@@ -3680,7 +3870,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "ui_swipeablerow_props",
-      "community": 17,
+      "community": 8,
       "norm_label": "props"
     },
     {
@@ -3690,7 +3880,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "ui_swipeablerow_swipeablerow",
-      "community": 17,
+      "community": 8,
       "norm_label": "swipeablerow()"
     },
     {
@@ -3700,7 +3890,7 @@
       "source_location": "L109",
       "_origin": "ast",
       "id": "ui_swipeablerow_styles",
-      "community": 17,
+      "community": 8,
       "norm_label": "styles"
     },
     {
@@ -6178,6 +6368,17 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "screens_newinvoicescreen",
+      "target": "catalogue_index"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "src/features/catalogue/screens/CatalogueDetailScreen.tsx",
       "source_location": "L10",
       "weight": 1.0,
@@ -6829,6 +7030,28 @@
       "target": "design_system_usetheme_usetheme"
     },
     {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/catalogue/screens/NewCatalogueScreen.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "screens_newcataloguescreen",
+      "target": "lib_id"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/catalogue/screens/NewCatalogueScreen.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "screens_newcataloguescreen",
+      "target": "lib_id_createid"
+    },
+    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/features/catalogue/screens/NewCatalogueScreen.tsx",
@@ -6934,6 +7157,28 @@
       "confidence_score": 1.0,
       "source": "ui_bulkimportguide",
       "target": "catalogue_store"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "screens_newinvoicescreen",
+      "target": "catalogue_store_usecataloguestore"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L66",
+      "weight": 1.0,
+      "source": "screens_newinvoicescreen_newinvoicescreen",
+      "target": "catalogue_store_usecataloguestore"
     },
     {
       "relation": "imports",
@@ -7270,6 +7515,17 @@
       "confidence_score": 1.0,
       "source": "customers_index",
       "target": "screens_newclientscreen"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "screens_newinvoicescreen",
+      "target": "customers_index"
     },
     {
       "relation": "imports_from",
@@ -7993,6 +8249,28 @@
       "target": "design_system_usetheme_usetheme"
     },
     {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/customers/screens/NewClientScreen.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "screens_newclientscreen",
+      "target": "lib_id"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/customers/screens/NewClientScreen.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "screens_newclientscreen",
+      "target": "lib_id_createid"
+    },
+    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/features/customers/screens/NewClientScreen.tsx",
@@ -8098,6 +8376,28 @@
       "confidence_score": 1.0,
       "source": "ui_bulkimportguide",
       "target": "customers_store"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "screens_newinvoicescreen",
+      "target": "customers_store_useclientsstore"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L65",
+      "weight": 1.0,
+      "source": "screens_newinvoicescreen_newinvoicescreen",
+      "target": "customers_store_useclientsstore"
     },
     {
       "relation": "imports",
@@ -9233,6 +9533,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/features/invoices/format.ts",
+      "source_location": "L41",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "invoices_format",
+      "target": "invoices_format_computeinvoicetotals"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/format.ts",
       "source_location": "L31",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -9270,6 +9580,16 @@
       "target": "invoices_format_groupinvoicesbydate"
     },
     {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/format.ts",
+      "source_location": "L31",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "invoices_format",
+      "target": "invoices_format_invoicetotals"
+    },
+    {
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -9290,6 +9610,17 @@
       "confidence_score": 1.0,
       "source": "invoices_format",
       "target": "invoices_types_invoice"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/format.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "invoices_format",
+      "target": "invoices_types_invoiceline"
     },
     {
       "relation": "imports_from",
@@ -9328,6 +9659,17 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "screens_newinvoicescreen",
+      "target": "invoices_format"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "src/features/reports/screens/ReportsScreen.tsx",
       "source_location": "L7",
       "weight": 1.0,
@@ -9355,6 +9697,28 @@
       "source_location": "L44",
       "weight": 1.0,
       "source": "screens_invoicedetailscreen_invoicedetailscreen",
+      "target": "invoices_format_formatmoney"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "screens_newinvoicescreen",
+      "target": "invoices_format_formatmoney"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L467",
+      "weight": 1.0,
+      "source": "screens_newinvoicescreen_newinvoicescreen",
       "target": "invoices_format_formatmoney"
     },
     {
@@ -9400,6 +9764,50 @@
       "weight": 1.0,
       "source": "screens_invoicedetailscreen_invoicedetailscreen",
       "target": "invoices_format_formatinvoicedate"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/screens/InvoiceDetailScreen.tsx",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "screens_invoicedetailscreen",
+      "target": "invoices_format_computeinvoicetotals"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/features/invoices/screens/InvoiceDetailScreen.tsx",
+      "source_location": "L68",
+      "weight": 1.0,
+      "source": "screens_invoicedetailscreen_invoicedetailscreen",
+      "target": "invoices_format_computeinvoicetotals"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "screens_newinvoicescreen",
+      "target": "invoices_format_computeinvoicetotals"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L134",
+      "weight": 1.0,
+      "source": "screens_newinvoicescreen_newinvoicescreen",
+      "target": "invoices_format_computeinvoicetotals"
     },
     {
       "relation": "calls",
@@ -10030,11 +10438,88 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "screens_newinvoicescreen",
+      "target": "components_button_button"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
       "source_location": "L1",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "screens_newinvoicescreen",
       "target": "components_screen_screen"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "screens_newinvoicescreen",
+      "target": "components_settingsfield"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "screens_newinvoicescreen",
+      "target": "components_settingsfield_settingsfield"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "screens_newinvoicescreen",
+      "target": "components_settingsscroll"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "screens_newinvoicescreen",
+      "target": "components_settingsscroll_settingsscroll"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "screens_newinvoicescreen",
+      "target": "components_settingsselect"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "screens_newinvoicescreen",
+      "target": "components_settingsselect_settingsselect"
     },
     {
       "relation": "imports",
@@ -10070,6 +10555,144 @@
       "target": "design_system_usetheme_usetheme"
     },
     {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "screens_newinvoicescreen",
+      "target": "invoices_store"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "screens_newinvoicescreen",
+      "target": "invoices_store_useinvoicesstore"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L16",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "screens_newinvoicescreen",
+      "target": "invoices_types"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L16",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "screens_newinvoicescreen",
+      "target": "invoices_types_invoice"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L16",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "screens_newinvoicescreen",
+      "target": "invoices_types_invoiceline"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L16",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "screens_newinvoicescreen",
+      "target": "invoices_types_invoicestatus"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "screens_newinvoicescreen",
+      "target": "lib_id"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "screens_newinvoicescreen",
+      "target": "lib_id_createid"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L62",
+      "weight": 1.0,
+      "source": "screens_newinvoicescreen",
+      "target": "screens_newinvoicescreen_compactinput",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L29",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "screens_newinvoicescreen",
+      "target": "screens_newinvoicescreen_defaultdueiso"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L33",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "screens_newinvoicescreen",
+      "target": "screens_newinvoicescreen_emptyline"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L51",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "screens_newinvoicescreen",
+      "target": "screens_newinvoicescreen_issuedstatusfor"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L18",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "screens_newinvoicescreen",
+      "target": "screens_newinvoicescreen_linedraft"
+    },
+    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
@@ -10078,6 +10701,178 @@
       "confidence_score": 1.0,
       "source": "screens_newinvoicescreen",
       "target": "screens_newinvoicescreen_newinvoicescreen"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L46",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "screens_newinvoicescreen",
+      "target": "screens_newinvoicescreen_parseamount"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L543",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "screens_newinvoicescreen",
+      "target": "screens_newinvoicescreen_styles"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L25",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "screens_newinvoicescreen",
+      "target": "screens_newinvoicescreen_todayiso"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L37",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "screens_newinvoicescreen",
+      "target": "screens_newinvoicescreen_tolinedrafts"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L12",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "screens_newinvoicescreen",
+      "target": "settings_store_usesettingsstore"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "screens_newinvoicescreen",
+      "target": "ui_bottomsheet_bottomsheet"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "screens_newinvoicescreen",
+      "target": "ui_index"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "screens_newinvoicescreen",
+      "target": "ui_searchablepickersheet_searchablepickersheet",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L52",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "screens_newinvoicescreen_issuedstatusfor",
+      "target": "screens_newinvoicescreen_todayiso"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L84",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "screens_newinvoicescreen_newinvoicescreen",
+      "target": "screens_newinvoicescreen_todayiso"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L86",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "screens_newinvoicescreen_newinvoicescreen",
+      "target": "screens_newinvoicescreen_defaultdueiso"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L34",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "screens_newinvoicescreen_emptyline",
+      "target": "lib_id_createid"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L88",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "screens_newinvoicescreen_newinvoicescreen",
+      "target": "screens_newinvoicescreen_emptyline"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L88",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "screens_newinvoicescreen_newinvoicescreen",
+      "target": "screens_newinvoicescreen_tolinedrafts"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L139",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "screens_newinvoicescreen_newinvoicescreen",
+      "target": "screens_newinvoicescreen_parseamount"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L77",
+      "weight": 1.0,
+      "source": "screens_newinvoicescreen_compactinput",
+      "target": "design_system_usetheme_usetheme"
     },
     {
       "relation": "calls",
@@ -10089,6 +10884,28 @@
       "weight": 1.0,
       "source": "screens_newinvoicescreen_newinvoicescreen",
       "target": "design_system_usetheme_usetheme"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L60",
+      "weight": 1.0,
+      "source": "screens_newinvoicescreen_newinvoicescreen",
+      "target": "invoices_store_useinvoicesstore"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L67",
+      "weight": 1.0,
+      "source": "screens_newinvoicescreen_newinvoicescreen",
+      "target": "settings_store_usesettingsstore"
     },
     {
       "relation": "contains",
@@ -10195,6 +11012,16 @@
       "confidence_score": 1.0,
       "source": "invoices_types",
       "target": "invoices_types_invoicefilter"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/types.ts",
+      "source_location": "L11",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "invoices_types",
+      "target": "invoices_types_invoiceline"
     },
     {
       "relation": "contains",
@@ -12847,6 +13674,17 @@
       "target": "components_button_button"
     },
     {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/ui/SearchablePickerSheet.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "ui_searchablepickersheet",
+      "target": "components_button_button",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/shared/design-system/components/IconButton.tsx",
@@ -13183,6 +14021,17 @@
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "src/shared/ui/SearchablePickerSheet.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "ui_searchablepickersheet",
+      "target": "components_text_text",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "src/shared/ui/SwipeableRow.tsx",
       "source_location": "L12",
       "weight": 1.0,
@@ -13354,6 +14203,17 @@
       "confidence_score": 1.0,
       "source": "ui_floatingtabbar",
       "target": "design_system_index"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/ui/SearchablePickerSheet.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "ui_searchablepickersheet",
+      "target": "design_system_index",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -13959,6 +14819,28 @@
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "src/shared/ui/SearchablePickerSheet.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "ui_searchablepickersheet",
+      "target": "design_system_usetheme_usetheme",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/shared/ui/SearchablePickerSheet.tsx",
+      "source_location": "L41",
+      "weight": 1.0,
+      "source": "ui_searchablepickersheet_searchablepickersheet",
+      "target": "design_system_usetheme_usetheme"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "src/shared/ui/SearchField.tsx",
       "source_location": "L10",
       "weight": 1.0,
@@ -14114,6 +14996,60 @@
       "confidence_score": 1.0,
       "source": "ui_bulkimportguide",
       "target": "lib_files_readpickedtext"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/lib/id.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "lib_id",
+      "target": "lib_id_createid"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/ui/BulkImportGuide.tsx",
+      "source_location": "L16",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "ui_bulkimportguide",
+      "target": "lib_id"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/ui/BulkImportGuide.tsx",
+      "source_location": "L16",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "ui_bulkimportguide",
+      "target": "lib_id_createid"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/ui/BulkImportGuide.tsx",
+      "source_location": "L69",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "ui_bulkimportguide_parsecataloguerows",
+      "target": "lib_id_createid"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/ui/BulkImportGuide.tsx",
+      "source_location": "L111",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "ui_bulkimportguide_parseclientrows",
+      "target": "lib_id_createid"
     },
     {
       "relation": "re_exports",
@@ -14294,6 +15230,17 @@
       "target": "ui_bottomsheet"
     },
     {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/ui/SearchablePickerSheet.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "ui_searchablepickersheet",
+      "target": "ui_bottomsheet",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "re_exports",
       "context": "re-export",
       "confidence": "EXTRACTED",
@@ -14303,6 +15250,17 @@
       "confidence_score": 1.0,
       "source": "ui_index",
       "target": "ui_bottomsheet_bottomsheet"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/ui/SearchablePickerSheet.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "ui_searchablepickersheet",
+      "target": "ui_bottomsheet_bottomsheet",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14561,6 +15519,79 @@
       "confidence_score": 1.0,
       "source": "ui_index",
       "target": "ui_searchfield_searchfield"
+    },
+    {
+      "relation": "re_exports",
+      "context": "export",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/ui/index.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "ui_index",
+      "target": "ui_searchablepickersheet",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/ui/SearchablePickerSheet.tsx",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "ui_searchablepickersheet",
+      "target": "ui_searchablepickersheet_pickeroption",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/ui/SearchablePickerSheet.tsx",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "ui_searchablepickersheet",
+      "target": "ui_searchablepickersheet_props",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/ui/SearchablePickerSheet.tsx",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "ui_searchablepickersheet",
+      "target": "ui_searchablepickersheet_searchablepickersheet",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/ui/SearchablePickerSheet.tsx",
+      "source_location": "L196",
+      "weight": 1.0,
+      "source": "ui_searchablepickersheet",
+      "target": "ui_searchablepickersheet_styles",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "re_exports",
+      "context": "re-export",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/ui/index.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "ui_index",
+      "target": "ui_searchablepickersheet_pickeroption",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "re_exports",
+      "context": "re-export",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/ui/index.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "ui_index",
+      "target": "ui_searchablepickersheet_searchablepickersheet",
+      "confidence_score": 1.0
     },
     {
       "relation": "re_exports",
@@ -15349,5 +16380,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "f91d2ca62a91e927b23ae854b5eb5c9c5616fc52"
+  "built_at_commit": "0c7cc2435d30ce9e42167b43ee94d6a24e9d5b5f"
 }

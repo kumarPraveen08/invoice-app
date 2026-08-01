@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Alert } from 'react-native';
 import { router, useLocalSearchParams, useNavigation } from 'expo-router';
-import { v4 as uuid } from 'uuid';
 import { Button, useTheme } from '@/shared/design-system';
+import { createId } from '@/shared/lib/id';
 import { SettingsField } from '@/features/settings/components/SettingsField';
 import { SettingsScroll } from '@/features/settings/components/SettingsScroll';
 import { useCatalogueStore } from '../store';
@@ -49,7 +49,7 @@ export default function NewCatalogueScreen() {
     }
 
     upsertItem({
-      id: existing?.id ?? uuid(),
+      id: existing?.id ?? createId('item'),
       name: trimmedName,
       sku: trimmedSku,
       category: category.trim() || 'General',

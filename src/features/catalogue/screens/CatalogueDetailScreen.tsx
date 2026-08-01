@@ -1,13 +1,13 @@
-import { useEffect } from 'react';
-import { Pressable, StyleSheet, View } from 'react-native';
-import Ionicons from '@expo/vector-icons/Ionicons';
-import { router, useLocalSearchParams, useNavigation } from 'expo-router';
-import { Text, useTheme } from '@/shared/design-system';
-import { formatMoney } from '@/features/invoices/format';
-import { useSettingsStore } from '@/features/settings';
-import { SettingsGroup } from '@/features/settings/components/SettingsList';
-import { SettingsScroll } from '@/features/settings/components/SettingsScroll';
-import { useCatalogueStore } from '../store';
+import { useEffect } from "react";
+import { Pressable, StyleSheet, View } from "react-native";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import { router, useLocalSearchParams, useNavigation } from "expo-router";
+import { Text, useTheme } from "@/shared/design-system";
+import { formatMoney } from "@/features/invoices/format";
+import { useSettingsStore } from "@/features/settings";
+import { SettingsGroup } from "@/features/settings/components/SettingsList";
+import { SettingsScroll } from "@/features/settings/components/SettingsScroll";
+import { useCatalogueStore } from "../store";
 
 function DetailRow({
   label,
@@ -36,7 +36,7 @@ function DetailRow({
       </Text>
       <Text
         variant="body"
-        style={{ fontWeight: '600', flexShrink: 1, textAlign: 'right' }}
+        style={{ fontWeight: "600", flexShrink: 1, textAlign: "right" }}
       >
         {value}
       </Text>
@@ -53,7 +53,7 @@ export default function CatalogueDetailScreen() {
 
   useEffect(() => {
     navigation.setOptions({
-      title: item?.name ?? 'Item',
+      title: item?.name ?? "Item",
       headerRight: item
         ? () => (
             <Pressable
@@ -61,15 +61,15 @@ export default function CatalogueDetailScreen() {
               accessibilityLabel="Edit item"
               onPress={() =>
                 router.push({
-                  pathname: '/catalogue/new',
+                  pathname: "/catalogue/new",
                   params: { id: item.id },
                 })
               }
               hitSlop={8}
-              style={{ marginRight: 12, padding: 4 }}
+              style={{ padding: 4 }}
             >
               <Ionicons
-                name="create-outline"
+                name="pencil-outline"
                 size={22}
                 color={colors.onSurface}
               />
@@ -94,7 +94,7 @@ export default function CatalogueDetailScreen() {
       <Text variant="title" style={{ marginBottom: space.xs }}>
         {item.name}
       </Text>
-      <Text variant="body" muted style={{ marginBottom: space['2xl'] }}>
+      <Text variant="body" muted style={{ marginBottom: space["2xl"] }}>
         {item.category} · {item.sku}
       </Text>
 
@@ -114,9 +114,9 @@ export default function CatalogueDetailScreen() {
 
 const styles = StyleSheet.create({
   detailRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     gap: 12,
   },
 });

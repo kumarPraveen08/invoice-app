@@ -6,7 +6,7 @@ import {
   startOfDay,
   subDays,
 } from 'date-fns';
-import type { Invoice } from './types';
+import type { Invoice, InvoiceLine } from './types';
 
 export function formatMoney(amount: number, currency: string): string {
   try {
@@ -26,6 +26,41 @@ export function formatInvoiceDate(iso: string): string {
   } catch {
     return iso;
   }
+}
+
+export type InvoiceTotals = {
+  subtotal: number;
+  discount: number;
+  taxable: number;
+  tax: number;
+  additionalCharges: number;
+  total: number;
+};
+
+/** Subtotal → discount → tax → additional charges → total. */
+export function computeInvoiceTotals(input: {
+  lines: Pick<InvoiceLine, 'quantity' | 'unitPrice'>[];
+  discount: number;
+  taxRate: number;
+  additionalCharges: number;
+}): InvoiceTotals {
+  const subtotal = input.lines.reduce(
+    (sum, line) => sum + line.quantity * line.unitPrice,
+    0,
+  );
+  const discount = Math.min(Math.max(0, input.discount), Math.max(0, subtotal));
+  const taxable = Math.max(0, subtotal - discount);
+  const tax = taxable * (Math.max(0, input.taxRate) / 100);
+  const additionalCharges = Math.max(0, input.additionalCharges);
+  const total = taxable + tax + additionalCharges;
+  return {
+    subtotal,
+    discount,
+    taxable,
+    tax,
+    additionalCharges,
+    total,
+  };
 }
 
 export function dateSectionLabel(iso: string, now = new Date()): string {
