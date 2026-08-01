@@ -1,11 +1,7 @@
 import { Screen } from '@/shared/design-system';
-import { EmptyState, FloatingAddButton } from '@/shared/ui';
+import { EmptyState } from '@/shared/ui';
 
 export default function EstimatesScreen() {
-  const onCreate = () => {
-    // TODO: navigate to create estimate
-  };
-
   return (
     <Screen>
       <EmptyState
@@ -13,11 +9,9 @@ export default function EstimatesScreen() {
         title="No estimates yet"
         description="Send quotes to clients before converting them into invoices."
         actionLabel="Create Estimate"
-        onAction={onCreate}
-      />
-      <FloatingAddButton
-        onPress={onCreate}
-        accessibilityLabel="Create estimate"
+        onAction={() => {
+          // TODO: navigate to create estimate
+        }}
       />
     </Screen>
   );
