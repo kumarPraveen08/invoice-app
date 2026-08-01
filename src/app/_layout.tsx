@@ -1,14 +1,70 @@
+import { useEffect, useState } from "react";
 import { NavigationBar } from "expo-navigation-bar";
-import { Stack } from "expo-router";
+import { Stack, useRouter, useSegments } from "expo-router";
+import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { ThemeProvider, useTheme } from "@/shared/design-system";
+import { useSettingsStore } from "@/features/settings";
 import { SnackbarHost } from "@/shared/ui";
+
+void SplashScreen.preventAutoHideAsync().catch(() => undefined);
 
 function RootNavigator() {
   const { colors, mode } = useTheme();
-  const statusBarStyle = mode === "dark" ? "light-content" : "dark-content";
-  const navigationBarStyle = mode === "dark" ? "light" : "dark";
+  const router = useRouter();
+  const segments = useSegments();
+  const onboardingComplete = useSettingsStore((s) => s.onboardingComplete);
+  const isAuthenticated = useSettingsStore((s) => s.isAuthenticated);
+  const [hydrated, setHydrated] = useState(
+    () => useSettingsStore.persist.hasHydrated(),
+  );
+
+  useEffect(() => {
+    const unsub = useSettingsStore.persist.onFinishHydration(() => {
+      setHydrated(true);
+    });
+    if (useSettingsStore.persist.hasHydrated()) {
+      setHydrated(true);
+    }
+    return unsub;
+  }, []);
+
+  useEffect(() => {
+    if (!hydrated) return;
+    void SplashScreen.hideAsync().catch(() => undefined);
+  }, [hydrated]);
+
+  useEffect(() => {
+    if (!hydrated) return;
+    const inOnboarding = segments[0] === 'onboarding';
+    const inAuth = segments[0] === 'auth';
+
+    if (!onboardingComplete) {
+      if (!inOnboarding) router.replace('/onboarding');
+      return;
+    }
+    if (!isAuthenticated) {
+      if (!inAuth) router.replace('/auth');
+      return;
+    }
+    if (inOnboarding || inAuth) {
+      router.replace('/(tabs)');
+    }
+  }, [
+    hydrated,
+    onboardingComplete,
+    isAuthenticated,
+    router,
+    segments,
+  ]);
+
+  const statusBarStyle = mode === 'dark' ? 'light-content' : 'dark-content';
+  const navigationBarStyle = mode === 'dark' ? 'light' : 'dark';
+
+  if (!hydrated) {
+    return null;
+  }
 
   return (
     <>
@@ -20,6 +76,8 @@ function RootNavigator() {
           headerTintColor: colors.onSurface,
         }}
       >
+        <Stack.Screen name="onboarding" options={{ headerShown: false }} />
+        <Stack.Screen name="auth" options={{ headerShown: false }} />
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="settings" options={{ headerShown: false }} />
         <Stack.Screen

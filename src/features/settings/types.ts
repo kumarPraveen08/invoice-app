@@ -34,6 +34,8 @@ export type AppPreferences = {
   timeFormat: TimeFormat;
   invoicePrefix: string;
   invoiceNextNumber: string;
+  /** From onboarding survey. */
+  offering: "" | "products" | "services" | "both";
 };
 
 export type InvoiceDefaults = {
@@ -95,6 +97,9 @@ export type AppSettings = {
   invoiceDefaults: InvoiceDefaults;
   appearance: AppearanceSettings;
   invoiceTemplates: InvoiceTemplateLibrary;
+  onboardingComplete: boolean;
+  isAuthenticated: boolean;
+  authEmail: string;
 };
 
 export const defaultSettings: AppSettings = {
@@ -125,6 +130,7 @@ export const defaultSettings: AppSettings = {
     timeFormat: "12h",
     invoicePrefix: "INV-",
     invoiceNextNumber: "1001",
+    offering: "",
   },
   invoiceDefaults: {
     notes: "",
@@ -138,4 +144,7 @@ export const defaultSettings: AppSettings = {
     defaultId: "preset_base",
     customs: [],
   },
+  onboardingComplete: false,
+  isAuthenticated: false,
+  authEmail: "",
 };

@@ -1,6 +1,6 @@
 import { createContext, useMemo, type ReactNode } from 'react';
 import { useColorScheme } from 'react-native';
-import { useSettingsStore } from '@/features/settings';
+import { useSettingsStore } from '@/features/settings/store';
 import { createTheme, lightTheme, type Theme } from './theme';
 
 export type ThemeContextValue = Theme;

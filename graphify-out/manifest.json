@@ -15,8 +15,8 @@
     "semantic_hash": ""
   },
   "src/app/_layout.tsx": {
-    "mtime": 1785618145.369617,
-    "ast_hash": "0807fcb068928908f3f7dc4d0bf33f57",
+    "mtime": 1785624332.8506193,
+    "ast_hash": "6fa1c27a8445d71e7df501280ce8f8c8",
     "semantic_hash": ""
   },
   "tsconfig.json": {
@@ -150,8 +150,8 @@
     "semantic_hash": ""
   },
   "src/shared/design-system/ThemeProvider.tsx": {
-    "mtime": 1785619493.9027917,
-    "ast_hash": "da7430a50d21ccef9bc963a9b6d59554",
+    "mtime": 1785623339.372345,
+    "ast_hash": "c728ccb5deda8e8413e135f3b92a77fc",
     "semantic_hash": ""
   },
   "src/shared/design-system/components/Button.tsx": {
@@ -345,13 +345,13 @@
     "semantic_hash": ""
   },
   "src/features/settings/store.ts": {
-    "mtime": 1785620965.3338485,
-    "ast_hash": "c625dc8b9888e4fb7cdf8d956bb0fd78",
+    "mtime": 1785624288.9143946,
+    "ast_hash": "6a1b577a24e6b1db178053d998cecf2f",
     "semantic_hash": ""
   },
   "src/features/settings/types.ts": {
-    "mtime": 1785620965.002981,
-    "ast_hash": "e57b860d662be55854ecb65f593ba28a",
+    "mtime": 1785624285.5424557,
+    "ast_hash": "3eabf882c168eae6774df88d569b039f",
     "semantic_hash": ""
   },
   "src/shared/lib/mmkv.ts": {
@@ -655,8 +655,8 @@
     "semantic_hash": ""
   },
   "src/features/settings/components/InvoiceTemplatePreview.tsx": {
-    "mtime": 1785620980.5403633,
-    "ast_hash": "7b337b15ed93627060de96c0767d9e92",
+    "mtime": 1785622330.5154793,
+    "ast_hash": "f8930bdc2afd7d2b53861a284552261d",
     "semantic_hash": ""
   },
   "src/features/settings/screens/InvoiceTemplateScreen.tsx": {
@@ -665,8 +665,8 @@
     "semantic_hash": ""
   },
   "src/features/settings/templateConstants.ts": {
-    "mtime": 1785620958.6691146,
-    "ast_hash": "766a8bef6b226a576f2b534e1f9e2e54",
+    "mtime": 1785622330.1111624,
+    "ast_hash": "d36df0e5deabc4e65477056e60e7a959",
     "semantic_hash": ""
   },
   "src/app/settings/invoice-template-edit.tsx": {
@@ -685,8 +685,73 @@
     "semantic_hash": ""
   },
   "src/features/settings/screens/InvoiceTemplateEditorScreen.tsx": {
-    "mtime": 1785621012.6463084,
-    "ast_hash": "e950094d18883f20b18700c9c74f2d6b",
+    "mtime": 1785622330.6992054,
+    "ast_hash": "6ab8a1f1eb6e61456ec6ffb51419b575",
+    "semantic_hash": ""
+  },
+  "src/app/auth/_layout.tsx": {
+    "mtime": 1785624304.8860776,
+    "ast_hash": "9150db8ae62692393bab19a0fb062a9a",
+    "semantic_hash": ""
+  },
+  "src/app/auth/index.tsx": {
+    "mtime": 1785624306.321993,
+    "ast_hash": "731ccfe13b4f0c5193c4d30702d469c3",
+    "semantic_hash": ""
+  },
+  "src/app/auth/login.tsx": {
+    "mtime": 1785624306.3892891,
+    "ast_hash": "aa619677b61dd802445b0ab09800a61c",
+    "semantic_hash": ""
+  },
+  "src/app/auth/signup.tsx": {
+    "mtime": 1785624310.778471,
+    "ast_hash": "0fc199625ed12ec047fc8cc34d429ea2",
+    "semantic_hash": ""
+  },
+  "src/app/onboarding.tsx": {
+    "mtime": 1785622809.8757427,
+    "ast_hash": "ee54efc343cc6e339821a2ac8d2937d0",
+    "semantic_hash": ""
+  },
+  "src/features/auth/index.ts": {
+    "mtime": 1785624304.334422,
+    "ast_hash": "02a54f46cc279f4084206b899ea755a0",
+    "semantic_hash": ""
+  },
+  "src/features/auth/screens/AuthFormScreen.tsx": {
+    "mtime": 1785624304.0653675,
+    "ast_hash": "90c33106b8ee7ee1611fa094ff00507c",
+    "semantic_hash": ""
+  },
+  "src/features/auth/screens/AuthWelcomeScreen.tsx": {
+    "mtime": 1785624333.8660026,
+    "ast_hash": "a3387faa82a4910a868c97e3e8f160fe",
+    "semantic_hash": ""
+  },
+  "src/features/onboarding/components/OverviewGuide.tsx": {
+    "mtime": 1785624725.9603982,
+    "ast_hash": "7b40fb16da8b6d8243931ef5493d7c28",
+    "semantic_hash": ""
+  },
+  "src/features/onboarding/index.ts": {
+    "mtime": 1785622801.8252828,
+    "ast_hash": "2f218bfedac8cd90125884f2c735dcf7",
+    "semantic_hash": ""
+  },
+  "src/features/onboarding/screens/OnboardingScreen.tsx": {
+    "mtime": 1785624291.358964,
+    "ast_hash": "b5083556069046af34e3cd819b24b54d",
+    "semantic_hash": ""
+  },
+  "src/features/onboarding/steps.ts": {
+    "mtime": 1785624261.3514683,
+    "ast_hash": "953e66e40a8e1902c81b1277162713c2",
+    "semantic_hash": ""
+  },
+  "docs/INVOICE_TEMPLATES.md": {
+    "mtime": 1785622330.8925042,
+    "ast_hash": "37430f30feafd4d82a8ec96542b6d1e8",
     "semantic_hash": ""
   }
 }

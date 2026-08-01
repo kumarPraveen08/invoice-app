@@ -39,6 +39,9 @@ type SettingsState = AppSettings & {
     patch: Partial<InvoiceTemplateFields>,
   ) => void;
   removeCustomTemplate: (id: string) => void;
+  completeOnboarding: () => void;
+  completeAuth: (email: string) => void;
+  signOut: () => void;
 };
 
 export const useSettingsStore = create<SettingsState>()(
@@ -129,6 +132,10 @@ export const useSettingsStore = create<SettingsState>()(
             invoiceTemplates: { defaultId, customs },
           };
         }),
+      completeOnboarding: () => set({ onboardingComplete: true }),
+      completeAuth: (email) =>
+        set({ isAuthenticated: true, authEmail: email.trim() }),
+      signOut: () => set({ isAuthenticated: false, authEmail: "" }),
     }),
     {
       name: "invoice-app-settings",
@@ -141,15 +148,25 @@ export const useSettingsStore = create<SettingsState>()(
         invoiceDefaults: state.invoiceDefaults,
         appearance: state.appearance,
         invoiceTemplates: state.invoiceTemplates,
+        onboardingComplete: state.onboardingComplete,
+        isAuthenticated: state.isAuthenticated,
+        authEmail: state.authEmail,
       }),
       merge: (persisted, current) => {
         const stored = (persisted ?? {}) as Partial<AppSettings> & {
           invoiceTemplate?: unknown;
         };
         const library = stored.invoiceTemplates ?? current.invoiceTemplates;
+        const onboardingComplete =
+          stored.onboardingComplete ??
+          Boolean(stored.business?.name?.trim());
         return {
           ...current,
           ...stored,
+          preferences: {
+            ...current.preferences,
+            ...(stored.preferences ?? {}),
+          },
           appearance: {
             ...current.appearance,
             ...(stored.appearance ?? {}),
@@ -158,6 +175,10 @@ export const useSettingsStore = create<SettingsState>()(
             defaultId: library.defaultId || DEFAULT_TEMPLATE_ID,
             customs: library.customs ?? [],
           },
+          onboardingComplete,
+          // Existing installs that already finished onboarding skip auth gate.
+          isAuthenticated: stored.isAuthenticated ?? onboardingComplete,
+          authEmail: stored.authEmail ?? "",
         };
       },
     },
