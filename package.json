@@ -5,18 +5,20 @@
   "dependencies": {
     "@expo/vector-icons": "^15.1.1",
     "@hookform/resolvers": "^5.4.0",
+    "@lodev09/react-native-true-sheet": "^3.11.9",
     "date-fns": "^4.4.0",
-    "expo": "~57.0.7",
-    "expo-constants": "~57.0.6",
-    "expo-linking": "~57.0.3",
-    "expo-router": "~57.0.7",
+    "expo": "~57.0.8",
+    "expo-constants": "~57.0.7",
+    "expo-linking": "~57.0.4",
+    "expo-navigation-bar": "~57.0.2",
+    "expo-router": "~57.0.8",
     "expo-status-bar": "~57.0.1",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "react-hook-form": "^7.82.0",
     "react-native": "0.86.0",
     "react-native-safe-area-context": "~5.7.0",
-    "react-native-screens": "4.25.2",
+    "react-native-screens": "4.26.2",
     "react-native-web": "^0.21.2",
     "uuid": "^14.0.1",
     "zod": "^4.4.3",
@@ -25,7 +27,7 @@
   "devDependencies": {
     "@types/react": "~19.2.2",
     "@types/uuid": "^10.0.0",
-    "typescript": "~7.0.2"
+    "typescript": "~6.0.3"
   },
   "scripts": {
     "start": "expo start",
@@ -34,5 +36,5 @@
     "web": "expo start --web"
   },
   "private": true,
-  "packageManager": "pnpm@11.15.1"
+  "packageManager": "pnpm@11.17.0+sha512.cca3cea332ad254bb84145f966d19f4879615210346fc92c79a047f23a0d7b3cca3c3792f0076ba1f1831d277efbcf0a9119b31a9a60eca7fb3d6231f331ef72"
 }

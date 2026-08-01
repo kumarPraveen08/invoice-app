@@ -1,14 +1,16 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Tabs } from 'expo-router';
 import type { ComponentProps } from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { applyElevation, useTheme } from '@/shared/design-system';
 import type { TabName } from './TabBarIcon';
 
 type FloatingTabBarProps = Parameters<
   NonNullable<ComponentProps<typeof Tabs>['tabBar']>
->[0];
+>[0] & {
+  onAddPress?: () => void;
+};
 
 const ROUTE_TAB: Record<string, TabName> = {
   index: 'invoices',
@@ -29,96 +31,122 @@ const ICONS: Record<
   tools: { active: 'build', inactive: 'build-outline' },
 };
 
-export function FloatingTabBar({ state, descriptors, navigation }: FloatingTabBarProps) {
+export function FloatingTabBar({
+  state,
+  descriptors,
+  navigation,
+  onAddPress,
+}: FloatingTabBarProps) {
   const { colors, layout, radii } = useTheme();
-  const { tabBar } = layout;
+  const { tabBar, fab } = layout;
   const insets = useSafeAreaInsets();
-  const bottom = Math.max(insets.bottom, tabBar.marginBottom) + 5;
+  const bottomInset = insets.bottom;
+  const rowBottom = Math.max(bottomInset, tabBar.marginBottom) + 5;
 
   return (
     <View
       pointerEvents="box-none"
-      style={[styles.wrap, { bottom, paddingHorizontal: tabBar.marginHorizontal }]}
+      style={[
+        styles.wrap,
+        {
+          paddingBottom: bottomInset,
+          paddingHorizontal: tabBar.marginHorizontal,
+          backgroundColor: colors.background,
+        },
+      ]}
     >
       <View
         style={[
-          styles.capsule,
+          styles.row,
           {
-            height: tabBar.height,
-            backgroundColor: colors.tabBar,
-            borderRadius: radii.full,
+            marginBottom: rowBottom - bottomInset,
+            gap: tabBar.addGap,
           },
-          applyElevation('lg', colors.shadow),
         ]}
       >
-        {state.routes.map((route, index) => {
-          const focused = state.index === index;
-          const { options } = descriptors[route.key];
-          const label =
-            typeof options.tabBarLabel === 'string'
-              ? options.tabBarLabel
-              : typeof options.title === 'string'
-                ? options.title
-                : route.name;
-          const tabName = ROUTE_TAB[route.name] ?? 'invoices';
-          const icon = ICONS[tabName];
+        <View
+          style={[
+            styles.capsule,
+            {
+              height: tabBar.height,
+              backgroundColor: colors.tabBar,
+              borderRadius: radii.full,
+            },
+            applyElevation('md', colors.shadow),
+          ]}
+        >
+          {state.routes.map((route, index) => {
+            const focused = state.index === index;
+            const { options } = descriptors[route.key];
+            const label =
+              typeof options.tabBarLabel === 'string'
+                ? options.tabBarLabel
+                : typeof options.title === 'string'
+                  ? options.title
+                  : route.name;
+            const tabName = ROUTE_TAB[route.name] ?? 'invoices';
+            const icon = ICONS[tabName];
 
-          const onPress = () => {
-            const event = navigation.emit({
-              type: 'tabPress',
-              target: route.key,
-              canPreventDefault: true,
-            });
-            if (!focused && !event.defaultPrevented) {
-              navigation.navigate(route.name, route.params);
-            }
-          };
+            const onPress = () => {
+              const event = navigation.emit({
+                type: 'tabPress',
+                target: route.key,
+                canPreventDefault: true,
+              });
+              if (!focused && !event.defaultPrevented) {
+                navigation.navigate(route.name, route.params);
+              }
+            };
 
-          return (
-            <Pressable
-              key={route.key}
-              accessibilityRole="button"
-              accessibilityState={focused ? { selected: true } : {}}
-              accessibilityLabel={options.tabBarAccessibilityLabel ?? label}
-              onPress={onPress}
-              style={styles.item}
-            >
-              {focused ? (
+            return (
+              <Pressable
+                key={route.key}
+                accessibilityRole="button"
+                accessibilityState={focused ? { selected: true } : {}}
+                accessibilityLabel={options.tabBarAccessibilityLabel ?? label}
+                onPress={onPress}
+                style={styles.item}
+              >
                 <View
                   style={[
-                    styles.pill,
-                    {
-                      backgroundColor: colors.primary,
-                      paddingHorizontal: tabBar.pillPaddingH,
-                      paddingVertical: tabBar.pillPaddingV,
+                    styles.iconSlot,
+                    focused && {
+                      backgroundColor: colors.iconSoft,
+                      borderRadius: radii.full,
                     },
                   ]}
                 >
                   <Ionicons
-                    name={icon.active}
+                    name={focused ? icon.active : icon.inactive}
                     size={tabBar.iconSize}
-                    color={colors.onPrimary}
+                    color={focused ? colors.primary : colors.tabInactive}
                   />
-                  <Text
-                    style={[
-                      styles.label,
-                      { color: colors.onPrimary, fontSize: tabBar.labelSize },
-                    ]}
-                    numberOfLines={1}
-                  >
-                    {label}
-                  </Text>
                 </View>
-              ) : (
-                <Ionicons
-                  name={icon.inactive}
-                  size={tabBar.iconSize}
-                  color={colors.tabInactive}
-                />
-              )}
-            </Pressable>
-          );
-        })}
+              </Pressable>
+            );
+          })}
+        </View>
+
+        {onAddPress ? (
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel="Create invoice"
+            onPress={onAddPress}
+            style={({ pressed }) => [
+              styles.add,
+              {
+                width: fab.size,
+                height: fab.size,
+                borderRadius: radii.lg,
+                backgroundColor: colors.primary,
+                opacity: pressed ? 0.88 : 1,
+              },
+              applyElevation('md', colors.shadow),
+            ]}
+          >
+            <Ionicons name="add" size={fab.iconSize} color={colors.onPrimary} />
+          </Pressable>
+        ) : null}
       </View>
     </View>
   );
@@ -127,14 +155,20 @@ export function FloatingTabBar({ state, descriptors, navigation }: FloatingTabBa
 const styles = StyleSheet.create({
   wrap: {
     position: 'absolute',
+    bottom: 0,
     left: 0,
     right: 0,
   },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
   capsule: {
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-around',
-    paddingHorizontal: 8,
+    paddingHorizontal: 6,
   },
   item: {
     alignItems: 'center',
@@ -142,13 +176,14 @@ const styles = StyleSheet.create({
     minWidth: 44,
     minHeight: 44,
   },
-  pill: {
-    flexDirection: 'row',
+  iconSlot: {
+    width: 44,
+    height: 44,
     alignItems: 'center',
-    gap: 6,
-    borderRadius: 999,
+    justifyContent: 'center',
   },
-  label: {
-    fontWeight: '600',
+  add: {
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

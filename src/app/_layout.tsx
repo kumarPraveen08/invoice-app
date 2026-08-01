@@ -1,13 +1,17 @@
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { ThemeProvider, useTheme } from '@/shared/design-system';
+import { NavigationBar } from "expo-navigation-bar";
+import { Stack } from "expo-router";
+import { StatusBar } from "react-native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { ThemeProvider, useTheme } from "@/shared/design-system";
 
 function RootNavigator() {
   const { colors, mode } = useTheme();
+  const statusBarStyle = mode === "dark" ? "light-content" : "dark-content";
+  const navigationBarStyle = mode === "dark" ? "light" : "dark";
 
   return (
     <>
+      <NavigationBar style={navigationBarStyle} />
       <Stack
         screenOptions={{
           contentStyle: { backgroundColor: colors.background },
@@ -17,7 +21,11 @@ function RootNavigator() {
       >
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       </Stack>
-      <StatusBar style={mode === 'dark' ? 'light' : 'dark'} />
+      <StatusBar
+        animated
+        backgroundColor={colors.background}
+        barStyle={statusBarStyle}
+      />
     </>
   );
 }

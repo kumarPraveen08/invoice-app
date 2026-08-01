@@ -6,8 +6,8 @@ type Props = {
   icon: keyof typeof Ionicons.glyphMap;
   title: string;
   description: string;
-  actionLabel: string;
-  onAction: () => void;
+  actionLabel?: string;
+  onAction?: () => void;
 };
 
 export function EmptyState({
@@ -30,7 +30,9 @@ export function EmptyState({
       <Text variant="body" muted style={styles.description}>
         {description}
       </Text>
-      <Button label={actionLabel} icon="add" onPress={onAction} />
+      {actionLabel && onAction ? (
+        <Button label={actionLabel} icon="add" onPress={onAction} />
+      ) : null}
     </View>
   );
 }
