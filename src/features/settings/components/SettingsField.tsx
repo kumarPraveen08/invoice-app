@@ -6,16 +6,29 @@ import {
 } from 'react-native';
 import { Text, useTheme } from '@/shared/design-system';
 
+const ERROR = '#B3261E';
+
 type FieldProps = TextInputProps & {
   label: string;
+  error?: string;
 };
 
-export function SettingsField({ label, multiline, style, ...props }: FieldProps) {
+export function SettingsField({
+  label,
+  multiline,
+  style,
+  error,
+  ...props
+}: FieldProps) {
   const { colors, space } = useTheme();
 
   return (
     <View style={{ marginBottom: space.xl }}>
-      <Text variant="caption" muted style={styles.label}>
+      <Text
+        variant="caption"
+        muted={!error}
+        style={[styles.label, error ? { color: ERROR } : null]}
+      >
         {label}
       </Text>
       <TextInput
@@ -26,7 +39,7 @@ export function SettingsField({ label, multiline, style, ...props }: FieldProps)
           styles.input,
           {
             color: colors.onSurface,
-            borderBottomColor: colors.onSurfaceMuted,
+            borderBottomColor: error ? ERROR : colors.onSurfaceMuted,
             paddingVertical: multiline ? space.md : space.sm + 2,
             minHeight: multiline ? 96 : undefined,
             textAlignVertical: multiline ? 'top' : 'center',
@@ -34,6 +47,11 @@ export function SettingsField({ label, multiline, style, ...props }: FieldProps)
           style,
         ]}
       />
+      {error ? (
+        <Text variant="caption" style={{ color: ERROR, marginTop: 6 }}>
+          {error}
+        </Text>
+      ) : null}
     </View>
   );
 }

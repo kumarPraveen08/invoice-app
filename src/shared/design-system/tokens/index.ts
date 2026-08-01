@@ -1,4 +1,11 @@
-export { darkColors, lightColors, type ColorPalette } from './colors';
+export {
+  createColorPalette,
+  darkColors,
+  lightColors,
+  THEME_SEEDS,
+  type ColorPalette,
+  type ThemeSeed,
+} from './colors';
 export { applyElevation, elevation } from './elevation';
 export { fab, tabBar } from './layout';
 export { radii } from './radii';

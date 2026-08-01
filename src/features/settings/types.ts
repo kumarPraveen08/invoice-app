@@ -1,5 +1,8 @@
-export type DateFormat = 'DD/MM/YYYY' | 'MM/DD/YYYY' | 'YYYY-MM-DD';
-export type TimeFormat = '12h' | '24h';
+import type { ThemeSeed } from "@/shared/design-system/tokens/colors";
+import type { ThemePreference } from "@/shared/design-system/theme";
+
+export type DateFormat = "DD/MM/YYYY" | "MM/DD/YYYY" | "YYYY-MM-DD";
+export type TimeFormat = "12h" | "24h";
 
 export type BusinessDetails = {
   name: string;
@@ -31,11 +34,59 @@ export type AppPreferences = {
   timeFormat: TimeFormat;
   invoicePrefix: string;
   invoiceNextNumber: string;
+  /** From onboarding survey. */
+  offering: "" | "products" | "services" | "both";
 };
 
 export type InvoiceDefaults = {
   notes: string;
   terms: string;
+};
+
+export type AppearanceSettings = {
+  mode: ThemePreference;
+  seed: ThemeSeed;
+};
+
+export type InvoiceTemplateLayout =
+  | "classic"
+  | "modern"
+  | "compact"
+  | "centered"
+  | "stripe"
+  | "formal";
+
+export type InvoiceTemplateFont =
+  | "sans"
+  | "serif"
+  | "mono"
+  | "rounded"
+  | "condensed"
+  | "times";
+
+export type InvoiceTemplateFields = {
+  logo: boolean;
+  businessAddress: boolean;
+  taxNumber: boolean;
+  dueDate: boolean;
+  notes: boolean;
+  terms: boolean;
+  bankDetails: boolean;
+  signature: boolean;
+};
+
+export type InvoiceTemplate = {
+  id: string;
+  name: string;
+  layout: InvoiceTemplateLayout;
+  accent: string;
+  font: InvoiceTemplateFont;
+  fields: InvoiceTemplateFields;
+};
+
+export type InvoiceTemplateLibrary = {
+  defaultId: string;
+  customs: InvoiceTemplate[];
 };
 
 export type AppSettings = {
@@ -44,39 +95,56 @@ export type AppSettings = {
   bank: BankDetails;
   preferences: AppPreferences;
   invoiceDefaults: InvoiceDefaults;
+  appearance: AppearanceSettings;
+  invoiceTemplates: InvoiceTemplateLibrary;
+  onboardingComplete: boolean;
+  isAuthenticated: boolean;
+  authEmail: string;
 };
 
 export const defaultSettings: AppSettings = {
   business: {
-    name: '',
-    phone: '',
-    email: '',
-    taxNumber: '',
-    website: '',
-    address: '',
+    name: "",
+    phone: "",
+    email: "",
+    taxNumber: "",
+    website: "",
+    address: "",
   },
   branding: {
     logoUri: null,
     signatureUri: null,
-    signatureName: '',
+    signatureName: "",
   },
   bank: {
-    accountName: '',
-    accountNumber: '',
-    bankName: '',
-    routingCode: '',
-    paymentInstructions: '',
+    accountName: "",
+    accountNumber: "",
+    bankName: "",
+    routingCode: "",
+    paymentInstructions: "",
   },
   preferences: {
-    currency: 'INR',
-    taxRate: '18',
-    dateFormat: 'DD/MM/YYYY',
-    timeFormat: '12h',
-    invoicePrefix: 'INV-',
-    invoiceNextNumber: '1001',
+    currency: "INR",
+    taxRate: "18",
+    dateFormat: "DD/MM/YYYY",
+    timeFormat: "12h",
+    invoicePrefix: "INV-",
+    invoiceNextNumber: "1001",
+    offering: "",
   },
   invoiceDefaults: {
-    notes: '',
-    terms: '',
+    notes: "",
+    terms: "",
   },
+  appearance: {
+    mode: "system",
+    seed: "violet",
+  },
+  invoiceTemplates: {
+    defaultId: "preset_base",
+    customs: [],
+  },
+  onboardingComplete: false,
+  isAuthenticated: false,
+  authEmail: "",
 };

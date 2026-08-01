@@ -36,7 +36,16 @@
           "enforceContrast": false,
           "style": "dark"
         }
-      ]
+      ],
+      "expo-sharing",
+      "expo-splash-screen",
+      [
+        "expo-contacts",
+        {
+          "contactsPermission": "Allow Invoice App to import clients from your contacts."
+        }
+      ],
+      "@react-native-community/datetimepicker"
     ]
   }
 }

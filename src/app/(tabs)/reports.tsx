@@ -1,9 +1,3 @@
-import { Screen, Text } from '@/shared/design-system';
+import { ReportsScreen } from '@/features/reports';
 
-export default function ReportsScreen() {
-  return (
-    <Screen style={{ alignItems: 'center', justifyContent: 'center' }}>
-      <Text variant="subtitle">Reports</Text>
-    </Screen>
-  );
-}
+export default ReportsScreen;

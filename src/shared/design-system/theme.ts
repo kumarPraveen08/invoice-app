@@ -1,16 +1,17 @@
 import {
-  darkColors,
+  createColorPalette,
   elevation,
   fab,
-  lightColors,
   radii,
   space,
   tabBar,
   typography,
   type ColorPalette,
+  type ThemeSeed,
 } from './tokens';
 
 export type ThemeMode = 'light' | 'dark';
+export type ThemePreference = 'system' | ThemeMode;
 
 export type Theme = {
   mode: ThemeMode;
@@ -25,25 +26,20 @@ export type Theme = {
   };
 };
 
-export const lightTheme: Theme = {
-  mode: 'light',
-  colors: lightColors,
-  space,
-  typography,
-  radii,
-  elevation,
-  layout: { tabBar, fab },
-};
+export function createTheme(mode: ThemeMode, seed: ThemeSeed = 'violet'): Theme {
+  return {
+    mode,
+    colors: createColorPalette(mode, seed),
+    space,
+    typography,
+    radii,
+    elevation,
+    layout: { tabBar, fab },
+  };
+}
 
-export const darkTheme: Theme = {
-  mode: 'dark',
-  colors: darkColors,
-  space,
-  typography,
-  radii,
-  elevation,
-  layout: { tabBar, fab },
-};
+export const lightTheme: Theme = createTheme('light', 'violet');
+export const darkTheme: Theme = createTheme('dark', 'violet');
 
 export const themes: Record<ThemeMode, Theme> = {
   light: lightTheme,

@@ -1,8 +1,17 @@
 export { Button, IconButton, Screen, Text } from './components';
 export { ThemeProvider } from './ThemeProvider';
-export { darkTheme, lightTheme, themes, type Theme, type ThemeMode } from './theme';
+export {
+  createTheme,
+  darkTheme,
+  lightTheme,
+  themes,
+  type Theme,
+  type ThemeMode,
+  type ThemePreference,
+} from './theme';
 export {
   applyElevation,
+  createColorPalette,
   darkColors,
   elevation,
   fab,
@@ -10,7 +19,9 @@ export {
   radii,
   space,
   tabBar,
+  THEME_SEEDS,
   typography,
   type ColorPalette,
+  type ThemeSeed,
 } from './tokens';
 export { useTheme } from './useTheme';

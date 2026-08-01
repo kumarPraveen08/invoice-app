@@ -1,7 +1,10 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import type { ReactNode } from 'react';
 import {
+  Dimensions,
+  KeyboardAvoidingView,
   Modal,
+  Platform,
   Pressable,
   StyleSheet,
   View,
@@ -14,11 +17,21 @@ type Props = {
   onClose: () => void;
   title: string;
   children: ReactNode;
+  /** Stretch sheet toward full screen (e.g. search focused). */
+  expanded?: boolean;
 };
 
-export function BottomSheet({ visible, onClose, title, children }: Props) {
+export function BottomSheet({
+  visible,
+  onClose,
+  title,
+  children,
+  expanded = false,
+}: Props) {
   const { colors, radii, space } = useTheme();
   const insets = useSafeAreaInsets();
+  const fullHeight =
+    Dimensions.get('window').height - Math.max(insets.top, space.sm);
 
   return (
     <Modal
@@ -27,7 +40,10 @@ export function BottomSheet({ visible, onClose, title, children }: Props) {
       animationType="slide"
       onRequestClose={onClose}
     >
-      <View style={styles.overlay}>
+      <KeyboardAvoidingView
+        style={styles.overlay}
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+      >
         <Pressable
           accessibilityRole="button"
           accessibilityLabel="Close sheet"
@@ -43,9 +59,12 @@ export function BottomSheet({ visible, onClose, title, children }: Props) {
               borderTopRightRadius: radii.xl,
               paddingBottom: Math.max(insets.bottom, space.lg),
             },
+            expanded ? { height: fullHeight } : null,
           ]}
         >
-          <View style={[styles.handle, { backgroundColor: colors.onSurfaceMuted }]} />
+          <View
+            style={[styles.handle, { backgroundColor: colors.onSurfaceMuted }]}
+          />
           <View style={styles.header}>
             <Text variant="subtitle">{title}</Text>
             <Pressable
@@ -57,9 +76,11 @@ export function BottomSheet({ visible, onClose, title, children }: Props) {
               <Ionicons name="close" size={24} color={colors.onSurfaceMuted} />
             </Pressable>
           </View>
-          {children}
+          <View style={expanded ? styles.bodyExpanded : undefined}>
+            {children}
+          </View>
         </View>
-      </View>
+      </KeyboardAvoidingView>
     </Modal>
   );
 }
@@ -76,6 +97,10 @@ const styles = StyleSheet.create({
   sheet: {
     paddingHorizontal: 20,
     paddingTop: 8,
+  },
+  bodyExpanded: {
+    flex: 1,
+    minHeight: 0,
   },
   handle: {
     alignSelf: 'center',
