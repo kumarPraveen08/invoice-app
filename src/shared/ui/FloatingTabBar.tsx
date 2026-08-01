@@ -9,12 +9,12 @@ import type { TabName } from './TabBarIcon';
 type FloatingTabBarProps = Parameters<
   NonNullable<ComponentProps<typeof Tabs>['tabBar']>
 >[0] & {
-  onAddPress?: () => void;
+  onFabPress?: (routeName: string) => void;
 };
 
 const ROUTE_TAB: Record<string, TabName> = {
   index: 'invoices',
-  estimates: 'estimates',
+  catalogue: 'catalogue',
   clients: 'clients',
   reports: 'reports',
   tools: 'tools',
@@ -25,23 +25,29 @@ const ICONS: Record<
   { active: keyof typeof Ionicons.glyphMap; inactive: keyof typeof Ionicons.glyphMap }
 > = {
   invoices: { active: 'receipt', inactive: 'receipt-outline' },
-  estimates: { active: 'document-text', inactive: 'document-text-outline' },
+  catalogue: { active: 'grid', inactive: 'grid-outline' },
   clients: { active: 'people', inactive: 'people-outline' },
   reports: { active: 'bar-chart', inactive: 'bar-chart-outline' },
   tools: { active: 'settings', inactive: 'settings-outline' },
 };
 
+const CREATE_ROUTES = new Set(['index', 'catalogue', 'clients']);
+
 export function FloatingTabBar({
   state,
   descriptors,
   navigation,
-  onAddPress,
+  onFabPress,
 }: FloatingTabBarProps) {
   const { colors, layout, radii } = useTheme();
   const { tabBar, fab } = layout;
   const insets = useSafeAreaInsets();
   const bottomInset = insets.bottom;
   const rowBottom = Math.max(bottomInset, tabBar.marginBottom) + 5;
+  const activeRoute = state.routes[state.index]?.name ?? 'index';
+  const showCreate = CREATE_ROUTES.has(activeRoute);
+  const fabIcon = showCreate ? 'add' : 'ellipsis-horizontal';
+  const fabLabel = showCreate ? 'Create' : 'More actions';
 
   return (
     <View
@@ -127,11 +133,11 @@ export function FloatingTabBar({
           })}
         </View>
 
-        {onAddPress ? (
+        {onFabPress ? (
           <Pressable
             accessibilityRole="button"
-            accessibilityLabel="Create invoice"
-            onPress={onAddPress}
+            accessibilityLabel={fabLabel}
+            onPress={() => onFabPress(activeRoute)}
             style={({ pressed }) => [
               styles.add,
               {
@@ -144,7 +150,11 @@ export function FloatingTabBar({
               applyElevation('md', colors.shadow),
             ]}
           >
-            <Ionicons name="add" size={fab.iconSize} color={colors.onPrimary} />
+            <Ionicons
+              name={fabIcon}
+              size={fab.iconSize}
+              color={colors.onPrimary}
+            />
           </Pressable>
         ) : null}
       </View>

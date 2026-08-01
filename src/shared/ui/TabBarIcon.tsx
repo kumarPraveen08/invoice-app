@@ -9,7 +9,7 @@ type IconPair = {
 
 const ICONS = {
   invoices: { active: 'receipt', inactive: 'receipt-outline' },
-  estimates: { active: 'document-text', inactive: 'document-text-outline' },
+  catalogue: { active: 'grid', inactive: 'grid-outline' },
   clients: { active: 'people', inactive: 'people-outline' },
   reports: { active: 'bar-chart', inactive: 'bar-chart-outline' },
   tools: { active: 'settings', inactive: 'settings-outline' },

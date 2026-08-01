@@ -21,6 +21,30 @@ function RootNavigator() {
       >
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="settings" options={{ headerShown: false }} />
+        <Stack.Screen
+          name="invoice/new"
+          options={{
+            title: 'New invoice',
+            headerShadowVisible: false,
+            headerStyle: { backgroundColor: colors.background },
+          }}
+        />
+        <Stack.Screen
+          name="catalogue/new"
+          options={{
+            title: 'New catalogue item',
+            headerShadowVisible: false,
+            headerStyle: { backgroundColor: colors.background },
+          }}
+        />
+        <Stack.Screen
+          name="clients/new"
+          options={{
+            title: 'New client',
+            headerShadowVisible: false,
+            headerStyle: { backgroundColor: colors.background },
+          }}
+        />
       </Stack>
       <StatusBar
         animated
