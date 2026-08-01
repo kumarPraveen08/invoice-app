@@ -378,7 +378,7 @@ export default function ReportsScreen() {
               accessibilityRole="button"
               accessibilityLabel={`Open ${client.name}`}
               onPress={() => openClient(client.name)}
-              style={({ pressed }) => [
+              style={[
                 styles.clientRow,
                 {
                   paddingHorizontal: space.lg,
@@ -388,7 +388,6 @@ export default function ReportsScreen() {
                       ? 0
                       : StyleSheet.hairlineWidth,
                   borderBottomColor: colors.background,
-                  backgroundColor: pressed ? colors.background : undefined,
                 },
               ]}
             >

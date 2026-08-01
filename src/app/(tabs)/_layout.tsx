@@ -123,6 +123,16 @@ export default function TabsLayout() {
                   onPress={() => router.push('/clients/search')}
                 />
                 <HeaderIcon
+                  icon="people-outline"
+                  label="Add from contacts"
+                  onPress={() =>
+                    router.push({
+                      pathname: '/clients/new',
+                      params: { from: 'contacts' },
+                    })
+                  }
+                />
+                <HeaderIcon
                   icon="cloud-upload-outline"
                   label="Bulk import clients"
                   onPress={() => router.push('/clients/import')}

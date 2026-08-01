@@ -1,3 +1,4 @@
+export { ActionSheet, type SheetAction } from './ActionSheet';
 export { BottomSheet } from './BottomSheet';
 export { EmptyState } from './EmptyState';
 export { FloatingTabBar } from './FloatingTabBar';

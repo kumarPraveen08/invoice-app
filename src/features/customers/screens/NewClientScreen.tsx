@@ -11,7 +11,7 @@ import { useClientsStore } from '../store';
 export default function NewClientScreen() {
   const { space } = useTheme();
   const navigation = useNavigation();
-  const { id } = useLocalSearchParams<{ id?: string }>();
+  const { id, from } = useLocalSearchParams<{ id?: string; from?: string }>();
   const existing = useClientsStore((s) =>
     id ? s.clients.find((row) => row.id === id) : undefined,
   );
@@ -76,6 +76,13 @@ export default function NewClientScreen() {
       );
     }
   };
+
+  useEffect(() => {
+    if (editing || from !== 'contacts') return;
+    void importFromContacts();
+    // Open picker once when entered via contacts shortcut.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [editing, from]);
 
   const onSave = () => {
     const trimmedName = name.trim();

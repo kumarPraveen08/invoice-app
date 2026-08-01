@@ -11,9 +11,13 @@ type Props = {
 export function MoreCreateSheet({ visible, onClose }: Props) {
   const { space } = useTheme();
 
-  const go = (path: '/invoice/new' | '/catalogue/new' | '/clients/new') => {
+  const go = (
+    path: '/invoice/new' | '/catalogue/new' | '/clients/new',
+    params?: Record<string, string>,
+  ) => {
     onClose();
-    router.push(path);
+    if (params) router.push({ pathname: path, params });
+    else router.push(path);
   };
 
   return (
@@ -36,6 +40,12 @@ export function MoreCreateSheet({ visible, onClose }: Props) {
           label="Client"
           icon="person-add-outline"
           onPress={() => go('/clients/new')}
+        />
+        <Button
+          label="Client from contacts"
+          variant="secondary"
+          icon="people-outline"
+          onPress={() => go('/clients/new', { from: 'contacts' })}
         />
         <Button label="Cancel" variant="ghost" onPress={onClose} />
       </View>
