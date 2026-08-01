@@ -1,14 +1,14 @@
-import { useEffect, useMemo, useState } from 'react';
-import Ionicons from '@expo/vector-icons/Ionicons';
+import { useEffect, useMemo, useState } from "react";
+import Ionicons from "@expo/vector-icons/Ionicons";
 import {
   Pressable,
   ScrollView,
   StyleSheet,
   TextInput,
   View,
-} from 'react-native';
-import { Button, Text, useTheme } from '@/shared/design-system';
-import { BottomSheet } from './BottomSheet';
+} from "react-native";
+import { Button, Text, useTheme } from "@/shared/design-system";
+import { BottomSheet } from "./BottomSheet";
 
 export type PickerOption = {
   id: string;
@@ -33,19 +33,21 @@ export function SearchablePickerSheet({
   onClose,
   title,
   options,
-  searchPlaceholder = 'Search',
+  searchPlaceholder = "Search",
   multiple = false,
-  confirmLabel = 'Add selected',
+  confirmLabel = "Add selected",
   onSelect,
 }: Props) {
   const { colors, radii, space } = useTheme();
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
   const [picked, setPicked] = useState<string[]>([]);
+  const [searchFocused, setSearchFocused] = useState(false);
 
   useEffect(() => {
     if (!visible) return;
-    setQuery('');
+    setQuery("");
     setPicked([]);
+    setSearchFocused(false);
   }, [visible]);
 
   const filtered = useMemo(() => {
@@ -70,7 +72,12 @@ export function SearchablePickerSheet({
   };
 
   return (
-    <BottomSheet visible={visible} onClose={onClose} title={title}>
+    <BottomSheet
+      visible={visible}
+      onClose={onClose}
+      title={title}
+      expanded={searchFocused}
+    >
       <View
         style={[
           styles.search,
@@ -90,13 +97,14 @@ export function SearchablePickerSheet({
           placeholderTextColor={colors.onSurfaceMuted}
           autoCorrect={false}
           autoCapitalize="none"
+          onFocus={() => setSearchFocused(true)}
           style={[styles.searchInput, { color: colors.onSurface }]}
         />
         {query.length > 0 ? (
           <Pressable
             accessibilityRole="button"
             accessibilityLabel="Clear search"
-            onPress={() => setQuery('')}
+            onPress={() => setQuery("")}
             hitSlop={8}
           >
             <Ionicons
@@ -109,8 +117,11 @@ export function SearchablePickerSheet({
       </View>
 
       <ScrollView
-        style={{ maxHeight: 360 }}
+        style={searchFocused ? styles.listExpanded : styles.list}
+        contentContainerStyle={searchFocused ? styles.listContent : undefined}
         keyboardShouldPersistTaps="handled"
+        keyboardDismissMode="on-drag"
+        showsVerticalScrollIndicator={false}
         bounces={false}
       >
         {filtered.length === 0 ? (
@@ -136,7 +147,7 @@ export function SearchablePickerSheet({
               >
                 {multiple ? (
                   <Ionicons
-                    name={selected ? 'checkbox' : 'square-outline'}
+                    name={selected ? "checkbox" : "square-outline"}
                     size={22}
                     color={selected ? colors.primary : colors.onSurfaceMuted}
                     style={{ marginRight: space.md }}
@@ -145,7 +156,7 @@ export function SearchablePickerSheet({
                 <View style={{ flex: 1, minWidth: 0 }}>
                   <Text
                     variant="body"
-                    style={{ fontWeight: '600' }}
+                    style={{ fontWeight: "600" }}
                     numberOfLines={1}
                   >
                     {option.title}
@@ -183,8 +194,8 @@ export function SearchablePickerSheet({
           }}
           style={{
             marginTop: space.md,
-            alignSelf: 'stretch',
-            justifyContent: 'center',
+            alignSelf: "stretch",
+            justifyContent: "center",
             opacity: picked.length === 0 ? 0.45 : 1,
           }}
         />
@@ -195,8 +206,8 @@ export function SearchablePickerSheet({
 
 const styles = StyleSheet.create({
   search: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     gap: 8,
     minHeight: 44,
   },
@@ -205,9 +216,20 @@ const styles = StyleSheet.create({
     fontSize: 16,
     paddingVertical: 10,
   },
+  list: {
+    maxHeight: 360,
+  },
+  listExpanded: {
+    flex: 1,
+    minHeight: 0,
+  },
+  listContent: {
+    flexGrow: 1,
+    paddingBottom: 12,
+  },
   row: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
 });

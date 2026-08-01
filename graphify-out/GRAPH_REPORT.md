@@ -1,7 +1,7 @@
 # Graph Report - invoice-app  (2026-08-02)
 
 ## Corpus Check
-- 114 files · ~40,422 words
+- 114 files · ~40,507 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `0c7cc243`
+- Built from commit: `83cdd81b`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 

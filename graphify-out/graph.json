@@ -757,7 +757,7 @@
       "label": "HeaderIcon()",
       "file_type": "code",
       "source_file": "src/app/(tabs)/_layout.tsx",
-      "source_location": "L16",
+      "source_location": "L18",
       "_origin": "ast",
       "id": "tabs_layout_headericon",
       "community": 8,
@@ -767,7 +767,7 @@
       "label": "TabsLayout()",
       "file_type": "code",
       "source_file": "src/app/(tabs)/_layout.tsx",
-      "source_location": "L39",
+      "source_location": "L41",
       "_origin": "ast",
       "id": "tabs_layout_tabslayout",
       "community": 8,
@@ -1367,7 +1367,7 @@
       "label": "ClientDetailScreen()",
       "file_type": "code",
       "source_file": "src/features/customers/screens/ClientDetailScreen.tsx",
-      "source_location": "L25",
+      "source_location": "L20",
       "_origin": "ast",
       "id": "screens_clientdetailscreen_clientdetailscreen",
       "community": 7,
@@ -3567,7 +3567,7 @@
       "label": "Props",
       "file_type": "code",
       "source_file": "src/shared/ui/BottomSheet.tsx",
-      "source_location": "L12",
+      "source_location": "L15",
       "_origin": "ast",
       "id": "ui_bottomsheet_props",
       "community": 8,
@@ -3577,7 +3577,7 @@
       "label": "BottomSheet()",
       "file_type": "code",
       "source_file": "src/shared/ui/BottomSheet.tsx",
-      "source_location": "L19",
+      "source_location": "L24",
       "_origin": "ast",
       "id": "ui_bottomsheet_bottomsheet",
       "community": 8,
@@ -3587,7 +3587,7 @@
       "label": "styles",
       "file_type": "code",
       "source_file": "src/shared/ui/BottomSheet.tsx",
-      "source_location": "L67",
+      "source_location": "L88",
       "_origin": "ast",
       "id": "ui_bottomsheet_styles",
       "community": 8,
@@ -3847,7 +3847,7 @@
       "label": "styles",
       "file_type": "code",
       "source_file": "src/shared/ui/SearchablePickerSheet.tsx",
-      "source_location": "L196",
+      "source_location": "L206",
       "_origin": "ast",
       "id": "ui_searchablepickersheet_styles",
       "community": 8,
@@ -10648,9 +10648,9 @@
       "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
       "source_location": "L62",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "screens_newinvoicescreen",
-      "target": "screens_newinvoicescreen_compactinput",
-      "confidence_score": 1.0
+      "target": "screens_newinvoicescreen_compactinput"
     },
     {
       "relation": "contains",
@@ -10782,9 +10782,9 @@
       "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "screens_newinvoicescreen",
-      "target": "ui_searchablepickersheet_searchablepickersheet",
-      "confidence_score": 1.0
+      "target": "ui_searchablepickersheet_searchablepickersheet"
     },
     {
       "relation": "calls",
@@ -13680,9 +13680,9 @@
       "source_file": "src/shared/ui/SearchablePickerSheet.tsx",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ui_searchablepickersheet",
-      "target": "components_button_button",
-      "confidence_score": 1.0
+      "target": "components_button_button"
     },
     {
       "relation": "contains",
@@ -14024,9 +14024,9 @@
       "source_file": "src/shared/ui/SearchablePickerSheet.tsx",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ui_searchablepickersheet",
-      "target": "components_text_text",
-      "confidence_score": 1.0
+      "target": "components_text_text"
     },
     {
       "relation": "imports",
@@ -14211,9 +14211,9 @@
       "source_file": "src/shared/ui/SearchablePickerSheet.tsx",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ui_searchablepickersheet",
-      "target": "design_system_index",
-      "confidence_score": 1.0
+      "target": "design_system_index"
     },
     {
       "relation": "imports_from",
@@ -14822,9 +14822,9 @@
       "source_file": "src/shared/ui/SearchablePickerSheet.tsx",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ui_searchablepickersheet",
-      "target": "design_system_usetheme_usetheme",
-      "confidence_score": 1.0
+      "target": "design_system_usetheme_usetheme"
     },
     {
       "relation": "calls",
@@ -15236,9 +15236,9 @@
       "source_file": "src/shared/ui/SearchablePickerSheet.tsx",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ui_searchablepickersheet",
-      "target": "ui_bottomsheet",
-      "confidence_score": 1.0
+      "target": "ui_bottomsheet"
     },
     {
       "relation": "re_exports",
@@ -15258,9 +15258,9 @@
       "source_file": "src/shared/ui/SearchablePickerSheet.tsx",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ui_searchablepickersheet",
-      "target": "ui_bottomsheet_bottomsheet",
-      "confidence_score": 1.0
+      "target": "ui_bottomsheet_bottomsheet"
     },
     {
       "relation": "contains",
@@ -15527,9 +15527,9 @@
       "source_file": "src/shared/ui/index.ts",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ui_index",
-      "target": "ui_searchablepickersheet",
-      "confidence_score": 1.0
+      "target": "ui_searchablepickersheet"
     },
     {
       "relation": "contains",
@@ -15537,9 +15537,9 @@
       "source_file": "src/shared/ui/SearchablePickerSheet.tsx",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ui_searchablepickersheet",
-      "target": "ui_searchablepickersheet_pickeroption",
-      "confidence_score": 1.0
+      "target": "ui_searchablepickersheet_pickeroption"
     },
     {
       "relation": "contains",
@@ -15547,9 +15547,9 @@
       "source_file": "src/shared/ui/SearchablePickerSheet.tsx",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ui_searchablepickersheet",
-      "target": "ui_searchablepickersheet_props",
-      "confidence_score": 1.0
+      "target": "ui_searchablepickersheet_props"
     },
     {
       "relation": "contains",
@@ -15557,9 +15557,9 @@
       "source_file": "src/shared/ui/SearchablePickerSheet.tsx",
       "source_location": "L31",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ui_searchablepickersheet",
-      "target": "ui_searchablepickersheet_searchablepickersheet",
-      "confidence_score": 1.0
+      "target": "ui_searchablepickersheet_searchablepickersheet"
     },
     {
       "relation": "contains",
@@ -15567,9 +15567,9 @@
       "source_file": "src/shared/ui/SearchablePickerSheet.tsx",
       "source_location": "L196",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ui_searchablepickersheet",
-      "target": "ui_searchablepickersheet_styles",
-      "confidence_score": 1.0
+      "target": "ui_searchablepickersheet_styles"
     },
     {
       "relation": "re_exports",
@@ -15578,9 +15578,9 @@
       "source_file": "src/shared/ui/index.ts",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ui_index",
-      "target": "ui_searchablepickersheet_pickeroption",
-      "confidence_score": 1.0
+      "target": "ui_searchablepickersheet_pickeroption"
     },
     {
       "relation": "re_exports",
@@ -15589,9 +15589,9 @@
       "source_file": "src/shared/ui/index.ts",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ui_index",
-      "target": "ui_searchablepickersheet_searchablepickersheet",
-      "confidence_score": 1.0
+      "target": "ui_searchablepickersheet_searchablepickersheet"
     },
     {
       "relation": "re_exports",
@@ -16380,5 +16380,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "0c7cc2435d30ce9e42167b43ee94d6a24e9d5b5f"
+  "built_at_commit": "83cdd81b82d061e3ea9e48fd3fb114a1e43686f8"
 }

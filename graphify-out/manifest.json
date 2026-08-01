@@ -100,8 +100,8 @@
     "semantic_hash": ""
   },
   "src/app/(tabs)/_layout.tsx": {
-    "mtime": 1785617007.8582985,
-    "ast_hash": "a5bbcbb3ebe9262325f5af5da9f80ba0",
+    "mtime": 1785617440.9020782,
+    "ast_hash": "5a1532076fbcc768d62cc4a31f32180a",
     "semantic_hash": ""
   },
   "src/app/(tabs)/clients.tsx": {
@@ -230,8 +230,8 @@
     "semantic_hash": ""
   },
   "src/shared/ui/BottomSheet.tsx": {
-    "mtime": 1785307586.9987237,
-    "ast_hash": "f5443fbdf54d584651d368a6ef45bf8e",
+    "mtime": 1785617641.6501455,
+    "ast_hash": "9300e2e50671d3ac5d823d545d8c623b",
     "semantic_hash": ""
   },
   "src/shared/ui/EmptyState.tsx": {
@@ -430,8 +430,8 @@
     "semantic_hash": ""
   },
   "src/features/catalogue/screens/CatalogueDetailScreen.tsx": {
-    "mtime": 1785617007.654567,
-    "ast_hash": "06c03ead7249e15ced28f431af9d3672",
+    "mtime": 1785617296.1042597,
+    "ast_hash": "a2e12d48834a07bf4b36dffef2e0eeda",
     "semantic_hash": ""
   },
   "src/features/catalogue/screens/CatalogueScreen.tsx": {
@@ -465,8 +465,8 @@
     "semantic_hash": ""
   },
   "src/features/customers/screens/ClientDetailScreen.tsx": {
-    "mtime": 1785617007.2310367,
-    "ast_hash": "78d63cd957063de853e5b712d4914a61",
+    "mtime": 1785617267.883369,
+    "ast_hash": "ee456fcb28b5380ddc41f41fbfca4707",
     "semantic_hash": ""
   },
   "src/features/customers/screens/ClientsSearchScreen.tsx": {
@@ -515,8 +515,8 @@
     "semantic_hash": ""
   },
   "src/features/invoices/screens/InvoiceDetailScreen.tsx": {
-    "mtime": 1785617008.1421962,
-    "ast_hash": "4b6a81187d30f0fa8d26b0b5b4631204",
+    "mtime": 1785617283.3346817,
+    "ast_hash": "b6665e13f4c0da1afe6bfa0766e7d98e",
     "semantic_hash": ""
   },
   "src/features/invoices/screens/InvoiceSearchScreen.tsx": {
@@ -600,8 +600,8 @@
     "semantic_hash": ""
   },
   "src/shared/ui/SearchablePickerSheet.tsx": {
-    "mtime": 1785617006.5480907,
-    "ast_hash": "b14783f0b62e8ed706fba51504b0b4c4",
+    "mtime": 1785617646.5415766,
+    "ast_hash": "d1b3435df2fb2a16945238fa27cfa419",
     "semantic_hash": ""
   }
 }
