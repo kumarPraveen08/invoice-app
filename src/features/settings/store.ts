@@ -4,6 +4,7 @@ import { mmkvStorage } from '@/shared/lib/mmkv';
 import {
   defaultSettings,
   type AppSettings,
+  type AppearanceSettings,
   type BankDetails,
   type BrandingDetails,
   type BusinessDetails,
@@ -17,6 +18,7 @@ type SettingsState = AppSettings & {
   updateBank: (patch: Partial<BankDetails>) => void;
   updatePreferences: (patch: Partial<AppPreferences>) => void;
   updateInvoiceDefaults: (patch: Partial<InvoiceDefaults>) => void;
+  updateAppearance: (patch: Partial<AppearanceSettings>) => void;
 };
 
 export const useSettingsStore = create<SettingsState>()(
@@ -35,6 +37,10 @@ export const useSettingsStore = create<SettingsState>()(
         set((state) => ({
           invoiceDefaults: { ...state.invoiceDefaults, ...patch },
         })),
+      updateAppearance: (patch) =>
+        set((state) => ({
+          appearance: { ...state.appearance, ...patch },
+        })),
     }),
     {
       name: 'invoice-app-settings',
@@ -45,7 +51,19 @@ export const useSettingsStore = create<SettingsState>()(
         bank: state.bank,
         preferences: state.preferences,
         invoiceDefaults: state.invoiceDefaults,
+        appearance: state.appearance,
       }),
+      merge: (persisted, current) => {
+        const stored = (persisted ?? {}) as Partial<AppSettings>;
+        return {
+          ...current,
+          ...stored,
+          appearance: {
+            ...current.appearance,
+            ...(stored.appearance ?? {}),
+          },
+        };
+      },
     },
   ),
 );

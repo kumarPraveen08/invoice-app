@@ -57,7 +57,6 @@ export default function ClientDetailScreen() {
                 })
               }
               hitSlop={8}
-              style={{ padding: 4 }}
             >
               <Ionicons
                 name="pencil-outline"

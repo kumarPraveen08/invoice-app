@@ -1,3 +1,4 @@
+export { AppearanceScreen } from './screens/AppearanceScreen';
 export { SettingsScreen } from './screens/SettingsScreen';
 export { BusinessDetailsScreen } from './screens/BusinessDetailsScreen';
 export { BrandingScreen } from './screens/BrandingScreen';

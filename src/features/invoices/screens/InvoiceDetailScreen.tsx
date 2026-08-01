@@ -1,24 +1,24 @@
-import { useEffect } from 'react';
-import { Pressable, Share, View } from 'react-native';
-import Ionicons from '@expo/vector-icons/Ionicons';
-import { router, useLocalSearchParams, useNavigation } from 'expo-router';
-import { Text, useTheme } from '@/shared/design-system';
+import { useEffect } from "react";
+import { Pressable, Share, View } from "react-native";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import { router, useLocalSearchParams, useNavigation } from "expo-router";
+import { Text, useTheme } from "@/shared/design-system";
 import {
   SettingsGroup,
   SettingsRow,
-} from '@/features/settings/components/SettingsList';
-import { SettingsScroll } from '@/features/settings/components/SettingsScroll';
-import { useSettingsStore } from '@/features/settings';
-import { shareTextFile } from '@/shared/lib/files';
-import { showSnackbar } from '@/shared/ui';
-import { STATUS_LABEL, outstandingOf } from '../constants';
+} from "@/features/settings/components/SettingsList";
+import { SettingsScroll } from "@/features/settings/components/SettingsScroll";
+import { useSettingsStore } from "@/features/settings";
+import { shareTextFile } from "@/shared/lib/files";
+import { showSnackbar } from "@/shared/ui";
+import { STATUS_LABEL, outstandingOf } from "../constants";
 import {
   computeInvoiceTotals,
   formatInvoiceDate,
   formatMoney,
   invoiceSummaryText,
-} from '../format';
-import { useInvoicesStore } from '../store';
+} from "../format";
+import { useInvoicesStore } from "../store";
 
 export default function InvoiceDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -31,7 +31,7 @@ export default function InvoiceDetailScreen() {
 
   useEffect(() => {
     if (!invoice) {
-      navigation.setOptions({ title: 'Invoice', headerRight: undefined });
+      navigation.setOptions({ title: "Invoice", headerRight: undefined });
       return;
     }
 
@@ -43,7 +43,7 @@ export default function InvoiceDetailScreen() {
         });
       } catch (error) {
         showSnackbar(
-          error instanceof Error ? error.message : 'Could not share invoice.',
+          error instanceof Error ? error.message : "Could not share invoice.",
         );
       }
     };
@@ -53,13 +53,13 @@ export default function InvoiceDetailScreen() {
         await shareTextFile(
           `${invoice.number}.txt`,
           invoiceSummaryText(invoice, currency),
-          'text/plain',
+          "text/plain",
         );
       } catch (error) {
         showSnackbar(
           error instanceof Error
             ? error.message
-            : 'Could not download invoice.',
+            : "Could not download invoice.",
         );
       }
     };
@@ -69,8 +69,8 @@ export default function InvoiceDetailScreen() {
       headerRight: () => (
         <View
           style={{
-            flexDirection: 'row',
-            alignItems: 'center',
+            flexDirection: "row",
+            alignItems: "center",
             gap: 4,
             marginRight: 8,
           }}
@@ -84,11 +84,7 @@ export default function InvoiceDetailScreen() {
             hitSlop={8}
             style={{ padding: 4 }}
           >
-            <Ionicons
-              name="share-outline"
-              size={22}
-              color={colors.onSurface}
-            />
+            <Ionicons name="share-outline" size={22} color={colors.onSurface} />
           </Pressable>
           <Pressable
             accessibilityRole="button"
@@ -110,12 +106,11 @@ export default function InvoiceDetailScreen() {
             accessibilityLabel="Edit invoice"
             onPress={() =>
               router.push({
-                pathname: '/invoice/new',
+                pathname: "/invoice/new",
                 params: { id: invoice.id },
               })
             }
             hitSlop={8}
-            style={{ padding: 4 }}
           >
             <Ionicons
               name="pencil-outline"
@@ -151,7 +146,7 @@ export default function InvoiceDetailScreen() {
       <Text variant="title" style={{ marginBottom: space.xs }}>
         {invoice.customerName}
       </Text>
-      <Text variant="body" muted style={{ marginBottom: space['2xl'] }}>
+      <Text variant="body" muted style={{ marginBottom: space["2xl"] }}>
         {invoice.number} · {STATUS_LABEL[invoice.status]}
       </Text>
 

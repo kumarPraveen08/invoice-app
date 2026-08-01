@@ -66,7 +66,6 @@ export default function CatalogueDetailScreen() {
                 })
               }
               hitSlop={8}
-              style={{ padding: 4 }}
             >
               <Ionicons
                 name="pencil-outline"

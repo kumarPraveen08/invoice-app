@@ -1,3 +1,6 @@
+import type { ThemeSeed } from '@/shared/design-system/tokens/colors';
+import type { ThemePreference } from '@/shared/design-system/theme';
+
 export type DateFormat = 'DD/MM/YYYY' | 'MM/DD/YYYY' | 'YYYY-MM-DD';
 export type TimeFormat = '12h' | '24h';
 
@@ -38,12 +41,18 @@ export type InvoiceDefaults = {
   terms: string;
 };
 
+export type AppearanceSettings = {
+  mode: ThemePreference;
+  seed: ThemeSeed;
+};
+
 export type AppSettings = {
   business: BusinessDetails;
   branding: BrandingDetails;
   bank: BankDetails;
   preferences: AppPreferences;
   invoiceDefaults: InvoiceDefaults;
+  appearance: AppearanceSettings;
 };
 
 export const defaultSettings: AppSettings = {
@@ -78,5 +87,9 @@ export const defaultSettings: AppSettings = {
   invoiceDefaults: {
     notes: '',
     terms: '',
+  },
+  appearance: {
+    mode: 'system',
+    seed: 'violet',
   },
 };

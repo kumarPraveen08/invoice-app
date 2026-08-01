@@ -50,6 +50,7 @@ export function SettingsScreen({ withTabBar = false }: Props) {
           bank,
           preferences,
           invoiceDefaults,
+          appearance: useSettingsStore.getState().appearance,
         },
         invoices: useInvoicesStore.getState().invoices,
         catalogue: useCatalogueStore.getState().items,
@@ -127,6 +128,12 @@ export function SettingsScreen({ withTabBar = false }: Props) {
       </SettingsGroup>
 
       <SettingsGroup title="Preferences">
+        <SettingsRow
+          icon="color-palette-outline"
+          title="Appearance"
+          subtitle="Theme mode and accent color"
+          onPress={() => router.push('/settings/appearance')}
+        />
         <SettingsRow
           icon="cash-outline"
           title="Currency, tax & formats"

@@ -1,6 +1,7 @@
-import { createContext, type ReactNode } from 'react';
+import { createContext, useMemo, type ReactNode } from 'react';
 import { useColorScheme } from 'react-native';
-import { darkTheme, lightTheme, type Theme, type ThemeMode } from './theme';
+import { useSettingsStore } from '@/features/settings';
+import { createTheme, lightTheme, type Theme } from './theme';
 
 export type ThemeContextValue = Theme;
 
@@ -12,10 +13,18 @@ type Props = {
 
 export function ThemeProvider({ children }: Props) {
   const scheme = useColorScheme();
-  const mode: ThemeMode = scheme === 'dark' ? 'dark' : 'light';
-  const theme = mode === 'dark' ? darkTheme : lightTheme;
+  const preference = useSettingsStore((s) => s.appearance.mode);
+  const seed = useSettingsStore((s) => s.appearance.seed);
 
-  return (
-    <ThemeContext value={theme}>{children}</ThemeContext>
-  );
+  const theme = useMemo(() => {
+    const mode =
+      preference === 'system'
+        ? scheme === 'dark'
+          ? 'dark'
+          : 'light'
+        : preference;
+    return createTheme(mode, seed);
+  }, [preference, scheme, seed]);
+
+  return <ThemeContext value={theme}>{children}</ThemeContext>;
 }
