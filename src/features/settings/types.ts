@@ -1,8 +1,8 @@
-import type { ThemeSeed } from '@/shared/design-system/tokens/colors';
-import type { ThemePreference } from '@/shared/design-system/theme';
+import type { ThemeSeed } from "@/shared/design-system/tokens/colors";
+import type { ThemePreference } from "@/shared/design-system/theme";
 
-export type DateFormat = 'DD/MM/YYYY' | 'MM/DD/YYYY' | 'YYYY-MM-DD';
-export type TimeFormat = '12h' | '24h';
+export type DateFormat = "DD/MM/YYYY" | "MM/DD/YYYY" | "YYYY-MM-DD";
+export type TimeFormat = "12h" | "24h";
 
 export type BusinessDetails = {
   name: string;
@@ -46,8 +46,21 @@ export type AppearanceSettings = {
   seed: ThemeSeed;
 };
 
-export type InvoiceTemplateLayout = 'classic' | 'modern' | 'compact';
-export type InvoiceTemplateFont = 'sans' | 'serif' | 'mono';
+export type InvoiceTemplateLayout =
+  | "classic"
+  | "modern"
+  | "compact"
+  | "centered"
+  | "stripe"
+  | "formal";
+
+export type InvoiceTemplateFont =
+  | "sans"
+  | "serif"
+  | "mono"
+  | "rounded"
+  | "condensed"
+  | "times";
 
 export type InvoiceTemplateFields = {
   logo: boolean;
@@ -86,43 +99,43 @@ export type AppSettings = {
 
 export const defaultSettings: AppSettings = {
   business: {
-    name: '',
-    phone: '',
-    email: '',
-    taxNumber: '',
-    website: '',
-    address: '',
+    name: "",
+    phone: "",
+    email: "",
+    taxNumber: "",
+    website: "",
+    address: "",
   },
   branding: {
     logoUri: null,
     signatureUri: null,
-    signatureName: '',
+    signatureName: "",
   },
   bank: {
-    accountName: '',
-    accountNumber: '',
-    bankName: '',
-    routingCode: '',
-    paymentInstructions: '',
+    accountName: "",
+    accountNumber: "",
+    bankName: "",
+    routingCode: "",
+    paymentInstructions: "",
   },
   preferences: {
-    currency: 'INR',
-    taxRate: '18',
-    dateFormat: 'DD/MM/YYYY',
-    timeFormat: '12h',
-    invoicePrefix: 'INV-',
-    invoiceNextNumber: '1001',
+    currency: "INR",
+    taxRate: "18",
+    dateFormat: "DD/MM/YYYY",
+    timeFormat: "12h",
+    invoicePrefix: "INV-",
+    invoiceNextNumber: "1001",
   },
   invoiceDefaults: {
-    notes: '',
-    terms: '',
+    notes: "",
+    terms: "",
   },
   appearance: {
-    mode: 'system',
-    seed: 'violet',
+    mode: "system",
+    seed: "violet",
   },
   invoiceTemplates: {
-    defaultId: 'preset_base',
+    defaultId: "preset_base",
     customs: [],
   },
 };

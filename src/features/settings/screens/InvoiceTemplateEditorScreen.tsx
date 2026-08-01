@@ -1,17 +1,11 @@
-import { useMemo, useState } from 'react';
-import {
-  Pressable,
-  ScrollView,
-  StyleSheet,
-  Switch,
-  View,
-} from 'react-native';
-import Ionicons from '@expo/vector-icons/Ionicons';
-import { router, useLocalSearchParams } from 'expo-router';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { Screen, Text, useTheme } from '@/shared/design-system';
-import { BottomSheet, showSnackbar } from '@/shared/ui';
-import { InvoiceTemplatePreview } from '../components/InvoiceTemplatePreview';
+import { useMemo, useState } from "react";
+import { Pressable, ScrollView, StyleSheet, Switch, View } from "react-native";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import { router, useLocalSearchParams } from "expo-router";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { Screen, Text, useTheme } from "@/shared/design-system";
+import { BottomSheet, showSnackbar } from "@/shared/ui";
+import { InvoiceTemplatePreview } from "../components/InvoiceTemplatePreview";
 import {
   findTemplate,
   isPresetTemplateId,
@@ -19,14 +13,11 @@ import {
   TEMPLATE_FIELD_ROWS,
   TEMPLATE_FONTS,
   TEMPLATE_LAYOUTS,
-} from '../templateConstants';
-import type {
-  InvoiceTemplateFont,
-  InvoiceTemplateLayout,
-} from '../types';
-import { useSettingsStore } from '../store';
+} from "../templateConstants";
+import type { InvoiceTemplateFont, InvoiceTemplateLayout } from "../types";
+import { useSettingsStore } from "../store";
 
-type Tool = 'style' | 'type' | 'fields' | null;
+type Tool = "style" | "type" | "fields" | null;
 
 export function InvoiceTemplateEditorScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -86,7 +77,7 @@ export function InvoiceTemplateEditorScreen() {
               {template.name}
             </Text>
             <Text variant="caption" muted>
-              {defaultId === template.id ? 'Default template' : 'Custom'}
+              {defaultId === template.id ? "Default template" : "Custom"}
             </Text>
           </View>
           {defaultId !== template.id ? (
@@ -94,7 +85,7 @@ export function InvoiceTemplateEditorScreen() {
               accessibilityRole="button"
               onPress={() => {
                 setDefaultTemplateId(template.id);
-                showSnackbar('Default template updated.');
+                showSnackbar("Default template updated.");
               }}
               hitSlop={8}
             >
@@ -110,7 +101,7 @@ export function InvoiceTemplateEditorScreen() {
           contentContainerStyle={{
             paddingHorizontal: space.lg,
             paddingVertical: space.lg,
-            paddingBottom: space['2xl'],
+            paddingBottom: space["2xl"],
             flexGrow: 1,
           }}
           keyboardShouldPersistTaps="handled"
@@ -124,7 +115,7 @@ export function InvoiceTemplateEditorScreen() {
           />
         </ScrollView>
 
-        {tool === 'style' ? (
+        {tool === "style" ? (
           <View
             style={[
               styles.panel,
@@ -139,7 +130,12 @@ export function InvoiceTemplateEditorScreen() {
             <Text variant="caption" muted style={styles.panelLabel}>
               Layout
             </Text>
-            <View style={[styles.chipRow, { gap: space.sm, marginBottom: space.md }]}>
+            <View
+              style={[
+                styles.chipRow,
+                { gap: space.sm, marginBottom: space.md },
+              ]}
+            >
               {TEMPLATE_LAYOUTS.map((option) => {
                 const selected = template.layout === option.id;
                 return (
@@ -164,7 +160,7 @@ export function InvoiceTemplateEditorScreen() {
                       variant="caption"
                       style={{
                         color: selected ? colors.onPrimary : colors.onSurface,
-                        fontWeight: '600',
+                        fontWeight: "600",
                       }}
                     >
                       {option.label}
@@ -187,7 +183,7 @@ export function InvoiceTemplateEditorScreen() {
                       padding: 2,
                       borderRadius: 16,
                       borderWidth: 2,
-                      borderColor: selected ? colors.onSurface : 'transparent',
+                      borderColor: selected ? colors.onSurface : "transparent",
                     }}
                   >
                     <View
@@ -205,7 +201,7 @@ export function InvoiceTemplateEditorScreen() {
           </View>
         ) : null}
 
-        {tool === 'type' ? (
+        {tool === "type" ? (
           <View
             style={[
               styles.panel,
@@ -245,7 +241,7 @@ export function InvoiceTemplateEditorScreen() {
                       variant="caption"
                       style={{
                         color: selected ? colors.onPrimary : colors.onSurface,
-                        fontWeight: '600',
+                        fontWeight: "600",
                       }}
                     >
                       {option.label}
@@ -269,28 +265,37 @@ export function InvoiceTemplateEditorScreen() {
         >
           {(
             [
-              { id: 'style' as const, icon: 'color-palette-outline', label: 'Style' },
-              { id: 'type' as const, icon: 'text-outline', label: 'Type' },
-              { id: 'fields' as const, icon: 'options-outline', label: 'Fields' },
-              { id: 'more' as const, icon: 'ellipsis-horizontal', label: 'More' },
+              {
+                id: "style" as const,
+                icon: "color-palette-outline",
+                label: "Style",
+              },
+              { id: "type" as const, icon: "text-outline", label: "Type" },
+              {
+                id: "fields" as const,
+                icon: "options-outline",
+                label: "Fields",
+              },
+              {
+                id: "more" as const,
+                icon: "ellipsis-horizontal",
+                label: "More",
+              },
             ] as const
           ).map((item) => {
-            const active =
-              item.id === 'more'
-                ? false
-                : tool === item.id;
+            const active = item.id === "more" ? false : tool === item.id;
             return (
               <Pressable
                 key={item.id}
                 accessibilityRole="button"
                 accessibilityLabel={item.label}
                 onPress={() => {
-                  if (item.id === 'more') {
-                    router.push('/settings/branding');
+                  if (item.id === "more") {
+                    router.push("/settings/branding");
                     return;
                   }
-                  if (item.id === 'fields') {
-                    setTool('fields');
+                  if (item.id === "fields") {
+                    setTool("fields");
                     return;
                   }
                   toggleTool(item.id);
@@ -309,7 +314,7 @@ export function InvoiceTemplateEditorScreen() {
                   variant="caption"
                   style={{
                     color: active ? colors.primary : colors.onSurfaceMuted,
-                    fontWeight: active ? '700' : '400',
+                    fontWeight: active ? "700" : "400",
                   }}
                 >
                   {item.label}
@@ -321,7 +326,7 @@ export function InvoiceTemplateEditorScreen() {
       </View>
 
       <BottomSheet
-        visible={tool === 'fields'}
+        visible={tool === "fields"}
         onClose={() => setTool(null)}
         title="Show on invoice"
       >
@@ -362,8 +367,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   topBar: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     gap: 12,
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
@@ -377,28 +382,28 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   chipRow: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    alignItems: 'center',
+    flexDirection: "row",
+    flexWrap: "wrap",
+    alignItems: "center",
   },
   chip: {
     paddingHorizontal: 14,
     paddingVertical: 8,
   },
   dock: {
-    flexDirection: 'row',
+    flexDirection: "row",
     borderTopWidth: StyleSheet.hairlineWidth,
     paddingTop: 8,
   },
   dockItem: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: "center",
     gap: 2,
     paddingVertical: 4,
   },
   fieldRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
 });

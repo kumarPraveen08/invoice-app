@@ -4,12 +4,13 @@ Predesigned templates live in code. User customs are stored in settings MMKV and
 
 ## Where to edit
 
-| Piece | File |
-| --- | --- |
-| Preset list + accents/fonts/fields labels | `src/features/settings/templateConstants.ts` |
-| Template shape (`InvoiceTemplate`) | `src/features/settings/types.ts` |
-| Preview / A4 paper render | `src/features/settings/components/InvoiceTemplatePreview.tsx` |
-| Layout variants (`classic` \| `modern` \| `compact`) | same preview file |
+| Piece                                                                                      | File                                                          |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------- |
+| Preset list + accents/fonts/fields labels                                                  | `src/features/settings/templateConstants.ts`                  |
+| Template shape (`InvoiceTemplate`)                                                         | `src/features/settings/types.ts`                              |
+| Preview / A4 paper render                                                                  | `src/features/settings/components/InvoiceTemplatePreview.tsx` |
+| Layout variants (`classic` \| `modern` \| `compact` \| `centered` \| `stripe` \| `formal`) | same preview file                                             |
+| Typefaces (`sans` \| `serif` \| `mono` \| `rounded` \| `condensed` \| `times`)             | `templateConstants.ts` + preview `fontFamily`                 |
 
 Default install template id: `preset_base` (`DEFAULT_TEMPLATE_ID`).
 
@@ -22,9 +23,9 @@ Default install template id: `preset_base` (`DEFAULT_TEMPLATE_ID`).
 {
   id: 'preset_your_name', // must start with "preset_"
   name: 'Your Name',      // shown in gallery + send picker
-  layout: 'classic',      // 'classic' | 'modern' | 'compact'
+  layout: 'classic',      // see TEMPLATE_LAYOUTS
   accent: '#1B4F72',      // paper accent hex
-  font: 'sans',           // 'sans' | 'serif' | 'mono'
+  font: 'sans',           // see TEMPLATE_FONTS
   fields: {
     logo: true,
     businessAddress: true,

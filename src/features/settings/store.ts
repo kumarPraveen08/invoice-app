@@ -1,12 +1,12 @@
-import { create } from 'zustand';
-import { createJSONStorage, persist } from 'zustand/middleware';
-import { createId } from '@/shared/lib/id';
-import { mmkvStorage } from '@/shared/lib/mmkv';
+import { create } from "zustand";
+import { createJSONStorage, persist } from "zustand/middleware";
+import { createId } from "@/shared/lib/id";
+import { mmkvStorage } from "@/shared/lib/mmkv";
 import {
   DEFAULT_TEMPLATE_ID,
   findTemplate,
   isPresetTemplateId,
-} from './templateConstants';
+} from "./templateConstants";
 import {
   defaultSettings,
   type AppSettings,
@@ -18,7 +18,7 @@ import {
   type InvoiceTemplate,
   type InvoiceTemplateFields,
   type AppPreferences,
-} from './types';
+} from "./types";
 
 type SettingsState = AppSettings & {
   updateBusiness: (patch: Partial<BusinessDetails>) => void;
@@ -32,7 +32,7 @@ type SettingsState = AppSettings & {
   createCustomTemplate: (fromId: string, name?: string) => string | null;
   updateCustomTemplate: (
     id: string,
-    patch: Partial<Omit<InvoiceTemplate, 'id'>>,
+    patch: Partial<Omit<InvoiceTemplate, "id">>,
   ) => void;
   updateCustomTemplateFields: (
     id: string,
@@ -74,7 +74,7 @@ export const useSettingsStore = create<SettingsState>()(
       createCustomTemplate: (fromId, name) => {
         const source = findTemplate(fromId, get().invoiceTemplates.customs);
         if (!source) return null;
-        const id = createId('tmpl');
+        const id = createId("tmpl");
         const custom: InvoiceTemplate = {
           ...source,
           id,
@@ -131,7 +131,7 @@ export const useSettingsStore = create<SettingsState>()(
         }),
     }),
     {
-      name: 'invoice-app-settings',
+      name: "invoice-app-settings",
       storage: createJSONStorage(() => mmkvStorage),
       partialize: (state) => ({
         business: state.business,
@@ -146,8 +146,7 @@ export const useSettingsStore = create<SettingsState>()(
         const stored = (persisted ?? {}) as Partial<AppSettings> & {
           invoiceTemplate?: unknown;
         };
-        const library =
-          stored.invoiceTemplates ?? current.invoiceTemplates;
+        const library = stored.invoiceTemplates ?? current.invoiceTemplates;
         return {
           ...current,
           ...stored,
