@@ -13,6 +13,27 @@ const CREATE_PATH: Record<string, '/invoice/new' | '/catalogue/new' | '/clients/
     clients: '/clients/new',
   };
 
+function HeaderImportButton({
+  href,
+  label,
+}: {
+  href: '/catalogue/import' | '/clients/import';
+  label: string;
+}) {
+  const { colors } = useTheme();
+  return (
+    <Pressable
+      accessibilityRole="button"
+      accessibilityLabel={label}
+      onPress={() => router.push(href)}
+      hitSlop={8}
+      style={{ marginRight: 16, padding: 4 }}
+    >
+      <Ionicons name="cloud-upload-outline" size={22} color={colors.onSurface} />
+    </Pressable>
+  );
+}
+
 export default function TabsLayout() {
   const { colors } = useTheme();
   const [moreOpen, setMoreOpen] = useState(false);
@@ -56,8 +77,30 @@ export default function TabsLayout() {
             ),
           }}
         />
-        <Tabs.Screen name="catalogue" options={{ title: 'Catalogue' }} />
-        <Tabs.Screen name="clients" options={{ title: 'Clients' }} />
+        <Tabs.Screen
+          name="catalogue"
+          options={{
+            title: 'Catalogue',
+            headerRight: () => (
+              <HeaderImportButton
+                href="/catalogue/import"
+                label="Bulk import catalogue"
+              />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="clients"
+          options={{
+            title: 'Clients',
+            headerRight: () => (
+              <HeaderImportButton
+                href="/clients/import"
+                label="Bulk import clients"
+              />
+            ),
+          }}
+        />
         <Tabs.Screen name="reports" options={{ title: 'Reports' }} />
         <Tabs.Screen name="tools" options={{ title: 'Settings' }} />
       </Tabs>

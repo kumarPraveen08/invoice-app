@@ -1,8 +1,12 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { Pressable, StyleSheet, View } from 'react-native';
+import { Alert, StyleSheet, View } from 'react-native';
+import { router } from 'expo-router';
 import { Text, useTheme } from '@/shared/design-system';
+import { SwipeableRow } from '@/shared/ui';
 import { formatMoney } from '@/features/invoices/format';
+import { useCatalogueStore } from '../store';
 import type { CatalogueItem } from '../types';
+
 
 type Props = {
   item: CatalogueItem;
@@ -12,44 +16,62 @@ type Props = {
 
 export function CatalogueRow({ item, currency, last = false }: Props) {
   const { colors, radii, space } = useTheme();
+  const removeItem = useCatalogueStore((s) => s.removeItem);
+
+  const onEdit = () => {
+    router.push({ pathname: '/catalogue/new', params: { id: item.id } });
+  };
+
+  const onDelete = () => {
+    Alert.alert('Delete item', `Remove “${item.name}”?`, [
+      { text: 'Cancel', style: 'cancel' },
+      {
+        text: 'Delete',
+        style: 'destructive',
+        onPress: () => removeItem(item.id),
+      },
+    ]);
+  };
 
   return (
-    <Pressable
-      style={({ pressed }) => [
-        styles.row,
-        {
-          paddingHorizontal: space.lg,
-          paddingVertical: space.md,
-          opacity: pressed ? 0.72 : 1,
-          borderBottomWidth: last ? 0 : StyleSheet.hairlineWidth,
-          borderBottomColor: colors.background,
-        },
-      ]}
-    >
+    <SwipeableRow onEdit={onEdit} onDelete={onDelete}>
       <View
         style={[
-          styles.iconWrap,
+          styles.row,
           {
-            backgroundColor: colors.iconSoft,
-            borderRadius: radii.full,
-            marginRight: space.md,
+            backgroundColor: colors.surface,
+            paddingHorizontal: space.lg,
+            paddingVertical: space.md,
+            borderBottomWidth: last ? 0 : StyleSheet.hairlineWidth,
+            borderBottomColor: colors.background,
           },
         ]}
       >
-        <Ionicons name="cube-outline" size={20} color={colors.primary} />
-      </View>
-      <View style={styles.copy}>
-        <Text variant="body" style={{ fontWeight: '600' }} numberOfLines={1}>
-          {item.name}
+        <View
+          style={[
+            styles.iconWrap,
+            {
+              backgroundColor: colors.iconSoft,
+              borderRadius: radii.full,
+              marginRight: space.md,
+            },
+          ]}
+        >
+          <Ionicons name="cube-outline" size={20} color={colors.primary} />
+        </View>
+        <View style={styles.copy}>
+          <Text variant="body" style={{ fontWeight: '600' }} numberOfLines={1}>
+            {item.name}
+          </Text>
+          <Text variant="caption" muted numberOfLines={1}>
+            {item.sku} · {item.unit}
+          </Text>
+        </View>
+        <Text variant="body" style={{ fontWeight: '600' }}>
+          {formatMoney(item.price, currency)}
         </Text>
-        <Text variant="caption" muted numberOfLines={1}>
-          {item.sku} · {item.unit}
-        </Text>
       </View>
-      <Text variant="body" style={{ fontWeight: '600' }}>
-        {formatMoney(item.price, currency)}
-      </Text>
-    </Pressable>
+    </SwipeableRow>
   );
 }
 

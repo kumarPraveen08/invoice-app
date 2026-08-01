@@ -1,6 +1,9 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { Pressable, StyleSheet, View } from 'react-native';
+import { Alert, StyleSheet, View } from 'react-native';
+import { router } from 'expo-router';
 import { Text, useTheme } from '@/shared/design-system';
+import { SwipeableRow } from '@/shared/ui';
+import { useClientsStore } from '../store';
 import type { Client } from '../types';
 
 type Props = {
@@ -10,42 +13,60 @@ type Props = {
 
 export function ClientRow({ client, last = false }: Props) {
   const { colors, radii, space } = useTheme();
+  const removeClient = useClientsStore((s) => s.removeClient);
+
+  const onEdit = () => {
+    router.push({ pathname: '/clients/new', params: { id: client.id } });
+  };
+
+  const onDelete = () => {
+    Alert.alert('Delete client', `Remove “${client.name}”?`, [
+      { text: 'Cancel', style: 'cancel' },
+      {
+        text: 'Delete',
+        style: 'destructive',
+        onPress: () => removeClient(client.id),
+      },
+    ]);
+  };
 
   return (
-    <Pressable
-      style={({ pressed }) => [
-        styles.row,
-        {
-          paddingHorizontal: space.lg,
-          paddingVertical: space.md,
-          opacity: pressed ? 0.72 : 1,
-          borderBottomWidth: last ? 0 : StyleSheet.hairlineWidth,
-          borderBottomColor: colors.background,
-        },
-      ]}
-    >
+    <SwipeableRow onEdit={onEdit} onDelete={onDelete}>
       <View
         style={[
-          styles.iconWrap,
+          styles.row,
           {
-            backgroundColor: colors.iconSoft,
-            borderRadius: radii.full,
-            marginRight: space.md,
+            backgroundColor: colors.surface,
+            paddingHorizontal: space.lg,
+            paddingVertical: space.md,
+            borderBottomWidth: last ? 0 : StyleSheet.hairlineWidth,
+            borderBottomColor: colors.background,
           },
         ]}
       >
-        <Ionicons name="person-outline" size={20} color={colors.primary} />
+        <View
+          style={[
+            styles.iconWrap,
+            {
+              backgroundColor: colors.iconSoft,
+              borderRadius: radii.full,
+              marginRight: space.md,
+            },
+          ]}
+        >
+          <Ionicons name="person-outline" size={20} color={colors.primary} />
+        </View>
+        <View style={styles.copy}>
+          <Text variant="body" style={{ fontWeight: '600' }} numberOfLines={1}>
+            {client.name}
+          </Text>
+          <Text variant="caption" muted numberOfLines={1}>
+            {client.businessName}
+            {client.phone ? ` · ${client.phone}` : ''}
+          </Text>
+        </View>
       </View>
-      <View style={styles.copy}>
-        <Text variant="body" style={{ fontWeight: '600' }} numberOfLines={1}>
-          {client.name}
-        </Text>
-        <Text variant="caption" muted numberOfLines={1}>
-          {client.businessName}
-          {client.phone ? ` · ${client.phone}` : ''}
-        </Text>
-      </View>
-    </Pressable>
+    </SwipeableRow>
   );
 }
 

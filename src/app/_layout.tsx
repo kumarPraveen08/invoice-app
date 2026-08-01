@@ -53,9 +53,25 @@ function RootNavigator() {
           }}
         />
         <Stack.Screen
+          name="catalogue/import"
+          options={{
+            title: 'Bulk import',
+            headerShadowVisible: false,
+            headerStyle: { backgroundColor: colors.background },
+          }}
+        />
+        <Stack.Screen
           name="clients/new"
           options={{
             title: 'New client',
+            headerShadowVisible: false,
+            headerStyle: { backgroundColor: colors.background },
+          }}
+        />
+        <Stack.Screen
+          name="clients/import"
+          options={{
+            title: 'Bulk import',
             headerShadowVisible: false,
             headerStyle: { backgroundColor: colors.background },
           }}

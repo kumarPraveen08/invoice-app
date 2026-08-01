@@ -1,8 +1,13 @@
+import { Alert } from 'react-native';
 import { router } from 'expo-router';
 import { CURRENCIES } from '../constants';
 import { SettingsGroup, SettingsRow } from '../components/SettingsList';
 import { SettingsScroll } from '../components/SettingsScroll';
 import { useSettingsStore } from '../store';
+import { useCatalogueStore } from '@/features/catalogue/store';
+import { useClientsStore } from '@/features/customers/store';
+import { useInvoicesStore } from '@/features/invoices/store';
+import { shareTextFile } from '@/shared/lib/files';
 
 type Props = {
   withTabBar?: boolean;
@@ -18,6 +23,37 @@ export function SettingsScreen({ withTabBar = false }: Props) {
   const currencyLabel =
     CURRENCIES.find((c) => c.code === preferences.currency)?.label ??
     preferences.currency;
+
+  const downloadBackup = async () => {
+    try {
+      const payload = {
+        exportedAt: new Date().toISOString(),
+        app: 'invoice-app',
+        version: 1,
+        settings: {
+          business,
+          branding,
+          bank,
+          preferences,
+          invoiceDefaults,
+        },
+        invoices: useInvoicesStore.getState().invoices,
+        catalogue: useCatalogueStore.getState().items,
+        clients: useClientsStore.getState().clients,
+      };
+      const stamp = new Date().toISOString().slice(0, 10);
+      await shareTextFile(
+        `invoice-app-backup-${stamp}.json`,
+        JSON.stringify(payload, null, 2),
+        'application/json',
+      );
+    } catch (error) {
+      Alert.alert(
+        'Backup failed',
+        error instanceof Error ? error.message : 'Unknown error',
+      );
+    }
+  };
 
   return (
     <SettingsScroll withTabBar={withTabBar}>
@@ -63,6 +99,16 @@ export function SettingsScreen({ withTabBar = false }: Props) {
               : 'Default notes and terms'
           }
           onPress={() => router.push('/settings/invoice-defaults')}
+          last
+        />
+      </SettingsGroup>
+
+      <SettingsGroup title="Data">
+        <SettingsRow
+          icon="download-outline"
+          title="Download backup"
+          subtitle="Settings, invoices, catalogue, and clients as JSON"
+          onPress={downloadBackup}
           last
         />
       </SettingsGroup>

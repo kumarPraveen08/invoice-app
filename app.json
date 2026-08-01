@@ -36,7 +36,9 @@
           "enforceContrast": false,
           "style": "dark"
         }
-      ]
+      ],
+      "expo-sharing",
+      "expo-splash-screen"
     ]
   }
 }
