@@ -1,9 +1,13 @@
-import { Screen, Text } from '@/shared/design-system';
+import { EmptyState } from '@/shared/ui';
+import { SettingsScroll } from '@/features/settings/components/SettingsScroll';
 
 export default function ReportsScreen() {
   return (
-    <Screen style={{ alignItems: 'center', justifyContent: 'center' }}>
-      <Text variant="subtitle">Reports</Text>
-    </Screen>
+    <SettingsScroll withTabBar>
+      <EmptyState
+        title="No reports yet"
+        description="Reports will show sales, payments, and outstanding totals."
+      />
+    </SettingsScroll>
   );
 }

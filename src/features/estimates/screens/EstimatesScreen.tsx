@@ -1,18 +1,13 @@
-import { Screen } from '@/shared/design-system';
 import { EmptyState } from '@/shared/ui';
+import { SettingsScroll } from '@/features/settings/components/SettingsScroll';
 
 export default function EstimatesScreen() {
   return (
-    <Screen>
+    <SettingsScroll>
       <EmptyState
-        icon="document-text-outline"
         title="No estimates yet"
-        description="Send quotes to clients before converting them into invoices."
-        actionLabel="Create Estimate"
-        onAction={() => {
-          // TODO: navigate to create estimate
-        }}
+        description="Use + to create a quote before invoicing."
       />
-    </Screen>
+    </SettingsScroll>
   );
 }

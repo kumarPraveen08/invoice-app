@@ -1,7 +1,6 @@
 import { useMemo, useState } from 'react';
-import { View } from 'react-native';
 import { router } from 'expo-router';
-import { Text, useTheme } from '@/shared/design-system';
+import { EmptyState } from '@/shared/ui';
 import { SettingsGroup } from '@/features/settings/components/SettingsList';
 import { SettingsScroll } from '@/features/settings/components/SettingsScroll';
 import { useSettingsStore } from '@/features/settings';
@@ -13,7 +12,6 @@ import { useInvoicesStore } from '../store';
 import type { InvoiceFilter } from '../types';
 
 export default function InvoicesScreen() {
-  const { space } = useTheme();
   const currency = useSettingsStore((s) => s.preferences.currency);
   const invoices = useInvoicesStore((s) => s.invoices);
   const [filter, setFilter] = useState<InvoiceFilter>('all');
@@ -30,16 +28,14 @@ export default function InvoicesScreen() {
       <InvoiceFilters filter={filter} onFilterChange={setFilter} />
 
       {sections.length === 0 ? (
-        <View style={{ paddingTop: space['3xl'], alignItems: 'center' }}>
-          <Text variant="subtitle" style={{ marginBottom: space.sm }}>
-            No invoices
-          </Text>
-          <Text variant="body" muted style={{ textAlign: 'center' }}>
-            {filter !== 'all'
+        <EmptyState
+          title="No invoices"
+          description={
+            filter !== 'all'
               ? 'Nothing matches this filter.'
-              : 'Use + to create your first invoice.'}
-          </Text>
-        </View>
+              : 'Use + to create your first invoice.'
+          }
+        />
       ) : (
         sections.map((section) => (
           <SettingsGroup key={section.title} title={section.title}>
