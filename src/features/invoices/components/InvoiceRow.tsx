@@ -3,10 +3,12 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { Pressable, Share, StyleSheet, View } from 'react-native';
 import { router } from 'expo-router';
 import { Text, useTheme } from '@/shared/design-system';
+import { TemplatePickerSheet } from '@/features/settings';
 import { shareTextFile } from '@/shared/lib/files';
 import { ActionSheet, showSnackbar, type SheetAction } from '@/shared/ui';
 import { STATUS_LABEL, outstandingOf } from '../constants';
-import { formatInvoiceDate, formatMoney, invoiceSummaryText } from '../format';
+import { formatInvoiceDate, formatMoney } from '../format';
+import { buildInvoiceShareMessage } from '../shareMessage';
 import { useInvoicesStore } from '../store';
 import type { Invoice, InvoiceStatus } from '../types';
 
@@ -37,6 +39,8 @@ export function InvoiceRow({ invoice, currency, last = false, onPress }: Props) 
   const { colors, radii, space } = useTheme();
   const patchInvoice = useInvoicesStore((s) => s.patchInvoice);
   const [actionsOpen, setActionsOpen] = useState(false);
+  const [pickerOpen, setPickerOpen] = useState(false);
+  const [pickerMode, setPickerMode] = useState<'share' | 'download'>('share');
   const outstanding = outstandingOf(invoice);
   const isOverdue = invoice.status === 'overdue';
   const showBalance =
@@ -56,29 +60,21 @@ export function InvoiceRow({ invoice, currency, last = false, onPress }: Props) 
     router.push({ pathname: '/invoice/new', params: { id: invoice.id } });
   };
 
-  const onShare = async () => {
+  const onPickTemplate = async (templateId: string) => {
+    const message = buildInvoiceShareMessage(invoice, currency, templateId);
     try {
-      await Share.share({
-        title: invoice.number,
-        message: invoiceSummaryText(invoice, currency),
-      });
+      if (pickerMode === 'share') {
+        await Share.share({ title: invoice.number, message });
+        return;
+      }
+      await shareTextFile(`${invoice.number}.txt`, message, 'text/plain');
     } catch (error) {
       showSnackbar(
-        error instanceof Error ? error.message : 'Could not share invoice.',
-      );
-    }
-  };
-
-  const onDownload = async () => {
-    try {
-      await shareTextFile(
-        `${invoice.number}.txt`,
-        invoiceSummaryText(invoice, currency),
-        'text/plain',
-      );
-    } catch (error) {
-      showSnackbar(
-        error instanceof Error ? error.message : 'Could not download invoice.',
+        error instanceof Error
+          ? error.message
+          : pickerMode === 'share'
+            ? 'Could not share invoice.'
+            : 'Could not download invoice.',
       );
     }
   };
@@ -115,7 +111,8 @@ export function InvoiceRow({ invoice, currency, last = false, onPress }: Props) 
       label: 'Share',
       icon: 'share-outline',
       onPress: () => {
-        void onShare();
+        setPickerMode('share');
+        setPickerOpen(true);
       },
     },
     {
@@ -123,7 +120,8 @@ export function InvoiceRow({ invoice, currency, last = false, onPress }: Props) 
       label: 'Download',
       icon: 'download-outline',
       onPress: () => {
-        void onDownload();
+        setPickerMode('download');
+        setPickerOpen(true);
       },
     },
   ];
@@ -208,6 +206,18 @@ export function InvoiceRow({ invoice, currency, last = false, onPress }: Props) 
         onClose={() => setActionsOpen(false)}
         title={invoice.number}
         actions={actions}
+      />
+      <TemplatePickerSheet
+        visible={pickerOpen}
+        onClose={() => setPickerOpen(false)}
+        title={
+          pickerMode === 'share'
+            ? 'Share with template'
+            : 'Download with template'
+        }
+        onSelect={(templateId) => {
+          void onPickTemplate(templateId);
+        }}
       />
     </>
   );

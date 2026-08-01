@@ -46,6 +46,34 @@ export type AppearanceSettings = {
   seed: ThemeSeed;
 };
 
+export type InvoiceTemplateLayout = 'classic' | 'modern' | 'compact';
+export type InvoiceTemplateFont = 'sans' | 'serif' | 'mono';
+
+export type InvoiceTemplateFields = {
+  logo: boolean;
+  businessAddress: boolean;
+  taxNumber: boolean;
+  dueDate: boolean;
+  notes: boolean;
+  terms: boolean;
+  bankDetails: boolean;
+  signature: boolean;
+};
+
+export type InvoiceTemplate = {
+  id: string;
+  name: string;
+  layout: InvoiceTemplateLayout;
+  accent: string;
+  font: InvoiceTemplateFont;
+  fields: InvoiceTemplateFields;
+};
+
+export type InvoiceTemplateLibrary = {
+  defaultId: string;
+  customs: InvoiceTemplate[];
+};
+
 export type AppSettings = {
   business: BusinessDetails;
   branding: BrandingDetails;
@@ -53,6 +81,7 @@ export type AppSettings = {
   preferences: AppPreferences;
   invoiceDefaults: InvoiceDefaults;
   appearance: AppearanceSettings;
+  invoiceTemplates: InvoiceTemplateLibrary;
 };
 
 export const defaultSettings: AppSettings = {
@@ -91,5 +120,9 @@ export const defaultSettings: AppSettings = {
   appearance: {
     mode: 'system',
     seed: 'violet',
+  },
+  invoiceTemplates: {
+    defaultId: 'preset_base',
+    customs: [],
   },
 };

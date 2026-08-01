@@ -51,6 +51,7 @@ export function SettingsScreen({ withTabBar = false }: Props) {
           preferences,
           invoiceDefaults,
           appearance: useSettingsStore.getState().appearance,
+          invoiceTemplates: useSettingsStore.getState().invoiceTemplates,
         },
         invoices: useInvoicesStore.getState().invoices,
         catalogue: useCatalogueStore.getState().items,
@@ -149,6 +150,12 @@ export function SettingsScreen({ withTabBar = false }: Props) {
               : 'Default notes and terms'
           }
           onPress={() => router.push('/settings/invoice-defaults')}
+        />
+        <SettingsRow
+          icon="newspaper-outline"
+          title="Invoice templates"
+          subtitle="Predesigned layouts and custom designs"
+          onPress={() => router.push('/settings/invoice-template')}
           last
         />
       </SettingsGroup>

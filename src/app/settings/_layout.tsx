@@ -25,6 +25,14 @@ export default function SettingsLayout() {
         name="invoice-defaults"
         options={{ title: 'Invoice defaults' }}
       />
+      <Stack.Screen
+        name="invoice-template"
+        options={{ title: 'Invoice templates' }}
+      />
+      <Stack.Screen
+        name="invoice-template-edit"
+        options={{ title: 'Edit template' }}
+      />
       <Stack.Screen name="subscription" options={{ title: 'Subscription' }} />
       <Stack.Screen name="appearance" options={{ title: 'Appearance' }} />
       <Stack.Screen name="legal" options={{ title: 'Legal' }} />
