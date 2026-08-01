@@ -5,6 +5,7 @@ type ClientsState = {
   clients: Client[];
   removeClient: (id: string) => void;
   addClients: (clients: Client[]) => void;
+  upsertClient: (client: Client) => void;
 };
 
 export const useClientsStore = create<ClientsState>((set) => ({
@@ -15,4 +16,14 @@ export const useClientsStore = create<ClientsState>((set) => ({
     })),
   addClients: (clients) =>
     set((state) => ({ clients: [...state.clients, ...clients] })),
+  upsertClient: (client) =>
+    set((state) => {
+      const index = state.clients.findIndex((row) => row.id === client.id);
+      if (index === -1) {
+        return { clients: [client, ...state.clients] };
+      }
+      const clients = [...state.clients];
+      clients[index] = client;
+      return { clients };
+    }),
 }));

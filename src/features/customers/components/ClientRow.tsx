@@ -1,5 +1,5 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { Alert, StyleSheet, View } from 'react-native';
+import { Alert, Pressable, StyleSheet, View } from 'react-native';
 import { router } from 'expo-router';
 import { Text, useTheme } from '@/shared/design-system';
 import { SwipeableRow } from '@/shared/ui';
@@ -32,11 +32,15 @@ export function ClientRow({ client, last = false }: Props) {
 
   return (
     <SwipeableRow onEdit={onEdit} onDelete={onDelete}>
-      <View
-        style={[
+      <Pressable
+        accessibilityRole="button"
+        accessibilityLabel={`Open ${client.name}`}
+        onPress={() => router.push(`/clients/${client.id}`)}
+        style={({ pressed }) => [
           styles.row,
           {
-            backgroundColor: colors.surface,
+            // Keep fully opaque — opacity reveals swipe actions underneath.
+            backgroundColor: pressed ? colors.background : colors.surface,
             paddingHorizontal: space.lg,
             paddingVertical: space.md,
             borderBottomWidth: last ? 0 : StyleSheet.hairlineWidth,
@@ -65,7 +69,7 @@ export function ClientRow({ client, last = false }: Props) {
             {client.phone ? ` · ${client.phone}` : ''}
           </Text>
         </View>
-      </View>
+      </Pressable>
     </SwipeableRow>
   );
 }

@@ -53,6 +53,14 @@ function RootNavigator() {
           }}
         />
         <Stack.Screen
+          name="catalogue/[id]"
+          options={{
+            title: 'Item',
+            headerShadowVisible: false,
+            headerStyle: { backgroundColor: colors.background },
+          }}
+        />
+        <Stack.Screen
           name="catalogue/import"
           options={{
             title: 'Bulk import',
@@ -71,6 +79,14 @@ function RootNavigator() {
           name="clients/new"
           options={{
             title: 'New client',
+            headerShadowVisible: false,
+            headerStyle: { backgroundColor: colors.background },
+          }}
+        />
+        <Stack.Screen
+          name="clients/[id]"
+          options={{
+            title: 'Client',
             headerShadowVisible: false,
             headerStyle: { backgroundColor: colors.background },
           }}

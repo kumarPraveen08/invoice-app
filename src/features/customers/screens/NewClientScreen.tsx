@@ -1,16 +1,27 @@
-import { useEffect } from 'react';
-import { useLocalSearchParams, useNavigation } from 'expo-router';
-import { Screen, Text, useTheme } from '@/shared/design-system';
+import { useEffect, useState } from 'react';
+import { Alert, Platform } from 'react-native';
+import { router, useLocalSearchParams, useNavigation } from 'expo-router';
+import * as Contacts from 'expo-contacts/legacy';
+import { v4 as uuid } from 'uuid';
+import { Button, useTheme } from '@/shared/design-system';
+import { SettingsField } from '@/features/settings/components/SettingsField';
+import { SettingsScroll } from '@/features/settings/components/SettingsScroll';
 import { useClientsStore } from '../store';
 
 export default function NewClientScreen() {
   const { space } = useTheme();
   const navigation = useNavigation();
   const { id } = useLocalSearchParams<{ id?: string }>();
-  const client = useClientsStore((s) =>
+  const existing = useClientsStore((s) =>
     id ? s.clients.find((row) => row.id === id) : undefined,
   );
+  const upsertClient = useClientsStore((s) => s.upsertClient);
   const editing = Boolean(id);
+
+  const [name, setName] = useState(existing?.name ?? '');
+  const [businessName, setBusinessName] = useState(existing?.businessName ?? '');
+  const [email, setEmail] = useState(existing?.email ?? '');
+  const [phone, setPhone] = useState(existing?.phone ?? '');
 
   useEffect(() => {
     navigation.setOptions({
@@ -18,13 +29,124 @@ export default function NewClientScreen() {
     });
   }, [editing, navigation]);
 
+  const importFromContacts = async () => {
+    try {
+      const current = await Contacts.getPermissionsAsync();
+      let status = current.status;
+      if (status !== 'granted') {
+        const requested = await Contacts.requestPermissionsAsync();
+        status = requested.status;
+      }
+      if (status !== 'granted') {
+        Alert.alert(
+          'Contacts access needed',
+          'Allow contacts access in Settings to import a client.',
+        );
+        return;
+      }
+
+      const contact = await Contacts.presentContactPickerAsync();
+      if (!contact) return;
+
+      const nextName = contact.name?.trim() ?? '';
+      const nextBusiness = contact.company?.trim() ?? '';
+      const nextEmail =
+        contact.emails?.find((item) => item.email)?.email?.trim() ?? '';
+      const nextPhone =
+        contact.phoneNumbers?.find((item) => item.number)?.number?.trim() ??
+        '';
+
+      if (!nextName && !nextBusiness && !nextEmail && !nextPhone) {
+        Alert.alert('No details', 'That contact has no name, phone, or email.');
+        return;
+      }
+
+      setName(nextName || nextBusiness);
+      setBusinessName(nextBusiness || nextName);
+      setEmail(nextEmail);
+      setPhone(nextPhone);
+    } catch (error) {
+      const message =
+        error instanceof Error ? error.message : 'Could not open contacts.';
+      Alert.alert(
+        'Contacts unavailable',
+        Platform.OS === 'web'
+          ? 'Contact import is not available on web.'
+          : message,
+      );
+    }
+  };
+
+  const onSave = () => {
+    const trimmedName = name.trim();
+    if (!trimmedName) {
+      Alert.alert('Name required', 'Enter a client name.');
+      return;
+    }
+    upsertClient({
+      id: existing?.id ?? uuid(),
+      name: trimmedName,
+      businessName: businessName.trim() || trimmedName,
+      email: email.trim(),
+      phone: phone.trim(),
+    });
+    router.back();
+  };
+
   return (
-    <Screen style={{ padding: space.lg }}>
-      <Text variant="body" muted>
-        {editing
-          ? `Editing ${client?.name ?? 'client'}. Form fields come next.`
-          : 'Client form will go here.'}
-      </Text>
-    </Screen>
+    <SettingsScroll>
+      {!editing ? (
+        <Button
+          label="Add from contacts"
+          variant="secondary"
+          icon="people-outline"
+          onPress={importFromContacts}
+          style={{
+            marginBottom: space.xl,
+            alignSelf: 'stretch',
+            justifyContent: 'center',
+          }}
+        />
+      ) : null}
+      <SettingsField
+        label="Customer name"
+        value={name}
+        onChangeText={setName}
+        placeholder="Aisha Khan"
+        autoCapitalize="words"
+      />
+      <SettingsField
+        label="Business name"
+        value={businessName}
+        onChangeText={setBusinessName}
+        placeholder="Northwind Studio"
+        autoCapitalize="words"
+      />
+      <SettingsField
+        label="Email"
+        value={email}
+        onChangeText={setEmail}
+        placeholder="aisha@northwind.co"
+        keyboardType="email-address"
+        autoCapitalize="none"
+        autoCorrect={false}
+      />
+      <SettingsField
+        label="Phone"
+        value={phone}
+        onChangeText={setPhone}
+        placeholder="+91 98765 41001"
+        keyboardType="phone-pad"
+      />
+      <Button
+        label={editing ? 'Save changes' : 'Add client'}
+        onPress={onSave}
+        style={{
+          marginTop: space.sm,
+          alignSelf: 'stretch',
+          justifyContent: 'center',
+        }}
+      />
+    </SettingsScroll>
   );
 }

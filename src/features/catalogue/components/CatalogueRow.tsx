@@ -1,12 +1,11 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { Alert, StyleSheet, View } from 'react-native';
+import { Alert, Pressable, StyleSheet, View } from 'react-native';
 import { router } from 'expo-router';
 import { Text, useTheme } from '@/shared/design-system';
 import { SwipeableRow } from '@/shared/ui';
 import { formatMoney } from '@/features/invoices/format';
 import { useCatalogueStore } from '../store';
 import type { CatalogueItem } from '../types';
-
 
 type Props = {
   item: CatalogueItem;
@@ -35,11 +34,14 @@ export function CatalogueRow({ item, currency, last = false }: Props) {
 
   return (
     <SwipeableRow onEdit={onEdit} onDelete={onDelete}>
-      <View
-        style={[
+      <Pressable
+        accessibilityRole="button"
+        accessibilityLabel={`Open ${item.name}`}
+        onPress={() => router.push(`/catalogue/${item.id}`)}
+        style={({ pressed }) => [
           styles.row,
           {
-            backgroundColor: colors.surface,
+            backgroundColor: pressed ? colors.background : colors.surface,
             paddingHorizontal: space.lg,
             paddingVertical: space.md,
             borderBottomWidth: last ? 0 : StyleSheet.hairlineWidth,
@@ -70,7 +72,7 @@ export function CatalogueRow({ item, currency, last = false }: Props) {
         <Text variant="body" style={{ fontWeight: '600' }}>
           {formatMoney(item.price, currency)}
         </Text>
-      </View>
+      </Pressable>
     </SwipeableRow>
   );
 }
