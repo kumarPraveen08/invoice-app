@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import Ionicons from '@expo/vector-icons/Ionicons';
 import { router, Tabs } from 'expo-router';
-import { View } from 'react-native';
+import { Pressable, View } from 'react-native';
 import { MoreCreateSheet } from '@/features/invoices/components/MoreCreateSheet';
 import { useTheme } from '@/shared/design-system';
 import { FloatingTabBar } from '@/shared/ui';
@@ -38,7 +39,23 @@ export default function TabsLayout() {
           sceneStyle: { backgroundColor: colors.background },
         }}
       >
-        <Tabs.Screen name="index" options={{ title: 'Invoices' }} />
+        <Tabs.Screen
+          name="index"
+          options={{
+            title: 'Invoices',
+            headerRight: () => (
+              <Pressable
+                accessibilityRole="button"
+                accessibilityLabel="Search invoices"
+                onPress={() => router.push('/invoice/search')}
+                hitSlop={8}
+                style={{ marginRight: 16, padding: 4 }}
+              >
+                <Ionicons name="search" size={22} color={colors.onSurface} />
+              </Pressable>
+            ),
+          }}
+        />
         <Tabs.Screen name="catalogue" options={{ title: 'Catalogue' }} />
         <Tabs.Screen name="clients" options={{ title: 'Clients' }} />
         <Tabs.Screen name="reports" options={{ title: 'Reports' }} />

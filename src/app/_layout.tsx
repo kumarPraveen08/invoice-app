@@ -30,6 +30,13 @@ function RootNavigator() {
           }}
         />
         <Stack.Screen
+          name="invoice/search"
+          options={{
+            headerShown: false,
+            animation: 'fade',
+          }}
+        />
+        <Stack.Screen
           name="catalogue/new"
           options={{
             title: 'New catalogue item',
