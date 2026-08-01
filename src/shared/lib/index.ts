@@ -1,1 +1,1 @@
-export {};
+export { mmkvStorage } from './mmkv';

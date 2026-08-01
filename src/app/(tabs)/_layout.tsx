@@ -26,7 +26,7 @@ export default function TabsLayout() {
         <Tabs.Screen name="estimates" options={{ title: "Estimates" }} />
         <Tabs.Screen name="clients" options={{ title: "Clients" }} />
         <Tabs.Screen name="reports" options={{ title: "Reports" }} />
-        <Tabs.Screen name="tools" options={{ title: "Tools" }} />
+        <Tabs.Screen name="tools" options={{ title: "Settings" }} />
       </Tabs>
       <CreateInvoiceSheet
         visible={sheetOpen}

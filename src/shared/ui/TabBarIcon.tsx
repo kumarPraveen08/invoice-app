@@ -12,7 +12,7 @@ const ICONS = {
   estimates: { active: 'document-text', inactive: 'document-text-outline' },
   clients: { active: 'people', inactive: 'people-outline' },
   reports: { active: 'bar-chart', inactive: 'bar-chart-outline' },
-  tools: { active: 'build', inactive: 'build-outline' },
+  tools: { active: 'settings', inactive: 'settings-outline' },
 } as const satisfies Record<string, IconPair>;
 
 export type TabName = keyof typeof ICONS;

@@ -1,9 +1,5 @@
-import { Screen, Text } from '@/shared/design-system';
+import { SettingsScreen } from '@/features/settings';
 
 export default function ToolsScreen() {
-  return (
-    <Screen style={{ alignItems: 'center', justifyContent: 'center' }}>
-      <Text variant="subtitle">Tools</Text>
-    </Screen>
-  );
+  return <SettingsScreen withTabBar />;
 }
