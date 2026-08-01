@@ -6,6 +6,7 @@ import {
   startOfDay,
   subDays,
 } from 'date-fns';
+import { outstandingOf, STATUS_LABEL } from './constants';
 import type { Invoice, InvoiceLine } from './types';
 
 export function formatMoney(amount: number, currency: string): string {
@@ -92,4 +93,17 @@ export function groupInvoicesByDate(
     }
   }
   return sections;
+}
+
+export function invoiceSummaryText(invoice: Invoice, currency: string): string {
+  return [
+    `Invoice ${invoice.number}`,
+    `Customer: ${invoice.customerName}`,
+    `Issue date: ${formatInvoiceDate(invoice.issueDate)}`,
+    `Due date: ${formatInvoiceDate(invoice.dueDate)}`,
+    `Status: ${STATUS_LABEL[invoice.status]}`,
+    `Total: ${formatMoney(invoice.total, currency)}`,
+    `Paid: ${formatMoney(invoice.paid, currency)}`,
+    `Outstanding: ${formatMoney(outstandingOf(invoice), currency)}`,
+  ].join('\n');
 }

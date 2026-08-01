@@ -3,12 +3,11 @@ import { useMemo, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
 import { router } from 'expo-router';
 import { Button, Text, useTheme } from '@/shared/design-system';
-import { BottomSheet, EmptyState } from '@/shared/ui';
+import { BottomSheet, DateField, EmptyState, showSnackbar } from '@/shared/ui';
 import { formatMoney } from '@/features/invoices/format';
 import { useInvoicesStore } from '@/features/invoices';
 import { useClientsStore } from '@/features/customers';
 import { useSettingsStore } from '@/features/settings';
-import { SettingsField } from '@/features/settings/components/SettingsField';
 import { SettingsGroup } from '@/features/settings/components/SettingsList';
 import { SettingsScroll } from '@/features/settings/components/SettingsScroll';
 import {
@@ -265,7 +264,6 @@ export default function ReportsScreen() {
   const [customRange, setCustomRange] = useState<DateRange>(defaultCustomRange);
   const [draftRange, setDraftRange] = useState<DateRange>(defaultCustomRange);
   const [rangeOpen, setRangeOpen] = useState(false);
-  const [rangeError, setRangeError] = useState<string | null>(null);
 
   const summary = useMemo(() => {
     return summarizeInvoices(
@@ -286,7 +284,6 @@ export default function ReportsScreen() {
 
   const openCustomRange = () => {
     setDraftRange(customRange);
-    setRangeError(null);
     setRangeOpen(true);
   };
 
@@ -303,11 +300,11 @@ export default function ReportsScreen() {
     const start = parseDateInput(draftRange.start);
     const end = parseDateInput(draftRange.end);
     if (!start || !end) {
-      setRangeError('Use dates like 2026-01-31');
+      showSnackbar('Pick valid start and end dates.');
       return;
     }
     if (start > end) {
-      setRangeError('Start date must be before end date');
+      showSnackbar('Start date must be before end date.');
       return;
     }
     setCustomRange({
@@ -315,7 +312,6 @@ export default function ReportsScreen() {
       end: draftRange.end.trim(),
     });
     setPeriod('custom');
-    setRangeError(null);
     setRangeOpen(false);
   };
 
@@ -422,32 +418,23 @@ export default function ReportsScreen() {
         onClose={() => setRangeOpen(false)}
         title="Custom date range"
       >
-        <SettingsField
-          label="From"
-          value={draftRange.start}
-          onChangeText={(start) => setDraftRange((r) => ({ ...r, start }))}
-          placeholder="YYYY-MM-DD"
-          autoCapitalize="none"
-          autoCorrect={false}
+        <View style={{ gap: space.md, marginBottom: space.lg }}>
+          <DateField
+            label="From"
+            value={draftRange.start}
+            onChange={(start) => setDraftRange((r) => ({ ...r, start }))}
+          />
+          <DateField
+            label="To"
+            value={draftRange.end}
+            onChange={(end) => setDraftRange((r) => ({ ...r, end }))}
+          />
+        </View>
+        <Button
+          label="Apply range"
+          onPress={applyCustomRange}
+          style={{ alignSelf: 'stretch', justifyContent: 'center' }}
         />
-        <SettingsField
-          label="To"
-          value={draftRange.end}
-          onChangeText={(end) => setDraftRange((r) => ({ ...r, end }))}
-          placeholder="YYYY-MM-DD"
-          autoCapitalize="none"
-          autoCorrect={false}
-        />
-        {rangeError ? (
-          <Text variant="caption" muted style={{ marginBottom: space.md }}>
-            {rangeError}
-          </Text>
-        ) : (
-          <Text variant="caption" muted style={{ marginBottom: space.md }}>
-            Example: 2026-01-01 to 2026-03-31
-          </Text>
-        )}
-        <Button label="Apply range" onPress={applyCustomRange} />
       </BottomSheet>
     </SettingsScroll>
   );

@@ -15,7 +15,7 @@ import { useClientsStore } from '@/features/customers';
 import { SettingsField } from '@/features/settings/components/SettingsField';
 import { SettingsScroll } from '@/features/settings/components/SettingsScroll';
 import { useSettingsStore } from '@/features/settings';
-import { SearchablePickerSheet } from '@/shared/ui';
+import { SearchablePickerSheet, DateField } from '@/shared/ui';
 import { computeInvoiceTotals, formatMoney } from '../format';
 import { useInvoicesStore } from '../store';
 import type { Invoice, InvoiceLine, InvoiceStatus } from '../types';
@@ -264,11 +264,10 @@ export default function NewInvoiceScreen() {
 
     if (!trimmedCustomer) nextErrors.customer = 'Select or enter a customer.';
     if (!trimmedNumber) nextErrors.number = 'Enter an invoice number.';
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(issueDate)) {
-      nextErrors.issueDate = 'Use YYYY-MM-DD.';
-    }
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(dueDate)) {
-      nextErrors.dueDate = 'Use YYYY-MM-DD.';
+    if (!issueDate) nextErrors.issueDate = 'Pick an issue date.';
+    if (!dueDate) nextErrors.dueDate = 'Pick a due date.';
+    if (issueDate && dueDate && dueDate < issueDate) {
+      nextErrors.dueDate = 'Due date must be on or after issue date.';
     }
 
     const taken = invoices.some(
@@ -475,52 +474,26 @@ export default function NewInvoiceScreen() {
         error={errors.number}
       />
       <View style={[styles.dateRow, { gap: space.md, marginBottom: space.xl }]}>
-        <View style={{ flex: 1 }}>
-          <Text
-            variant="caption"
-            muted={!errors.issueDate}
-            style={[
-              styles.fieldLabel,
-              errors.issueDate ? { color: ERROR } : null,
-            ]}
-          >
-            Issue date
-          </Text>
-          <CompactInput
-            value={issueDate}
-            onChangeText={(value) => {
-              setIssueDate(value);
-              setErrors((prev) => ({ ...prev, issueDate: undefined }));
-            }}
-            placeholder="YYYY-MM-DD"
-            autoCapitalize="none"
-            error={Boolean(errors.issueDate)}
-          />
-          <FieldError message={errors.issueDate} />
-        </View>
-        <View style={{ flex: 1 }}>
-          <Text
-            variant="caption"
-            muted={!errors.dueDate}
-            style={[
-              styles.fieldLabel,
-              errors.dueDate ? { color: ERROR } : null,
-            ]}
-          >
-            Due date
-          </Text>
-          <CompactInput
-            value={dueDate}
-            onChangeText={(value) => {
-              setDueDate(value);
-              setErrors((prev) => ({ ...prev, dueDate: undefined }));
-            }}
-            placeholder="YYYY-MM-DD"
-            autoCapitalize="none"
-            error={Boolean(errors.dueDate)}
-          />
-          <FieldError message={errors.dueDate} />
-        </View>
+        <DateField
+          label="Issue date"
+          value={issueDate}
+          onChange={(value) => {
+            setIssueDate(value);
+            setErrors((prev) => ({ ...prev, issueDate: undefined }));
+          }}
+          error={errors.issueDate}
+          style={{ flex: 1 }}
+        />
+        <DateField
+          label="Due date"
+          value={dueDate}
+          onChange={(value) => {
+            setDueDate(value);
+            setErrors((prev) => ({ ...prev, dueDate: undefined }));
+          }}
+          error={errors.dueDate}
+          style={{ flex: 1 }}
+        />
       </View>
 
       <View style={[styles.sectionHead, { marginBottom: space.sm }]}>

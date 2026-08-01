@@ -6,7 +6,7 @@ import { Text, useTheme } from '@/shared/design-system';
 import { shareTextFile } from '@/shared/lib/files';
 import { ActionSheet, showSnackbar, type SheetAction } from '@/shared/ui';
 import { STATUS_LABEL, outstandingOf } from '../constants';
-import { formatInvoiceDate, formatMoney } from '../format';
+import { formatInvoiceDate, formatMoney, invoiceSummaryText } from '../format';
 import { useInvoicesStore } from '../store';
 import type { Invoice, InvoiceStatus } from '../types';
 
@@ -27,19 +27,6 @@ const STATUS_ICON: Record<InvoiceStatus, keyof typeof Ionicons.glyphMap> = {
   cancelled: 'close-circle-outline',
   void: 'ban-outline',
 };
-
-function invoiceSummary(invoice: Invoice, currency: string): string {
-  return [
-    `Invoice ${invoice.number}`,
-    `Customer: ${invoice.customerName}`,
-    `Issue date: ${formatInvoiceDate(invoice.issueDate)}`,
-    `Due date: ${formatInvoiceDate(invoice.dueDate)}`,
-    `Status: ${STATUS_LABEL[invoice.status]}`,
-    `Total: ${formatMoney(invoice.total, currency)}`,
-    `Paid: ${formatMoney(invoice.paid, currency)}`,
-    `Outstanding: ${formatMoney(outstandingOf(invoice), currency)}`,
-  ].join('\n');
-}
 
 function unpaidStatusFor(invoice: Invoice): InvoiceStatus {
   const today = new Date().toISOString().slice(0, 10);
@@ -73,7 +60,7 @@ export function InvoiceRow({ invoice, currency, last = false, onPress }: Props) 
     try {
       await Share.share({
         title: invoice.number,
-        message: invoiceSummary(invoice, currency),
+        message: invoiceSummaryText(invoice, currency),
       });
     } catch (error) {
       showSnackbar(
@@ -86,7 +73,7 @@ export function InvoiceRow({ invoice, currency, last = false, onPress }: Props) 
     try {
       await shareTextFile(
         `${invoice.number}.txt`,
-        invoiceSummary(invoice, currency),
+        invoiceSummaryText(invoice, currency),
         'text/plain',
       );
     } catch (error) {

@@ -44,7 +44,8 @@
         {
           "contactsPermission": "Allow Invoice App to import clients from your contacts."
         }
-      ]
+      ],
+      "@react-native-community/datetimepicker"
     ]
   }
 }

@@ -21,8 +21,8 @@ export type ReportPeriod =
   | 'last_month'
   | '30d'
   | 'year'
-  | 'all'
-  | 'custom';
+  | 'custom'
+  | 'all';
 
 export type DateRange = {
   start: string;
@@ -35,8 +35,8 @@ export const REPORT_PERIODS: { id: ReportPeriod; label: string }[] = [
   { id: 'last_month', label: 'Last month' },
   { id: '30d', label: '30 days' },
   { id: 'year', label: 'This year' },
-  { id: 'all', label: 'All time' },
   { id: 'custom', label: 'Custom' },
+  { id: 'all', label: 'All time' },
 ];
 
 const CLOSED = new Set<InvoiceStatus>(['cancelled', 'void', 'draft']);
