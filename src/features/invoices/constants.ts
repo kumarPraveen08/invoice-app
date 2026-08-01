@@ -18,64 +18,75 @@ export const FILTERS: { id: InvoiceFilter; label: string }[] = [
   { id: 'overdue', label: 'Overdue' },
   { id: 'draft', label: 'Draft' },
   { id: 'paid', label: 'Paid' },
+  { id: 'cancelled', label: 'Cancelled' },
+  { id: 'void', label: 'Void' },
 ];
 
 function dayOffset(daysAgo: number): string {
   return format(subDays(new Date(), daysAgo), 'yyyy-MM-dd');
 }
 
-export const SAMPLE_INVOICES: Invoice[] = [
-  {
-    id: '1',
-    number: 'INV-1008',
-    customerName: 'Northwind Studio',
-    issueDate: dayOffset(0),
-    dueDate: dayOffset(-14),
-    total: 48500,
-    paid: 0,
-    status: 'overdue',
-  },
-  {
-    id: '2',
-    number: 'INV-1007',
-    customerName: 'Brightline Co.',
-    issueDate: dayOffset(0),
-    dueDate: dayOffset(-14),
-    total: 18200,
-    paid: 5000,
-    status: 'partial',
-  },
-  {
-    id: '3',
-    number: 'INV-1006',
-    customerName: 'Cedar & Oak',
-    issueDate: dayOffset(1),
-    dueDate: dayOffset(-13),
-    total: 9600,
-    paid: 0,
-    status: 'sent',
-  },
-  {
-    id: '4',
-    number: 'INV-1005',
-    customerName: 'Kala Print House',
-    issueDate: dayOffset(5),
-    dueDate: dayOffset(-9),
-    total: 27400,
-    paid: 27400,
-    status: 'paid',
-  },
-  {
-    id: '5',
-    number: 'INV-1004',
-    customerName: 'Orbit Labs',
-    issueDate: dayOffset(40),
-    dueDate: dayOffset(26),
-    total: 15200,
-    paid: 0,
-    status: 'draft',
-  },
+const CLIENTS = [
+  'Northwind Studio',
+  'Brightline Co.',
+  'Cedar & Oak',
+  'Kala Print House',
+  'Orbit Labs',
+  'Harbor Dental',
+  'Pixel Forge',
+  'Sunrise Bakery',
+  'Astra Logistics',
+  'Greenfield Clinic',
+  'Nova Retail',
+  'Summit Advisors',
+] as const;
+
+const STATUS_CYCLE: InvoiceStatus[] = [
+  'overdue',
+  'partial',
+  'sent',
+  'paid',
+  'draft',
+  'opened',
+  'paid',
+  'sent',
+  'cancelled',
+  'void',
+  'partial',
+  'overdue',
 ];
+
+/** Spread across today → months ago so list sections + scroll are testable. */
+const DAY_OFFSETS = [
+  0, 0, 0, 1, 1, 2, 3, 5, 7, 9, 12, 15, 18, 22, 28, 35, 42, 50, 60, 75, 90,
+  110, 130, 150, 180,
+];
+
+function buildSampleInvoices(): Invoice[] {
+  return DAY_OFFSETS.map((daysAgo, index) => {
+    const status = STATUS_CYCLE[index % STATUS_CYCLE.length];
+    const total = 4500 + ((index * 3700) % 52000);
+    const paid =
+      status === 'paid'
+        ? total
+        : status === 'partial'
+          ? Math.round(total * 0.4)
+          : 0;
+
+    return {
+      id: String(index + 1),
+      number: `INV-${1000 + DAY_OFFSETS.length - index}`,
+      customerName: CLIENTS[index % CLIENTS.length],
+      issueDate: dayOffset(daysAgo),
+      dueDate: dayOffset(daysAgo - 14),
+      total,
+      paid,
+      status,
+    };
+  });
+}
+
+export const SAMPLE_INVOICES: Invoice[] = buildSampleInvoices();
 
 export function matchesFilter(
   invoice: Invoice,
@@ -90,6 +101,10 @@ export function matchesFilter(
       return invoice.status === 'paid';
     case 'overdue':
       return invoice.status === 'overdue';
+    case 'cancelled':
+      return invoice.status === 'cancelled';
+    case 'void':
+      return invoice.status === 'void';
     case 'unpaid':
       return (
         invoice.status === 'sent' ||

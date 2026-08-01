@@ -4,12 +4,11 @@ import { FILTERS } from '../constants';
 import type { InvoiceFilter } from '../types';
 
 type Props = {
-  value: InvoiceFilter;
-  onChange: (filter: InvoiceFilter) => void;
+  filter: InvoiceFilter;
+  onFilterChange: (filter: InvoiceFilter) => void;
 };
 
-/** M3 filter chips — fixed height so selection doesn’t jump layout. */
-export function InvoiceFilters({ value, onChange }: Props) {
+export function InvoiceFilters({ filter, onFilterChange }: Props) {
   const { colors, radii, space } = useTheme();
 
   return (
@@ -17,27 +16,27 @@ export function InvoiceFilters({ value, onChange }: Props) {
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
-        style={{ flexGrow: 0 }}
-        contentContainerStyle={{
-          gap: space.sm,
-          alignItems: 'center',
-        }}
+        nestedScrollEnabled
+        style={styles.chipScroll}
+        contentContainerStyle={[styles.chipContent, { gap: space.sm }]}
       >
-        {FILTERS.map((filter) => {
-          const selected = filter.id === value;
+        {FILTERS.map((item) => {
+          const selected = item.id === filter;
           return (
             <Pressable
-              key={filter.id}
+              key={item.id}
               accessibilityRole="button"
               accessibilityState={{ selected }}
-              onPress={() => onChange(filter.id)}
+              onPress={() => onFilterChange(item.id)}
               style={({ pressed }) => [
                 styles.chip,
                 {
                   paddingHorizontal: space.lg,
                   borderRadius: radii.full,
                   backgroundColor: selected ? colors.iconSoft : colors.surface,
-                  borderColor: selected ? colors.iconSoft : colors.onSurfaceMuted,
+                  borderColor: selected
+                    ? colors.iconSoft
+                    : colors.onSurfaceMuted,
                   opacity: pressed ? 0.85 : 1,
                 },
               ]}
@@ -49,7 +48,7 @@ export function InvoiceFilters({ value, onChange }: Props) {
                   fontWeight: '600',
                 }}
               >
-                {filter.label}
+                {item.label}
               </Text>
             </Pressable>
           );
@@ -60,6 +59,13 @@ export function InvoiceFilters({ value, onChange }: Props) {
 }
 
 const styles = StyleSheet.create({
+  chipScroll: {
+    height: 40,
+  },
+  chipContent: {
+    alignItems: 'center',
+    paddingRight: 4,
+  },
   chip: {
     height: 40,
     alignItems: 'center',

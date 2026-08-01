@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { View } from 'react-native';
+import { router } from 'expo-router';
 import { Text, useTheme } from '@/shared/design-system';
 import { SettingsGroup } from '@/features/settings/components/SettingsList';
 import { SettingsScroll } from '@/features/settings/components/SettingsScroll';
@@ -49,6 +50,7 @@ export default function InvoiceSearchScreen() {
                   invoice={invoice}
                   currency={currency}
                   last={index === section.data.length - 1}
+                  onPress={() => router.push(`/invoice/${invoice.id}`)}
                 />
               ))}
             </SettingsGroup>

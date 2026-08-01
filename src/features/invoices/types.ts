@@ -19,4 +19,11 @@ export type Invoice = {
   status: InvoiceStatus;
 };
 
-export type InvoiceFilter = 'all' | 'draft' | 'unpaid' | 'paid' | 'overdue';
+export type InvoiceFilter =
+  | 'all'
+  | 'draft'
+  | 'unpaid'
+  | 'paid'
+  | 'overdue'
+  | 'cancelled'
+  | 'void';

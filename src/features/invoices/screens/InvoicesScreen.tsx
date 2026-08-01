@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { View } from 'react-native';
+import { router } from 'expo-router';
 import { Text, useTheme } from '@/shared/design-system';
 import { SettingsGroup } from '@/features/settings/components/SettingsList';
 import { SettingsScroll } from '@/features/settings/components/SettingsScroll';
@@ -26,7 +27,7 @@ export default function InvoicesScreen() {
 
   return (
     <SettingsScroll withTabBar>
-      <InvoiceFilters value={filter} onChange={setFilter} />
+      <InvoiceFilters filter={filter} onFilterChange={setFilter} />
 
       {sections.length === 0 ? (
         <View style={{ paddingTop: space['3xl'], alignItems: 'center' }}>
@@ -48,6 +49,7 @@ export default function InvoicesScreen() {
                 invoice={invoice}
                 currency={currency}
                 last={index === section.data.length - 1}
+                onPress={() => router.push(`/invoice/${invoice.id}`)}
               />
             ))}
           </SettingsGroup>

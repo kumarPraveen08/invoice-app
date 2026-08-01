@@ -37,6 +37,14 @@ function RootNavigator() {
           }}
         />
         <Stack.Screen
+          name="invoice/[id]"
+          options={{
+            title: 'Invoice',
+            headerShadowVisible: false,
+            headerStyle: { backgroundColor: colors.background },
+          }}
+        />
+        <Stack.Screen
           name="catalogue/new"
           options={{
             title: 'New catalogue item',

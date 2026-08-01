@@ -46,7 +46,6 @@ export function groupInvoicesByDate(
   const sorted = [...invoices].sort((a, b) =>
     b.issueDate.localeCompare(a.issueDate),
   );
-
   const sections: { title: string; data: Invoice[] }[] = [];
   for (const invoice of sorted) {
     const title = dateSectionLabel(invoice.issueDate, now);
