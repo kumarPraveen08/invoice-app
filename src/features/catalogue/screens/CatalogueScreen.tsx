@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { EmptyState } from '@/shared/ui';
 import { SettingsGroup } from '@/features/settings/components/SettingsList';
 import { SettingsScroll } from '@/features/settings/components/SettingsScroll';
-import { useSettingsStore } from '@/features/settings';
+import { useSettingsStore } from '@/features/settings/store';
 import { CatalogueRow } from '../components/CatalogueRow';
 import { useCatalogueStore } from '../store';
 import type { CatalogueItem } from '../types';

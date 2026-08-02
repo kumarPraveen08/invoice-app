@@ -7,7 +7,7 @@ import { BottomSheet, DateField, EmptyState, showSnackbar } from '@/shared/ui';
 import { formatMoney } from '@/features/invoices/format';
 import { useInvoicesStore } from '@/features/invoices';
 import { useClientsStore } from '@/features/customers';
-import { useSettingsStore } from '@/features/settings';
+import { useSettingsStore } from '@/features/settings/store';
 import { SettingsGroup } from '@/features/settings/components/SettingsList';
 import { SettingsScroll } from '@/features/settings/components/SettingsScroll';
 import {

@@ -4,7 +4,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { router, useLocalSearchParams, useNavigation } from "expo-router";
 import { Text, useTheme } from "@/shared/design-system";
 import { formatMoney } from "@/features/invoices/format";
-import { useSettingsStore } from "@/features/settings";
+import { useSettingsStore } from "@/features/settings/store";
 import { SettingsGroup } from "@/features/settings/components/SettingsList";
 import { SettingsScroll } from "@/features/settings/components/SettingsScroll";
 import { useCatalogueStore } from "../store";

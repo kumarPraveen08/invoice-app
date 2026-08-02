@@ -1,4 +1,5 @@
-import { Pressable, StyleSheet, View } from 'react-native';
+import { Image, Pressable, StyleSheet, View } from 'react-native';
+import { router } from 'expo-router';
 import { Text, useTheme } from '@/shared/design-system';
 import { showSnackbar } from '@/shared/ui';
 import { SettingsField } from '../components/SettingsField';
@@ -10,12 +11,8 @@ export function BrandingScreen() {
   const branding = useSettingsStore((s) => s.branding);
   const updateBranding = useSettingsStore((s) => s.updateBranding);
 
-  const stubUpload = (kind: 'logo' | 'signature') => {
-    showSnackbar(
-      kind === 'logo'
-        ? 'Logo picker coming in a follow-up build.'
-        : 'Signature picker coming in a follow-up build.',
-    );
+  const stubLogo = () => {
+    showSnackbar('Logo picker coming in a follow-up build.');
   };
 
   return (
@@ -24,7 +21,7 @@ export function BrandingScreen() {
         label="Business logo"
         value={branding.logoUri ? 'Uploaded' : 'None'}
         action={branding.logoUri ? 'Replace' : 'Add'}
-        onPress={() => stubUpload('logo')}
+        onPress={stubLogo}
         onClear={
           branding.logoUri
             ? () => updateBranding({ logoUri: null })
@@ -33,9 +30,10 @@ export function BrandingScreen() {
       />
       <AssetRow
         label="Authorized signature"
-        value={branding.signatureUri ? 'Uploaded' : 'None'}
-        action={branding.signatureUri ? 'Replace' : 'Add'}
-        onPress={() => stubUpload('signature')}
+        value={branding.signatureUri ? 'Saved' : 'None'}
+        action={branding.signatureUri ? 'Redraw' : 'Draw'}
+        onPress={() => router.push('/settings/signature')}
+        previewUri={branding.signatureUri}
         onClear={
           branding.signatureUri
             ? () => updateBranding({ signatureUri: null })
@@ -60,12 +58,14 @@ function AssetRow({
   action,
   onPress,
   onClear,
+  previewUri,
 }: {
   label: string;
   value: string;
   action: string;
   onPress: () => void;
   onClear?: () => void;
+  previewUri?: string | null;
 }) {
   const { colors, space } = useTheme();
 
@@ -85,6 +85,14 @@ function AssetRow({
           {label}
         </Text>
         <Text variant="body">{value}</Text>
+        {previewUri ? (
+          <Image
+            source={{ uri: previewUri }}
+            style={styles.preview}
+            resizeMode="contain"
+            tintColor={colors.onSurface}
+          />
+        ) : null}
       </View>
       <View style={{ flexDirection: 'row', gap: space.md, alignItems: 'center' }}>
         {onClear ? (
@@ -109,5 +117,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     borderBottomWidth: StyleSheet.hairlineWidth,
+  },
+  preview: {
+    width: 120,
+    height: 48,
+    marginTop: 8,
   },
 });

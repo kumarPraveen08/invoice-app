@@ -427,6 +427,7 @@ export function InvoiceTemplatePreview({
                 <Image
                   source={{ uri: branding.signatureUri }}
                   style={styles.signature}
+                  resizeMode="contain"
                 />
               ) : (
                 <View

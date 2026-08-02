@@ -1,3 +1,3 @@
-import { BrandingScreen } from '@/features/settings';
+import { BrandingScreen } from '@/features/settings/screens/BrandingScreen';
 
 export default BrandingScreen;

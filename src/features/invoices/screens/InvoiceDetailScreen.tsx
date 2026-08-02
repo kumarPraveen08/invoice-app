@@ -8,11 +8,8 @@ import {
   SettingsRow,
 } from "@/features/settings/components/SettingsList";
 import { SettingsScroll } from "@/features/settings/components/SettingsScroll";
-import {
-  TemplatePickerSheet,
-  useSettingsStore,
-} from "@/features/settings";
-import { shareTextFile } from "@/shared/lib/files";
+import { TemplatePickerSheet } from "@/features/settings";
+import { useSettingsStore } from "@/features/settings/store";
 import { showSnackbar } from "@/shared/ui";
 import { STATUS_LABEL, outstandingOf } from "../constants";
 import {
@@ -20,6 +17,7 @@ import {
   formatInvoiceDate,
   formatMoney,
 } from "../format";
+import { downloadInvoicePdf } from "../invoicePdf";
 import { buildInvoiceShareMessage } from "../shareMessage";
 import { useInvoicesStore } from "../store";
 
@@ -106,20 +104,25 @@ export default function InvoiceDetailScreen() {
 
   const onPickTemplate = async (templateId: string) => {
     if (!invoice) return;
-    const message = buildInvoiceShareMessage(invoice, currency, templateId);
     try {
       if (pickerMode === "share") {
+        const message = buildInvoiceShareMessage(
+          invoice,
+          currency,
+          templateId,
+        );
         await Share.share({ title: invoice.number, message });
         return;
       }
-      await shareTextFile(`${invoice.number}.txt`, message, "text/plain");
+      await downloadInvoicePdf(invoice, currency, templateId);
+      showSnackbar("PDF ready to save or share");
     } catch (error) {
       showSnackbar(
         error instanceof Error
           ? error.message
           : pickerMode === "share"
             ? "Could not share invoice."
-            : "Could not download invoice.",
+            : "Could not download PDF.",
       );
     }
   };
@@ -267,7 +270,9 @@ export default function InvoiceDetailScreen() {
         visible={pickerOpen}
         onClose={() => setPickerOpen(false)}
         title={
-          pickerMode === "share" ? "Share with template" : "Download with template"
+          pickerMode === "share"
+            ? "Share with template"
+            : "Download PDF with template"
         }
         onSelect={(templateId) => {
           void onPickTemplate(templateId || defaultTemplateId);

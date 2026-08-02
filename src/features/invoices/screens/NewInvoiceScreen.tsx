@@ -14,7 +14,7 @@ import { useCatalogueStore } from '@/features/catalogue';
 import { useClientsStore } from '@/features/customers';
 import { SettingsField } from '@/features/settings/components/SettingsField';
 import { SettingsScroll } from '@/features/settings/components/SettingsScroll';
-import { useSettingsStore } from '@/features/settings';
+import { useSettingsStore } from '@/features/settings/store';
 import { SearchablePickerSheet, DateField } from '@/shared/ui';
 import { computeInvoiceTotals, formatMoney } from '../format';
 import { useInvoicesStore } from '../store';
