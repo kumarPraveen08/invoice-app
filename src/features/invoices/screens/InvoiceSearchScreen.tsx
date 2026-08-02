@@ -5,7 +5,7 @@ import { Text, useTheme } from '@/shared/design-system';
 import { SearchField } from '@/shared/ui';
 import { SettingsGroup } from '@/features/settings/components/SettingsList';
 import { SettingsScroll } from '@/features/settings/components/SettingsScroll';
-import { useSettingsStore } from '@/features/settings';
+import { useSettingsStore } from '@/features/settings/store';
 import { InvoiceRow } from '../components/InvoiceRow';
 import { groupInvoicesByDate } from '../format';
 import { useInvoicesStore } from '../store';

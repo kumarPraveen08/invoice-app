@@ -16,6 +16,7 @@ export default function SettingsLayout() {
       <Stack.Screen name="index" options={{ title: 'Settings' }} />
       <Stack.Screen name="business" options={{ title: 'Business details' }} />
       <Stack.Screen name="branding" options={{ title: 'Logo & signature' }} />
+      <Stack.Screen name="signature" options={{ title: 'Draw signature' }} />
       <Stack.Screen name="bank" options={{ title: 'Bank & payments' }} />
       <Stack.Screen
         name="preferences"

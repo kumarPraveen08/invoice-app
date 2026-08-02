@@ -4,10 +4,10 @@ import { Pressable, Share, StyleSheet, View } from 'react-native';
 import { router } from 'expo-router';
 import { Text, useTheme } from '@/shared/design-system';
 import { TemplatePickerSheet } from '@/features/settings';
-import { shareTextFile } from '@/shared/lib/files';
 import { ActionSheet, showSnackbar, type SheetAction } from '@/shared/ui';
 import { STATUS_LABEL, outstandingOf } from '../constants';
 import { formatInvoiceDate, formatMoney } from '../format';
+import { downloadInvoicePdf } from '../invoicePdf';
 import { buildInvoiceShareMessage } from '../shareMessage';
 import { useInvoicesStore } from '../store';
 import type { Invoice, InvoiceStatus } from '../types';
@@ -61,20 +61,21 @@ export function InvoiceRow({ invoice, currency, last = false, onPress }: Props) 
   };
 
   const onPickTemplate = async (templateId: string) => {
-    const message = buildInvoiceShareMessage(invoice, currency, templateId);
     try {
       if (pickerMode === 'share') {
+        const message = buildInvoiceShareMessage(invoice, currency, templateId);
         await Share.share({ title: invoice.number, message });
         return;
       }
-      await shareTextFile(`${invoice.number}.txt`, message, 'text/plain');
+      await downloadInvoicePdf(invoice, currency, templateId);
+      showSnackbar('PDF ready to save or share');
     } catch (error) {
       showSnackbar(
         error instanceof Error
           ? error.message
           : pickerMode === 'share'
             ? 'Could not share invoice.'
-            : 'Could not download invoice.',
+            : 'Could not download PDF.',
       );
     }
   };
@@ -117,7 +118,7 @@ export function InvoiceRow({ invoice, currency, last = false, onPress }: Props) 
     },
     {
       key: 'download',
-      label: 'Download',
+      label: 'Download PDF',
       icon: 'download-outline',
       onPress: () => {
         setPickerMode('download');
@@ -213,7 +214,7 @@ export function InvoiceRow({ invoice, currency, last = false, onPress }: Props) 
         title={
           pickerMode === 'share'
             ? 'Share with template'
-            : 'Download with template'
+            : 'Download PDF with template'
         }
         onSelect={(templateId) => {
           void onPickTemplate(templateId);

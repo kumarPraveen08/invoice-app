@@ -7,7 +7,7 @@ import { InvoiceRow } from "@/features/invoices/components/InvoiceRow";
 import { outstandingOf } from "@/features/invoices/constants";
 import { formatMoney } from "@/features/invoices/format";
 import { useInvoicesStore } from "@/features/invoices";
-import { useSettingsStore } from "@/features/settings";
+import { useSettingsStore } from "@/features/settings/store";
 import { SettingsGroup } from "@/features/settings/components/SettingsList";
 import { SettingsScroll } from "@/features/settings/components/SettingsScroll";
 import { useClientsStore } from "../store";

@@ -13,7 +13,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import { Screen, Text, useTheme } from '@/shared/design-system';
 import { CURRENCIES } from '@/features/settings/constants';
-import { useSettingsStore } from '@/features/settings';
+import { useSettingsStore } from '@/features/settings/store';
 import { OverviewGuide } from '../components/OverviewGuide';
 import { OVERVIEW_SLIDES, SURVEY_STEPS } from '../steps';
 

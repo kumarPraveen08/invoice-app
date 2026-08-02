@@ -5,7 +5,7 @@ import {
   FREE_PLAN_BRANDING,
   findTemplate,
 } from '@/features/settings/templateConstants';
-import { useSettingsStore } from '@/features/settings';
+import { useSettingsStore } from '@/features/settings/store';
 
 export function buildInvoiceShareMessage(
   invoice: Invoice,

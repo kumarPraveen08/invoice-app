@@ -1,16 +1,14 @@
-import { StyleSheet, View } from 'react-native';
 import { router } from 'expo-router';
-import { Button, Text, useTheme } from '@/shared/design-system';
-import { BottomSheet } from '@/shared/ui';
+import { ActionSheet, type SheetAction } from '@/shared/ui';
 
 type Props = {
   visible: boolean;
   onClose: () => void;
 };
 
-export function MoreCreateSheet({ visible, onClose }: Props) {
-  const { space } = useTheme();
+const SOON = 'Coming soon';
 
+export function MoreCreateSheet({ visible, onClose }: Props) {
   const go = (
     path: '/invoice/new' | '/catalogue/new' | '/clients/new',
     params?: Record<string, string>,
@@ -20,41 +18,79 @@ export function MoreCreateSheet({ visible, onClose }: Props) {
     else router.push(path);
   };
 
+  const actions: SheetAction[] = [
+    {
+      key: 'invoice',
+      label: 'Invoice',
+      icon: 'receipt-outline',
+      onPress: () => go('/invoice/new'),
+    },
+    {
+      key: 'catalogue',
+      label: 'Catalogue item',
+      icon: 'grid-outline',
+      onPress: () => go('/catalogue/new'),
+    },
+    {
+      key: 'client',
+      label: 'Client',
+      icon: 'person-add-outline',
+      onPress: () => go('/clients/new'),
+    },
+    {
+      key: 'contacts',
+      label: 'Client from contacts',
+      icon: 'people-outline',
+      onPress: () => go('/clients/new', { from: 'contacts' }),
+    },
+    {
+      key: 'estimate',
+      label: 'Estimate',
+      icon: 'document-text-outline',
+      disabled: true,
+      badge: SOON,
+      onPress: () => undefined,
+    },
+    {
+      key: 'credit-note',
+      label: 'Credit note',
+      icon: 'return-down-back-outline',
+      disabled: true,
+      badge: SOON,
+      onPress: () => undefined,
+    },
+    {
+      key: 'recurring',
+      label: 'Recurring invoice',
+      icon: 'repeat-outline',
+      disabled: true,
+      badge: SOON,
+      onPress: () => undefined,
+    },
+    {
+      key: 'purchase-order',
+      label: 'Purchase order',
+      icon: 'cart-outline',
+      disabled: true,
+      badge: SOON,
+      onPress: () => undefined,
+    },
+    {
+      key: 'expense',
+      label: 'Expense',
+      icon: 'wallet-outline',
+      disabled: true,
+      badge: SOON,
+      onPress: () => undefined,
+    },
+  ];
+
   return (
-    <BottomSheet visible={visible} onClose={onClose} title="Create">
-      <Text variant="body" muted style={styles.description}>
-        Choose what you want to add.
-      </Text>
-      <View style={{ gap: space.md }}>
-        <Button
-          label="Invoice"
-          icon="receipt-outline"
-          onPress={() => go('/invoice/new')}
-        />
-        <Button
-          label="Catalogue item"
-          icon="grid-outline"
-          onPress={() => go('/catalogue/new')}
-        />
-        <Button
-          label="Client"
-          icon="person-add-outline"
-          onPress={() => go('/clients/new')}
-        />
-        <Button
-          label="Client from contacts"
-          variant="secondary"
-          icon="people-outline"
-          onPress={() => go('/clients/new', { from: 'contacts' })}
-        />
-        <Button label="Cancel" variant="ghost" onPress={onClose} />
-      </View>
-    </BottomSheet>
+    <ActionSheet
+      visible={visible}
+      onClose={onClose}
+      title="Create"
+      actions={actions}
+    />
   );
 }
-
-const styles = StyleSheet.create({
-  description: {
-    marginBottom: 20,
-  },
-});

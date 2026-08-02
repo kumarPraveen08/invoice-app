@@ -5,7 +5,7 @@ import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { ThemeProvider, useTheme } from "@/shared/design-system";
-import { useSettingsStore } from "@/features/settings";
+import { useSettingsStore } from "@/features/settings/store";
 import { SnackbarHost } from "@/shared/ui";
 
 void SplashScreen.preventAutoHideAsync().catch(() => undefined);

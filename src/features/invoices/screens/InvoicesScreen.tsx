@@ -3,7 +3,7 @@ import { router } from 'expo-router';
 import { EmptyState } from '@/shared/ui';
 import { SettingsGroup } from '@/features/settings/components/SettingsList';
 import { SettingsScroll } from '@/features/settings/components/SettingsScroll';
-import { useSettingsStore } from '@/features/settings';
+import { useSettingsStore } from '@/features/settings/store';
 import { InvoiceFilters } from '../components/InvoiceFilters';
 import { InvoiceRow } from '../components/InvoiceRow';
 import { matchesFilter } from '../constants';

@@ -1,3 +1,3 @@
-import { BusinessDetailsScreen } from '@/features/settings';
+import { BusinessDetailsScreen } from '@/features/settings/screens/BusinessDetailsScreen';
 
 export default BusinessDetailsScreen;
