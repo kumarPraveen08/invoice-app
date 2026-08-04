@@ -6,6 +6,8 @@ import { StatusBar } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { ThemeProvider, useTheme } from "@/shared/design-system";
 import { useSettingsStore } from "@/features/settings/store";
+import { AuthProvider } from "@/providers/AuthProvider";
+import { useAuth } from "@/hooks/useAuth";
 import { SnackbarHost } from "@/shared/ui";
 
 void SplashScreen.preventAutoHideAsync().catch(() => undefined);
@@ -15,7 +17,7 @@ function RootNavigator() {
   const router = useRouter();
   const segments = useSegments();
   const onboardingComplete = useSettingsStore((s) => s.onboardingComplete);
-  const isAuthenticated = useSettingsStore((s) => s.isAuthenticated);
+  const { isAuthenticated, loading: authLoading } = useAuth();
   const [hydrated, setHydrated] = useState(
     () => useSettingsStore.persist.hasHydrated(),
   );
@@ -30,13 +32,15 @@ function RootNavigator() {
     return unsub;
   }, []);
 
-  useEffect(() => {
-    if (!hydrated) return;
-    void SplashScreen.hideAsync().catch(() => undefined);
-  }, [hydrated]);
+  const ready = hydrated && !authLoading;
 
   useEffect(() => {
-    if (!hydrated) return;
+    if (!ready) return;
+    void SplashScreen.hideAsync().catch(() => undefined);
+  }, [ready]);
+
+  useEffect(() => {
+    if (!ready) return;
     const inOnboarding = segments[0] === 'onboarding';
     const inAuth = segments[0] === 'auth';
 
@@ -52,7 +56,7 @@ function RootNavigator() {
       router.replace('/(tabs)');
     }
   }, [
-    hydrated,
+    ready,
     onboardingComplete,
     isAuthenticated,
     router,
@@ -62,7 +66,7 @@ function RootNavigator() {
   const statusBarStyle = mode === 'dark' ? 'light-content' : 'dark-content';
   const navigationBarStyle = mode === 'dark' ? 'light' : 'dark';
 
-  if (!hydrated) {
+  if (!ready) {
     return null;
   }
 
@@ -179,9 +183,11 @@ function RootNavigator() {
 export default function RootLayout() {
   return (
     <SafeAreaProvider>
-      <ThemeProvider>
-        <RootNavigator />
-      </ThemeProvider>
+      <AuthProvider>
+        <ThemeProvider>
+          <RootNavigator />
+        </ThemeProvider>
+      </AuthProvider>
     </SafeAreaProvider>
   );
 }

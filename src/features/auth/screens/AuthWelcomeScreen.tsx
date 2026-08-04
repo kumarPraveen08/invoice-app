@@ -2,12 +2,10 @@ import { Pressable, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import { Screen, Text, useTheme } from '@/shared/design-system';
-import { useSettingsStore } from '@/features/settings/store';
 
 export function AuthWelcomeScreen() {
   const { colors, space } = useTheme();
   const insets = useSafeAreaInsets();
-  const completeAuth = useSettingsStore((s) => s.completeAuth);
 
   return (
     <Screen>
@@ -86,28 +84,6 @@ export function AuthWelcomeScreen() {
         >
           <Text style={[styles.ctaLabel, { color: colors.primary }]}>
             Log in
-          </Text>
-        </Pressable>
-        <Pressable
-          accessibilityRole="button"
-          onPress={() => {
-            completeAuth('');
-            router.replace('/(tabs)');
-          }}
-          style={({ pressed }) => ({
-            paddingVertical: 12,
-            opacity: pressed ? 0.7 : 1,
-          })}
-        >
-          <Text
-            style={{
-              color: colors.primary,
-              fontWeight: '600',
-              textAlign: 'center',
-              fontSize: 16,
-            }}
-          >
-            Continue without account
           </Text>
         </Pressable>
       </View>

@@ -98,8 +98,6 @@ export type AppSettings = {
   appearance: AppearanceSettings;
   invoiceTemplates: InvoiceTemplateLibrary;
   onboardingComplete: boolean;
-  isAuthenticated: boolean;
-  authEmail: string;
 };
 
 export const defaultSettings: AppSettings = {
@@ -145,6 +143,4 @@ export const defaultSettings: AppSettings = {
     customs: [],
   },
   onboardingComplete: false,
-  isAuthenticated: false,
-  authEmail: "",
 };

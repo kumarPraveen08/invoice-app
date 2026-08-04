@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import {
+  ActivityIndicator,
   KeyboardAvoidingView,
   Platform,
   Pressable,
@@ -11,7 +12,7 @@ import {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import { Screen, Text, useTheme } from '@/shared/design-system';
-import { useSettingsStore } from '@/features/settings/store';
+import { useAuth } from '@/hooks/useAuth';
 
 type Mode = 'login' | 'signup';
 
@@ -22,10 +23,11 @@ type Props = {
 export function AuthFormScreen({ mode }: Props) {
   const { colors, space } = useTheme();
   const insets = useSafeAreaInsets();
-  const completeAuth = useSettingsStore((s) => s.completeAuth);
+  const { signIn, signUp } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [submitting, setSubmitting] = useState(false);
 
   const title = mode === 'signup' ? 'Create your account' : 'Welcome back';
   const subtitle =
@@ -34,7 +36,7 @@ export function AuthFormScreen({ mode }: Props) {
       : 'Enter your details to continue.';
   const cta = mode === 'signup' ? 'Create account' : 'Log in';
 
-  const submit = () => {
+  const submit = async () => {
     const trimmed = email.trim();
     if (!trimmed || !trimmed.includes('@')) {
       setError('Enter a valid email.');
@@ -44,9 +46,25 @@ export function AuthFormScreen({ mode }: Props) {
       setError('Password must be at least 6 characters.');
       return;
     }
+
     setError('');
-    completeAuth(trimmed);
-    router.replace('/(tabs)');
+    setSubmitting(true);
+    try {
+      const authError =
+        mode === 'signup'
+          ? await signUp(trimmed, password)
+          : await signIn(trimmed, password);
+
+      if (authError) {
+        setError(authError);
+        return;
+      }
+
+      // Root layout gate redirects to tabs when session is present.
+      router.replace('/(tabs)');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -175,25 +193,32 @@ export function AuthFormScreen({ mode }: Props) {
         >
           <Pressable
             accessibilityRole="button"
-            onPress={submit}
+            disabled={submitting}
+            onPress={() => {
+              void submit();
+            }}
             style={({ pressed }) => [
               styles.cta,
               {
                 backgroundColor: colors.primary,
-                opacity: pressed ? 0.9 : 1,
+                opacity: submitting ? 0.7 : pressed ? 0.9 : 1,
               },
             ]}
           >
-            <Text
-              style={{
-                color: colors.onPrimary,
-                fontWeight: '700',
-                textAlign: 'center',
-                fontSize: 17,
-              }}
-            >
-              {cta}
-            </Text>
+            {submitting ? (
+              <ActivityIndicator color={colors.onPrimary} />
+            ) : (
+              <Text
+                style={{
+                  color: colors.onPrimary,
+                  fontWeight: '700',
+                  textAlign: 'center',
+                  fontSize: 17,
+                }}
+              >
+                {cta}
+              </Text>
+            )}
           </Pressable>
           <Pressable
             accessibilityRole="button"

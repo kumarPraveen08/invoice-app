@@ -42,3 +42,5 @@ pnpm-debug.*
 /android
 
 .pnpm-store/
+
+.env

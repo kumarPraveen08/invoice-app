@@ -45,7 +45,8 @@
           "contactsPermission": "Allow Invoice App to import clients from your contacts."
         }
       ],
-      "@react-native-community/datetimepicker"
+      "@react-native-community/datetimepicker",
+      "expo-secure-store"
     ]
   }
 }

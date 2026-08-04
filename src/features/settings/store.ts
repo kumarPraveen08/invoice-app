@@ -40,8 +40,6 @@ type SettingsState = AppSettings & {
   ) => void;
   removeCustomTemplate: (id: string) => void;
   completeOnboarding: () => void;
-  completeAuth: (email: string) => void;
-  signOut: () => void;
 };
 
 export const useSettingsStore = create<SettingsState>()(
@@ -133,9 +131,6 @@ export const useSettingsStore = create<SettingsState>()(
           };
         }),
       completeOnboarding: () => set({ onboardingComplete: true }),
-      completeAuth: (email) =>
-        set({ isAuthenticated: true, authEmail: email.trim() }),
-      signOut: () => set({ isAuthenticated: false, authEmail: "" }),
     }),
     {
       name: "invoice-app-settings",
@@ -149,8 +144,6 @@ export const useSettingsStore = create<SettingsState>()(
         appearance: state.appearance,
         invoiceTemplates: state.invoiceTemplates,
         onboardingComplete: state.onboardingComplete,
-        isAuthenticated: state.isAuthenticated,
-        authEmail: state.authEmail,
       }),
       merge: (persisted, current) => {
         const stored = (persisted ?? {}) as Partial<AppSettings> & {
@@ -176,9 +169,6 @@ export const useSettingsStore = create<SettingsState>()(
             customs: library.customs ?? [],
           },
           onboardingComplete,
-          // Existing installs that already finished onboarding skip auth gate.
-          isAuthenticated: stored.isAuthenticated ?? onboardingComplete,
-          authEmail: stored.authEmail ?? "",
         };
       },
     },
