@@ -7,6 +7,7 @@ import {
   type ReactNode,
 } from 'react';
 import { AppState, type AppStateStatus } from 'react-native';
+import { useLinkingURL } from 'expo-linking';
 import type { Session } from '@supabase/supabase-js';
 import { supabase } from '@/shared/lib/supabase';
 import * as authService from '@/services/auth';
@@ -15,6 +16,7 @@ export type AuthContextValue = {
   session: Session | null;
   loading: boolean;
   isAuthenticated: boolean;
+  authLinkError: string | null;
   signIn: (email: string, password: string) => Promise<string | null>;
   signUp: (email: string, password: string) => Promise<string | null>;
   signOut: () => Promise<string | null>;
@@ -30,6 +32,8 @@ type Props = {
 export function AuthProvider({ children }: Props) {
   const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
+  const [authLinkError, setAuthLinkError] = useState<string | null>(null);
+  const linkingUrl = useLinkingURL();
 
   useEffect(() => {
     let mounted = true;
@@ -52,6 +56,21 @@ export function AuthProvider({ children }: Props) {
       subscription.unsubscribe();
     };
   }, []);
+
+  useEffect(() => {
+    if (!linkingUrl) return;
+
+    void authService.createSessionFromUrl(linkingUrl).then(({ data, error }) => {
+      if (error) {
+        setAuthLinkError(error);
+        return;
+      }
+      if (data) {
+        setAuthLinkError(null);
+        setSession(data);
+      }
+    });
+  }, [linkingUrl]);
 
   useEffect(() => {
     const onAppStateChange = (state: AppStateStatus) => {
@@ -97,12 +116,13 @@ export function AuthProvider({ children }: Props) {
       session,
       loading,
       isAuthenticated: session !== null,
+      authLinkError,
       signIn,
       signUp,
       signOut,
       refreshSession,
     }),
-    [session, loading, signIn, signUp, signOut, refreshSession],
+    [session, loading, authLinkError, signIn, signUp, signOut, refreshSession],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
