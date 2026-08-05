@@ -1,10 +1,18 @@
-import { ActivityIndicator, StyleSheet, View } from 'react-native';
+import { useEffect } from 'react';
+import { ActivityIndicator, Pressable, StyleSheet, View } from 'react-native';
+import { router } from 'expo-router';
 import { Screen, Text, useTheme } from '@/shared/design-system';
 import { useAuth } from '@/hooks/useAuth';
 
 export default function AuthCallbackScreen() {
   const { colors, space } = useTheme();
-  const { authLinkError } = useAuth();
+  const { authLinkError, isAuthenticated } = useAuth();
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      router.replace('/(tabs)');
+    }
+  }, [isAuthenticated]);
 
   return (
     <Screen>
@@ -32,6 +40,25 @@ export default function AuthCallbackScreen() {
             >
               {authLinkError}
             </Text>
+            <Pressable
+              accessibilityRole="button"
+              onPress={() => router.replace('/auth/login')}
+              style={({ pressed }) => ({
+                marginTop: space.lg,
+                opacity: pressed ? 0.7 : 1,
+              })}
+            >
+              <Text
+                style={{
+                  color: colors.primary,
+                  fontSize: 16,
+                  fontWeight: '600',
+                  textAlign: 'center',
+                }}
+              >
+                Back to sign in
+              </Text>
+            </Pressable>
           </>
         ) : (
           <>
