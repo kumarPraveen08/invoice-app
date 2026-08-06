@@ -1,3 +1,1 @@
-import { InvoicesScreen } from '@/features/invoices';
-
-export default InvoicesScreen;
+export { InvoicesScreen as default } from '@/features/invoices';

@@ -1,5 +1,3 @@
-import { AuthFormScreen } from '@/features/auth';
+import AuthScreen from "@/features/auth/screens/AuthScreen";
 
-export default function AuthLoginRoute() {
-  return <AuthFormScreen mode="login" />;
-}
+export default AuthScreen;

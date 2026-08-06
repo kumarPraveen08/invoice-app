@@ -1,15 +1,15 @@
-import { useEffect, useState } from "react";
-import { NavigationBar } from "expo-navigation-bar";
-import { Stack, useRouter, useSegments } from "expo-router";
-import * as SplashScreen from "expo-splash-screen";
-import { StatusBar } from "react-native";
-import { SafeAreaProvider } from "react-native-safe-area-context";
-import { ThemeProvider, useTheme } from "@/shared/design-system";
-import { useSettingsStore } from "@/features/settings/store";
-import { AuthProvider } from "@/providers/AuthProvider";
-import { useAuth } from "@/hooks/useAuth";
-import { SnackbarHost } from "@/shared/ui";
+import { useEffect, useState } from 'react';
+import * as WebBrowser from 'expo-web-browser';
+import { Stack, useRouter, useSegments } from 'expo-router';
+import * as SplashScreen from 'expo-splash-screen';
+import { StatusBar } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { ThemeProvider, useTheme } from '@/shared/design-system';
+import { useSettingsStore } from '@/features/settings/store';
+import { SnackbarHost } from '@/shared/ui';
+import { AuthProvider, useAuth } from '@/hooks/useAuth';
 
+WebBrowser.maybeCompleteAuthSession();
 void SplashScreen.preventAutoHideAsync().catch(() => undefined);
 
 function RootNavigator() {
@@ -17,18 +17,18 @@ function RootNavigator() {
   const router = useRouter();
   const segments = useSegments();
   const onboardingComplete = useSettingsStore((s) => s.onboardingComplete);
-  const { isAuthenticated, loading: authLoading } = useAuth();
-  const [hydrated, setHydrated] = useState(
-    () => useSettingsStore.persist.hasHydrated(),
-  );
+  const { session, loading: authLoading } = useAuth();
+  const [hydrated, setHydrated] = useState(() => useSettingsStore.persist.hasHydrated());
 
   useEffect(() => {
     const unsub = useSettingsStore.persist.onFinishHydration(() => {
       setHydrated(true);
     });
+
     if (useSettingsStore.persist.hasHydrated()) {
       setHydrated(true);
     }
+
     return unsub;
   }, []);
 
@@ -41,30 +41,30 @@ function RootNavigator() {
 
   useEffect(() => {
     if (!ready) return;
+
     const inOnboarding = segments[0] === 'onboarding';
     const inAuth = segments[0] === 'auth';
 
     if (!onboardingComplete) {
-      if (!inOnboarding) router.replace('/onboarding');
+      if (!inOnboarding) {
+        router.replace('/onboarding');
+      }
       return;
     }
-    if (!isAuthenticated) {
-      if (!inAuth) router.replace('/auth');
+
+    if (!session) {
+      if (!inAuth) {
+        router.replace('/auth');
+      }
       return;
     }
+
     if (inOnboarding || inAuth) {
       router.replace('/(tabs)');
     }
-  }, [
-    ready,
-    onboardingComplete,
-    isAuthenticated,
-    router,
-    segments,
-  ]);
+  }, [ready, onboardingComplete, session, router, segments]);
 
   const statusBarStyle = mode === 'dark' ? 'light-content' : 'dark-content';
-  const navigationBarStyle = mode === 'dark' ? 'light' : 'dark';
 
   if (!ready) {
     return null;
@@ -72,7 +72,6 @@ function RootNavigator() {
 
   return (
     <>
-      <NavigationBar style={navigationBarStyle} />
       <Stack
         screenOptions={{
           contentStyle: { backgroundColor: colors.background },
@@ -170,11 +169,7 @@ function RootNavigator() {
           }}
         />
       </Stack>
-      <StatusBar
-        animated
-        backgroundColor={colors.background}
-        barStyle={statusBarStyle}
-      />
+      <StatusBar animated backgroundColor={colors.background} barStyle={statusBarStyle} />
       <SnackbarHost />
     </>
   );

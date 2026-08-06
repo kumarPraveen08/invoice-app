@@ -14,8 +14,6 @@ export default function AuthLayout() {
     >
       <Stack.Screen name="index" />
       <Stack.Screen name="login" />
-      <Stack.Screen name="signup" />
-      <Stack.Screen name="callback" />
     </Stack>
   );
 }
