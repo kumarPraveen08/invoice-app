@@ -1,5 +1,6 @@
 import { Image, Pressable, StyleSheet, View } from 'react-native';
 import { router } from 'expo-router';
+import * as ImagePicker from 'expo-image-picker';
 import { Text, useTheme } from '@/shared/design-system';
 import { showSnackbar } from '@/shared/ui';
 import { SettingsField } from '../components/SettingsField';
@@ -11,8 +12,29 @@ export function BrandingScreen() {
   const branding = useSettingsStore((s) => s.branding);
   const updateBranding = useSettingsStore((s) => s.updateBranding);
 
-  const stubLogo = () => {
-    showSnackbar('Logo picker coming in a follow-up build.');
+  const pickLogo = async () => {
+    try {
+      const permission =
+        await ImagePicker.requestMediaLibraryPermissionsAsync();
+      if (!permission.granted) {
+        showSnackbar(
+          'Allow photo access in Settings to add a business logo.',
+        );
+        return;
+      }
+      const result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ['images'],
+        allowsEditing: true,
+        aspect: [1, 1],
+        quality: 0.8,
+      });
+      if (result.canceled || !result.assets[0]?.uri) return;
+      updateBranding({ logoUri: result.assets[0].uri });
+    } catch (error) {
+      showSnackbar(
+        error instanceof Error ? error.message : 'Could not open photos.',
+      );
+    }
   };
 
   return (
@@ -21,7 +43,8 @@ export function BrandingScreen() {
         label="Business logo"
         value={branding.logoUri ? 'Uploaded' : 'None'}
         action={branding.logoUri ? 'Replace' : 'Add'}
-        onPress={stubLogo}
+        onPress={pickLogo}
+        previewUri={branding.logoUri}
         onClear={
           branding.logoUri
             ? () => updateBranding({ logoUri: null })
@@ -34,6 +57,7 @@ export function BrandingScreen() {
         action={branding.signatureUri ? 'Redraw' : 'Draw'}
         onPress={() => router.push('/settings/signature')}
         previewUri={branding.signatureUri}
+        tintPreview
         onClear={
           branding.signatureUri
             ? () => updateBranding({ signatureUri: null })
@@ -59,6 +83,7 @@ function AssetRow({
   onPress,
   onClear,
   previewUri,
+  tintPreview = false,
 }: {
   label: string;
   value: string;
@@ -66,6 +91,8 @@ function AssetRow({
   onPress: () => void;
   onClear?: () => void;
   previewUri?: string | null;
+  /** Signatures are ink strokes — tint to onSurface. Logos keep original colors. */
+  tintPreview?: boolean;
 }) {
   const { colors, space } = useTheme();
 
@@ -88,9 +115,9 @@ function AssetRow({
         {previewUri ? (
           <Image
             source={{ uri: previewUri }}
-            style={styles.preview}
+            style={tintPreview ? styles.signaturePreview : styles.logoPreview}
             resizeMode="contain"
-            tintColor={colors.onSurface}
+            tintColor={tintPreview ? colors.onSurface : undefined}
           />
         ) : null}
       </View>
@@ -118,7 +145,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
-  preview: {
+  logoPreview: {
+    width: 64,
+    height: 64,
+    marginTop: 8,
+    borderRadius: 8,
+  },
+  signaturePreview: {
     width: 120,
     height: 48,
     marginTop: 8,
