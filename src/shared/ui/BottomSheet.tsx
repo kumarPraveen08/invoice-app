@@ -1,4 +1,3 @@
-import Ionicons from '@expo/vector-icons/Ionicons';
 import type { ReactNode } from 'react';
 import {
   Dimensions,
@@ -10,7 +9,7 @@ import {
   View,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { Text, useTheme } from '@/shared/design-system';
+import {Icon, Text, useTheme} from '@/shared/design-system';
 
 type Props = {
   visible: boolean;
@@ -73,7 +72,7 @@ export function BottomSheet({
               onPress={onClose}
               hitSlop={8}
             >
-              <Ionicons name="close" size={24} color={colors.onSurfaceMuted} />
+              <Icon name="close" size={24} color={colors.onSurfaceMuted} />
             </Pressable>
           </View>
           <View style={expanded ? styles.bodyExpanded : undefined}>

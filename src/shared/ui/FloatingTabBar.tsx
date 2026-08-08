@@ -1,9 +1,8 @@
-import Ionicons from '@expo/vector-icons/Ionicons';
 import { Tabs } from 'expo-router';
 import type { ComponentProps } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { applyElevation, useTheme } from '@/shared/design-system';
+import { applyElevation, Icon, useTheme, type IconName } from '@/shared/design-system';
 import type { TabName } from './TabBarIcon';
 
 type FloatingTabBarProps = Parameters<
@@ -20,15 +19,12 @@ const ROUTE_TAB: Record<string, TabName> = {
   tools: 'tools',
 };
 
-const ICONS: Record<
-  TabName,
-  { active: keyof typeof Ionicons.glyphMap; inactive: keyof typeof Ionicons.glyphMap }
-> = {
-  invoices: { active: 'receipt', inactive: 'receipt-outline' },
-  catalogue: { active: 'grid', inactive: 'grid-outline' },
+const ICONS: Record<TabName, { active: IconName; inactive: IconName }> = {
+  invoices: { active: 'receipt', inactive: 'receipt-long' },
+  catalogue: { active: 'grid-view', inactive: 'grid-view' },
   clients: { active: 'people', inactive: 'people-outline' },
-  reports: { active: 'bar-chart', inactive: 'bar-chart-outline' },
-  tools: { active: 'settings', inactive: 'settings-outline' },
+  reports: { active: 'bar-chart', inactive: 'bar-chart' },
+  tools: { active: 'settings', inactive: 'settings' },
 };
 
 const CREATE_ROUTES = new Set(['index', 'catalogue', 'clients']);
@@ -46,7 +42,7 @@ export function FloatingTabBar({
   const rowBottom = Math.max(bottomInset, tabBar.marginBottom) + 5;
   const activeRoute = state.routes[state.index]?.name ?? 'index';
   const showCreate = CREATE_ROUTES.has(activeRoute);
-  const fabIcon = showCreate ? 'add' : 'ellipsis-horizontal';
+  const fabIcon: IconName = showCreate ? 'add' : 'more-horiz';
   const fabLabel = showCreate ? 'Create' : 'More actions';
 
   return (
@@ -121,7 +117,7 @@ export function FloatingTabBar({
                     },
                   ]}
                 >
-                  <Ionicons
+                  <Icon
                     name={focused ? icon.active : icon.inactive}
                     size={tabBar.iconSize}
                     color={focused ? colors.primary : colors.tabInactive}
@@ -149,11 +145,7 @@ export function FloatingTabBar({
               applyElevation('md', colors.shadow),
             ]}
           >
-            <Ionicons
-              name={fabIcon}
-              size={fab.iconSize}
-              color={colors.onPrimary}
-            />
+            <Icon name={fabIcon} size={fab.iconSize} color={colors.onPrimary} />
           </Pressable>
         ) : null}
       </View>

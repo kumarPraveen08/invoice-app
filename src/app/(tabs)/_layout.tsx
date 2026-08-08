@@ -1,9 +1,8 @@
 import { useState } from 'react';
-import Ionicons from '@expo/vector-icons/Ionicons';
 import { router, Tabs } from 'expo-router';
 import { Alert, Pressable, View } from 'react-native';
 import { MoreCreateSheet } from '@/features/invoices/components/MoreCreateSheet';
-import { useTheme } from '@/shared/design-system';
+import { Icon, useTheme, type IconName } from '@/shared/design-system';
 import { FloatingTabBar } from '@/shared/ui';
 import { useAuth } from '@/features/auth';
 
@@ -13,16 +12,12 @@ const CREATE_PATH: Record<string, '/invoice/new' | '/catalogue/new' | '/clients/
   clients: '/clients/new',
 };
 
-function HeaderIcon({
-  icon,
-  label,
-  onPress,
-}: {
-  icon: keyof typeof Ionicons.glyphMap;
-  label: string;
-  onPress: () => void;
-}) {
-  const { colors } = useTheme();
+function headerIcon(
+  name: IconName,
+  label: string,
+  onPress: () => void,
+  color: string,
+) {
   return (
     <Pressable
       accessibilityRole="button"
@@ -31,7 +26,7 @@ function HeaderIcon({
       hitSlop={8}
       style={{ padding: 4 }}
     >
-      <Ionicons name={icon} size={22} color={colors.onSurface} />
+      <Icon name={name} size={22} color={color} />
     </Pressable>
   );
 }
@@ -40,6 +35,7 @@ export default function TabsLayout() {
   const { colors } = useTheme();
   const { signOut } = useAuth();
   const [moreOpen, setMoreOpen] = useState(false);
+  const iconColor = colors.onSurface;
 
   const onFabPress = (routeName: string) => {
     const path = CREATE_PATH[routeName];
@@ -74,12 +70,8 @@ export default function TabsLayout() {
             title: 'Invoices',
             headerRight: () => (
               <View style={{ marginRight: 12, flexDirection: 'row', gap: 8 }}>
-                <HeaderIcon
-                  icon="search"
-                  label="Search invoices"
-                  onPress={() => router.push('/invoice/search')}
-                />
-                <HeaderIcon icon="log-out-outline" label="Sign out" onPress={() => void onSignOut()} />
+                {headerIcon('search', 'Search invoices', () => router.push('/invoice/search'), iconColor)}
+                {headerIcon('logout', 'Sign out', () => void onSignOut(), iconColor)}
               </View>
             ),
           }}
@@ -97,17 +89,9 @@ export default function TabsLayout() {
                   marginRight: 12,
                 }}
               >
-                <HeaderIcon
-                  icon="search"
-                  label="Search catalogue"
-                  onPress={() => router.push('/catalogue/search')}
-                />
-                <HeaderIcon
-                  icon="file-tray-full-outline"
-                  label="Bulk import catalogue"
-                  onPress={() => router.push('/catalogue/import')}
-                />
-                <HeaderIcon icon="log-out-outline" label="Sign out" onPress={() => void onSignOut()} />
+                {headerIcon('search', 'Search catalogue', () => router.push('/catalogue/search'), iconColor)}
+                {headerIcon('folder-open', 'Bulk import catalogue', () => router.push('/catalogue/import'), iconColor)}
+                {headerIcon('logout', 'Sign out', () => void onSignOut(), iconColor)}
               </View>
             ),
           }}
@@ -125,27 +109,19 @@ export default function TabsLayout() {
                   marginRight: 12,
                 }}
               >
-                <HeaderIcon
-                  icon="search"
-                  label="Search clients"
-                  onPress={() => router.push('/clients/search')}
-                />
-                <HeaderIcon
-                  icon="person-add-outline"
-                  label="Add from contacts"
-                  onPress={() =>
+                {headerIcon('search', 'Search clients', () => router.push('/clients/search'), iconColor)}
+                {headerIcon(
+                  'person-add',
+                  'Add from contacts',
+                  () =>
                     router.push({
                       pathname: '/clients/new',
                       params: { from: 'contacts' },
-                    })
-                  }
-                />
-                <HeaderIcon
-                  icon="file-tray-full-outline"
-                  label="Bulk import clients"
-                  onPress={() => router.push('/clients/import')}
-                />
-                <HeaderIcon icon="log-out-outline" label="Sign out" onPress={() => void onSignOut()} />
+                    }),
+                  iconColor,
+                )}
+                {headerIcon('folder-open', 'Bulk import clients', () => router.push('/clients/import'), iconColor)}
+                {headerIcon('logout', 'Sign out', () => void onSignOut(), iconColor)}
               </View>
             ),
           }}
@@ -156,7 +132,7 @@ export default function TabsLayout() {
             title: 'Reports',
             headerRight: () => (
               <View style={{ marginRight: 12 }}>
-                <HeaderIcon icon="log-out-outline" label="Sign out" onPress={() => void onSignOut()} />
+                {headerIcon('logout', 'Sign out', () => void onSignOut(), iconColor)}
               </View>
             ),
           }}
@@ -167,7 +143,7 @@ export default function TabsLayout() {
             title: 'Settings',
             headerRight: () => (
               <View style={{ marginRight: 12 }}>
-                <HeaderIcon icon="log-out-outline" label="Sign out" onPress={() => void onSignOut()} />
+                {headerIcon('logout', 'Sign out', () => void onSignOut(), iconColor)}
               </View>
             ),
           }}

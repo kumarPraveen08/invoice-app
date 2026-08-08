@@ -1,8 +1,10 @@
-import { Stack } from 'expo-router';
-import { useTheme } from '@/shared/design-system';
+import { Stack, useRouter } from 'expo-router';
+import { Pressable } from 'react-native';
+import { Icon, useTheme } from '@/shared/design-system';
 
 export default function SettingsLayout() {
   const { colors } = useTheme();
+  const router = useRouter();
 
   return (
     <Stack
@@ -11,6 +13,18 @@ export default function SettingsLayout() {
         headerStyle: { backgroundColor: colors.background },
         headerTintColor: colors.onSurface,
         contentStyle: { backgroundColor: colors.background },
+        headerLeft: ({ canGoBack, tintColor }) =>
+          canGoBack ? (
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel="Back"
+              onPress={() => router.back()}
+              hitSlop={8}
+              style={{ padding: 4 }}
+            >
+              <Icon name="arrow-back" size={22} color={tintColor} />
+            </Pressable>
+          ) : null,
       }}
     >
       <Stack.Screen name="index" options={{ title: 'Settings' }} />

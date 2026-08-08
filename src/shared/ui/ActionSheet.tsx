@@ -1,12 +1,11 @@
-import Ionicons from '@expo/vector-icons/Ionicons';
 import { Pressable, StyleSheet, View } from 'react-native';
-import { Text, useTheme } from '@/shared/design-system';
+import { Icon, Text, useTheme, type IconName } from '@/shared/design-system';
 import { BottomSheet } from './BottomSheet';
 
 export type SheetAction = {
   key: string;
   label: string;
-  icon?: keyof typeof Ionicons.glyphMap;
+  icon?: IconName;
   destructive?: boolean;
   disabled?: boolean;
   badge?: string;
@@ -55,7 +54,7 @@ export function ActionSheet({ visible, onClose, title, actions }: Props) {
               ]}
             >
               {action.icon ? (
-                <Ionicons
+                <Icon
                   name={action.icon}
                   size={22}
                   color={tint}

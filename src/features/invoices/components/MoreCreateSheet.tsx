@@ -22,19 +22,19 @@ export function MoreCreateSheet({ visible, onClose }: Props) {
     {
       key: 'invoice',
       label: 'Invoice',
-      icon: 'receipt-outline',
+      icon: 'receipt',
       onPress: () => go('/invoice/new'),
     },
     {
       key: 'catalogue',
       label: 'Catalogue item',
-      icon: 'grid-outline',
+      icon: 'grid-view',
       onPress: () => go('/catalogue/new'),
     },
     {
       key: 'client',
       label: 'Client',
-      icon: 'person-add-outline',
+      icon: 'person-add',
       onPress: () => go('/clients/new'),
     },
     {
@@ -46,7 +46,7 @@ export function MoreCreateSheet({ visible, onClose }: Props) {
     {
       key: 'estimate',
       label: 'Estimate',
-      icon: 'document-text-outline',
+      icon: 'description',
       disabled: true,
       badge: SOON,
       onPress: () => undefined,
@@ -54,7 +54,7 @@ export function MoreCreateSheet({ visible, onClose }: Props) {
     {
       key: 'credit-note',
       label: 'Credit note',
-      icon: 'return-down-back-outline',
+      icon: 'reply',
       disabled: true,
       badge: SOON,
       onPress: () => undefined,
@@ -62,7 +62,7 @@ export function MoreCreateSheet({ visible, onClose }: Props) {
     {
       key: 'recurring',
       label: 'Recurring invoice',
-      icon: 'repeat-outline',
+      icon: 'repeat',
       disabled: true,
       badge: SOON,
       onPress: () => undefined,
@@ -70,7 +70,7 @@ export function MoreCreateSheet({ visible, onClose }: Props) {
     {
       key: 'purchase-order',
       label: 'Purchase order',
-      icon: 'cart-outline',
+      icon: 'shopping-cart',
       disabled: true,
       badge: SOON,
       onPress: () => undefined,
@@ -78,7 +78,7 @@ export function MoreCreateSheet({ visible, onClose }: Props) {
     {
       key: 'expense',
       label: 'Expense',
-      icon: 'wallet-outline',
+      icon: 'account-balance-wallet',
       disabled: true,
       badge: SOON,
       onPress: () => undefined,

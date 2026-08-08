@@ -9,9 +9,8 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import Ionicons from '@expo/vector-icons/Ionicons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { Text } from '@/shared/design-system';
+import {Icon, Text} from '@/shared/design-system';
 import { OVERVIEW_SLIDES, type OverviewSlide } from '../steps';
 
 const { width: SCREEN_W, height: SCREEN_H } = Dimensions.get('window');
@@ -248,7 +247,7 @@ function VisualOrbit({ item, active }: { item: OverviewSlide; active: boolean })
           },
         ]}
       >
-        <Ionicons name="people" size={36} color="#FFFFFF" />
+        <Icon name="people" size={36} color="#FFFFFF" />
       </Animated.View>
       {people.map((p, i) => (
         <Animated.View

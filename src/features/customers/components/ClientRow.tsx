@@ -1,8 +1,7 @@
 import { useState } from 'react';
-import Ionicons from '@expo/vector-icons/Ionicons';
 import { Pressable, StyleSheet, View } from 'react-native';
 import { router } from 'expo-router';
-import { Text, useTheme } from '@/shared/design-system';
+import {Icon, Text, useTheme} from '@/shared/design-system';
 import { ActionSheet, showSnackbar, SwipeableRow } from '@/shared/ui';
 import { useClientsStore } from '../store';
 import type { Client } from '../types';
@@ -63,7 +62,7 @@ export function ClientRow({ client, last = false }: Props) {
               },
             ]}
           >
-            <Ionicons name="person-outline" size={20} color={colors.primary} />
+            <Icon name="person" size={20} color={colors.primary} />
           </View>
           <View style={styles.copy}>
             <Text variant="body" style={{ fontWeight: '600' }} numberOfLines={1}>
@@ -85,19 +84,19 @@ export function ClientRow({ client, last = false }: Props) {
           {
             key: 'view',
             label: 'View',
-            icon: 'eye-outline',
+            icon: 'visibility',
             onPress: onOpen,
           },
           {
             key: 'edit',
             label: 'Edit',
-            icon: 'create-outline',
+            icon: 'edit',
             onPress: onEdit,
           },
           {
             key: 'delete',
             label: 'Delete',
-            icon: 'trash-outline',
+            icon: 'delete',
             destructive: true,
             onPress: onDelete,
           },

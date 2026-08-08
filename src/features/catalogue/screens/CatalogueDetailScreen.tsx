@@ -1,8 +1,7 @@
 import { useEffect } from "react";
 import { Pressable, StyleSheet, View } from "react-native";
-import Ionicons from "@expo/vector-icons/Ionicons";
 import { router, useLocalSearchParams, useNavigation } from "expo-router";
-import { Text, useTheme } from "@/shared/design-system";
+import { Icon, Text, useTheme } from "@/shared/design-system";
 import { formatMoney } from "@/features/invoices/format";
 import { useSettingsStore } from "@/features/settings/store";
 import { SettingsGroup } from "@/features/settings/components/SettingsList";
@@ -66,12 +65,9 @@ export default function CatalogueDetailScreen() {
                 })
               }
               hitSlop={8}
+              style={{ padding: 4 }}
             >
-              <Ionicons
-                name="pencil-outline"
-                size={22}
-                color={colors.onSurface}
-              />
+              <Icon name="edit" size={22} color={colors.onSurface} />
             </Pressable>
           )
         : undefined,

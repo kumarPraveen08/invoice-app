@@ -1,4 +1,3 @@
-import Ionicons from '@expo/vector-icons/Ionicons';
 import {
   Pressable,
   type PressableProps,
@@ -7,11 +6,12 @@ import {
 } from 'react-native';
 import { applyElevation } from '../tokens';
 import { useTheme } from '../useTheme';
+import { Icon, type IconName } from './Icon';
 
 type IconButtonSize = 'default' | 'fab';
 
 type Props = Omit<PressableProps, 'style'> & {
-  icon: keyof typeof Ionicons.glyphMap;
+  icon: IconName;
   size?: IconButtonSize;
   style?: StyleProp<ViewStyle>;
 };
@@ -45,7 +45,7 @@ export function IconButton({
         style,
       ]}
     >
-      <Ionicons name={icon} size={iconSize} color={colors.onPrimary} />
+      <Icon name={icon} size={iconSize} color={colors.onPrimary} />
     </Pressable>
   );
 }

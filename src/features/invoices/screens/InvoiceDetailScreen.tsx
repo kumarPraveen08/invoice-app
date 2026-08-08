@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { Pressable, Share, View } from "react-native";
-import Ionicons from "@expo/vector-icons/Ionicons";
 import { router, useLocalSearchParams, useNavigation } from "expo-router";
-import { Text, useTheme } from "@/shared/design-system";
+import { Icon, Text, useTheme } from "@/shared/design-system";
 import {
   SettingsGroup,
   SettingsRow,
@@ -62,7 +61,7 @@ export default function InvoiceDetailScreen() {
             hitSlop={8}
             style={{ padding: 4 }}
           >
-            <Ionicons name="share-outline" size={22} color={colors.onSurface} />
+            <Icon name="share" size={22} color={colors.onSurface} />
           </Pressable>
           <Pressable
             accessibilityRole="button"
@@ -74,11 +73,7 @@ export default function InvoiceDetailScreen() {
             hitSlop={8}
             style={{ padding: 4 }}
           >
-            <Ionicons
-              name="download-outline"
-              size={22}
-              color={colors.onSurface}
-            />
+            <Icon name="download" size={22} color={colors.onSurface} />
           </Pressable>
           <Pressable
             accessibilityRole="button"
@@ -90,12 +85,9 @@ export default function InvoiceDetailScreen() {
               })
             }
             hitSlop={8}
+            style={{ padding: 4 }}
           >
-            <Ionicons
-              name="pencil-outline"
-              size={22}
-              color={colors.onSurface}
-            />
+            <Icon name="edit" size={22} color={colors.onSurface} />
           </Pressable>
         </View>
       ),
@@ -157,19 +149,19 @@ export default function InvoiceDetailScreen() {
 
         <SettingsGroup title="Summary">
           <SettingsRow
-            icon="cash-outline"
+            icon="payments"
             title="Total"
             subtitle={formatMoney(invoice.total, currency)}
             showChevron={false}
           />
           <SettingsRow
-            icon="wallet-outline"
+            icon="account-balance-wallet"
             title="Paid"
             subtitle={formatMoney(invoice.paid, currency)}
             showChevron={false}
           />
           <SettingsRow
-            icon="time-outline"
+            icon="schedule"
             title="Outstanding"
             subtitle={formatMoney(balance, currency)}
             showChevron={false}
@@ -179,13 +171,13 @@ export default function InvoiceDetailScreen() {
 
         <SettingsGroup title="Dates">
           <SettingsRow
-            icon="calendar-outline"
+            icon="calendar-today"
             title="Issued"
             subtitle={formatInvoiceDate(invoice.issueDate)}
             showChevron={false}
           />
           <SettingsRow
-            icon="flag-outline"
+            icon="flag"
             title="Due"
             subtitle={formatInvoiceDate(invoice.dueDate)}
             showChevron={false}
@@ -198,7 +190,7 @@ export default function InvoiceDetailScreen() {
             {invoice.lines.map((line, index) => (
               <SettingsRow
                 key={line.id}
-                icon="cube-outline"
+                icon="inventory-2"
                 title={line.name}
                 subtitle={`${line.quantity} × ${formatMoney(line.unitPrice, currency)}`}
                 showChevron={false}
@@ -210,25 +202,25 @@ export default function InvoiceDetailScreen() {
 
         <SettingsGroup title="Totals">
           <SettingsRow
-            icon="list-outline"
+            icon="list"
             title="Subtotal"
             subtitle={formatMoney(totals.subtotal, currency)}
             showChevron={false}
           />
           <SettingsRow
-            icon="pricetag-outline"
+            icon="local-offer"
             title="Discount"
             subtitle={formatMoney(totals.discount, currency)}
             showChevron={false}
           />
           <SettingsRow
-            icon="calculator-outline"
+            icon="calculate"
             title={`Tax (${invoice.taxRate}%)`}
             subtitle={formatMoney(totals.tax, currency)}
             showChevron={false}
           />
           <SettingsRow
-            icon="add-circle-outline"
+            icon="add-circle"
             title="Additional charges"
             subtitle={formatMoney(totals.additionalCharges, currency)}
             showChevron={false}

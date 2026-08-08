@@ -1,5 +1,4 @@
-import type { ComponentProps } from 'react';
-import type Ionicons from '@expo/vector-icons/Ionicons';
+import type { IconName } from '@/shared/design-system';
 
 export type OverviewTag = {
   label: string;
@@ -15,7 +14,7 @@ export type OverviewSlide = {
   key: string;
   title: string;
   body: string;
-  icon: ComponentProps<typeof Ionicons>['name'];
+  icon: IconName;
   visual: OverviewVisual;
   background: string;
   glow: string;
@@ -31,7 +30,7 @@ export const OVERVIEW_SLIDES: OverviewSlide[] = [
     key: 'invoices',
     title: 'Send invoices fast',
     body: 'Templates, items, done.',
-    icon: 'document-text-outline',
+    icon: 'description',
     visual: 'stack',
     background: '#0B2E4A',
     glow: '#1F6FA3',
@@ -67,7 +66,7 @@ export const OVERVIEW_SLIDES: OverviewSlide[] = [
     key: 'insights',
     title: 'Cash, clear',
     body: 'See what’s still due.',
-    icon: 'stats-chart-outline',
+    icon: 'analytics',
     visual: 'chart',
     background: '#09080F',
     glow: '#4A3A9A',

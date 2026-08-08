@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useState } from 'react';
-import Ionicons from '@expo/vector-icons/Ionicons';
 import {
   Pressable,
   StyleSheet,
@@ -9,7 +8,7 @@ import {
 import { router, useLocalSearchParams, useNavigation } from 'expo-router';
 import { format, addDays } from 'date-fns';
 import { createId } from '@/shared/lib/id';
-import { Button, Text, useTheme } from '@/shared/design-system';
+import {Icon, Button, Text, useTheme} from '@/shared/design-system';
 import { useCatalogueStore } from '@/features/catalogue';
 import { useClientsStore } from '@/features/customers';
 import { SettingsField } from '@/features/settings/components/SettingsField';
@@ -439,8 +438,8 @@ export default function NewInvoiceScreen() {
                 {customerName || 'Search and select a client'}
               </Text>
             </View>
-            <Ionicons
-              name="chevron-down"
+            <Icon
+              name="expand-more"
               size={18}
               color={colors.onSurfaceMuted}
             />
@@ -572,7 +571,7 @@ export default function NewInvoiceScreen() {
                       hitSlop={8}
                       style={{ paddingLeft: 8, paddingTop: 4 }}
                     >
-                      <Ionicons
+                      <Icon
                         name="close"
                         size={18}
                         color={colors.onSurfaceMuted}
@@ -641,7 +640,7 @@ export default function NewInvoiceScreen() {
               },
             ]}
           >
-            <Ionicons name="grid-outline" size={16} color={colors.primary} />
+            <Icon name="grid-view" size={16} color={colors.primary} />
             <Text
               variant="caption"
               style={{ color: colors.primary, fontWeight: '600' }}
@@ -662,7 +661,7 @@ export default function NewInvoiceScreen() {
             },
           ]}
         >
-          <Ionicons name="add" size={16} color={colors.primary} />
+          <Icon name="add" size={16} color={colors.primary} />
           <Text
             variant="caption"
             style={{ color: colors.primary, fontWeight: '600' }}
@@ -823,7 +822,7 @@ export default function NewInvoiceScreen() {
         <View style={{ gap: space.sm }}>
           <Button
             label="Save & send"
-            icon="send-outline"
+            icon="send"
             onPress={() => save(issuedStatusFor(dueDate))}
             style={styles.primaryAction}
           />

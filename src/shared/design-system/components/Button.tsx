@@ -1,4 +1,3 @@
-import Ionicons from '@expo/vector-icons/Ionicons';
 import {
   Pressable,
   type PressableProps,
@@ -7,6 +6,7 @@ import {
 } from 'react-native';
 import { applyElevation } from '../tokens';
 import { useTheme } from '../useTheme';
+import { Icon, type IconName } from './Icon';
 import { Text } from './Text';
 
 type ButtonVariant = 'primary' | 'secondary' | 'ghost';
@@ -14,7 +14,7 @@ type ButtonVariant = 'primary' | 'secondary' | 'ghost';
 type Props = Omit<PressableProps, 'style'> & {
   label: string;
   variant?: ButtonVariant;
-  icon?: keyof typeof Ionicons.glyphMap;
+  icon?: IconName;
   style?: StyleProp<ViewStyle>;
 };
 
@@ -64,9 +64,7 @@ export function Button({
         style,
       ]}
     >
-      {icon ? (
-        <Ionicons name={icon} size={18} color={labelColor} />
-      ) : null}
+      {icon ? <Icon name={icon} size={18} color={labelColor} /> : null}
       <Text variant="body" style={{ color: labelColor, fontWeight: '600' }}>
         {label}
       </Text>

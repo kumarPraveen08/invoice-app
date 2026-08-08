@@ -1,6 +1,5 @@
 import { Pressable, StyleSheet, View } from 'react-native';
-import Ionicons from '@expo/vector-icons/Ionicons';
-import { Text, useTheme } from '@/shared/design-system';
+import {Icon, Text, useTheme} from '@/shared/design-system';
 import { BottomSheet } from '@/shared/ui';
 import { listTemplates } from '../templateConstants';
 import { useSettingsStore } from '../store';
@@ -61,7 +60,7 @@ export function TemplatePickerSheet({
               </Text>
             </View>
             {isDefault ? (
-              <Ionicons name="checkmark" size={20} color={colors.primary} />
+              <Icon name="check" size={20} color={colors.primary} />
             ) : null}
           </Pressable>
         );

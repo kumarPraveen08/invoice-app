@@ -1,7 +1,6 @@
-import Ionicons from '@expo/vector-icons/Ionicons';
 import { useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
-import { Text, useTheme } from '@/shared/design-system';
+import {Icon, Text, useTheme} from '@/shared/design-system';
 import { BottomSheet } from '@/shared/ui';
 
 type Option<T extends string> = {
@@ -49,7 +48,7 @@ export function SettingsSelect<T extends string>({
             {selected}
           </Text>
         </View>
-        <Ionicons name="chevron-down" size={18} color={colors.onSurfaceMuted} />
+        <Icon name="expand-more" size={18} color={colors.onSurfaceMuted} />
       </Pressable>
 
       <BottomSheet visible={open} onClose={() => setOpen(false)} title={label}>
@@ -88,7 +87,7 @@ export function SettingsSelect<T extends string>({
                   {option.label}
                 </Text>
                 {isSelected ? (
-                  <Ionicons name="checkmark" size={20} color={colors.primary} />
+                  <Icon name="check" size={20} color={colors.primary} />
                 ) : null}
               </Pressable>
             );

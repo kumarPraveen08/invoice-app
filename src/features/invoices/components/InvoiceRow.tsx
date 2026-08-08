@@ -1,8 +1,7 @@
 import { useState } from 'react';
-import Ionicons from '@expo/vector-icons/Ionicons';
 import { Pressable, Share, StyleSheet, View } from 'react-native';
 import { router } from 'expo-router';
-import { Text, useTheme } from '@/shared/design-system';
+import { Icon, Text, useTheme, type IconName } from '@/shared/design-system';
 import { TemplatePickerSheet } from '@/features/settings';
 import { ActionSheet, showSnackbar, type SheetAction } from '@/shared/ui';
 import { STATUS_LABEL, outstandingOf } from '../constants';
@@ -19,15 +18,15 @@ type Props = {
   onPress?: () => void;
 };
 
-const STATUS_ICON: Record<InvoiceStatus, keyof typeof Ionicons.glyphMap> = {
-  draft: 'document-outline',
-  sent: 'send-outline',
-  opened: 'mail-open-outline',
-  partial: 'pie-chart-outline',
-  paid: 'checkmark-circle-outline',
-  overdue: 'alert-circle-outline',
-  cancelled: 'close-circle-outline',
-  void: 'ban-outline',
+const STATUS_ICON: Record<InvoiceStatus, IconName> = {
+  draft: 'description',
+  sent: 'send',
+  opened: 'drafts',
+  partial: 'pie-chart',
+  paid: 'check-circle-outline',
+  overdue: 'error-outline',
+  cancelled: 'cancel',
+  void: 'block',
 };
 
 function unpaidStatusFor(invoice: Invoice): InvoiceStatus {
@@ -98,19 +97,19 @@ export function InvoiceRow({ invoice, currency, last = false, onPress }: Props) 
     {
       key: 'view',
       label: 'View',
-      icon: 'eye-outline',
+      icon: 'visibility',
       onPress: onOpen,
     },
     {
       key: 'edit',
       label: 'Edit',
-      icon: 'create-outline',
+      icon: 'edit',
       onPress: onEdit,
     },
     {
       key: 'share',
       label: 'Share',
-      icon: 'share-outline',
+      icon: 'share',
       onPress: () => {
         setPickerMode('share');
         setPickerOpen(true);
@@ -119,7 +118,7 @@ export function InvoiceRow({ invoice, currency, last = false, onPress }: Props) 
     {
       key: 'download',
       label: 'Download PDF',
-      icon: 'download-outline',
+      icon: 'download',
       onPress: () => {
         setPickerMode('download');
         setPickerOpen(true);
@@ -131,10 +130,7 @@ export function InvoiceRow({ invoice, currency, last = false, onPress }: Props) 
     actions.push({
       key: 'paid',
       label: invoice.status === 'paid' ? 'Mark as unpaid' : 'Mark as paid',
-      icon:
-        invoice.status === 'paid'
-          ? 'close-circle-outline'
-          : 'checkmark-circle-outline',
+      icon: invoice.status === 'paid' ? 'cancel' : 'check-circle-outline',
       onPress: onTogglePaid,
     });
   }
@@ -166,7 +162,7 @@ export function InvoiceRow({ invoice, currency, last = false, onPress }: Props) 
             },
           ]}
         >
-          <Ionicons
+          <Icon
             name={STATUS_ICON[invoice.status]}
             size={20}
             color={colors.primary}

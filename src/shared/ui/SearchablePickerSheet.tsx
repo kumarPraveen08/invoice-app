@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useState } from "react";
-import Ionicons from "@expo/vector-icons/Ionicons";
 import {
   Pressable,
   ScrollView,
@@ -7,7 +6,7 @@ import {
   TextInput,
   View,
 } from "react-native";
-import { Button, Text, useTheme } from "@/shared/design-system";
+import {Icon, Button, Text, useTheme} from "@/shared/design-system";
 import { BottomSheet } from "./BottomSheet";
 
 export type PickerOption = {
@@ -89,7 +88,7 @@ export function SearchablePickerSheet({
           },
         ]}
       >
-        <Ionicons name="search" size={18} color={colors.onSurfaceMuted} />
+        <Icon name="search" size={18} color={colors.onSurfaceMuted} />
         <TextInput
           value={query}
           onChangeText={setQuery}
@@ -107,8 +106,8 @@ export function SearchablePickerSheet({
             onPress={() => setQuery("")}
             hitSlop={8}
           >
-            <Ionicons
-              name="close-circle"
+            <Icon
+              name="cancel"
               size={18}
               color={colors.onSurfaceMuted}
             />
@@ -146,8 +145,8 @@ export function SearchablePickerSheet({
                 ]}
               >
                 {multiple ? (
-                  <Ionicons
-                    name={selected ? "checkbox" : "square-outline"}
+                  <Icon
+                    name={selected ? 'check-box' : 'check-box-outline-blank'}
                     size={22}
                     color={selected ? colors.primary : colors.onSurfaceMuted}
                     style={{ marginRight: space.md }}
@@ -168,8 +167,8 @@ export function SearchablePickerSheet({
                   ) : null}
                 </View>
                 {!multiple ? (
-                  <Ionicons
-                    name="chevron-forward"
+                  <Icon
+                    name="chevron-right"
                     size={18}
                     color={colors.onSurfaceMuted}
                   />

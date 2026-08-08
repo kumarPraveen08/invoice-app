@@ -199,7 +199,7 @@ export function BulkImportGuide({ kind }: Props) {
 
       <SettingsGroup title="Required columns">
         <SettingsRow
-          icon="list-outline"
+          icon="list"
           title="CSV headers"
           subtitle={copy.columns}
           showChevron={false}
@@ -210,14 +210,14 @@ export function BulkImportGuide({ kind }: Props) {
       <View style={{ gap: space.md, marginBottom: space['2xl'] }}>
         <Button
           label="Download template"
-          icon="download-outline"
+          icon="download"
           variant="secondary"
           onPress={downloadTemplate}
           disabled={busy}
         />
         <Button
           label={busy ? 'Importing…' : 'Upload CSV'}
-          icon="document-attach-outline"
+          icon="attach-file"
           onPress={uploadCsv}
           disabled={busy}
         />

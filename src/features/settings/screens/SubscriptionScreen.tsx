@@ -18,7 +18,7 @@ export function SubscriptionScreen() {
 
       <SettingsGroup title="Included">
         <SettingsRow
-          icon="receipt-outline"
+          icon="receipt"
           title="5 invoices / month"
           showChevron={false}
         />
@@ -28,12 +28,12 @@ export function SubscriptionScreen() {
           showChevron={false}
         />
         <SettingsRow
-          icon="grid-outline"
+          icon="grid-view"
           title="50 catalogue items"
           showChevron={false}
         />
         <SettingsRow
-          icon="water-outline"
+          icon="water-drop"
           title="Invoice watermark"
           subtitle="Removed on paid plans"
           showChevron={false}
@@ -43,7 +43,7 @@ export function SubscriptionScreen() {
 
       <SettingsGroup title="Paid plans">
         <SettingsRow
-          icon="rocket-outline"
+          icon="rocket-launch"
           title="Starter · Growth · Business"
           subtitle="Higher limits, templates, reports, and more"
           showChevron={false}
@@ -53,7 +53,7 @@ export function SubscriptionScreen() {
 
       <Button
         label="Upgrade"
-        icon="diamond-outline"
+        icon="diamond"
         onPress={() =>
           showSnackbar('In-app purchases will be available in a later update.')
         }

@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import * as WebBrowser from 'expo-web-browser';
 import { Stack, useRouter, useSegments } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
-import { StatusBar } from 'react-native';
+import { Pressable, StatusBar } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { ThemeProvider, useTheme } from '@/shared/design-system';
+import { Icon, ThemeProvider, useTheme } from '@/shared/design-system';
 import { useSettingsStore } from '@/features/settings/store';
 import { SnackbarHost } from '@/shared/ui';
 import { AuthProvider, useAuth } from '@/features/auth';
@@ -79,6 +79,18 @@ function RootNavigator() {
           contentStyle: { backgroundColor: colors.background },
           headerStyle: { backgroundColor: colors.surface },
           headerTintColor: colors.onSurface,
+          headerLeft: ({ canGoBack, tintColor }) =>
+            canGoBack ? (
+              <Pressable
+                accessibilityRole="button"
+                accessibilityLabel="Back"
+                onPress={() => router.back()}
+                hitSlop={8}
+                style={{ padding: 4 }}
+              >
+                <Icon name="arrow-back" size={22} color={tintColor} />
+              </Pressable>
+            ) : null,
         }}
       >
         <Stack.Screen name="onboarding" options={{ headerShown: false }} />

@@ -1,4 +1,3 @@
-import Ionicons from '@expo/vector-icons/Ionicons';
 import { router } from 'expo-router';
 import {
   Pressable,
@@ -7,7 +6,7 @@ import {
   View,
   type TextInputProps,
 } from 'react-native';
-import { useTheme } from '@/shared/design-system';
+import {Icon, useTheme} from '@/shared/design-system';
 
 type Props = TextInputProps & {
   value: string;
@@ -44,7 +43,7 @@ export function SearchField({
         hitSlop={8}
         style={styles.iconBtn}
       >
-        <Ionicons name="arrow-back" size={22} color={colors.onSurface} />
+        <Icon name="arrow-back" size={22} color={colors.onSurface} />
       </Pressable>
       <TextInput
         {...props}
@@ -67,11 +66,11 @@ export function SearchField({
           hitSlop={8}
           style={styles.iconBtn}
         >
-          <Ionicons name="close-circle" size={20} color={colors.onSurfaceMuted} />
+          <Icon name="cancel" size={20} color={colors.onSurfaceMuted} />
         </Pressable>
       ) : (
         <View style={styles.iconBtn}>
-          <Ionicons name="search" size={20} color={colors.onSurfaceMuted} />
+          <Icon name="search" size={20} color={colors.onSurfaceMuted} />
         </View>
       )}
     </View>
