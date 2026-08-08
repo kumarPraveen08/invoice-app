@@ -1,16 +1,16 @@
-import { useEffect, useMemo, useState } from 'react';
-import { Pressable, StyleSheet, View } from 'react-native';
-import { router, useLocalSearchParams, useNavigation } from 'expo-router';
-import { Icon, Text, useTheme } from '@/shared/design-system';
-import { useCatalogueStore } from '@/features/catalogue';
-import { useClientsStore } from '@/features/customers';
-import { SettingsFlatList } from '@/features/settings/components/SettingsScroll';
-import { useSettingsStore } from '@/features/settings/store';
-import { SearchField, HeaderTextButton } from '@/shared/ui';
-import { formatMoney } from '../format';
-import { setInvoicePick } from '../pickResult';
+import { useEffect, useMemo, useState } from "react";
+import { Pressable, StyleSheet, View } from "react-native";
+import { router, useLocalSearchParams, useNavigation } from "expo-router";
+import { Icon, Text, useTheme } from "@/shared/design-system";
+import { useCatalogueStore } from "@/features/catalogue";
+import { useClientsStore } from "@/features/customers";
+import { SettingsFlatList } from "@/features/settings/components/SettingsScroll";
+import { useSettingsStore } from "@/features/settings/store";
+import { SearchField, HeaderIconButton, HeaderTextButton } from "@/shared/ui";
+import { formatMoney } from "../format";
+import { setInvoicePick } from "../pickResult";
 
-type Mode = 'client' | 'catalogue';
+type Mode = "client" | "catalogue";
 
 type PickRow = {
   id: string;
@@ -22,43 +22,48 @@ export default function InvoicePickScreen() {
   const { colors, space } = useTheme();
   const navigation = useNavigation();
   const { mode: modeParam } = useLocalSearchParams<{ mode?: string }>();
-  const mode: Mode = modeParam === 'catalogue' ? 'catalogue' : 'client';
+  const mode: Mode = modeParam === "catalogue" ? "catalogue" : "client";
   const clients = useClientsStore((s) => s.clients);
   const catalogue = useCatalogueStore((s) => s.items);
   const currency = useSettingsStore((s) => s.preferences.currency);
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
   const [picked, setPicked] = useState<string[]>([]);
 
   const confirmCatalogue = () => {
     if (picked.length === 0) return;
-    setInvoicePick({ type: 'catalogue', ids: picked });
+    setInvoicePick({ type: "catalogue", ids: picked });
     router.back();
   };
 
   useEffect(() => {
     navigation.setOptions({
-      title: mode === 'client' ? 'Select client' : 'Add from catalogue',
+      title: mode === "client" ? "Select client" : "Add from catalogue",
       headerRight:
-        mode === 'catalogue'
+        mode === "catalogue"
           ? () => (
               <HeaderTextButton
-                label={
-                  picked.length === 0 ? 'Add' : `Add (${picked.length})`
-                }
+                label={picked.length === 0 ? "Add" : `Add (${picked.length})`}
                 color={colors.primary}
                 disabled={picked.length === 0}
                 onPress={confirmCatalogue}
               />
             )
-          : undefined,
+          : () => (
+              <HeaderIconButton
+                name="person-add"
+                label="New client"
+                color={colors.onSurface}
+                onPress={() => router.push("/clients/new")}
+              />
+            ),
     });
-  }, [mode, navigation, picked, colors.primary]);
+  }, [mode, navigation, picked, colors.primary, colors.onSurface]);
 
   const q = query.trim().toLowerCase();
 
   const rows = useMemo(() => {
     const base: PickRow[] =
-      mode === 'client'
+      mode === "client"
         ? clients.map((client) => ({
             id: client.id,
             title: client.businessName || client.name,
@@ -67,7 +72,7 @@ export default function InvoicePickScreen() {
               client.phone || client.email || client.address,
             ]
               .filter(Boolean)
-              .join(' · '),
+              .join(" · "),
           }))
         : catalogue.map((item) => ({
             id: item.id,
@@ -83,8 +88,8 @@ export default function InvoicePickScreen() {
   }, [catalogue, clients, currency, mode, q]);
 
   const toggle = (id: string) => {
-    if (mode === 'client') {
-      setInvoicePick({ type: 'client', id });
+    if (mode === "client") {
+      setInvoicePick({ type: "client", id });
       router.back();
       return;
     }
@@ -97,14 +102,14 @@ export default function InvoicePickScreen() {
     <SettingsFlatList
       data={rows}
       keyExtractor={(row) => row.id}
-      title={mode === 'client' ? 'Clients' : 'Catalogue'}
+      title={mode === "client" ? "Clients" : "Catalogue"}
       ListHeaderComponent={
         <View style={{ marginBottom: space.lg }}>
           <SearchField
             value={query}
             onChangeText={setQuery}
             placeholder={
-              mode === 'client' ? 'Search clients' : 'Search catalogue'
+              mode === "client" ? "Search clients" : "Search catalogue"
             }
             autoFocus
           />
@@ -112,7 +117,7 @@ export default function InvoicePickScreen() {
       }
       ListEmptyComponent={
         <Text variant="body" muted style={{ marginLeft: space.md }}>
-          {q ? `No matches for “${query.trim()}”` : 'Nothing to pick yet.'}
+          {q ? `No matches for “${query.trim()}”` : "Nothing to pick yet."}
         </Text>
       }
       renderItem={(row, index) => {
@@ -133,9 +138,9 @@ export default function InvoicePickScreen() {
               },
             ]}
           >
-            {mode === 'catalogue' ? (
+            {mode === "catalogue" ? (
               <Icon
-                name={selected ? 'check-box' : 'check-box-outline-blank'}
+                name={selected ? "check-box" : "check-box-outline-blank"}
                 size={22}
                 color={selected ? colors.primary : colors.onSurfaceMuted}
                 style={{ marginRight: space.md }}
@@ -144,7 +149,7 @@ export default function InvoicePickScreen() {
             <View style={styles.copy}>
               <Text
                 variant="body"
-                style={{ fontWeight: '600' }}
+                style={{ fontWeight: "600" }}
                 numberOfLines={1}
               >
                 {row.title}
@@ -155,7 +160,7 @@ export default function InvoicePickScreen() {
                 </Text>
               ) : null}
             </View>
-            {mode === 'client' ? (
+            {mode === "client" ? (
               <Icon
                 name="chevron-right"
                 size={18}
@@ -171,8 +176,8 @@ export default function InvoicePickScreen() {
 
 const styles = StyleSheet.create({
   row: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
   copy: {
     flex: 1,

@@ -1,5 +1,5 @@
-import { router, Tabs } from 'expo-router';
-import { useEffect, useRef, useState, type ComponentProps } from 'react';
+import { router, Tabs } from "expo-router";
+import { useEffect, useRef, useState, type ComponentProps } from "react";
 import {
   DropdownMenu,
   DropdownMenuItem,
@@ -10,30 +10,24 @@ import {
   IconButton,
   Row,
   Text as ComposeText,
-} from '@expo/ui/jetpack-compose';
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import {
-  Animated,
-  Platform,
-  Pressable,
-  StyleSheet,
-  View,
-} from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import Add from '@expo/material-symbols/add.xml';
-import BarChart from '@expo/material-symbols/bar_chart.xml';
-import GridView from '@expo/material-symbols/grid_view.xml';
-import Group from '@expo/material-symbols/group.xml';
-import MoreHoriz from '@expo/material-symbols/more_horiz.xml';
-import PersonAdd from '@expo/material-symbols/person_add.xml';
-import Receipt from '@expo/material-symbols/receipt.xml';
-import Settings from '@expo/material-symbols/settings.xml';
-import { applyElevation, useTheme } from '@/shared/design-system';
-import { useTabBarVisibility } from './tabBarVisibility';
-import type { TabName } from './TabBarIcon';
+} from "@expo/ui/jetpack-compose";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { Animated, Platform, Pressable, StyleSheet, View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import Add from "@expo/material-symbols/add.xml";
+import BarChart from "@expo/material-symbols/bar_chart.xml";
+import GridView from "@expo/material-symbols/grid_view.xml";
+import Group from "@expo/material-symbols/group.xml";
+import MoreHoriz from "@expo/material-symbols/more_horiz.xml";
+import PersonAdd from "@expo/material-symbols/person_add.xml";
+import Receipt from "@expo/material-symbols/receipt.xml";
+import Settings from "@expo/material-symbols/settings.xml";
+import { applyElevation, useTheme } from "@/shared/design-system";
+import { useTabBarVisibility } from "./tabBarVisibility";
+import type { TabName } from "./TabBarIcon";
 
 type FloatingTabBarProps = Parameters<
-  NonNullable<ComponentProps<typeof Tabs>['tabBar']>
+  NonNullable<ComponentProps<typeof Tabs>["tabBar"]>
 >[0] & {
   /** Create-tab FAB. More actions use Compose `DropdownMenu` on Android. */
   onFabPress?: (routeName: string) => void;
@@ -44,11 +38,11 @@ type FloatingTabBarProps = Parameters<
 type IconSource = number;
 
 const ROUTE_TAB: Record<string, TabName> = {
-  index: 'invoices',
-  catalogue: 'catalogue',
-  clients: 'clients',
-  reports: 'reports',
-  tools: 'tools',
+  index: "invoices",
+  catalogue: "catalogue",
+  clients: "clients",
+  reports: "reports",
+  tools: "tools",
 };
 
 const ICONS: Record<TabName, IconSource> = {
@@ -59,16 +53,18 @@ const ICONS: Record<TabName, IconSource> = {
   tools: Settings,
 };
 
-const FONT_ICONS: Record<TabName, ComponentProps<typeof MaterialIcons>['name']> =
-  {
-    invoices: 'receipt',
-    catalogue: 'grid-view',
-    clients: 'people',
-    reports: 'bar-chart',
-    tools: 'settings',
-  };
+const FONT_ICONS: Record<
+  TabName,
+  ComponentProps<typeof MaterialIcons>["name"]
+> = {
+  invoices: "receipt",
+  catalogue: "grid-view",
+  clients: "people",
+  reports: "bar-chart",
+  tools: "settings",
+};
 
-const CREATE_ROUTES = new Set(['index', 'catalogue', 'clients']);
+const CREATE_ROUTES = new Set(["index", "catalogue", "clients"]);
 
 type MenuAction = {
   key: string;
@@ -89,9 +85,9 @@ export function FloatingTabBar({
   const insets = useSafeAreaInsets();
   const bottomInset = insets.bottom;
   const rowBottom = Math.max(bottomInset, tabBar.marginBottom) + 5;
-  const activeRoute = state.routes[state.index]?.name ?? 'index';
+  const activeRoute = state.routes[state.index]?.name ?? "index";
   const showCreate = CREATE_ROUTES.has(activeRoute);
-  const fabLabel = showCreate ? 'Create' : 'More actions';
+  const fabLabel = showCreate ? "Create" : "More actions";
   const [menuOpen, setMenuOpen] = useState(false);
   const hidden = useTabBarVisibility((s) => s.hidden);
   const showTabBar = useTabBarVisibility((s) => s.show);
@@ -123,9 +119,12 @@ export function FloatingTabBar({
     outputRange: [0, hideDistance],
   });
 
-  const onTabPress = (route: (typeof state.routes)[number], focused: boolean) => {
+  const onTabPress = (
+    route: (typeof state.routes)[number],
+    focused: boolean,
+  ) => {
     const event = navigation.emit({
-      type: 'tabPress',
+      type: "tabPress",
       target: route.key,
       canPreventDefault: true,
     });
@@ -138,33 +137,26 @@ export function FloatingTabBar({
 
   const menuActions: MenuAction[] = [
     {
-      key: 'invoice',
-      label: 'Invoice',
+      key: "invoice",
+      label: "Invoice",
       icon: Receipt,
-      onPress: () => router.push('/invoice/new'),
+      onPress: () => router.push("/invoice/new"),
     },
     {
-      key: 'catalogue',
-      label: 'Catalogue item',
+      key: "catalogue",
+      label: "Catalogue item",
       icon: GridView,
-      onPress: () => router.push('/catalogue/new'),
+      onPress: () => router.push("/catalogue/new"),
     },
     {
-      key: 'client',
-      label: 'Client',
+      key: "client",
+      label: "Client",
       icon: PersonAdd,
-      onPress: () => router.push('/clients/new'),
-    },
-    {
-      key: 'contacts',
-      label: 'Client from contacts',
-      icon: Group,
-      onPress: () =>
-        router.push({ pathname: '/clients/new', params: { from: 'contacts' } }),
+      onPress: () => router.push("/clients/new"),
     },
   ];
 
-  if (Platform.OS === 'android') {
+  if (Platform.OS === "android") {
     return (
       <View
         pointerEvents="box-none"
@@ -173,12 +165,12 @@ export function FloatingTabBar({
           {
             paddingBottom: bottomInset,
             paddingHorizontal: tabBar.marginHorizontal,
-            alignItems: 'center',
+            alignItems: "center",
           },
         ]}
       >
         <Animated.View
-          pointerEvents={hidden ? 'none' : 'box-none'}
+          pointerEvents={hidden ? "none" : "box-none"}
           style={{
             marginBottom: rowBottom - bottomInset,
             transform: [{ translateY }],
@@ -206,12 +198,12 @@ export function FloatingTabBar({
                   const focused = state.index === index;
                   const { options } = descriptors[route.key];
                   const label =
-                    typeof options.tabBarLabel === 'string'
+                    typeof options.tabBarLabel === "string"
                       ? options.tabBarLabel
-                      : typeof options.title === 'string'
+                      : typeof options.title === "string"
                         ? options.title
                         : route.name;
-                  const tabName = ROUTE_TAB[route.name] ?? 'invoices';
+                  const tabName = ROUTE_TAB[route.name] ?? "invoices";
                   const icon = ICONS[tabName];
 
                   return (
@@ -251,9 +243,7 @@ export function FloatingTabBar({
                   <FloatingActionButton
                     containerColor={colors.primary}
                     onClick={() =>
-                      showCreate
-                        ? onFabPress?.(activeRoute)
-                        : setMenuOpen(true)
+                      showCreate ? onFabPress?.(activeRoute) : setMenuOpen(true)
                     }
                   >
                     <FloatingActionButton.Icon>
@@ -292,9 +282,9 @@ export function FloatingTabBar({
     );
   }
 
-  const fabIcon: ComponentProps<typeof MaterialIcons>['name'] = showCreate
-    ? 'add'
-    : 'more-horiz';
+  const fabIcon: ComponentProps<typeof MaterialIcons>["name"] = showCreate
+    ? "add"
+    : "more-horiz";
 
   return (
     <View
@@ -308,7 +298,7 @@ export function FloatingTabBar({
       ]}
     >
       <Animated.View
-        pointerEvents={hidden ? 'none' : 'box-none'}
+        pointerEvents={hidden ? "none" : "box-none"}
         style={{
           transform: [{ translateY }],
         }}
@@ -330,19 +320,19 @@ export function FloatingTabBar({
                 backgroundColor: colors.tabBar,
                 borderRadius: radii.full,
               },
-              applyElevation('md', colors.shadow),
+              applyElevation("md", colors.shadow),
             ]}
           >
             {state.routes.map((route, index) => {
               const focused = state.index === index;
               const { options } = descriptors[route.key];
               const label =
-                typeof options.tabBarLabel === 'string'
+                typeof options.tabBarLabel === "string"
                   ? options.tabBarLabel
-                  : typeof options.title === 'string'
+                  : typeof options.title === "string"
                     ? options.title
                     : route.name;
-              const tabName = ROUTE_TAB[route.name] ?? 'invoices';
+              const tabName = ROUTE_TAB[route.name] ?? "invoices";
               const icon = FONT_ICONS[tabName];
 
               return (
@@ -379,9 +369,7 @@ export function FloatingTabBar({
               accessibilityRole="button"
               accessibilityLabel={fabLabel}
               onPress={() =>
-                showCreate
-                  ? onFabPress?.(activeRoute)
-                  : onMorePress?.()
+                showCreate ? onFabPress?.(activeRoute) : onMorePress?.()
               }
               style={({ pressed }) => [
                 styles.add,
@@ -392,7 +380,7 @@ export function FloatingTabBar({
                   backgroundColor: colors.primary,
                   opacity: pressed ? 0.88 : 1,
                 },
-                applyElevation('md', colors.shadow),
+                applyElevation("md", colors.shadow),
               ]}
             >
               <MaterialIcons
@@ -410,36 +398,36 @@ export function FloatingTabBar({
 
 const styles = StyleSheet.create({
   wrap: {
-    position: 'absolute',
+    position: "absolute",
     bottom: 0,
     left: 0,
     right: 0,
   },
   row: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
   capsule: {
     flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-around',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-around",
     paddingHorizontal: 6,
   },
   item: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     minWidth: 44,
     minHeight: 44,
   },
   iconSlot: {
     width: 44,
     height: 44,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   add: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

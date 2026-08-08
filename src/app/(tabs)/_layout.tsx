@@ -102,12 +102,6 @@ export default function TabsLayout() {
                 {action("search", "Search clients", () =>
                   router.push("/clients/search"),
                 )}
-                {action("person-add", "Add from contacts", () =>
-                  router.push({
-                    pathname: "/clients/new",
-                    params: { from: "contacts" },
-                  }),
-                )}
                 {action("folder-open", "Bulk import clients", () =>
                   router.push("/clients/import"),
                 )}
