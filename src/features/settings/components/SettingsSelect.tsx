@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
-import {Icon, Text, useTheme} from '@/shared/design-system';
-import { BottomSheet } from '@/shared/ui';
+import { useState } from "react";
+import { Pressable, ScrollView, StyleSheet, View } from "react-native";
+import { Icon, Text, useTheme } from "@/shared/design-system";
+import { BottomSheet } from "@/shared/ui";
 
 type Option<T extends string> = {
   value: T;
@@ -66,8 +66,8 @@ export function SettingsSelect<T extends string>({
                 accessibilityRole="button"
                 accessibilityState={{ selected: isSelected }}
                 onPress={() => {
-                  onChange(option.value);
                   setOpen(false);
+                  requestAnimationFrame(() => onChange(option.value));
                 }}
                 style={({ pressed }) => [
                   styles.option,
@@ -81,7 +81,7 @@ export function SettingsSelect<T extends string>({
                   variant="body"
                   style={{
                     flex: 1,
-                    fontWeight: isSelected ? '600' : '400',
+                    fontWeight: isSelected ? "600" : "400",
                     color: colors.onSurface,
                   }}
                 >
@@ -101,8 +101,8 @@ export function SettingsSelect<T extends string>({
 
 const styles = StyleSheet.create({
   row: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     borderBottomWidth: StyleSheet.hairlineWidth,
     paddingBottom: 10,
   },
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0.2,
   },
   option: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
 });
