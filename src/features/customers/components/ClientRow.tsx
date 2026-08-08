@@ -78,6 +78,7 @@ export function ClientRow({ client, last = false }: Props) {
         visible={actionsOpen}
         onClose={() => setActionsOpen(false)}
         title={client.name}
+        subtitle={subtitle || undefined}
         actions={[
           {
             key: 'view',

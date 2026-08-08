@@ -6,10 +6,6 @@ export { FilterChipRow } from './FilterChipRow';
 export { FloatingTabBar } from './FloatingTabBar';
 export { ScreenLoading } from './ScreenLoading';
 export { SearchField } from './SearchField';
-export {
-  SearchablePickerSheet,
-  type PickerOption,
-} from './SearchablePickerSheet';
 export { DateField } from './DateField';
 export { SnackbarHost } from './SnackbarHost';
 export { showSnackbar, useSnackbarStore } from './snackbarStore';

@@ -53,6 +53,7 @@ export function SettingsSelect<T extends string>({
 
       <BottomSheet visible={open} onClose={() => setOpen(false)} title={label}>
         <ScrollView
+          nestedScrollEnabled
           style={{ maxHeight: 360 }}
           bounces={false}
           keyboardShouldPersistTaps="handled"

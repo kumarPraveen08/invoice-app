@@ -16,15 +16,28 @@ type Props = {
   visible: boolean;
   onClose: () => void;
   title: string;
+  /** Details for the list item this sheet acts on. */
+  subtitle?: string;
   actions: SheetAction[];
 };
 
 /** Long-press / overflow actions in a bottom sheet. */
-export function ActionSheet({ visible, onClose, title, actions }: Props) {
+export function ActionSheet({
+  visible,
+  onClose,
+  title,
+  subtitle,
+  actions,
+}: Props) {
   const { colors, radii, space } = useTheme();
 
   return (
-    <BottomSheet visible={visible} onClose={onClose} title={title}>
+    <BottomSheet
+      visible={visible}
+      onClose={onClose}
+      title={title}
+      subtitle={subtitle}
+    >
       <View style={{ gap: space.xs }}>
         {actions.map((action) => {
           const muted = action.disabled;

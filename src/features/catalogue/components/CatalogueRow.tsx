@@ -84,6 +84,7 @@ export function CatalogueRow({ item, currency, last = false }: Props) {
         visible={actionsOpen}
         onClose={() => setActionsOpen(false)}
         title={item.name}
+        subtitle={`${item.sku} · ${item.unit} · ${formatMoney(item.price, currency)}`}
         actions={[
           {
             key: 'view',

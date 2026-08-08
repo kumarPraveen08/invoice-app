@@ -202,6 +202,7 @@ export function InvoiceRow({ invoice, currency, last = false, onPress }: Props) 
         visible={actionsOpen}
         onClose={() => setActionsOpen(false)}
         title={invoice.number}
+        subtitle={`${invoice.customerName} · ${formatInvoiceDate(invoice.issueDate)} · ${formatMoney(invoice.total, currency)}`}
         actions={actions}
       />
       <TemplatePickerSheet

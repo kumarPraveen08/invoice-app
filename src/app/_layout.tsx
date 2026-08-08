@@ -12,9 +12,20 @@ import { AuthProvider, useAuth } from '@/features/auth';
 WebBrowser.maybeCompleteAuthSession();
 void SplashScreen.preventAutoHideAsync().catch(() => undefined);
 
-/** Nested navigators / gate routes — defer inside their own layouts instead. */
-const SKIP_DEFER = new Set(['(tabs)', 'auth', 'onboarding', 'settings']);
+/** Nested navigators / gate routes — defer inside their own layouts instead.
+ *  Invoice create/pick stay eager so the form flow does not flash a loader. */
+const SKIP_DEFER = new Set([
+  '(tabs)',
+  'auth',
+  'onboarding',
+  'settings',
+  'invoice/new',
+  'invoice/pick',
+]);
 
+function shouldDeferRoute(name: string) {
+  return !SKIP_DEFER.has(name);
+}
 
 function RootNavigator() {
   const { colors, mode } = useTheme();
@@ -80,10 +91,10 @@ function RootNavigator() {
     <>
       <Stack
         screenLayout={({ children, route }) =>
-          SKIP_DEFER.has(route.name) ? (
-            children
-          ) : (
+          shouldDeferRoute(route.name) ? (
             <DeferredMount>{children}</DeferredMount>
+          ) : (
+            children
           )
         }
         screenOptions={{
@@ -112,6 +123,14 @@ function RootNavigator() {
           name="invoice/new"
           options={{
             title: 'New invoice',
+            headerShadowVisible: false,
+            headerStyle: { backgroundColor: colors.background },
+          }}
+        />
+        <Stack.Screen
+          name="invoice/pick"
+          options={{
+            title: 'Select',
             headerShadowVisible: false,
             headerStyle: { backgroundColor: colors.background },
           }}
