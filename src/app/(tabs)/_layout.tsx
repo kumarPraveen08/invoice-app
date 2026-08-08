@@ -3,7 +3,7 @@ import { router, Tabs } from "expo-router";
 import { Pressable, View } from "react-native";
 import { MoreCreateSheet } from "@/features/invoices/components/MoreCreateSheet";
 import { Icon, useTheme, type IconName } from "@/shared/design-system";
-import { FloatingTabBar } from "@/shared/ui";
+import { DeferredMount, FloatingTabBar } from "@/shared/ui";
 
 const CREATE_PATH: Record<
   string,
@@ -53,6 +53,13 @@ export default function TabsLayout() {
             onMorePress={() => setMoreOpen(true)}
           />
         )}
+        screenLayout={({ children, route }) =>
+          route.name === "index" ? (
+            children
+          ) : (
+            <DeferredMount>{children}</DeferredMount>
+          )
+        }
         screenOptions={{
           headerShadowVisible: false,
           headerStyle: { backgroundColor: colors.background },

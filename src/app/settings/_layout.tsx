@@ -1,6 +1,7 @@
 import { Stack, useRouter } from 'expo-router';
 import { Pressable } from 'react-native';
 import { Icon, useTheme } from '@/shared/design-system';
+import { DeferredMount } from '@/shared/ui';
 
 export default function SettingsLayout() {
   const { colors } = useTheme();
@@ -8,6 +9,7 @@ export default function SettingsLayout() {
 
   return (
     <Stack
+      screenLayout={({ children }) => <DeferredMount>{children}</DeferredMount>}
       screenOptions={{
         headerShadowVisible: false,
         headerStyle: { backgroundColor: colors.background },

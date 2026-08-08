@@ -6,11 +6,15 @@ import { Pressable, StatusBar } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Icon, ThemeProvider, useTheme } from '@/shared/design-system';
 import { useSettingsStore } from '@/features/settings/store';
-import { SnackbarHost } from '@/shared/ui';
+import { DeferredMount, SnackbarHost } from '@/shared/ui';
 import { AuthProvider, useAuth } from '@/features/auth';
 
 WebBrowser.maybeCompleteAuthSession();
 void SplashScreen.preventAutoHideAsync().catch(() => undefined);
+
+/** Nested navigators / gate routes — defer inside their own layouts instead. */
+const SKIP_DEFER = new Set(['(tabs)', 'auth', 'onboarding', 'settings']);
+
 
 function RootNavigator() {
   const { colors, mode } = useTheme();
@@ -75,6 +79,13 @@ function RootNavigator() {
   return (
     <>
       <Stack
+        screenLayout={({ children, route }) =>
+          SKIP_DEFER.has(route.name) ? (
+            children
+          ) : (
+            <DeferredMount>{children}</DeferredMount>
+          )
+        }
         screenOptions={{
           contentStyle: { backgroundColor: colors.background },
           headerStyle: { backgroundColor: colors.surface },
