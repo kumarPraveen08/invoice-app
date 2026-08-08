@@ -1,8 +1,22 @@
 import { Tabs } from 'expo-router';
 import type { ComponentProps } from 'react';
-import { Pressable, StyleSheet, View } from 'react-native';
+import {
+  Host,
+  HorizontalFloatingToolbar,
+  Icon as ComposeIcon,
+  IconButton,
+} from '@expo/ui/jetpack-compose';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import { Platform, Pressable, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { applyElevation, Icon, useTheme, type IconName } from '@/shared/design-system';
+import Add from '@expo/material-symbols/add.xml';
+import BarChart from '@expo/material-symbols/bar_chart.xml';
+import GridView from '@expo/material-symbols/grid_view.xml';
+import Group from '@expo/material-symbols/group.xml';
+import MoreHoriz from '@expo/material-symbols/more_horiz.xml';
+import Receipt from '@expo/material-symbols/receipt.xml';
+import Settings from '@expo/material-symbols/settings.xml';
+import { applyElevation, useTheme } from '@/shared/design-system';
 import type { TabName } from './TabBarIcon';
 
 type FloatingTabBarProps = Parameters<
@@ -10,6 +24,8 @@ type FloatingTabBarProps = Parameters<
 >[0] & {
   onFabPress?: (routeName: string) => void;
 };
+
+type IconSource = number;
 
 const ROUTE_TAB: Record<string, TabName> = {
   index: 'invoices',
@@ -19,13 +35,22 @@ const ROUTE_TAB: Record<string, TabName> = {
   tools: 'tools',
 };
 
-const ICONS: Record<TabName, { active: IconName; inactive: IconName }> = {
-  invoices: { active: 'receipt', inactive: 'receipt-long' },
-  catalogue: { active: 'grid-view', inactive: 'grid-view' },
-  clients: { active: 'people', inactive: 'people-outline' },
-  reports: { active: 'bar-chart', inactive: 'bar-chart' },
-  tools: { active: 'settings', inactive: 'settings' },
+const ICONS: Record<TabName, IconSource> = {
+  invoices: Receipt,
+  catalogue: GridView,
+  clients: Group,
+  reports: BarChart,
+  tools: Settings,
 };
+
+const FONT_ICONS: Record<TabName, ComponentProps<typeof MaterialIcons>['name']> =
+  {
+    invoices: 'receipt',
+    catalogue: 'grid-view',
+    clients: 'people',
+    reports: 'bar-chart',
+    tools: 'settings',
+  };
 
 const CREATE_ROUTES = new Set(['index', 'catalogue', 'clients']);
 
@@ -42,8 +67,97 @@ export function FloatingTabBar({
   const rowBottom = Math.max(bottomInset, tabBar.marginBottom) + 5;
   const activeRoute = state.routes[state.index]?.name ?? 'index';
   const showCreate = CREATE_ROUTES.has(activeRoute);
-  const fabIcon: IconName = showCreate ? 'add' : 'more-horiz';
   const fabLabel = showCreate ? 'Create' : 'More actions';
+
+  const onTabPress = (route: (typeof state.routes)[number], focused: boolean) => {
+    const event = navigation.emit({
+      type: 'tabPress',
+      target: route.key,
+      canPreventDefault: true,
+    });
+    if (!focused && !event.defaultPrevented) {
+      navigation.navigate(route.name, route.params);
+    }
+  };
+
+  if (Platform.OS === 'android') {
+    return (
+      <View
+        pointerEvents="box-none"
+        style={[
+          styles.wrap,
+          {
+            paddingBottom: bottomInset,
+            paddingHorizontal: tabBar.marginHorizontal,
+            alignItems: 'center',
+          },
+        ]}
+      >
+        {/* One Host; always IconButton — swapping button types drops toolbar slots. */}
+        <Host
+          matchContents
+          style={{ marginBottom: rowBottom - bottomInset }}
+        >
+          <HorizontalFloatingToolbar
+            variant="standard"
+            colors={{
+              toolbarContainerColor: colors.tabBar,
+              toolbarContentColor: colors.tabInactive,
+              fabContainerColor: colors.primary,
+              fabContentColor: colors.onPrimary,
+            }}
+          >
+            {state.routes.map((route, index) => {
+              const focused = state.index === index;
+              const { options } = descriptors[route.key];
+              const label =
+                typeof options.tabBarLabel === 'string'
+                  ? options.tabBarLabel
+                  : typeof options.title === 'string'
+                    ? options.title
+                    : route.name;
+              const tabName = ROUTE_TAB[route.name] ?? 'invoices';
+              const icon = ICONS[tabName];
+
+              return (
+                <IconButton
+                  key={route.name}
+                  onClick={() => onTabPress(route, focused)}
+                  colors={{
+                    contentColor: focused ? colors.primary : colors.tabInactive,
+                  }}
+                >
+                  <ComposeIcon
+                    source={icon}
+                    size={tabBar.iconSize}
+                    tint={focused ? colors.primary : colors.tabInactive}
+                    contentDescription={
+                      options.tabBarAccessibilityLabel ?? label
+                    }
+                  />
+                </IconButton>
+              );
+            })}
+            {onFabPress ? (
+              <HorizontalFloatingToolbar.FloatingActionButton
+                onPress={() => onFabPress(activeRoute)}
+              >
+                <ComposeIcon
+                  source={showCreate ? Add : MoreHoriz}
+                  size={fab.iconSize}
+                  contentDescription={fabLabel}
+                />
+              </HorizontalFloatingToolbar.FloatingActionButton>
+            ) : null}
+          </HorizontalFloatingToolbar>
+        </Host>
+      </View>
+    );
+  }
+
+  const fabIcon: ComponentProps<typeof MaterialIcons>['name'] = showCreate
+    ? 'add'
+    : 'more-horiz';
 
   return (
     <View
@@ -86,26 +200,15 @@ export function FloatingTabBar({
                   ? options.title
                   : route.name;
             const tabName = ROUTE_TAB[route.name] ?? 'invoices';
-            const icon = ICONS[tabName];
-
-            const onPress = () => {
-              const event = navigation.emit({
-                type: 'tabPress',
-                target: route.key,
-                canPreventDefault: true,
-              });
-              if (!focused && !event.defaultPrevented) {
-                navigation.navigate(route.name, route.params);
-              }
-            };
+            const icon = FONT_ICONS[tabName];
 
             return (
               <Pressable
-                key={route.key}
+                key={route.name}
                 accessibilityRole="button"
                 accessibilityState={focused ? { selected: true } : {}}
                 accessibilityLabel={options.tabBarAccessibilityLabel ?? label}
-                onPress={onPress}
+                onPress={() => onTabPress(route, focused)}
                 style={styles.item}
               >
                 <View
@@ -117,8 +220,8 @@ export function FloatingTabBar({
                     },
                   ]}
                 >
-                  <Icon
-                    name={focused ? icon.active : icon.inactive}
+                  <MaterialIcons
+                    name={icon}
                     size={tabBar.iconSize}
                     color={focused ? colors.primary : colors.tabInactive}
                   />
@@ -145,7 +248,11 @@ export function FloatingTabBar({
               applyElevation('md', colors.shadow),
             ]}
           >
-            <Icon name={fabIcon} size={fab.iconSize} color={colors.onPrimary} />
+            <MaterialIcons
+              name={fabIcon}
+              size={fab.iconSize}
+              color={colors.onPrimary}
+            />
           </Pressable>
         ) : null}
       </View>

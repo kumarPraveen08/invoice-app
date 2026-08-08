@@ -10,3 +10,4 @@ alwaysApply: true
 - Keep app `Icon` as the single call-site API; do not add thin header/icon wrappers.
 - Android Compose icons need a **native rebuild** after adding `@expo/ui`.
 - iOS may keep a temporary fallback until universal/`@expo/ui` SwiftUI parity is adopted.
+- Do **not** put Compose `Host`-per-icon on hot paths (tab bar, lists). Prefer **one** `Host` wrapping many Compose children (e.g. `HorizontalFloatingToolbar`), or font icons.

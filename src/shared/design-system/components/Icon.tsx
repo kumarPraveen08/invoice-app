@@ -167,7 +167,7 @@ export function Icon({ name, size = 24, color, style, accessibilityLabel }: Prop
   }
 
   return (
-    <Host matchContents style={style}>
+    <Host style={[{ width: size, height: size }, style]}>
       <ComposeIcon
         source={SOURCES[name]}
         size={size}
