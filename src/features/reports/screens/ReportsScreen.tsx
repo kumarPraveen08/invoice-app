@@ -1,5 +1,5 @@
 import { format, subMonths } from 'date-fns';
-import { useMemo, useState } from 'react';
+import { useDeferredValue, useMemo, useState } from 'react';
 import { Platform, Pressable, StyleSheet, View } from 'react-native';
 import { router } from 'expo-router';
 import {
@@ -212,15 +212,16 @@ export default function ReportsScreen() {
   const invoices = useInvoicesStore((s) => s.invoices);
   const clients = useClientsStore((s) => s.clients);
   const [period, setPeriod] = useState<ReportPeriod>('month');
+  const deferredPeriod = useDeferredValue(period);
   const [customRange, setCustomRange] = useState<DateRange>(defaultCustomRange);
   const [draftRange, setDraftRange] = useState<DateRange>(defaultCustomRange);
   const [rangeOpen, setRangeOpen] = useState(false);
 
   const summary = useMemo(() => {
     return summarizeInvoices(
-      invoicesInPeriod(invoices, period, customRange),
+      invoicesInPeriod(invoices, deferredPeriod, customRange),
     );
-  }, [invoices, period, customRange]);
+  }, [invoices, deferredPeriod, customRange]);
 
   const monthBars = useMemo(() => monthlyCollected(invoices, 6), [invoices]);
 

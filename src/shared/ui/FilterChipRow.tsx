@@ -1,23 +1,16 @@
-import {
-  FilterChip,
-  Host,
-  Icon as ComposeIcon,
-  Row,
-  Text as ComposeText,
-} from '@expo/ui/jetpack-compose';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import type { ComponentProps } from 'react';
-import { Platform, Pressable, ScrollView, StyleSheet } from 'react-native';
+import { Pressable, ScrollView, StyleSheet } from 'react-native';
 import { Text, useTheme } from '@/shared/design-system';
 
-type IconSource = number;
 type FontIcon = ComponentProps<typeof MaterialIcons>['name'];
 
 export type FilterChipItem<T extends string> = {
   id: T;
   label: string;
-  icon?: IconSource;
   fontIcon?: FontIcon;
+  /** @deprecated Prefer fontIcon — kept for existing data. */
+  icon?: number;
 };
 
 type Props<T extends string> = {
@@ -28,9 +21,8 @@ type Props<T extends string> = {
 };
 
 /**
- * Horizontal single-select filter chips.
- * Android: M3 FilterChip (borderless pill) in one Host, theme-filled colors.
- * iOS: Pressable chips.
+ * Horizontal single-select filter chips (RN Pressable).
+ * Compose FilterChip was dropped — Host bridge made selection feel laggy.
  */
 export function FilterChipRow<T extends string>({
   items,
@@ -39,51 +31,6 @@ export function FilterChipRow<T extends string>({
   labelFor,
 }: Props<T>) {
   const { colors, radii, space } = useTheme();
-
-  if (Platform.OS === 'android') {
-    return (
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        nestedScrollEnabled
-        style={styles.scroll}
-        contentContainerStyle={styles.scrollContent}
-      >
-        <Host matchContents>
-          <Row horizontalArrangement={{ spacedBy: 8 }}>
-            {items.map((item) => {
-              const selected = item.id === value;
-              const label = labelFor?.(item.id, item.label) ?? item.label;
-              return (
-                <FilterChip
-                  key={item.id}
-                  selected={selected}
-                  onClick={() => onChange(item.id)}
-                  colors={{
-                    containerColor: colors.surface,
-                    labelColor: colors.onSurface,
-                    iconColor: colors.onSurface,
-                    selectedContainerColor: colors.iconSoft,
-                    selectedLabelColor: colors.primary,
-                    selectedLeadingIconColor: colors.primary,
-                  }}
-                >
-                  {item.icon ? (
-                    <FilterChip.LeadingIcon>
-                      <ComposeIcon source={item.icon} size={18} />
-                    </FilterChip.LeadingIcon>
-                  ) : null}
-                  <FilterChip.Label>
-                    <ComposeText>{label}</ComposeText>
-                  </FilterChip.Label>
-                </FilterChip>
-              );
-            })}
-          </Row>
-        </Host>
-      </ScrollView>
-    );
-  }
 
   return (
     <ScrollView

@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useDeferredValue, useMemo, useState } from 'react';
 import { router } from 'expo-router';
 import { EmptyState } from '@/shared/ui';
 import { SettingsGroup } from '@/features/settings/components/SettingsList';
@@ -15,13 +15,14 @@ export default function InvoicesScreen() {
   const currency = useSettingsStore((s) => s.preferences.currency);
   const invoices = useInvoicesStore((s) => s.invoices);
   const [filter, setFilter] = useState<InvoiceFilter>('all');
+  const deferredFilter = useDeferredValue(filter);
 
   const sections = useMemo(() => {
     const filtered = invoices.filter((invoice) =>
-      matchesFilter(invoice, filter),
+      matchesFilter(invoice, deferredFilter),
     );
     return groupInvoicesByDate(filtered);
-  }, [invoices, filter]);
+  }, [invoices, deferredFilter]);
 
   return (
     <SettingsScroll withTabBar>
