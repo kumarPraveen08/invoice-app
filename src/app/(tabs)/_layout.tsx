@@ -5,7 +5,7 @@ import { Alert, Pressable, View } from 'react-native';
 import { MoreCreateSheet } from '@/features/invoices/components/MoreCreateSheet';
 import { useTheme } from '@/shared/design-system';
 import { FloatingTabBar } from '@/shared/ui';
-import { useAuth } from '@/hooks/useAuth';
+import { useAuth } from '@/features/auth';
 
 const CREATE_PATH: Record<string, '/invoice/new' | '/catalogue/new' | '/clients/new'> = {
   index: '/invoice/new',

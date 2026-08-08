@@ -7,7 +7,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { ThemeProvider, useTheme } from '@/shared/design-system';
 import { useSettingsStore } from '@/features/settings/store';
 import { SnackbarHost } from '@/shared/ui';
-import { AuthProvider, useAuth } from '@/hooks/useAuth';
+import { AuthProvider, useAuth } from '@/features/auth';
 
 WebBrowser.maybeCompleteAuthSession();
 void SplashScreen.preventAutoHideAsync().catch(() => undefined);
@@ -17,6 +17,7 @@ function RootNavigator() {
   const router = useRouter();
   const segments = useSegments();
   const onboardingComplete = useSettingsStore((s) => s.onboardingComplete);
+  const authSkipped = useSettingsStore((s) => s.authSkipped);
   const { session, loading: authLoading } = useAuth();
   const [hydrated, setHydrated] = useState(() => useSettingsStore.persist.hasHydrated());
 
@@ -44,6 +45,7 @@ function RootNavigator() {
 
     const inOnboarding = segments[0] === 'onboarding';
     const inAuth = segments[0] === 'auth';
+    const signedIn = Boolean(session) || authSkipped;
 
     if (!onboardingComplete) {
       if (!inOnboarding) {
@@ -52,7 +54,7 @@ function RootNavigator() {
       return;
     }
 
-    if (!session) {
+    if (!signedIn) {
       if (!inAuth) {
         router.replace('/auth');
       }
@@ -62,7 +64,7 @@ function RootNavigator() {
     if (inOnboarding || inAuth) {
       router.replace('/(tabs)');
     }
-  }, [ready, onboardingComplete, session, router, segments]);
+  }, [ready, onboardingComplete, session, authSkipped, router, segments]);
 
   const statusBarStyle = mode === 'dark' ? 'light-content' : 'dark-content';
 

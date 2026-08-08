@@ -98,6 +98,7 @@ export type AppSettings = {
   appearance: AppearanceSettings;
   invoiceTemplates: InvoiceTemplateLibrary;
   onboardingComplete: boolean;
+  authSkipped: boolean;
 };
 
 export const defaultSettings: AppSettings = {
@@ -143,4 +144,5 @@ export const defaultSettings: AppSettings = {
     customs: [],
   },
   onboardingComplete: false,
+  authSkipped: false,
 };
