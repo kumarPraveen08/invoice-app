@@ -95,9 +95,15 @@ export function FloatingTabBar({
   const [menuOpen, setMenuOpen] = useState(false);
   const hidden = useTabBarVisibility((s) => s.hidden);
   const showTabBar = useTabBarVisibility((s) => s.show);
+  const setPresent = useTabBarVisibility((s) => s.setPresent);
   const slide = useRef(new Animated.Value(0)).current;
   const hideDistance =
     tabBar.height + fab.size + Math.max(bottomInset, tabBar.marginBottom) + 24;
+
+  useEffect(() => {
+    setPresent(true);
+    return () => setPresent(false);
+  }, [setPresent]);
 
   useEffect(() => {
     showTabBar();
