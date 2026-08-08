@@ -1,5 +1,5 @@
 import { Tabs } from 'expo-router';
-import type { ComponentProps } from 'react';
+import { useEffect, useRef, type ComponentProps } from 'react';
 import {
   Host,
   HorizontalFloatingToolbar,
@@ -7,7 +7,13 @@ import {
   IconButton,
 } from '@expo/ui/jetpack-compose';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import { Platform, Pressable, StyleSheet, View } from 'react-native';
+import {
+  Animated,
+  Platform,
+  Pressable,
+  StyleSheet,
+  View,
+} from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Add from '@expo/material-symbols/add.xml';
 import BarChart from '@expo/material-symbols/bar_chart.xml';
@@ -17,6 +23,7 @@ import MoreHoriz from '@expo/material-symbols/more_horiz.xml';
 import Receipt from '@expo/material-symbols/receipt.xml';
 import Settings from '@expo/material-symbols/settings.xml';
 import { applyElevation, useTheme } from '@/shared/design-system';
+import { useTabBarVisibility } from './tabBarVisibility';
 import type { TabName } from './TabBarIcon';
 
 type FloatingTabBarProps = Parameters<
@@ -68,6 +75,28 @@ export function FloatingTabBar({
   const activeRoute = state.routes[state.index]?.name ?? 'index';
   const showCreate = CREATE_ROUTES.has(activeRoute);
   const fabLabel = showCreate ? 'Create' : 'More actions';
+  const hidden = useTabBarVisibility((s) => s.hidden);
+  const showTabBar = useTabBarVisibility((s) => s.show);
+  const slide = useRef(new Animated.Value(0)).current;
+  const hideDistance =
+    tabBar.height + fab.size + Math.max(bottomInset, tabBar.marginBottom) + 24;
+
+  useEffect(() => {
+    showTabBar();
+  }, [state.index, showTabBar]);
+
+  useEffect(() => {
+    Animated.timing(slide, {
+      toValue: hidden ? 1 : 0,
+      duration: 220,
+      useNativeDriver: true,
+    }).start();
+  }, [hidden, slide]);
+
+  const translateY = slide.interpolate({
+    inputRange: [0, 1],
+    outputRange: [0, hideDistance],
+  });
 
   const onTabPress = (route: (typeof state.routes)[number], focused: boolean) => {
     const event = navigation.emit({
@@ -93,64 +122,71 @@ export function FloatingTabBar({
           },
         ]}
       >
-        {/* One Host; always IconButton — swapping button types drops toolbar slots. */}
-        <Host
-          matchContents
-          style={{ marginBottom: rowBottom - bottomInset }}
+        <Animated.View
+          pointerEvents={hidden ? 'none' : 'box-none'}
+          style={{
+            marginBottom: rowBottom - bottomInset,
+            transform: [{ translateY }],
+          }}
         >
-          <HorizontalFloatingToolbar
-            variant="standard"
-            colors={{
-              toolbarContainerColor: colors.tabBar,
-              toolbarContentColor: colors.tabInactive,
-              fabContainerColor: colors.primary,
-              fabContentColor: colors.onPrimary,
-            }}
-          >
-            {state.routes.map((route, index) => {
-              const focused = state.index === index;
-              const { options } = descriptors[route.key];
-              const label =
-                typeof options.tabBarLabel === 'string'
-                  ? options.tabBarLabel
-                  : typeof options.title === 'string'
-                    ? options.title
-                    : route.name;
-              const tabName = ROUTE_TAB[route.name] ?? 'invoices';
-              const icon = ICONS[tabName];
+          {/* One Host; always IconButton — swapping button types drops toolbar slots. */}
+          <Host matchContents>
+            <HorizontalFloatingToolbar
+              variant="standard"
+              colors={{
+                toolbarContainerColor: colors.tabBar,
+                toolbarContentColor: colors.tabInactive,
+                fabContainerColor: colors.primary,
+                fabContentColor: colors.onPrimary,
+              }}
+            >
+              {state.routes.map((route, index) => {
+                const focused = state.index === index;
+                const { options } = descriptors[route.key];
+                const label =
+                  typeof options.tabBarLabel === 'string'
+                    ? options.tabBarLabel
+                    : typeof options.title === 'string'
+                      ? options.title
+                      : route.name;
+                const tabName = ROUTE_TAB[route.name] ?? 'invoices';
+                const icon = ICONS[tabName];
 
-              return (
-                <IconButton
-                  key={route.name}
-                  onClick={() => onTabPress(route, focused)}
-                  colors={{
-                    contentColor: focused ? colors.primary : colors.tabInactive,
-                  }}
+                return (
+                  <IconButton
+                    key={route.name}
+                    onClick={() => onTabPress(route, focused)}
+                    colors={{
+                      contentColor: focused
+                        ? colors.primary
+                        : colors.tabInactive,
+                    }}
+                  >
+                    <ComposeIcon
+                      source={icon}
+                      size={tabBar.iconSize}
+                      tint={focused ? colors.primary : colors.tabInactive}
+                      contentDescription={
+                        options.tabBarAccessibilityLabel ?? label
+                      }
+                    />
+                  </IconButton>
+                );
+              })}
+              {onFabPress ? (
+                <HorizontalFloatingToolbar.FloatingActionButton
+                  onPress={() => onFabPress(activeRoute)}
                 >
                   <ComposeIcon
-                    source={icon}
-                    size={tabBar.iconSize}
-                    tint={focused ? colors.primary : colors.tabInactive}
-                    contentDescription={
-                      options.tabBarAccessibilityLabel ?? label
-                    }
+                    source={showCreate ? Add : MoreHoriz}
+                    size={fab.iconSize}
+                    contentDescription={fabLabel}
                   />
-                </IconButton>
-              );
-            })}
-            {onFabPress ? (
-              <HorizontalFloatingToolbar.FloatingActionButton
-                onPress={() => onFabPress(activeRoute)}
-              >
-                <ComposeIcon
-                  source={showCreate ? Add : MoreHoriz}
-                  size={fab.iconSize}
-                  contentDescription={fabLabel}
-                />
-              </HorizontalFloatingToolbar.FloatingActionButton>
-            ) : null}
-          </HorizontalFloatingToolbar>
-        </Host>
+                </HorizontalFloatingToolbar.FloatingActionButton>
+              ) : null}
+            </HorizontalFloatingToolbar>
+          </Host>
+        </Animated.View>
       </View>
     );
   }
@@ -170,92 +206,99 @@ export function FloatingTabBar({
         },
       ]}
     >
-      <View
-        style={[
-          styles.row,
-          {
-            marginBottom: rowBottom - bottomInset,
-            gap: tabBar.addGap,
-          },
-        ]}
+      <Animated.View
+        pointerEvents={hidden ? 'none' : 'box-none'}
+        style={{
+          transform: [{ translateY }],
+        }}
       >
         <View
           style={[
-            styles.capsule,
+            styles.row,
             {
-              height: tabBar.height,
-              backgroundColor: colors.tabBar,
-              borderRadius: radii.full,
+              marginBottom: rowBottom - bottomInset,
+              gap: tabBar.addGap,
             },
-            applyElevation('md', colors.shadow),
           ]}
         >
-          {state.routes.map((route, index) => {
-            const focused = state.index === index;
-            const { options } = descriptors[route.key];
-            const label =
-              typeof options.tabBarLabel === 'string'
-                ? options.tabBarLabel
-                : typeof options.title === 'string'
-                  ? options.title
-                  : route.name;
-            const tabName = ROUTE_TAB[route.name] ?? 'invoices';
-            const icon = FONT_ICONS[tabName];
-
-            return (
-              <Pressable
-                key={route.name}
-                accessibilityRole="button"
-                accessibilityState={focused ? { selected: true } : {}}
-                accessibilityLabel={options.tabBarAccessibilityLabel ?? label}
-                onPress={() => onTabPress(route, focused)}
-                style={styles.item}
-              >
-                <View
-                  style={[
-                    styles.iconSlot,
-                    focused && {
-                      backgroundColor: colors.iconSoft,
-                      borderRadius: radii.full,
-                    },
-                  ]}
-                >
-                  <MaterialIcons
-                    name={icon}
-                    size={tabBar.iconSize}
-                    color={focused ? colors.primary : colors.tabInactive}
-                  />
-                </View>
-              </Pressable>
-            );
-          })}
-        </View>
-
-        {onFabPress ? (
-          <Pressable
-            accessibilityRole="button"
-            accessibilityLabel={fabLabel}
-            onPress={() => onFabPress(activeRoute)}
-            style={({ pressed }) => [
-              styles.add,
+          <View
+            style={[
+              styles.capsule,
               {
-                width: fab.size,
-                height: fab.size,
-                borderRadius: radii.lg,
-                backgroundColor: colors.primary,
-                opacity: pressed ? 0.88 : 1,
+                height: tabBar.height,
+                backgroundColor: colors.tabBar,
+                borderRadius: radii.full,
               },
               applyElevation('md', colors.shadow),
             ]}
           >
-            <MaterialIcons
-              name={fabIcon}
-              size={fab.iconSize}
-              color={colors.onPrimary}
-            />
-          </Pressable>
-        ) : null}
-      </View>
+            {state.routes.map((route, index) => {
+              const focused = state.index === index;
+              const { options } = descriptors[route.key];
+              const label =
+                typeof options.tabBarLabel === 'string'
+                  ? options.tabBarLabel
+                  : typeof options.title === 'string'
+                    ? options.title
+                    : route.name;
+              const tabName = ROUTE_TAB[route.name] ?? 'invoices';
+              const icon = FONT_ICONS[tabName];
+
+              return (
+                <Pressable
+                  key={route.name}
+                  accessibilityRole="button"
+                  accessibilityState={focused ? { selected: true } : {}}
+                  accessibilityLabel={options.tabBarAccessibilityLabel ?? label}
+                  onPress={() => onTabPress(route, focused)}
+                  style={styles.item}
+                >
+                  <View
+                    style={[
+                      styles.iconSlot,
+                      focused && {
+                        backgroundColor: colors.iconSoft,
+                        borderRadius: radii.full,
+                      },
+                    ]}
+                  >
+                    <MaterialIcons
+                      name={icon}
+                      size={tabBar.iconSize}
+                      color={focused ? colors.primary : colors.tabInactive}
+                    />
+                  </View>
+                </Pressable>
+              );
+            })}
+          </View>
+
+          {onFabPress ? (
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel={fabLabel}
+              onPress={() => onFabPress(activeRoute)}
+              style={({ pressed }) => [
+                styles.add,
+                {
+                  width: fab.size,
+                  height: fab.size,
+                  borderRadius: radii.lg,
+                  backgroundColor: colors.primary,
+                  opacity: pressed ? 0.88 : 1,
+                },
+                applyElevation('md', colors.shadow),
+              ]}
+            >
+              <MaterialIcons
+                name={fabIcon}
+                size={fab.iconSize}
+                color={colors.onPrimary}
+              />
+            </Pressable>
+          ) : null}
+        </View>
+      </Animated.View>
     </View>
   );
 }

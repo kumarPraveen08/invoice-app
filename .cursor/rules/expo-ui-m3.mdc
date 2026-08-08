@@ -11,3 +11,4 @@ alwaysApply: true
 - Android Compose icons need a **native rebuild** after adding `@expo/ui`.
 - iOS may keep a temporary fallback until universal/`@expo/ui` SwiftUI parity is adopted.
 - Do **not** put Compose `Host`-per-icon on hot paths (tab bar, lists). Prefer **one** `Host` wrapping many Compose children (e.g. `HorizontalFloatingToolbar`), or font icons.
+- Scroll hide for our tab bar: drive it from RN `SettingsScroll` (`withTabBar`) + `useTabBarVisibility` — Compose `floatingToolbarExitAlwaysScrollBehavior` only works when the list is Compose `LazyColumn` inside the same `Host`.
