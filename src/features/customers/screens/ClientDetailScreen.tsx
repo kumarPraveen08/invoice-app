@@ -11,6 +11,7 @@ import { SettingsGroup } from "@/features/settings/components/SettingsList";
 import { SettingsScroll } from "@/features/settings/components/SettingsScroll";
 import { useClientsStore } from "../store";
 import type { Client } from "../types";
+import { ClientAvatar } from "../components/ClientAvatar";
 
 function invoicesForClient(customerName: string, client: Client): boolean {
   return customerName === client.businessName || customerName === client.name;
@@ -77,12 +78,28 @@ export default function ClientDetailScreen() {
 
   return (
     <SettingsScroll>
-      <Text variant="title" style={{ marginBottom: space.xs }}>
-        {client.name}
-      </Text>
-      <Text variant="body" muted style={{ marginBottom: space["2xl"] }}>
-        {client.businessName}
-      </Text>
+      <View
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          gap: space.md,
+          marginBottom: space['2xl'],
+        }}
+      >
+        <ClientAvatar
+          name={client.name}
+          imageUri={client.profileImageUri}
+          size={56}
+        />
+        <View style={{ flex: 1, minWidth: 0 }}>
+          <Text variant="title" numberOfLines={1}>
+            {client.name}
+          </Text>
+          <Text variant="body" muted numberOfLines={1}>
+            {client.businessName}
+          </Text>
+        </View>
+      </View>
 
       <SettingsGroup title="Contact">
         <View
@@ -94,6 +111,11 @@ export default function ClientDetailScreen() {
           <Text variant="caption" muted style={{ marginTop: 4 }}>
             {client.phone || "No phone"}
           </Text>
+          {client.address ? (
+            <Text variant="caption" muted style={{ marginTop: 4 }}>
+              {client.address}
+            </Text>
+          ) : null}
         </View>
       </SettingsGroup>
 

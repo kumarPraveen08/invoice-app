@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 import { router } from 'expo-router';
-import {Icon, Text, useTheme} from '@/shared/design-system';
+import { Text, useTheme } from '@/shared/design-system';
 import { ActionSheet, showSnackbar, SwipeableRow } from '@/shared/ui';
 import { useClientsStore } from '../store';
 import type { Client } from '../types';
+import { ClientAvatar } from './ClientAvatar';
 
 type Props = {
   client: Client;
@@ -12,7 +13,7 @@ type Props = {
 };
 
 export function ClientRow({ client, last = false }: Props) {
-  const { colors, radii, space } = useTheme();
+  const { colors, space } = useTheme();
   const removeClient = useClientsStore((s) => s.removeClient);
   const upsertClient = useClientsStore((s) => s.upsertClient);
   const [actionsOpen, setActionsOpen] = useState(false);
@@ -31,6 +32,10 @@ export function ClientRow({ client, last = false }: Props) {
       },
     });
   };
+
+  const subtitle = [client.businessName, client.address || client.phone]
+    .filter(Boolean)
+    .join(' · ');
 
   return (
     <>
@@ -52,25 +57,18 @@ export function ClientRow({ client, last = false }: Props) {
             },
           ]}
         >
-          <View
-            style={[
-              styles.iconWrap,
-              {
-                backgroundColor: colors.iconSoft,
-                borderRadius: radii.full,
-                marginRight: space.md,
-              },
-            ]}
-          >
-            <Icon name="person" size={20} color={colors.primary} />
+          <View style={{ marginRight: space.md }}>
+            <ClientAvatar
+              name={client.name}
+              imageUri={client.profileImageUri}
+            />
           </View>
           <View style={styles.copy}>
             <Text variant="body" style={{ fontWeight: '600' }} numberOfLines={1}>
               {client.name}
             </Text>
             <Text variant="caption" muted numberOfLines={1}>
-              {client.businessName}
-              {client.phone ? ` · ${client.phone}` : ''}
+              {subtitle}
             </Text>
           </View>
         </Pressable>
@@ -110,12 +108,6 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     alignItems: 'center',
-  },
-  iconWrap: {
-    width: 40,
-    height: 40,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   copy: {
     flex: 1,

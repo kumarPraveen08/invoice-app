@@ -1,15 +1,30 @@
 import { useEffect, useState } from 'react';
-import { Platform } from 'react-native';
+import { Platform, Pressable, StyleSheet, View } from 'react-native';
 import { router, useLocalSearchParams, useNavigation } from 'expo-router';
-import { Button, useTheme } from '@/shared/design-system';
+import * as ImagePicker from 'expo-image-picker';
+import { Button, Text, useTheme } from '@/shared/design-system';
 import { createId } from '@/shared/lib/id';
 import { showSnackbar } from '@/shared/ui';
 import { SettingsField } from '@/features/settings/components/SettingsField';
 import { SettingsScroll } from '@/features/settings/components/SettingsScroll';
 import { useClientsStore } from '../store';
+import { ClientAvatar } from '../components/ClientAvatar';
+
+function formatAddress(parts: {
+  street?: string | null;
+  city?: string | null;
+  region?: string | null;
+  postalCode?: string | null;
+  country?: string | null;
+}): string {
+  return [parts.street, parts.city, parts.region, parts.postalCode, parts.country]
+    .map((part) => part?.trim())
+    .filter(Boolean)
+    .join(', ');
+}
 
 export default function NewClientScreen() {
-  const { space } = useTheme();
+  const { colors, space } = useTheme();
   const navigation = useNavigation();
   const { id, from } = useLocalSearchParams<{ id?: string; from?: string }>();
   const existing = useClientsStore((s) =>
@@ -22,6 +37,10 @@ export default function NewClientScreen() {
   const [businessName, setBusinessName] = useState(existing?.businessName ?? '');
   const [email, setEmail] = useState(existing?.email ?? '');
   const [phone, setPhone] = useState(existing?.phone ?? '');
+  const [address, setAddress] = useState(existing?.address ?? '');
+  const [profileImageUri, setProfileImageUri] = useState<string | null>(
+    existing?.profileImageUri ?? null,
+  );
   const [nameError, setNameError] = useState('');
 
   useEffect(() => {
@@ -29,6 +48,28 @@ export default function NewClientScreen() {
       title: editing ? 'Edit client' : 'New client',
     });
   }, [editing, navigation]);
+
+  const pickPhoto = async () => {
+    try {
+      const permission = await ImagePicker.requestMediaLibraryPermissionsAsync();
+      if (!permission.granted) {
+        showSnackbar('Allow photo access in Settings to add a profile image.');
+        return;
+      }
+      const result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ['images'],
+        allowsEditing: true,
+        aspect: [1, 1],
+        quality: 0.8,
+      });
+      if (result.canceled || !result.assets[0]?.uri) return;
+      setProfileImageUri(result.assets[0].uri);
+    } catch (error) {
+      showSnackbar(
+        error instanceof Error ? error.message : 'Could not open photos.',
+      );
+    }
+  };
 
   const importFromContacts = async () => {
     try {
@@ -54,6 +95,18 @@ export default function NewClientScreen() {
       const nextPhone =
         contact.phoneNumbers?.find((item) => item.number)?.number?.trim() ??
         '';
+      const postal = contact.addresses?.[0];
+      const nextAddress = postal
+        ? formatAddress({
+            street: postal.street,
+            city: postal.city,
+            region: postal.region,
+            postalCode: postal.postalCode,
+            country: postal.country,
+          })
+        : '';
+      const nextImage =
+        contact.image?.uri ?? contact.rawImage?.uri ?? null;
 
       if (!nextName && !nextBusiness && !nextEmail && !nextPhone) {
         showSnackbar('That contact has no name, phone, or email.');
@@ -64,6 +117,8 @@ export default function NewClientScreen() {
       setBusinessName(nextBusiness || nextName);
       setEmail(nextEmail);
       setPhone(nextPhone);
+      if (nextAddress) setAddress(nextAddress);
+      if (nextImage) setProfileImageUri(nextImage);
       setNameError('');
     } catch (error) {
       const message =
@@ -100,12 +155,33 @@ export default function NewClientScreen() {
       businessName: businessName.trim() || trimmedName,
       email: email.trim(),
       phone: phone.trim(),
+      address: address.trim() || undefined,
+      profileImageUri,
     });
     router.back();
   };
 
   return (
     <SettingsScroll>
+      <View style={[styles.photoRow, { marginBottom: space.xl }]}>
+        <ClientAvatar name={name || 'Client'} imageUri={profileImageUri} size={64} />
+        <View style={{ flex: 1, gap: space.sm }}>
+          <Button
+            label={profileImageUri ? 'Change photo' : 'Add photo'}
+            variant="secondary"
+            onPress={pickPhoto}
+            style={{ alignSelf: 'stretch', justifyContent: 'center' }}
+          />
+          {profileImageUri ? (
+            <Pressable onPress={() => setProfileImageUri(null)} hitSlop={8}>
+              <Text variant="caption" style={{ color: colors.onSurfaceMuted }}>
+                Remove photo
+              </Text>
+            </Pressable>
+          ) : null}
+        </View>
+      </View>
+
       {!editing ? (
         <Button
           label="Add from contacts"
@@ -138,6 +214,13 @@ export default function NewClientScreen() {
         autoCapitalize="words"
       />
       <SettingsField
+        label="Address"
+        value={address}
+        onChangeText={setAddress}
+        placeholder="Street, city, state, ZIP"
+        multiline
+      />
+      <SettingsField
         label="Email"
         value={email}
         onChangeText={setEmail}
@@ -165,3 +248,11 @@ export default function NewClientScreen() {
     </SettingsScroll>
   );
 }
+
+const styles = StyleSheet.create({
+  photoRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 16,
+  },
+});

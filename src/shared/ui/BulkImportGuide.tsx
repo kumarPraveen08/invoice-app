@@ -28,9 +28,11 @@ const COPY = {
     tip: 'Duplicate SKUs in the file are skipped. Existing SKUs in the app are also skipped.',
   },
   clients: {
-    columns: 'Customer name, Business name, Phone, Email',
+    columns: 'Customer name, Business name, Phone, Email, Address',
     templateName: 'clients-template.csv',
-    templateRows: [['Customer name', 'Business name', 'Phone', 'Email']],
+    templateRows: [
+      ['Customer name', 'Business name', 'Phone', 'Email', 'Address'],
+    ],
     tip: 'Duplicate emails in the file or app are skipped.',
   },
 } as const;
@@ -96,7 +98,7 @@ function parseClientRows(rows: string[][]): {
   let skipped = 0;
 
   rows.slice(1).forEach((row, index) => {
-    const [name, businessName, phone, email] = row;
+    const [name, businessName, phone, email, address] = row;
     const line = index + 2;
     if (!name?.trim()) {
       errors.push(`Line ${line}: customer name is required.`);
@@ -114,6 +116,7 @@ function parseClientRows(rows: string[][]): {
       businessName: (businessName || '').trim(),
       phone: (phone || '').trim(),
       email: (email || '').trim(),
+      address: (address || '').trim() || undefined,
     });
   });
 

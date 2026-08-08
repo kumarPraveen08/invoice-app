@@ -1,6 +1,6 @@
-import { Host, LoadingIndicator } from '@expo/ui/jetpack-compose';
-import { ActivityIndicator, Platform, StyleSheet, View } from 'react-native';
-import { useTheme } from '@/shared/design-system';
+import { Host, LoadingIndicator } from "@expo/ui/jetpack-compose";
+import { ActivityIndicator, Platform, StyleSheet, View } from "react-native";
+import { useTheme } from "@/shared/design-system";
 
 /** Lightweight placeholder while a route's content mounts. */
 export function ScreenLoading() {
@@ -8,7 +8,7 @@ export function ScreenLoading() {
 
   return (
     <View style={styles.center} accessibilityLabel="Loading">
-      {Platform.OS === 'android' ? (
+      {Platform.OS === "android" ? (
         <Host matchContents>
           <LoadingIndicator color={colors.primary} />
         </Host>
@@ -22,7 +22,7 @@ export function ScreenLoading() {
 const styles = StyleSheet.create({
   center: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
