@@ -2,8 +2,7 @@ import { useMemo, useState } from 'react';
 import { View } from 'react-native';
 import { Text, useTheme } from '@/shared/design-system';
 import { SearchField } from '@/shared/ui';
-import { SettingsGroup } from '@/features/settings/components/SettingsList';
-import { SettingsScroll } from '@/features/settings/components/SettingsScroll';
+import { SettingsFlatList } from '@/features/settings/components/SettingsScroll';
 import { useSettingsStore } from '@/features/settings/store';
 import { CatalogueRow } from '../components/CatalogueRow';
 import { useCatalogueStore } from '../store';
@@ -27,35 +26,43 @@ export default function CatalogueSearchScreen() {
   }, [items, q]);
 
   return (
-    <SettingsScroll includeTopInset>
-      <SearchField
-        value={query}
-        onChangeText={setQuery}
-        placeholder="Search catalogue"
-      />
-
-      <View style={{ marginTop: space.lg }}>
-        {!q ? (
-          <Text variant="body" muted style={{ marginLeft: space.md }}>
-            Search by name, SKU, or category
-          </Text>
-        ) : results.length === 0 ? (
+    <SettingsFlatList
+      includeTopInset
+      data={results}
+      keyExtractor={(item) => item.id}
+      title="Results"
+      ListHeaderComponent={
+        <View style={{ marginBottom: space.lg }}>
+          <SearchField
+            value={query}
+            onChangeText={setQuery}
+            placeholder="Search catalogue"
+          />
+          {!q ? (
+            <Text
+              variant="body"
+              muted
+              style={{ marginLeft: space.md, marginTop: space.lg }}
+            >
+              Search by name, SKU, or category
+            </Text>
+          ) : null}
+        </View>
+      }
+      ListEmptyComponent={
+        q ? (
           <Text variant="body" muted style={{ marginLeft: space.md }}>
             No results for “{q}”
           </Text>
-        ) : (
-          <SettingsGroup title="Results">
-            {results.map((item, index) => (
-              <CatalogueRow
-                key={item.id}
-                item={item}
-                currency={currency}
-                last={index === results.length - 1}
-              />
-            ))}
-          </SettingsGroup>
-        )}
-      </View>
-    </SettingsScroll>
+        ) : null
+      }
+      renderItem={(item, index) => (
+        <CatalogueRow
+          item={item}
+          currency={currency}
+          last={index === results.length - 1}
+        />
+      )}
+    />
   );
 }

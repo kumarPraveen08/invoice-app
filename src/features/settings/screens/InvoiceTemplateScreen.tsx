@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 import { router } from 'expo-router';
 import { Text, useTheme } from '@/shared/design-system';
@@ -21,6 +22,14 @@ export function InvoiceTemplateScreen() {
   const createCustomTemplate = useSettingsStore((s) => s.createCustomTemplate);
   const removeCustomTemplate = useSettingsStore((s) => s.removeCustomTemplate);
   const templates = listTemplates(library.customs);
+  const [previewsReady, setPreviewsReady] = useState(false);
+
+  useEffect(() => {
+    const id = requestIdleCallback(() => setPreviewsReady(true), {
+      timeout: 250,
+    });
+    return () => cancelIdleCallback(id);
+  }, []);
 
   const openEditor = (id: string) => {
     if (isPresetTemplateId(id)) {
@@ -71,6 +80,7 @@ export function InvoiceTemplateScreen() {
         {templates.map((template) => {
           const isDefault = template.id === library.defaultId;
           const isPreset = isPresetTemplateId(template.id);
+          const showPreview = previewsReady || isDefault;
           return (
             <View
               key={template.id}
@@ -90,14 +100,26 @@ export function InvoiceTemplateScreen() {
                 onPress={() => setDefaultTemplateId(template.id)}
                 style={{ padding: space.sm }}
               >
-                <InvoiceTemplatePreview
-                  template={template}
-                  business={business}
-                  branding={branding}
-                  bank={bank}
-                  defaults={defaults}
-                  compact
-                />
+                {showPreview ? (
+                  <InvoiceTemplatePreview
+                    template={template}
+                    business={business}
+                    branding={branding}
+                    bank={bank}
+                    defaults={defaults}
+                    compact
+                  />
+                ) : (
+                  <View
+                    style={[
+                      styles.previewStub,
+                      {
+                        backgroundColor: template.accent,
+                        borderRadius: radii.md,
+                      },
+                    ]}
+                  />
+                )}
               </Pressable>
               <View
                 style={[
@@ -184,6 +206,10 @@ const styles = StyleSheet.create({
   card: {
     width: '100%',
     overflow: 'hidden',
+  },
+  previewStub: {
+    height: 140,
+    opacity: 0.35,
   },
   cardMeta: {},
   cardTitleRow: {

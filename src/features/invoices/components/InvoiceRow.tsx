@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRecyclingState } from '@legendapp/list/react-native';
 import { Pressable, Share, StyleSheet, View } from 'react-native';
 import { router } from 'expo-router';
 import { Icon, Text, useTheme, type IconName } from '@/shared/design-system';
@@ -37,9 +37,11 @@ function unpaidStatusFor(invoice: Invoice): InvoiceStatus {
 export function InvoiceRow({ invoice, currency, last = false, onPress }: Props) {
   const { colors, radii, space } = useTheme();
   const patchInvoice = useInvoicesStore((s) => s.patchInvoice);
-  const [actionsOpen, setActionsOpen] = useState(false);
-  const [pickerOpen, setPickerOpen] = useState(false);
-  const [pickerMode, setPickerMode] = useState<'share' | 'download'>('share');
+  const [actionsOpen, setActionsOpen] = useRecyclingState(false);
+  const [pickerOpen, setPickerOpen] = useRecyclingState(false);
+  const [pickerMode, setPickerMode] = useRecyclingState<'share' | 'download'>(
+    'share',
+  );
   const outstanding = outstandingOf(invoice);
   const isOverdue = invoice.status === 'overdue';
   const showBalance =
@@ -198,25 +200,29 @@ export function InvoiceRow({ invoice, currency, last = false, onPress }: Props) 
         </View>
       </Pressable>
 
-      <ActionSheet
-        visible={actionsOpen}
-        onClose={() => setActionsOpen(false)}
-        title={invoice.number}
-        subtitle={`${invoice.customerName} · ${formatInvoiceDate(invoice.issueDate)} · ${formatMoney(invoice.total, currency)}`}
-        actions={actions}
-      />
-      <TemplatePickerSheet
-        visible={pickerOpen}
-        onClose={() => setPickerOpen(false)}
-        title={
-          pickerMode === 'share'
-            ? 'Share with template'
-            : 'Download PDF with template'
-        }
-        onSelect={(templateId) => {
-          void onPickTemplate(templateId);
-        }}
-      />
+      {actionsOpen ? (
+        <ActionSheet
+          visible
+          onClose={() => setActionsOpen(false)}
+          title={invoice.number}
+          subtitle={`${invoice.customerName} · ${formatInvoiceDate(invoice.issueDate)} · ${formatMoney(invoice.total, currency)}`}
+          actions={actions}
+        />
+      ) : null}
+      {pickerOpen ? (
+        <TemplatePickerSheet
+          visible
+          onClose={() => setPickerOpen(false)}
+          title={
+            pickerMode === 'share'
+              ? 'Share with template'
+              : 'Download PDF with template'
+          }
+          onSelect={(templateId) => {
+            void onPickTemplate(templateId);
+          }}
+        />
+      ) : null}
     </>
   );
 }

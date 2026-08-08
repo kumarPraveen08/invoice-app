@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRecyclingState } from '@legendapp/list/react-native';
 import { Pressable, StyleSheet, View } from 'react-native';
 import { router } from 'expo-router';
 import { Text, useTheme } from '@/shared/design-system';
@@ -16,7 +16,7 @@ export function ClientRow({ client, last = false }: Props) {
   const { colors, space } = useTheme();
   const removeClient = useClientsStore((s) => s.removeClient);
   const upsertClient = useClientsStore((s) => s.upsertClient);
-  const [actionsOpen, setActionsOpen] = useState(false);
+  const [actionsOpen, setActionsOpen] = useRecyclingState(false);
 
   const onOpen = () => router.push(`/clients/${client.id}`);
   const onEdit = () => {
@@ -74,33 +74,35 @@ export function ClientRow({ client, last = false }: Props) {
         </Pressable>
       </SwipeableRow>
 
-      <ActionSheet
-        visible={actionsOpen}
-        onClose={() => setActionsOpen(false)}
-        title={client.name}
-        subtitle={subtitle || undefined}
-        actions={[
-          {
-            key: 'view',
-            label: 'View',
-            icon: 'visibility',
-            onPress: onOpen,
-          },
-          {
-            key: 'edit',
-            label: 'Edit',
-            icon: 'edit',
-            onPress: onEdit,
-          },
-          {
-            key: 'delete',
-            label: 'Delete',
-            icon: 'delete',
-            destructive: true,
-            onPress: onDelete,
-          },
-        ]}
-      />
+      {actionsOpen ? (
+        <ActionSheet
+          visible
+          onClose={() => setActionsOpen(false)}
+          title={client.name}
+          subtitle={subtitle || undefined}
+          actions={[
+            {
+              key: 'view',
+              label: 'View',
+              icon: 'visibility',
+              onPress: onOpen,
+            },
+            {
+              key: 'edit',
+              label: 'Edit',
+              icon: 'edit',
+              onPress: onEdit,
+            },
+            {
+              key: 'delete',
+              label: 'Delete',
+              icon: 'delete',
+              destructive: true,
+              onPress: onDelete,
+            },
+          ]}
+        />
+      ) : null}
     </>
   );
 }

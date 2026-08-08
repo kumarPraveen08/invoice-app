@@ -242,18 +242,20 @@ export default function InvoiceDetailScreen() {
         ) : null}
       </SettingsScroll>
 
-      <TemplatePickerSheet
-        visible={pickerOpen}
-        onClose={() => setPickerOpen(false)}
-        title={
-          pickerMode === "share"
-            ? "Share with template"
-            : "Download PDF with template"
-        }
-        onSelect={(templateId) => {
-          void onPickTemplate(templateId || defaultTemplateId);
-        }}
-      />
+      {pickerOpen ? (
+        <TemplatePickerSheet
+          visible
+          onClose={() => setPickerOpen(false)}
+          title={
+            pickerMode === "share"
+              ? "Share with template"
+              : "Download PDF with template"
+          }
+          onSelect={(templateId) => {
+            void onPickTemplate(templateId || defaultTemplateId);
+          }}
+        />
+      ) : null}
     </>
   );
 }

@@ -8,7 +8,10 @@ import { formatMoney } from "@/features/invoices/format";
 import { useInvoicesStore } from "@/features/invoices";
 import { useSettingsStore } from "@/features/settings/store";
 import { SettingsGroup } from "@/features/settings/components/SettingsList";
-import { SettingsScroll } from "@/features/settings/components/SettingsScroll";
+import {
+  SettingsFlatList,
+  SettingsScroll,
+} from "@/features/settings/components/SettingsScroll";
 import { HeaderIconButton } from "@/shared/ui";
 import { useClientsStore } from "../store";
 import type { Client } from "../types";
@@ -75,94 +78,109 @@ export default function ClientDetailScreen() {
   }
 
   return (
-    <SettingsScroll>
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          gap: space.md,
-          marginBottom: space['2xl'],
-        }}
-      >
-        <ClientAvatar
-          name={client.name}
-          imageUri={client.profileImageUri}
-          size={56}
-        />
-        <View style={{ flex: 1, minWidth: 0 }}>
-          <Text variant="title" numberOfLines={1}>
-            {client.name}
-          </Text>
-          <Text variant="body" muted numberOfLines={1}>
-            {client.businessName}
-          </Text>
-        </View>
-      </View>
-
-      <SettingsGroup title="Contact">
-        <View
-          style={{ paddingHorizontal: space.lg, paddingVertical: space.md }}
-        >
-          <Text variant="body" style={{ fontWeight: "600" }}>
-            {client.email || "No email"}
-          </Text>
-          <Text variant="caption" muted style={{ marginTop: 4 }}>
-            {client.phone || "No phone"}
-          </Text>
-          {client.address ? (
-            <Text variant="caption" muted style={{ marginTop: 4 }}>
-              {client.address}
-            </Text>
-          ) : null}
-        </View>
-      </SettingsGroup>
-
-      <SettingsGroup title="With you">
-        <View
-          style={{
-            paddingHorizontal: space.lg,
-            paddingVertical: space.md,
-            flexDirection: "row",
-            justifyContent: "space-between",
-            gap: 12,
-          }}
-        >
-          <View style={{ flex: 1 }}>
-            <Text variant="caption" muted>
-              Billed
-            </Text>
-            <Text variant="body" style={{ fontWeight: "700", marginTop: 2 }}>
-              {formatMoney(totals.billed, currency)}
-            </Text>
+    <SettingsFlatList
+      data={clientInvoices}
+      keyExtractor={(invoice) => invoice.id}
+      title={
+        clientInvoices.length > 0
+          ? `Invoices · ${clientInvoices.length}`
+          : undefined
+      }
+      ListHeaderComponent={
+        <View>
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              gap: space.md,
+              marginBottom: space["2xl"],
+            }}
+          >
+            <ClientAvatar
+              name={client.name}
+              imageUri={client.profileImageUri}
+              size={56}
+            />
+            <View style={{ flex: 1, minWidth: 0 }}>
+              <Text variant="title" numberOfLines={1}>
+                {client.name}
+              </Text>
+              <Text variant="body" muted numberOfLines={1}>
+                {client.businessName}
+              </Text>
+            </View>
           </View>
-          <View style={{ flex: 1, alignItems: "flex-end" }}>
-            <Text variant="caption" muted>
-              Still unpaid
-            </Text>
-            <Text variant="body" style={{ fontWeight: "700", marginTop: 2 }}>
-              {formatMoney(totals.unpaid, currency)}
-            </Text>
-          </View>
-        </View>
-      </SettingsGroup>
 
-      {clientInvoices.length === 0 ? (
+          <SettingsGroup title="Contact">
+            <View
+              style={{
+                paddingHorizontal: space.lg,
+                paddingVertical: space.md,
+              }}
+            >
+              <Text variant="body" style={{ fontWeight: "600" }}>
+                {client.email || "No email"}
+              </Text>
+              <Text variant="caption" muted style={{ marginTop: 4 }}>
+                {client.phone || "No phone"}
+              </Text>
+              {client.address ? (
+                <Text variant="caption" muted style={{ marginTop: 4 }}>
+                  {client.address}
+                </Text>
+              ) : null}
+            </View>
+          </SettingsGroup>
+
+          <SettingsGroup title="With you">
+            <View
+              style={{
+                paddingHorizontal: space.lg,
+                paddingVertical: space.md,
+                flexDirection: "row",
+                justifyContent: "space-between",
+                gap: 12,
+              }}
+            >
+              <View style={{ flex: 1 }}>
+                <Text variant="caption" muted>
+                  Billed
+                </Text>
+                <Text
+                  variant="body"
+                  style={{ fontWeight: "700", marginTop: 2 }}
+                >
+                  {formatMoney(totals.billed, currency)}
+                </Text>
+              </View>
+              <View style={{ flex: 1, alignItems: "flex-end" }}>
+                <Text variant="caption" muted>
+                  Still unpaid
+                </Text>
+                <Text
+                  variant="body"
+                  style={{ fontWeight: "700", marginTop: 2 }}
+                >
+                  {formatMoney(totals.unpaid, currency)}
+                </Text>
+              </View>
+            </View>
+          </SettingsGroup>
+        </View>
+      }
+      ListEmptyComponent={
         <Text variant="body" muted style={{ marginLeft: space.md }}>
           No invoices for this client yet.
         </Text>
-      ) : (
-        <SettingsGroup title={`Invoices · ${clientInvoices.length}`}>
-          {clientInvoices.map((invoice, index) => (
-            <InvoiceRow
-              key={invoice.id}
-              invoice={invoice}
-              currency={currency}
-              last={index === clientInvoices.length - 1}
-              onPress={() => router.push(`/invoice/${invoice.id}`)}
-            />
-          ))}
-        </SettingsGroup>
+      }
+      renderItem={(invoice, index) => (
+        <InvoiceRow
+          invoice={invoice}
+          currency={currency}
+          last={index === clientInvoices.length - 1}
+          onPress={() => router.push(`/invoice/${invoice.id}`)}
+        />
       )}
-    </SettingsScroll>
+    />
   );
 }

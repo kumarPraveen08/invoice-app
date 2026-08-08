@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRecyclingState } from '@legendapp/list/react-native';
 import { Pressable, StyleSheet, View } from 'react-native';
 import { router } from 'expo-router';
 import {Icon, Text, useTheme} from '@/shared/design-system';
@@ -17,7 +17,7 @@ export function CatalogueRow({ item, currency, last = false }: Props) {
   const { colors, radii, space } = useTheme();
   const removeItem = useCatalogueStore((s) => s.removeItem);
   const upsertItem = useCatalogueStore((s) => s.upsertItem);
-  const [actionsOpen, setActionsOpen] = useState(false);
+  const [actionsOpen, setActionsOpen] = useRecyclingState(false);
 
   const onOpen = () => router.push(`/catalogue/${item.id}`);
   const onEdit = () => {
@@ -80,33 +80,35 @@ export function CatalogueRow({ item, currency, last = false }: Props) {
         </Pressable>
       </SwipeableRow>
 
-      <ActionSheet
-        visible={actionsOpen}
-        onClose={() => setActionsOpen(false)}
-        title={item.name}
-        subtitle={`${item.sku} · ${item.unit} · ${formatMoney(item.price, currency)}`}
-        actions={[
-          {
-            key: 'view',
-            label: 'View',
-            icon: 'visibility',
-            onPress: onOpen,
-          },
-          {
-            key: 'edit',
-            label: 'Edit',
-            icon: 'edit',
-            onPress: onEdit,
-          },
-          {
-            key: 'delete',
-            label: 'Delete',
-            icon: 'delete',
-            destructive: true,
-            onPress: onDelete,
-          },
-        ]}
-      />
+      {actionsOpen ? (
+        <ActionSheet
+          visible
+          onClose={() => setActionsOpen(false)}
+          title={item.name}
+          subtitle={`${item.sku} · ${item.unit} · ${formatMoney(item.price, currency)}`}
+          actions={[
+            {
+              key: 'view',
+              label: 'View',
+              icon: 'visibility',
+              onPress: onOpen,
+            },
+            {
+              key: 'edit',
+              label: 'Edit',
+              icon: 'edit',
+              onPress: onEdit,
+            },
+            {
+              key: 'delete',
+              label: 'Delete',
+              icon: 'delete',
+              destructive: true,
+              onPress: onDelete,
+            },
+          ]}
+        />
+      ) : null}
     </>
   );
 }
