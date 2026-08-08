@@ -1,9 +1,15 @@
 import { useState } from "react";
 import { router, Tabs } from "expo-router";
-import { Pressable, View } from "react-native";
+import { View } from "react-native";
 import { MoreCreateSheet } from "@/features/invoices/components/MoreCreateSheet";
-import { Icon, useTheme, type IconName } from "@/shared/design-system";
-import { DeferredMount, FloatingTabBar } from "@/shared/ui";
+import { useTheme, type IconName } from "@/shared/design-system";
+import {
+  DeferredMount,
+  FloatingTabBar,
+  HeaderActionRow,
+  HeaderIconButton,
+  headerIconContainerStyle,
+} from "@/shared/ui";
 
 const CREATE_PATH: Record<
   string,
@@ -14,25 +20,6 @@ const CREATE_PATH: Record<
   clients: "/clients/new",
 };
 
-function headerIcon(
-  name: IconName,
-  label: string,
-  onPress: () => void,
-  color: string,
-) {
-  return (
-    <Pressable
-      accessibilityRole="button"
-      accessibilityLabel={label}
-      onPress={onPress}
-      hitSlop={8}
-      style={{ padding: 4 }}
-    >
-      <Icon name={name} size={22} color={color} />
-    </Pressable>
-  );
-}
-
 export default function TabsLayout() {
   const { colors } = useTheme();
   const [moreOpen, setMoreOpen] = useState(false);
@@ -42,6 +29,15 @@ export default function TabsLayout() {
     const path = CREATE_PATH[routeName];
     if (path) router.push(path);
   };
+
+  const action = (name: IconName, label: string, onPress: () => void) => (
+    <HeaderIconButton
+      name={name}
+      label={label}
+      onPress={onPress}
+      color={iconColor}
+    />
+  );
 
   return (
     <View style={{ flex: 1, backgroundColor: colors.background }}>
@@ -65,6 +61,7 @@ export default function TabsLayout() {
           headerStyle: { backgroundColor: colors.background },
           headerTintColor: colors.onSurface,
           sceneStyle: { backgroundColor: colors.background },
+          // ...headerIconContainerStyle,
         }}
       >
         <Tabs.Screen
@@ -72,14 +69,11 @@ export default function TabsLayout() {
           options={{
             title: "Invoices",
             headerRight: () => (
-              <View style={{ marginRight: 12, flexDirection: "row", gap: 8 }}>
-                {headerIcon(
-                  "search",
-                  "Search invoices",
-                  () => router.push("/invoice/search"),
-                  iconColor,
+              <HeaderActionRow>
+                {action("search", "Search invoices", () =>
+                  router.push("/invoice/search"),
                 )}
-              </View>
+              </HeaderActionRow>
             ),
           }}
         />
@@ -88,27 +82,14 @@ export default function TabsLayout() {
           options={{
             title: "Catalogue",
             headerRight: () => (
-              <View
-                style={{
-                  flexDirection: "row",
-                  alignItems: "center",
-                  gap: 4,
-                  marginRight: 12,
-                }}
-              >
-                {headerIcon(
-                  "search",
-                  "Search catalogue",
-                  () => router.push("/catalogue/search"),
-                  iconColor,
+              <HeaderActionRow>
+                {action("search", "Search catalogue", () =>
+                  router.push("/catalogue/search"),
                 )}
-                {headerIcon(
-                  "folder-open",
-                  "Bulk import catalogue",
-                  () => router.push("/catalogue/import"),
-                  iconColor,
+                {action("folder-open", "Bulk import catalogue", () =>
+                  router.push("/catalogue/import"),
                 )}
-              </View>
+              </HeaderActionRow>
             ),
           }}
         />
@@ -117,37 +98,20 @@ export default function TabsLayout() {
           options={{
             title: "Clients",
             headerRight: () => (
-              <View
-                style={{
-                  flexDirection: "row",
-                  alignItems: "center",
-                  gap: 4,
-                  marginRight: 12,
-                }}
-              >
-                {headerIcon(
-                  "search",
-                  "Search clients",
-                  () => router.push("/clients/search"),
-                  iconColor,
+              <HeaderActionRow>
+                {action("search", "Search clients", () =>
+                  router.push("/clients/search"),
                 )}
-                {headerIcon(
-                  "person-add",
-                  "Add from contacts",
-                  () =>
-                    router.push({
-                      pathname: "/clients/new",
-                      params: { from: "contacts" },
-                    }),
-                  iconColor,
+                {action("person-add", "Add from contacts", () =>
+                  router.push({
+                    pathname: "/clients/new",
+                    params: { from: "contacts" },
+                  }),
                 )}
-                {headerIcon(
-                  "folder-open",
-                  "Bulk import clients",
-                  () => router.push("/clients/import"),
-                  iconColor,
+                {action("folder-open", "Bulk import clients", () =>
+                  router.push("/clients/import"),
                 )}
-              </View>
+              </HeaderActionRow>
             ),
           }}
         />

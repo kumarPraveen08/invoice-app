@@ -4,6 +4,13 @@ export { DeferredMount } from './DeferredMount';
 export { EmptyState } from './EmptyState';
 export { FilterChipRow } from './FilterChipRow';
 export { FloatingTabBar } from './FloatingTabBar';
+export {
+  HeaderActionRow,
+  HeaderIconButton,
+  HeaderTextButton,
+  headerIconContainerStyle,
+  stackHeaderIconContainerStyle,
+} from './HeaderIconButton';
 export { ScreenLoading } from './ScreenLoading';
 export { SearchField } from './SearchField';
 export { DateField } from './DateField';

@@ -7,7 +7,7 @@ import { useClientsStore } from '@/features/customers';
 import { SettingsGroup } from '@/features/settings/components/SettingsList';
 import { SettingsScroll } from '@/features/settings/components/SettingsScroll';
 import { useSettingsStore } from '@/features/settings/store';
-import { SearchField } from '@/shared/ui';
+import { SearchField, HeaderTextButton } from '@/shared/ui';
 import { formatMoney } from '../format';
 import { setInvoicePick } from '../pickResult';
 
@@ -36,21 +36,14 @@ export default function InvoicePickScreen() {
       headerRight:
         mode === 'catalogue'
           ? () => (
-              <Pressable
-                accessibilityRole="button"
-                accessibilityLabel="Add selected items"
+              <HeaderTextButton
+                label={
+                  picked.length === 0 ? 'Add' : `Add (${picked.length})`
+                }
+                color={colors.primary}
                 disabled={picked.length === 0}
                 onPress={confirmCatalogue}
-                hitSlop={8}
-                style={{ paddingHorizontal: 4, opacity: picked.length === 0 ? 0.4 : 1 }}
-              >
-                <Text
-                  variant="body"
-                  style={{ color: colors.primary, fontWeight: '700' }}
-                >
-                  {picked.length === 0 ? 'Add' : `Add (${picked.length})`}
-                </Text>
-              </Pressable>
+              />
             )
           : undefined,
     });

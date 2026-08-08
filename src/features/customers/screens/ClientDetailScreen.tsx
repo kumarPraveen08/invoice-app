@@ -1,7 +1,7 @@
 import { useEffect, useMemo } from "react";
-import { Pressable, View } from "react-native";
+import { View } from "react-native";
 import { router, useLocalSearchParams, useNavigation } from "expo-router";
-import { Icon, Text, useTheme } from "@/shared/design-system";
+import { Text, useTheme } from "@/shared/design-system";
 import { InvoiceRow } from "@/features/invoices/components/InvoiceRow";
 import { outstandingOf } from "@/features/invoices/constants";
 import { formatMoney } from "@/features/invoices/format";
@@ -9,6 +9,7 @@ import { useInvoicesStore } from "@/features/invoices";
 import { useSettingsStore } from "@/features/settings/store";
 import { SettingsGroup } from "@/features/settings/components/SettingsList";
 import { SettingsScroll } from "@/features/settings/components/SettingsScroll";
+import { HeaderIconButton } from "@/shared/ui";
 import { useClientsStore } from "../store";
 import type { Client } from "../types";
 import { ClientAvatar } from "../components/ClientAvatar";
@@ -47,20 +48,17 @@ export default function ClientDetailScreen() {
       title: client?.name ?? "Client",
       headerRight: client
         ? () => (
-            <Pressable
-              accessibilityRole="button"
-              accessibilityLabel="Edit client"
+            <HeaderIconButton
+              name="edit"
+              label="Edit client"
+              color={colors.onSurface}
               onPress={() =>
                 router.push({
                   pathname: "/clients/new",
                   params: { id: client.id },
                 })
               }
-              hitSlop={8}
-              style={{ padding: 4 }}
-            >
-              <Icon name="edit" size={22} color={colors.onSurface} />
-            </Pressable>
+            />
           )
         : undefined,
     });

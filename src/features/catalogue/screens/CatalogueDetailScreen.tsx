@@ -1,11 +1,12 @@
 import { useEffect } from "react";
-import { Pressable, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { router, useLocalSearchParams, useNavigation } from "expo-router";
-import { Icon, Text, useTheme } from "@/shared/design-system";
+import { Text, useTheme } from "@/shared/design-system";
 import { formatMoney } from "@/features/invoices/format";
 import { useSettingsStore } from "@/features/settings/store";
 import { SettingsGroup } from "@/features/settings/components/SettingsList";
 import { SettingsScroll } from "@/features/settings/components/SettingsScroll";
+import { HeaderIconButton } from "@/shared/ui";
 import { useCatalogueStore } from "../store";
 
 function DetailRow({
@@ -55,20 +56,17 @@ export default function CatalogueDetailScreen() {
       title: item?.name ?? "Item",
       headerRight: item
         ? () => (
-            <Pressable
-              accessibilityRole="button"
-              accessibilityLabel="Edit item"
+            <HeaderIconButton
+              name="edit"
+              label="Edit item"
+              color={colors.onSurface}
               onPress={() =>
                 router.push({
                   pathname: "/catalogue/new",
                   params: { id: item.id },
                 })
               }
-              hitSlop={8}
-              style={{ padding: 4 }}
-            >
-              <Icon name="edit" size={22} color={colors.onSurface} />
-            </Pressable>
+            />
           )
         : undefined,
     });

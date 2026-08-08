@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { Pressable, Share, View } from "react-native";
+import { Share, View } from "react-native";
 import { router, useLocalSearchParams, useNavigation } from "expo-router";
-import { Icon, Text, useTheme } from "@/shared/design-system";
+import { Text, useTheme } from "@/shared/design-system";
 import {
   SettingsGroup,
   SettingsRow,
@@ -9,7 +9,7 @@ import {
 import { SettingsScroll } from "@/features/settings/components/SettingsScroll";
 import { TemplatePickerSheet } from "@/features/settings";
 import { useSettingsStore } from "@/features/settings/store";
-import { showSnackbar } from "@/shared/ui";
+import { showSnackbar, HeaderActionRow, HeaderIconButton } from "@/shared/ui";
 import { STATUS_LABEL, outstandingOf } from "../constants";
 import {
   computeInvoiceTotals,
@@ -43,53 +43,37 @@ export default function InvoiceDetailScreen() {
     navigation.setOptions({
       title: invoice.number,
       headerRight: () => (
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            gap: 4,
-            marginRight: 8,
-          }}
-        >
-          <Pressable
-            accessibilityRole="button"
-            accessibilityLabel="Share invoice"
+        <HeaderActionRow>
+          <HeaderIconButton
+            name="share"
+            label="Share invoice"
+            color={colors.onSurface}
             onPress={() => {
               setPickerMode("share");
               setPickerOpen(true);
             }}
-            hitSlop={8}
-            style={{ padding: 4 }}
-          >
-            <Icon name="share" size={22} color={colors.onSurface} />
-          </Pressable>
-          <Pressable
-            accessibilityRole="button"
-            accessibilityLabel="Download invoice"
+          />
+          <HeaderIconButton
+            name="download"
+            label="Download invoice"
+            color={colors.onSurface}
             onPress={() => {
               setPickerMode("download");
               setPickerOpen(true);
             }}
-            hitSlop={8}
-            style={{ padding: 4 }}
-          >
-            <Icon name="download" size={22} color={colors.onSurface} />
-          </Pressable>
-          <Pressable
-            accessibilityRole="button"
-            accessibilityLabel="Edit invoice"
+          />
+          <HeaderIconButton
+            name="edit"
+            label="Edit invoice"
+            color={colors.onSurface}
             onPress={() =>
               router.push({
                 pathname: "/invoice/new",
                 params: { id: invoice.id },
               })
             }
-            hitSlop={8}
-            style={{ padding: 4 }}
-          >
-            <Icon name="edit" size={22} color={colors.onSurface} />
-          </Pressable>
-        </View>
+          />
+        </HeaderActionRow>
       ),
     });
   }, [colors.onSurface, invoice, navigation]);
