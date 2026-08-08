@@ -1,35 +1,21 @@
-import Ionicons from '@expo/vector-icons/Ionicons';
 import type { ColorValue } from 'react-native';
-import { tabBar } from '@/shared/design-system';
-
-type IconPair = {
-  active: keyof typeof Ionicons.glyphMap;
-  inactive: keyof typeof Ionicons.glyphMap;
-};
+import { Icon, tabBar, type IconName } from '@/shared/design-system';
 
 const ICONS = {
-  invoices: { active: 'receipt', inactive: 'receipt-outline' },
-  catalogue: { active: 'grid', inactive: 'grid-outline' },
-  clients: { active: 'people', inactive: 'people-outline' },
-  reports: { active: 'bar-chart', inactive: 'bar-chart-outline' },
-  tools: { active: 'settings', inactive: 'settings-outline' },
-} as const satisfies Record<string, IconPair>;
+  invoices: 'receipt',
+  catalogue: 'grid-view',
+  clients: 'people',
+  reports: 'bar-chart',
+  tools: 'settings',
+} as const satisfies Record<string, IconName>;
 
 export type TabName = keyof typeof ICONS;
 
 type Props = {
   name: TabName;
-  focused: boolean;
   color: ColorValue;
 };
 
-export function TabBarIcon({ name, focused, color }: Props) {
-  const pair = ICONS[name];
-  return (
-    <Ionicons
-      name={focused ? pair.active : pair.inactive}
-      size={tabBar.iconSize}
-      color={color}
-    />
-  );
+export function TabBarIcon({ name, color }: Props) {
+  return <Icon name={ICONS[name]} size={tabBar.iconSize} color={color} />;
 }

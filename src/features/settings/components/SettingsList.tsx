@@ -1,7 +1,6 @@
-import Ionicons from '@expo/vector-icons/Ionicons';
 import type { ReactNode } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
-import { Text, useTheme } from '@/shared/design-system';
+import { Icon, Text, useTheme, type IconName } from '@/shared/design-system';
 
 type SettingsGroupProps = {
   title: string;
@@ -43,7 +42,7 @@ export function SettingsGroup({ title, children }: SettingsGroupProps) {
 }
 
 type SettingsRowProps = {
-  icon: keyof typeof Ionicons.glyphMap;
+  icon: IconName;
   title: string;
   subtitle?: string;
   onPress?: () => void;
@@ -89,7 +88,7 @@ export function SettingsRow({
           },
         ]}
       >
-        <Ionicons name={icon} size={20} color={colors.primary} />
+        <Icon name={icon} size={20} color={colors.primary} />
       </View>
       <View style={styles.copy}>
         <Text variant="body" style={{ fontWeight: '600' }}>
@@ -103,11 +102,7 @@ export function SettingsRow({
       </View>
       {trailing}
       {showChevron && onPress ? (
-        <Ionicons
-          name="chevron-forward"
-          size={18}
-          color={colors.onSurfaceMuted}
-        />
+        <Icon name="chevron-right" size={18} color={colors.onSurfaceMuted} />
       ) : null}
     </Pressable>
   );

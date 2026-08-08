@@ -1,13 +1,12 @@
-import Ionicons from '@expo/vector-icons/Ionicons';
-import { router } from 'expo-router';
+import { router } from "expo-router";
 import {
   Pressable,
   StyleSheet,
   TextInput,
   View,
   type TextInputProps,
-} from 'react-native';
-import { useTheme } from '@/shared/design-system';
+} from "react-native";
+import { Icon, useTheme } from "@/shared/design-system";
 
 type Props = TextInputProps & {
   value: string;
@@ -20,7 +19,7 @@ type Props = TextInputProps & {
 export function SearchField({
   value,
   onChangeText,
-  placeholder = 'Search',
+  placeholder = "Search",
   onClose,
   ...props
 }: Props) {
@@ -44,7 +43,7 @@ export function SearchField({
         hitSlop={8}
         style={styles.iconBtn}
       >
-        <Ionicons name="arrow-back" size={22} color={colors.onSurface} />
+        <Icon name="arrow-back" size={22} color={colors.onSurface} />
       </Pressable>
       <TextInput
         {...props}
@@ -57,21 +56,24 @@ export function SearchField({
         autoCapitalize="none"
         returnKeyType="search"
         clearButtonMode="never"
-        style={[styles.input, { color: colors.onSurface, marginHorizontal: space.sm }]}
+        style={[
+          styles.input,
+          { color: colors.onSurface, marginHorizontal: space.sm },
+        ]}
       />
       {value.length > 0 ? (
         <Pressable
           accessibilityRole="button"
           accessibilityLabel="Clear"
-          onPress={() => onChangeText('')}
+          onPress={() => onChangeText("")}
           hitSlop={8}
           style={styles.iconBtn}
         >
-          <Ionicons name="close-circle" size={20} color={colors.onSurfaceMuted} />
+          <Icon name="close" size={20} color={colors.onSurfaceMuted} />
         </Pressable>
       ) : (
         <View style={styles.iconBtn}>
-          <Ionicons name="search" size={20} color={colors.onSurfaceMuted} />
+          <Icon name="search" size={20} color={colors.onSurfaceMuted} />
         </View>
       )}
     </View>
@@ -80,8 +82,8 @@ export function SearchField({
 
 const styles = StyleSheet.create({
   wrap: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     minHeight: 56,
   },
   input: {
@@ -93,7 +95,7 @@ const styles = StyleSheet.create({
   iconBtn: {
     width: 40,
     height: 40,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

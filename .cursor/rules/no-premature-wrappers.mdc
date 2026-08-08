@@ -1,0 +1,29 @@
+---
+description: Prefer YAGNI/KISS — no one-off wrapper components
+alwaysApply: true
+---
+
+# No premature UI wrappers
+
+Do not create shared components whose only job is a thin wrap of existing primitives (e.g. `HeaderIconButton` = `Pressable` + `Icon`).
+
+- Use `Icon` (and `Pressable` when tappable) directly at the call site.
+- Extract a shared component only when the same non-trivial behavior appears in 3+ places **and** a single change would need to update all of them.
+- Prefer a local helper inside one file over a new `shared/` export.
+- Follow YAGNI, KISS, DRY, SOLID: fewer files, boring code, no new abstractions “for consistency.”
+
+```tsx
+// ❌ BAD — wrapper for one use case
+export function HeaderIconButton({ icon, label, onPress }) {
+  return (
+    <Pressable accessibilityLabel={label} onPress={onPress}>
+      <Icon name={icon} size={22} />
+    </Pressable>
+  );
+}
+
+// ✅ GOOD — compose at the call site
+<Pressable accessibilityRole="button" accessibilityLabel="Search" onPress={...} hitSlop={8}>
+  <Icon name="search" size={22} color={colors.onSurface} />
+</Pressable>
+```

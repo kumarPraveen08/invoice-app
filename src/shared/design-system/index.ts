@@ -1,4 +1,5 @@
-export { Button, IconButton, Screen, Text } from './components';
+export { Button, Icon, IconButton, Screen, Text } from './components';
+export type { IconName } from './components';
 export { ThemeProvider } from './ThemeProvider';
 export {
   createTheme,

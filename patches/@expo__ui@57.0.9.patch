@@ -1,0 +1,874 @@
+diff --git a/android/src/main/java/expo/modules/ui/ChipView.kt b/android/src/main/java/expo/modules/ui/ChipView.kt
+index a7b3ff8f303a3e88fb3d6c4cca58509c5b92b8b3..5384923defd92e3b88555632d855f59032b61da7 100644
+--- a/android/src/main/java/expo/modules/ui/ChipView.kt
++++ b/android/src/main/java/expo/modules/ui/ChipView.kt
+@@ -2,6 +2,7 @@ package expo.modules.ui
+ 
+ import android.graphics.Color
+ import androidx.compose.foundation.BorderStroke
++import androidx.compose.foundation.shape.RoundedCornerShape
+ import androidx.compose.material3.AssistChip
+ import androidx.compose.material3.AssistChipDefaults
+ import androidx.compose.material3.ExperimentalMaterial3Api
+@@ -200,7 +201,8 @@ fun FunctionalComposableScope.FilterChipContent(
+       FilterChipDefaults.filterChipBorder(enabled = props.enabled, selected = props.selected, borderWidth = props.border.width.dp)
+     }
+   } else {
+-    FilterChipDefaults.filterChipBorder(enabled = props.enabled, selected = props.selected)
++    // Borderless pill chips (app default)
++    BorderStroke(0.dp, ComposeColor.Transparent)
+   }
+ 
+   FilterChip(
+@@ -213,6 +215,7 @@ fun FunctionalComposableScope.FilterChipContent(
+     colors = colors,
+     elevation = elevation,
+     border = border,
++    shape = RoundedCornerShape(percent = 50),
+     modifier = modifier
+   )
+ }
+diff --git a/android/src/main/java/expo/modules/ui/DatePickerView.kt b/android/src/main/java/expo/modules/ui/DatePickerView.kt
+index 71e8643434d8951188153bcfd6f34643a60c50a6..d51a9c99098c5e3605234cae2ce939cd00516765 100644
+--- a/android/src/main/java/expo/modules/ui/DatePickerView.kt
++++ b/android/src/main/java/expo/modules/ui/DatePickerView.kt
+@@ -7,6 +7,7 @@ import androidx.compose.material3.DatePicker
+ import androidx.compose.material3.DatePickerDefaults
+ import androidx.compose.material3.DatePickerDialog
+ import androidx.compose.material3.DatePickerState
++import androidx.compose.material3.DateRangePicker
+ import androidx.compose.material3.DisplayMode
+ import androidx.compose.material3.ExperimentalMaterial3Api
+ import androidx.compose.material3.LocalContentColor
+@@ -17,6 +18,7 @@ import androidx.compose.material3.TimePicker
+ import androidx.compose.material3.TimePickerDefaults
+ import androidx.compose.material3.TimePickerLayoutType
+ import androidx.compose.material3.TimePickerState
++import androidx.compose.material3.rememberDateRangePickerState
+ import android.view.WindowManager
+ import androidx.compose.foundation.layout.wrapContentHeight
+ import androidx.compose.runtime.Composable
+@@ -47,6 +49,14 @@ data class DatePickerResult(
+   val date: Long?
+ ) : Record
+ 
++@OptimizedRecord
++data class DateRangePickerResult(
++  @Field
++  val startDate: Long?,
++  @Field
++  val endDate: Long?
++) : Record
++
+ enum class DisplayedComponents(val value: String) : Enumerable {
+   DATE("date"),
+   HOUR_AND_MINUTE("hourAndMinute"),
+@@ -177,6 +187,16 @@ data class DatePickerDialogProps(
+   val selectableDates: SelectableDatesRecord? = null
+ ) : ComposeProps
+ 
++@OptimizedComposeProps
++data class DateRangePickerDialogProps(
++  val initialStartDate: Long? = null,
++  val initialEndDate: Long? = null,
++  val confirmButtonLabel: String? = null,
++  val dismissButtonLabel: String? = null,
++  val color: AndroidColor? = null,
++  val selectableDates: SelectableDatesRecord? = null
++) : ComposeProps
++
+ @OptimizedComposeProps
+ data class TimePickerDialogProps(
+   val initialDate: Long? = null,
+@@ -391,6 +411,57 @@ fun ExpoDatePickerDialogContent(props: DatePickerDialogProps, onDateSelected: (D
+   }
+ }
+ 
++@OptIn(ExperimentalMaterial3Api::class)
++@Composable
++fun ExpoDateRangePickerDialogContent(
++  props: DateRangePickerDialogProps,
++  onRangeSelected: (DateRangePickerResult) -> Unit,
++  onDismissRequest: () -> Unit
++) {
++  val selectableDates = rememberSelectableDates(props.selectableDates)
++  val yearRange = rememberDatePickerYearRange(
++    props.selectableDates,
++    props.initialStartDate ?: props.initialEndDate ?: Date().time
++  )
++  val state = rememberDateRangePickerState(
++    initialSelectedStartDateMillis = props.initialStartDate,
++    initialSelectedEndDateMillis = props.initialEndDate,
++    yearRange = yearRange,
++    selectableDates = selectableDates
++  )
++  val colors = buildDatePickerColors(DateTimePickerColorOverrides(), props.color.composeOrNull, DatePickerDefaults.colors())
++  val buttonColors = props.color.composeOrNull
++    ?.let { ButtonDefaults.textButtonColors(contentColor = it) } ?: ButtonDefaults.textButtonColors()
++
++  DatePickerDialog(
++    onDismissRequest = { onDismissRequest() },
++    confirmButton = {
++      TextButton(
++        onClick = {
++          onRangeSelected(
++            DateRangePickerResult(
++              startDate = state.selectedStartDateMillis,
++              endDate = state.selectedEndDateMillis
++            )
++          )
++        },
++        enabled = state.selectedStartDateMillis != null && state.selectedEndDateMillis != null,
++        colors = buttonColors
++      ) {
++        Text(props.confirmButtonLabel ?: stringResource(android.R.string.ok))
++      }
++    },
++    dismissButton = {
++      TextButton(onClick = { onDismissRequest() }, colors = buttonColors) {
++        Text(props.dismissButtonLabel ?: stringResource(android.R.string.cancel))
++      }
++    },
++    colors = colors
++  ) {
++    DateRangePicker(state = state, colors = colors)
++  }
++}
++
+ @OptIn(ExperimentalMaterial3Api::class)
+ @Composable
+ fun ExpoTimePickerDialogContent(props: TimePickerDialogProps, onDateSelected: (DatePickerResult) -> Unit, onDismissRequest: () -> Unit) {
+diff --git a/android/src/main/java/expo/modules/ui/ExpoUIModule.kt b/android/src/main/java/expo/modules/ui/ExpoUIModule.kt
+index 435cb67dc6c8a2a0db1602e0374f3ed07bec9dea..b27cafb68f8a8373b0380ec3815f1c435c92373a 100644
+--- a/android/src/main/java/expo/modules/ui/ExpoUIModule.kt
++++ b/android/src/main/java/expo/modules/ui/ExpoUIModule.kt
+@@ -28,11 +28,17 @@ import expo.modules.ui.button.IconButtonContent
+ import expo.modules.ui.button.FilledIconButtonContent
+ import expo.modules.ui.button.FilledTonalIconButtonContent
+ import expo.modules.ui.button.OutlinedIconButtonContent
++import expo.modules.ui.button.ToggleFloatingActionButtonContent
++import expo.modules.ui.button.ToggleFloatingActionButtonProps
+ import expo.modules.ui.icon.IconView
+ import expo.modules.ui.menu.DropdownMenuContent
+ import expo.modules.ui.menu.DropdownMenuProps
+ import expo.modules.ui.menu.DropdownMenuItemContent
+ import expo.modules.ui.menu.DropdownMenuItemProps
++import expo.modules.ui.menu.FloatingActionButtonMenuContent
++import expo.modules.ui.menu.FloatingActionButtonMenuProps
++import expo.modules.ui.menu.FloatingActionButtonMenuItemContent
++import expo.modules.ui.menu.FloatingActionButtonMenuItemProps
+ import expo.modules.kotlin.jni.worklets.Worklet
+ import expo.modules.ui.state.ObservableState
+ import expo.modules.ui.state.WorkletCallback
+@@ -351,6 +357,15 @@ class ExpoUIModule : Module() {
+       }
+     }
+ 
++    ExpoUIView<DateRangePickerDialogProps>("DateRangePickerDialogView") {
++      val onRangeSelected by Event<DateRangePickerResult>()
++      val onDismissRequest by Event<Unit>()
++
++      Content { props ->
++        ExpoDateRangePickerDialogContent(props, { onRangeSelected(it) }, { onDismissRequest(Unit) })
++      }
++    }
++
+     ExpoUIView<TimePickerDialogProps>("TimePickerDialogView") {
+       val onDateSelected by Event<DatePickerResult>()
+       val onDismissRequest by Event<Unit>()
+@@ -376,6 +391,28 @@ class ExpoUIModule : Module() {
+       }
+     }
+ 
++    ExpoUIView<FloatingActionButtonMenuProps>("FloatingActionButtonMenuView") {
++      Content { props ->
++        FloatingActionButtonMenuContent(props)
++      }
++    }
++
++    ExpoUIView<FloatingActionButtonMenuItemProps>("FloatingActionButtonMenuItemView") {
++      val onItemPressed by Event<Unit>()
++
++      Content { props ->
++        FloatingActionButtonMenuItemContent(props) { onItemPressed(Unit) }
++      }
++    }
++
++    ExpoUIView<ToggleFloatingActionButtonProps>("ToggleFloatingActionButtonView") {
++      val onCheckedChange by Event<ToggleButtonValueChangeEvent>()
++
++      Content { props ->
++        ToggleFloatingActionButtonContent(props) { onCheckedChange(it) }
++      }
++    }
++
+     ExpoUIView<LoadingIndicatorProps>("LoadingIndicatorView") {
+       Content { props ->
+         LoadingIndicatorContent(props)
+diff --git a/android/src/main/java/expo/modules/ui/button/ToggleFloatingActionButton.kt b/android/src/main/java/expo/modules/ui/button/ToggleFloatingActionButton.kt
+new file mode 100644
+index 0000000000000000000000000000000000000000..ecf65d8ac697299b81e65c7f54a86a5b424c54ea
+--- /dev/null
++++ b/android/src/main/java/expo/modules/ui/button/ToggleFloatingActionButton.kt
+@@ -0,0 +1,53 @@
++@file:OptIn(ExperimentalMaterial3ExpressiveApi::class)
++
++package expo.modules.ui.button
++
++import android.graphics.Color
++import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
++import androidx.compose.material3.ToggleFloatingActionButton
++import androidx.compose.material3.ToggleFloatingActionButtonDefaults
++import androidx.compose.runtime.Composable
++import androidx.compose.ui.Modifier
++import expo.modules.kotlin.views.ComposeProps
++import expo.modules.kotlin.views.FunctionalComposableScope
++import expo.modules.kotlin.views.OptimizedComposeProps
++import expo.modules.ui.ToggleButtonValueChangeEvent
++import expo.modules.ui.UIComposableScope
++import expo.modules.ui.compose
++import expo.modules.ui.findChildSlotView
++
++@OptimizedComposeProps
++data class ToggleFloatingActionButtonProps(
++  val checked: Boolean = false,
++  val containerColor: Color? = null
++) : ComposeProps
++
++@Composable
++fun FunctionalComposableScope.ToggleFloatingActionButtonContent(
++  props: ToggleFloatingActionButtonProps,
++  onCheckedChange: (ToggleButtonValueChangeEvent) -> Unit
++) {
++  val iconSlotView = findChildSlotView(view, "icon")
++  val solid = props.containerColor?.compose
++
++  ToggleFloatingActionButton(
++    checked = props.checked,
++    onCheckedChange = { onCheckedChange(ToggleButtonValueChangeEvent(it)) },
++    modifier = Modifier,
++    containerColor = if (solid != null) {
++      { _ -> solid }
++    } else {
++      ToggleFloatingActionButtonDefaults.containerColor()
++    }
++  ) {
++    if (iconSlotView != null) {
++      with(UIComposableScope()) {
++        with(iconSlotView) {
++          Content()
++        }
++      }
++    } else {
++      Children(UIComposableScope())
++    }
++  }
++}
+diff --git a/android/src/main/java/expo/modules/ui/menu/DropdownMenu.kt b/android/src/main/java/expo/modules/ui/menu/DropdownMenu.kt
+index 1791eace9a68362520bd39a41c6f8c55d32eb9c2..d8f68f7c7543c4079bd48b5fbf80970ec25dd45f 100644
+--- a/android/src/main/java/expo/modules/ui/menu/DropdownMenu.kt
++++ b/android/src/main/java/expo/modules/ui/menu/DropdownMenu.kt
+@@ -1,9 +1,11 @@
+ package expo.modules.ui.menu
+ 
+ import androidx.compose.foundation.layout.Box
++import androidx.compose.foundation.shape.RoundedCornerShape
+ import androidx.compose.material3.DropdownMenu
+ import androidx.compose.material3.MenuDefaults
+ import androidx.compose.runtime.Composable
++import androidx.compose.ui.unit.dp
+ import expo.modules.kotlin.views.FunctionalComposableScope
+ import expo.modules.ui.UIComposableScope
+ import expo.modules.ui.ModifierRegistry
+@@ -17,6 +19,7 @@ fun FunctionalComposableScope.DropdownMenuContent(
+   onDismissRequest: () -> Unit
+ ) {
+   val itemsSlotView = findChildSlotView(view, "items")
++  val shape = props.cornerRadius?.let { RoundedCornerShape(it.dp) } ?: MenuDefaults.shape
+ 
+   Box(modifier = ModifierRegistry.applyModifiers(props.modifiers, appContext, composableScope, globalEventDispatcher)) {
+     // Trigger - non-items children
+@@ -25,7 +28,8 @@ fun FunctionalComposableScope.DropdownMenuContent(
+     DropdownMenu(
+       containerColor = props.color?.composeOrNull ?: MenuDefaults.containerColor,
+       expanded = props.expanded,
+-      onDismissRequest = onDismissRequest
++      onDismissRequest = onDismissRequest,
++      shape = shape
+     ) {
+       itemsSlotView?.let {
+         with(UIComposableScope()) {
+diff --git a/android/src/main/java/expo/modules/ui/menu/DropdownMenuRecords.kt b/android/src/main/java/expo/modules/ui/menu/DropdownMenuRecords.kt
+index 02620bb716b853d79fc29be2c4157d97e1b25c5e..48c9545abaff4de128ce251c9d74c63c663eaacd 100644
+--- a/android/src/main/java/expo/modules/ui/menu/DropdownMenuRecords.kt
++++ b/android/src/main/java/expo/modules/ui/menu/DropdownMenuRecords.kt
+@@ -16,5 +16,7 @@ data class DropdownMenuProps(
+   val activationMethod: ActivationMethod = ActivationMethod.SINGLE_PRESS,
+   val expanded: Boolean = false,
+   val color: Color? = null,
++  /** Corner radius in dp. When null, uses Material 3 `MenuDefaults.shape`. */
++  val cornerRadius: Float? = null,
+   val modifiers: ModifierList = emptyList()
+ ) : ComposeProps
+diff --git a/android/src/main/java/expo/modules/ui/menu/FloatingActionButtonMenu.kt b/android/src/main/java/expo/modules/ui/menu/FloatingActionButtonMenu.kt
+new file mode 100644
+index 0000000000000000000000000000000000000000..2fc494b63f6bb6c2bebf2ac9d91a9274e75bc5f0
+--- /dev/null
++++ b/android/src/main/java/expo/modules/ui/menu/FloatingActionButtonMenu.kt
+@@ -0,0 +1,62 @@
++@file:OptIn(ExperimentalMaterial3ExpressiveApi::class)
++
++package expo.modules.ui.menu
++
++import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
++import androidx.compose.material3.FloatingActionButtonMenu
++import androidx.compose.material3.FloatingActionButtonMenuScope
++import androidx.compose.runtime.Composable
++import androidx.compose.runtime.CompositionLocalProvider
++import androidx.compose.runtime.staticCompositionLocalOf
++import androidx.compose.ui.Modifier
++import expo.modules.kotlin.views.ComposeProps
++import expo.modules.kotlin.views.FunctionalComposableScope
++import expo.modules.kotlin.views.OptimizedComposeProps
++import expo.modules.ui.UIComposableScope
++import expo.modules.ui.convertibles.HorizontalAlignment
++import expo.modules.ui.findChildSlotView
++import expo.modules.ui.isSlotView
++
++internal val LocalFloatingActionButtonMenuScope =
++  staticCompositionLocalOf<FloatingActionButtonMenuScope?> { null }
++
++@OptimizedComposeProps
++data class FloatingActionButtonMenuProps(
++  val expanded: Boolean = false,
++  val horizontalAlignment: HorizontalAlignment = HorizontalAlignment.END
++) : ComposeProps
++
++@Composable
++fun FunctionalComposableScope.FloatingActionButtonMenuContent(
++  props: FloatingActionButtonMenuProps
++) {
++  val itemsSlotView = findChildSlotView(view, "items")
++  val buttonSlotView = findChildSlotView(view, "button")
++
++  FloatingActionButtonMenu(
++    expanded = props.expanded,
++    modifier = Modifier,
++    horizontalAlignment = props.horizontalAlignment.toComposeAlignment(),
++    button = {
++      if (buttonSlotView != null) {
++        with(UIComposableScope()) {
++          with(buttonSlotView) {
++            Content()
++          }
++        }
++      } else {
++        Children(UIComposableScope(), filter = { !isSlotView(it) })
++      }
++    }
++  ) {
++    CompositionLocalProvider(LocalFloatingActionButtonMenuScope provides this) {
++      itemsSlotView?.let {
++        with(UIComposableScope()) {
++          with(it) {
++            Content()
++          }
++        }
++      }
++    }
++  }
++}
+diff --git a/android/src/main/java/expo/modules/ui/menu/FloatingActionButtonMenuItem.kt b/android/src/main/java/expo/modules/ui/menu/FloatingActionButtonMenuItem.kt
+new file mode 100644
+index 0000000000000000000000000000000000000000..a8a589bd6e83def9223441a4acff26e307de29d7
+--- /dev/null
++++ b/android/src/main/java/expo/modules/ui/menu/FloatingActionButtonMenuItem.kt
+@@ -0,0 +1,74 @@
++@file:OptIn(ExperimentalMaterial3ExpressiveApi::class)
++
++package expo.modules.ui.menu
++
++import android.graphics.Color
++import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
++import androidx.compose.material3.FloatingActionButtonMenuItem
++import androidx.compose.material3.MaterialTheme
++import androidx.compose.runtime.Composable
++import androidx.compose.ui.Modifier
++import expo.modules.kotlin.views.ComposeProps
++import expo.modules.kotlin.views.FunctionalComposableScope
++import expo.modules.kotlin.views.OptimizedComposeProps
++import expo.modules.ui.UIComposableScope
++import expo.modules.ui.compose
++import expo.modules.ui.findChildSlotView
++
++@OptimizedComposeProps
++data class FloatingActionButtonMenuItemProps(
++  val containerColor: Color? = null,
++  val contentColor: Color? = null
++) : ComposeProps
++
++@Composable
++fun FunctionalComposableScope.FloatingActionButtonMenuItemContent(
++  props: FloatingActionButtonMenuItemProps,
++  onItemPressed: () -> Unit
++) {
++  val scope = LocalFloatingActionButtonMenuScope.current ?: return
++
++  val textSlotView = findChildSlotView(view, "text")
++  val iconSlotView = findChildSlotView(view, "icon")
++
++  val textContent: @Composable () -> Unit = {
++    textSlotView?.let {
++      with(UIComposableScope()) {
++        with(it) {
++          Content()
++        }
++      }
++    } ?: Unit
++  }
++  val iconContent: @Composable () -> Unit = {
++    iconSlotView?.let {
++      with(UIComposableScope()) {
++        with(it) {
++          Content()
++        }
++      }
++    } ?: Unit
++  }
++
++  with(scope) {
++    if (props.containerColor != null || props.contentColor != null) {
++      FloatingActionButtonMenuItem(
++        onClick = onItemPressed,
++        text = textContent,
++        icon = iconContent,
++        modifier = Modifier,
++        containerColor = props.containerColor?.compose
++          ?: MaterialTheme.colorScheme.surfaceContainer,
++        contentColor = props.contentColor?.compose
++          ?: MaterialTheme.colorScheme.onSurface
++      )
++    } else {
++      FloatingActionButtonMenuItem(
++        onClick = onItemPressed,
++        text = textContent,
++        icon = iconContent,
++        modifier = Modifier
++      )
++    }
++  }
++}
+diff --git a/build/jetpack-compose/DatePicker/index.d.ts b/build/jetpack-compose/DatePicker/index.d.ts
+index baf6932344f9b19a1233d85f580a2a9d2b75efcb..33edec1525375cb8536fa3497973f1155b1cda1a 100644
+--- a/build/jetpack-compose/DatePicker/index.d.ts
++++ b/build/jetpack-compose/DatePicker/index.d.ts
+@@ -170,6 +170,23 @@ export interface DatePickerDialogProps {
+     onDismissRequest: () => void;
+ }
+ export declare function DatePickerDialog(props: DatePickerDialogProps): import("react/jsx-runtime").JSX.Element;
++export interface DateRangePickerDialogProps {
++    initialStartDate?: string | null;
++    initialEndDate?: string | null;
++    confirmButtonLabel?: string;
++    dismissButtonLabel?: string;
++    color?: ColorValue;
++    selectableDates?: {
++        start?: Date;
++        end?: Date;
++    };
++    onRangeSelected?: (range: {
++        start: Date;
++        end: Date;
++    }) => void;
++    onDismissRequest: () => void;
++}
++export declare function DateRangePickerDialog(props: DateRangePickerDialogProps): import("react/jsx-runtime").JSX.Element;
+ export interface TimePickerDialogProps {
+     initialDate?: string | null;
+     is24Hour?: boolean;
+diff --git a/build/jetpack-compose/DropdownMenu/index.d.ts b/build/jetpack-compose/DropdownMenu/index.d.ts
+index 05d6909108a74317ac3117327ad19b0c9661b082..c2dd4b3d8563a13174e668a0f182c7e221d308cd 100644
+--- a/build/jetpack-compose/DropdownMenu/index.d.ts
++++ b/build/jetpack-compose/DropdownMenu/index.d.ts
+@@ -23,6 +23,11 @@ export interface DropdownMenuProps {
+      * The color of the container holding the dropdown menu items.
+      */
+     color?: ColorValue;
++    /**
++     * Corner radius of the menu container in dp.
++     * When omitted, uses Material 3 `MenuDefaults.shape`.
++     */
++    cornerRadius?: number;
+     /**
+      * Optional styles to apply to the `DropdownMenu`.
+      */
+diff --git a/build/jetpack-compose/FloatingActionButtonMenu/index.d.ts b/build/jetpack-compose/FloatingActionButtonMenu/index.d.ts
+new file mode 100644
+index 0000000000000000000000000000000000000000..7d6a0fb5c38d0c115f828b94c143f2698dbe0d34
+--- /dev/null
++++ b/build/jetpack-compose/FloatingActionButtonMenu/index.d.ts
+@@ -0,0 +1,84 @@
++import type { ReactNode } from 'react';
++import type { ColorValue, StyleProp, ViewStyle } from 'react-native';
++import type { ModifierConfig } from '../../types';
++export type FloatingActionButtonMenuHorizontalAlignment = 'start' | 'end' | 'center';
++export interface FloatingActionButtonMenuProps {
++    /**
++     * Whether the FAB menu is expanded.
++     */
++    expanded?: boolean;
++    /**
++     * Horizontal alignment of menu items relative to the toggle button.
++     * @default 'end'
++     */
++    horizontalAlignment?: FloatingActionButtonMenuHorizontalAlignment;
++    /**
++     * Toggle button (typically `ToggleFloatingActionButton`) and menu items.
++     */
++    children: ReactNode;
++    style?: StyleProp<ViewStyle>;
++    modifiers?: ModifierConfig[];
++}
++/**
++ * Slot for the FAB that toggles the menu — usually a `ToggleFloatingActionButton`.
++ */
++export declare function Button(props: {
++    children: ReactNode;
++}): import("react/jsx-runtime").JSX.Element;
++export declare namespace Button {
++    var tag: string;
++}
++/**
++ * Slot for `FloatingActionButtonMenuItem` children.
++ */
++export declare function Items(props: {
++    children: ReactNode;
++}): import("react/jsx-runtime").JSX.Element;
++export declare namespace Items {
++    var tag: string;
++}
++/**
++ * Material 3 Expressive FloatingActionButtonMenu.
++ */
++declare function FloatingActionButtonMenu(props: FloatingActionButtonMenuProps): import("react/jsx-runtime").JSX.Element;
++declare namespace FloatingActionButtonMenu {
++    var Button: typeof Button;
++    var Items: typeof Items;
++}
++export { FloatingActionButtonMenu };
++export interface ToggleFloatingActionButtonProps {
++    checked: boolean;
++    onCheckedChange?: (checked: boolean) => void;
++    /**
++     * Solid container color for both checked and unchecked states.
++     * When omitted, uses Material 3 ToggleFloatingActionButton defaults.
++     */
++    containerColor?: ColorValue;
++    modifiers?: ModifierConfig[];
++    children: React.ReactNode;
++}
++declare function ToggleFloatingActionButtonComponent(props: ToggleFloatingActionButtonProps): import("react/jsx-runtime").JSX.Element;
++declare namespace ToggleFloatingActionButtonComponent {
++    var Icon: (props: {
++        children: React.ReactNode;
++    }) => import("react/jsx-runtime").JSX.Element;
++}
++export { ToggleFloatingActionButtonComponent as ToggleFloatingActionButton };
++export interface FloatingActionButtonMenuItemProps {
++    onClick?: () => void;
++    containerColor?: ColorValue;
++    contentColor?: ColorValue;
++    modifiers?: ModifierConfig[];
++    children: React.ReactNode;
++}
++declare function FloatingActionButtonMenuItemComponent(props: FloatingActionButtonMenuItemProps): import("react/jsx-runtime").JSX.Element;
++declare namespace FloatingActionButtonMenuItemComponent {
++    var Icon: (props: {
++        children: React.ReactNode;
++    }) => import("react/jsx-runtime").JSX.Element;
++    var Text: (props: {
++        children: React.ReactNode;
++    }) => import("react/jsx-runtime").JSX.Element;
++}
++export { FloatingActionButtonMenuItemComponent as FloatingActionButtonMenuItem };
++//# sourceMappingURL=index.d.ts.map
+diff --git a/build/jetpack-compose/index.d.ts b/build/jetpack-compose/index.d.ts
+index f4f73b52e8fa3146fc2cffd02de66d0e1e89639d..06a5db84c4bd39c8511a376c566517e83686a428 100644
+--- a/build/jetpack-compose/index.d.ts
++++ b/build/jetpack-compose/index.d.ts
+@@ -37,6 +37,7 @@ export * from './Snackbar';
+ export * from './DockedSearchBar';
+ export * from './HorizontalFloatingToolbar';
+ export * from './FloatingActionButton';
++export * from './FloatingActionButtonMenu';
+ export * from './PullToRefreshBox';
+ export * from './RadioButton';
+ export * from './Surface';
+diff --git a/src/jetpack-compose/DatePicker/index.tsx b/src/jetpack-compose/DatePicker/index.tsx
+index 3ee5596e2f6fc02471ada733794fba69fbf011ce..da29bc51eb5978ddb111bbfdfa6210776d701afa 100644
+--- a/src/jetpack-compose/DatePicker/index.tsx
++++ b/src/jetpack-compose/DatePicker/index.tsx
+@@ -260,6 +260,48 @@ export function DatePickerDialog(props: DatePickerDialogProps) {
+   return <DatePickerDialogNativeView {...nativeProps} />;
+ }
+ 
++export interface DateRangePickerDialogProps {
++  initialStartDate?: string | null;
++  initialEndDate?: string | null;
++  confirmButtonLabel?: string;
++  dismissButtonLabel?: string;
++  color?: ColorValue;
++  selectableDates?: { start?: Date; end?: Date };
++  onRangeSelected?: (range: { start: Date; end: Date }) => void;
++  onDismissRequest: () => void;
++}
++
++type NativeDateRangePickerDialogProps = Omit<
++  DateRangePickerDialogProps,
++  'onRangeSelected' | 'onDismissRequest' | 'initialStartDate' | 'initialEndDate' | 'selectableDates'
++> & {
++  initialStartDate?: number | null;
++  initialEndDate?: number | null;
++  selectableDates?: { start?: number | null; end?: number | null } | null;
++} & ViewEvent<'onRangeSelected', { startDate: Date; endDate: Date }> &
++  ViewEvent<'onDismissRequest', void>;
++
++const DateRangePickerDialogNativeView: React.ComponentType<NativeDateRangePickerDialogProps> =
++  requireNativeView('ExpoUI', 'DateRangePickerDialogView');
++
++export function DateRangePickerDialog(props: DateRangePickerDialogProps) {
++  const { initialStartDate, initialEndDate, selectableDates, onDismissRequest, ...rest } = props;
++  const nativeProps: NativeDateRangePickerDialogProps = {
++    ...rest,
++    initialStartDate: initialStartDate ? new Date(initialStartDate).getTime() : null,
++    initialEndDate: initialEndDate ? new Date(initialEndDate).getTime() : null,
++    selectableDates: convertSelectableDates(selectableDates),
++    onRangeSelected: ({ nativeEvent: { startDate, endDate } }) => {
++      props.onRangeSelected?.({
++        start: new Date(startDate),
++        end: new Date(endDate),
++      });
++    },
++    onDismissRequest,
++  };
++  return <DateRangePickerDialogNativeView {...nativeProps} />;
++}
++
+ export interface TimePickerDialogProps {
+   initialDate?: string | null;
+   is24Hour?: boolean;
+diff --git a/src/jetpack-compose/DropdownMenu/index.tsx b/src/jetpack-compose/DropdownMenu/index.tsx
+index 6b7e3e7fdabcb43eb192a703cf6479d306eed80e..c01aa43c036ae0561e8a019c6c30b0493028586e 100644
+--- a/src/jetpack-compose/DropdownMenu/index.tsx
++++ b/src/jetpack-compose/DropdownMenu/index.tsx
+@@ -42,6 +42,12 @@ export interface DropdownMenuProps {
+    */
+   color?: ColorValue;
+ 
++  /**
++   * Corner radius of the menu container in dp.
++   * When omitted, uses Material 3 `MenuDefaults.shape`.
++   */
++  cornerRadius?: number;
++
+   /**
+    * Optional styles to apply to the `DropdownMenu`.
+    */
+@@ -57,6 +63,7 @@ type NativeMenuProps = {
+   expanded?: boolean;
+   onDismissRequest?: () => void;
+   color?: ColorValue;
++  cornerRadius?: number;
+   style?: StyleProp<ViewStyle>;
+   modifiers?: ModifierConfig[];
+   children?: ReactNode;
+diff --git a/src/jetpack-compose/FloatingActionButtonMenu/index.tsx b/src/jetpack-compose/FloatingActionButtonMenu/index.tsx
+new file mode 100644
+index 0000000000000000000000000000000000000000..dea4e781a1105176780e369bfa876b9d7b2f40c1
+--- /dev/null
++++ b/src/jetpack-compose/FloatingActionButtonMenu/index.tsx
+@@ -0,0 +1,172 @@
++import { requireNativeView } from 'expo';
++import type { ReactNode } from 'react';
++import type { ColorValue, StyleProp, ViewStyle } from 'react-native';
++
++import type { ModifierConfig, ViewEvent } from '../../types';
++import { createViewModifierEventListener } from '../modifiers/utils';
++
++const FloatingActionButtonMenuNativeView: React.ComponentType<NativeFloatingActionButtonMenuProps> =
++  requireNativeView('ExpoUI', 'FloatingActionButtonMenuView');
++
++const ToggleFloatingActionButtonNativeView: React.ComponentType<NativeToggleFloatingActionButtonProps> =
++  requireNativeView('ExpoUI', 'ToggleFloatingActionButtonView');
++
++const FloatingActionButtonMenuItemNativeView: React.ComponentType<NativeFloatingActionButtonMenuItemProps> =
++  requireNativeView('ExpoUI', 'FloatingActionButtonMenuItemView');
++
++const SlotNativeView: React.ComponentType<{
++  slotName: string;
++  children: React.ReactNode;
++}> = requireNativeView('ExpoUI', 'SlotView');
++
++export type FloatingActionButtonMenuHorizontalAlignment = 'start' | 'end' | 'center';
++
++export interface FloatingActionButtonMenuProps {
++  /**
++   * Whether the FAB menu is expanded.
++   */
++  expanded?: boolean;
++  /**
++   * Horizontal alignment of menu items relative to the toggle button.
++   * @default 'end'
++   */
++  horizontalAlignment?: FloatingActionButtonMenuHorizontalAlignment;
++  /**
++   * Toggle button (typically `ToggleFloatingActionButton`) and menu items.
++   */
++  children: ReactNode;
++  style?: StyleProp<ViewStyle>;
++  modifiers?: ModifierConfig[];
++}
++
++type NativeFloatingActionButtonMenuProps = {
++  expanded?: boolean;
++  horizontalAlignment?: FloatingActionButtonMenuHorizontalAlignment;
++  style?: StyleProp<ViewStyle>;
++  modifiers?: ModifierConfig[];
++  children?: ReactNode;
++};
++
++/**
++ * Slot for the FAB that toggles the menu — usually a `ToggleFloatingActionButton`.
++ */
++export function Button(props: { children: ReactNode }) {
++  return <SlotNativeView slotName="button">{props.children}</SlotNativeView>;
++}
++Button.tag = 'Button';
++
++/**
++ * Slot for `FloatingActionButtonMenuItem` children.
++ */
++export function Items(props: { children: ReactNode }) {
++  return <SlotNativeView slotName="items">{props.children}</SlotNativeView>;
++}
++Items.tag = 'Items';
++
++/**
++ * Material 3 Expressive [FloatingActionButtonMenu](https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#FloatingActionButtonMenu(kotlin.Boolean,kotlin.Function0,androidx.compose.ui.Modifier,androidx.compose.ui.Alignment.Horizontal,kotlin.Function1)).
++ */
++function FloatingActionButtonMenu(props: FloatingActionButtonMenuProps) {
++  const { modifiers, ...restProps } = props;
++  return (
++    <FloatingActionButtonMenuNativeView
++      style={props.style}
++      modifiers={modifiers}
++      {...(modifiers ? createViewModifierEventListener(modifiers) : undefined)}
++      {...restProps}
++    />
++  );
++}
++
++FloatingActionButtonMenu.Button = Button;
++FloatingActionButtonMenu.Items = Items;
++
++export { FloatingActionButtonMenu };
++
++export interface ToggleFloatingActionButtonProps {
++  checked: boolean;
++  onCheckedChange?: (checked: boolean) => void;
++  /**
++   * Solid container color for both checked and unchecked states.
++   * When omitted, uses Material 3 ToggleFloatingActionButton defaults.
++   */
++  containerColor?: ColorValue;
++  modifiers?: ModifierConfig[];
++  children: React.ReactNode;
++}
++
++type NativeToggleFloatingActionButtonProps = Omit<
++  ToggleFloatingActionButtonProps,
++  'onCheckedChange' | 'children'
++> & {
++  children?: React.ReactNode;
++} & ViewEvent<'onCheckedChange', { checked: boolean }>;
++
++function FABIcon(props: { children: React.ReactNode }) {
++  return <SlotNativeView slotName="icon">{props.children}</SlotNativeView>;
++}
++
++/**
++ * Material 3 Expressive [ToggleFloatingActionButton](https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#ToggleFloatingActionButton(kotlin.Boolean,kotlin.Function1,androidx.compose.ui.Modifier,kotlin.Function1,androidx.compose.ui.Alignment,kotlin.Function1,kotlin.Function1,kotlin.Function1)).
++ */
++function ToggleFloatingActionButtonComponent(props: ToggleFloatingActionButtonProps) {
++  const { children, onCheckedChange, modifiers, ...rest } = props;
++  return (
++    <ToggleFloatingActionButtonNativeView
++      {...rest}
++      modifiers={modifiers}
++      {...(modifiers ? createViewModifierEventListener(modifiers) : undefined)}
++      onCheckedChange={
++        onCheckedChange
++          ? ({ nativeEvent: { checked } }) => onCheckedChange(checked)
++          : undefined
++      }>
++      {children}
++    </ToggleFloatingActionButtonNativeView>
++  );
++}
++ToggleFloatingActionButtonComponent.Icon = FABIcon;
++export { ToggleFloatingActionButtonComponent as ToggleFloatingActionButton };
++
++export interface FloatingActionButtonMenuItemProps {
++  onClick?: () => void;
++  containerColor?: ColorValue;
++  contentColor?: ColorValue;
++  modifiers?: ModifierConfig[];
++  children: React.ReactNode;
++}
++
++type NativeFloatingActionButtonMenuItemProps = Omit<
++  FloatingActionButtonMenuItemProps,
++  'onClick' | 'children'
++> & {
++  children?: React.ReactNode;
++} & ViewEvent<'onItemPressed', void>;
++
++function MenuItemIcon(props: { children: React.ReactNode }) {
++  return <SlotNativeView slotName="icon">{props.children}</SlotNativeView>;
++}
++
++function MenuItemText(props: { children: React.ReactNode }) {
++  return <SlotNativeView slotName="text">{props.children}</SlotNativeView>;
++}
++
++/**
++ * Material 3 Expressive [FloatingActionButtonMenuItem](https://developer.android.com/reference/kotlin/androidx/compose/material3/FloatingActionButtonMenuItem.composable).
++ * Must be placed inside `FloatingActionButtonMenu.Items`.
++ */
++function FloatingActionButtonMenuItemComponent(props: FloatingActionButtonMenuItemProps) {
++  const { children, onClick, modifiers, ...rest } = props;
++  return (
++    <FloatingActionButtonMenuItemNativeView
++      {...rest}
++      modifiers={modifiers}
++      {...(modifiers ? createViewModifierEventListener(modifiers) : undefined)}
++      onItemPressed={onClick}>
++      {children}
++    </FloatingActionButtonMenuItemNativeView>
++  );
++}
++FloatingActionButtonMenuItemComponent.Icon = MenuItemIcon;
++FloatingActionButtonMenuItemComponent.Text = MenuItemText;
++export { FloatingActionButtonMenuItemComponent as FloatingActionButtonMenuItem };
+diff --git a/src/jetpack-compose/index.ts b/src/jetpack-compose/index.ts
+index e34a1c8623f515dc9f21994e2784a415ef98c64e..5aa83dc93ed53f71ac60bfbf4ebfccfa41f55e52 100644
+--- a/src/jetpack-compose/index.ts
++++ b/src/jetpack-compose/index.ts
+@@ -59,6 +59,7 @@ export * from './Snackbar';
+ export * from './DockedSearchBar';
+ export * from './HorizontalFloatingToolbar';
+ export * from './FloatingActionButton';
++export * from './FloatingActionButtonMenu';
+ export * from './PullToRefreshBox';
+ export * from './RadioButton';
+ export * from './Surface';

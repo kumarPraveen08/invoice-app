@@ -1,22 +1,22 @@
-import { useEffect, useMemo, useState } from 'react';
-import Ionicons from '@expo/vector-icons/Ionicons';
+import { useCallback, useEffect, useState } from 'react';
 import {
   Pressable,
   StyleSheet,
   TextInput,
   View,
 } from 'react-native';
-import { router, useLocalSearchParams, useNavigation } from 'expo-router';
+import { router, useFocusEffect, useLocalSearchParams, useNavigation } from 'expo-router';
 import { format, addDays } from 'date-fns';
 import { createId } from '@/shared/lib/id';
-import { Button, Text, useTheme } from '@/shared/design-system';
+import {Icon, Button, Text, useTheme} from '@/shared/design-system';
 import { useCatalogueStore } from '@/features/catalogue';
 import { useClientsStore } from '@/features/customers';
 import { SettingsField } from '@/features/settings/components/SettingsField';
 import { SettingsScroll } from '@/features/settings/components/SettingsScroll';
 import { useSettingsStore } from '@/features/settings/store';
-import { SearchablePickerSheet, DateField } from '@/shared/ui';
+import { DateField } from '@/shared/ui';
 import { computeInvoiceTotals, formatMoney } from '../format';
+import { takeInvoicePick } from '../pickResult';
 import { useInvoicesStore } from '../store';
 import type { Invoice, InvoiceLine, InvoiceStatus } from '../types';
 
@@ -179,8 +179,6 @@ export default function NewInvoiceScreen() {
   const [paymentInstructions, setPaymentInstructions] = useState(
     existing?.paymentInstructions ?? bank.paymentInstructions,
   );
-  const [clientOpen, setClientOpen] = useState(false);
-  const [catalogueOpen, setCatalogueOpen] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
 
   useEffect(() => {
@@ -189,26 +187,30 @@ export default function NewInvoiceScreen() {
     });
   }, [editing, navigation]);
 
-  const clientOptions = useMemo(
-    () =>
-      clients.map((client) => ({
-        id: client.id,
-        title: client.businessName || client.name,
-        subtitle: client.businessName
-          ? `${client.name}${client.phone ? ` · ${client.phone}` : ''}`
-          : client.phone || client.email || undefined,
-      })),
-    [clients],
-  );
-
-  const catalogueOptions = useMemo(
-    () =>
-      catalogue.map((item) => ({
-        id: item.id,
-        title: item.name,
-        subtitle: `${item.sku} · ${formatMoney(item.price, currency)}`,
-      })),
-    [catalogue, currency],
+  useFocusEffect(
+    useCallback(() => {
+      const pick = takeInvoicePick();
+      if (!pick) return;
+      if (pick.type === 'client') {
+        const client = clients.find((row) => row.id === pick.id);
+        if (!client) return;
+        setCustomerName(client.businessName || client.name);
+        setErrors((prev) => ({ ...prev, customer: undefined }));
+        return;
+      }
+      const next = pick.ids
+        .map((itemId) => catalogue.find((row) => row.id === itemId))
+        .filter(Boolean)
+        .map((item) => ({
+          id: createId('line'),
+          name: item!.name,
+          quantity: '1',
+          unitPrice: String(item!.price),
+        }));
+      if (next.length === 0) return;
+      setLines((prev) => [...prev, ...next]);
+      setErrors((prev) => ({ ...prev, items: undefined }));
+    }, [clients, catalogue]),
   );
 
   const parsedLines = lines.map((line) => ({
@@ -240,20 +242,6 @@ export default function NewInvoiceScreen() {
 
   const removeLine = (lineId: string) => {
     setLines((prev) => prev.filter((line) => line.id !== lineId));
-  };
-
-  const addCatalogueItems = (ids: string[]) => {
-    const next = ids
-      .map((itemId) => catalogue.find((row) => row.id === itemId))
-      .filter(Boolean)
-      .map((item) => ({
-        id: createId('line'),
-        name: item!.name,
-        quantity: '1',
-        unitPrice: String(item!.price),
-      }));
-    if (next.length === 0) return;
-    setLines((prev) => [...prev, ...next]);
   };
 
   const buildInvoice = (status: InvoiceStatus): Invoice | null => {
@@ -406,7 +394,12 @@ export default function NewInvoiceScreen() {
           <Pressable
             accessibilityRole="button"
             accessibilityLabel="Select customer"
-            onPress={() => setClientOpen(true)}
+            onPress={() =>
+              router.push({
+                pathname: '/invoice/pick',
+                params: { mode: 'client' },
+              })
+            }
             style={[
               styles.pickerField,
               {
@@ -439,8 +432,8 @@ export default function NewInvoiceScreen() {
                 {customerName || 'Search and select a client'}
               </Text>
             </View>
-            <Ionicons
-              name="chevron-down"
+            <Icon
+              name="expand-more"
               size={18}
               color={colors.onSurfaceMuted}
             />
@@ -572,7 +565,7 @@ export default function NewInvoiceScreen() {
                       hitSlop={8}
                       style={{ paddingLeft: 8, paddingTop: 4 }}
                     >
-                      <Ionicons
+                      <Icon
                         name="close"
                         size={18}
                         color={colors.onSurfaceMuted}
@@ -631,7 +624,12 @@ export default function NewInvoiceScreen() {
         {catalogue.length > 0 ? (
           <Pressable
             accessibilityRole="button"
-            onPress={() => setCatalogueOpen(true)}
+            onPress={() =>
+              router.push({
+                pathname: '/invoice/pick',
+                params: { mode: 'catalogue' },
+              })
+            }
             style={[
               styles.addChip,
               {
@@ -641,7 +639,7 @@ export default function NewInvoiceScreen() {
               },
             ]}
           >
-            <Ionicons name="grid-outline" size={16} color={colors.primary} />
+            <Icon name="grid-view" size={16} color={colors.primary} />
             <Text
               variant="caption"
               style={{ color: colors.primary, fontWeight: '600' }}
@@ -662,7 +660,7 @@ export default function NewInvoiceScreen() {
             },
           ]}
         >
-          <Ionicons name="add" size={16} color={colors.primary} />
+          <Icon name="add" size={16} color={colors.primary} />
           <Text
             variant="caption"
             style={{ color: colors.primary, fontWeight: '600' }}
@@ -823,7 +821,7 @@ export default function NewInvoiceScreen() {
         <View style={{ gap: space.sm }}>
           <Button
             label="Save & send"
-            icon="send-outline"
+            icon="send"
             onPress={() => save(issuedStatusFor(dueDate))}
             style={styles.primaryAction}
           />
@@ -841,34 +839,6 @@ export default function NewInvoiceScreen() {
           </Pressable>
         </View>
       )}
-
-      <SearchablePickerSheet
-        visible={clientOpen}
-        onClose={() => setClientOpen(false)}
-        title="Select client"
-        searchPlaceholder="Search clients"
-        options={clientOptions}
-        onSelect={(ids) => {
-          const client = clients.find((row) => row.id === ids[0]);
-          if (!client) return;
-          setCustomerName(client.businessName || client.name);
-          setErrors((prev) => ({ ...prev, customer: undefined }));
-        }}
-      />
-
-      <SearchablePickerSheet
-        visible={catalogueOpen}
-        onClose={() => setCatalogueOpen(false)}
-        title="Add from catalogue"
-        searchPlaceholder="Search catalogue"
-        options={catalogueOptions}
-        multiple
-        confirmLabel="Add items"
-        onSelect={(ids) => {
-          addCatalogueItems(ids);
-          setErrors((prev) => ({ ...prev, items: undefined }));
-        }}
-      />
     </SettingsScroll>
   );
 }

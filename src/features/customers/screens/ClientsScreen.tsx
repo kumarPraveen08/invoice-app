@@ -1,7 +1,6 @@
 import { useMemo } from 'react';
 import { EmptyState } from '@/shared/ui';
-import { SettingsGroup } from '@/features/settings/components/SettingsList';
-import { SettingsScroll } from '@/features/settings/components/SettingsScroll';
+import { SettingsSectionList } from '@/features/settings/components/SettingsScroll';
 import { ClientRow } from '../components/ClientRow';
 import { useClientsStore } from '../store';
 import type { Client } from '../types';
@@ -23,25 +22,22 @@ export default function ClientsScreen() {
   const sections = useMemo(() => groupByInitial(clients), [clients]);
 
   return (
-    <SettingsScroll withTabBar>
-      {sections.length === 0 ? (
+    <SettingsSectionList
+      withTabBar
+      sections={sections}
+      keyExtractor={(client) => client.id}
+      ListEmptyComponent={
         <EmptyState
           title="No clients yet"
           description="Use + to add your first client."
         />
-      ) : (
-        sections.map((section) => (
-          <SettingsGroup key={section.title} title={section.title}>
-            {section.data.map((client, index) => (
-              <ClientRow
-                key={client.id}
-                client={client}
-                last={index === section.data.length - 1}
-              />
-            ))}
-          </SettingsGroup>
-        ))
+      }
+      renderItem={(client, index, section) => (
+        <ClientRow
+          client={client}
+          last={index === section.data.length - 1}
+        />
       )}
-    </SettingsScroll>
+    />
   );
 }

@@ -4,6 +4,8 @@ export type Client = {
   businessName: string;
   email: string;
   phone: string;
+  address?: string;
+  profileImageUri?: string | null;
 };
 
 export const SAMPLE_CLIENTS: Client[] = [
@@ -13,6 +15,7 @@ export const SAMPLE_CLIENTS: Client[] = [
     businessName: 'Northwind Studio',
     email: 'aisha@northwind.co',
     phone: '+91 98765 41001',
+    address: '12 MG Road, Bengaluru',
   },
   {
     id: '2',
@@ -20,6 +23,7 @@ export const SAMPLE_CLIENTS: Client[] = [
     businessName: 'Brightline Co.',
     email: 'ben@brightline.io',
     phone: '+91 98765 41002',
+    address: '88 Quay Street, Mumbai',
   },
   {
     id: '3',
@@ -27,6 +31,7 @@ export const SAMPLE_CLIENTS: Client[] = [
     businessName: 'Cedar & Oak',
     email: 'chloe@cedaroak.in',
     phone: '+91 98765 41003',
+    address: '4 Lake View, Pune',
   },
   {
     id: '4',
@@ -41,6 +46,7 @@ export const SAMPLE_CLIENTS: Client[] = [
     businessName: 'Orbit Labs',
     email: 'elena@orbitlabs.dev',
     phone: '+91 98765 41005',
+    address: 'Tech Park B, Hyderabad',
   },
   {
     id: '6',
@@ -48,6 +54,7 @@ export const SAMPLE_CLIENTS: Client[] = [
     businessName: 'Harbor Dental',
     email: 'farhan@harbordental.in',
     phone: '+91 98765 41006',
+    address: '19 Marine Drive, Kochi',
   },
   {
     id: '7',
@@ -62,6 +69,7 @@ export const SAMPLE_CLIENTS: Client[] = [
     businessName: 'Sunrise Bakery',
     email: 'hassan@sunrise.bake',
     phone: '+91 98765 41008',
+    address: '3 Baker Lane, Delhi',
   },
   {
     id: '9',
@@ -76,6 +84,7 @@ export const SAMPLE_CLIENTS: Client[] = [
     businessName: 'Greenfield Clinic',
     email: 'jay@greenfield.care',
     phone: '+91 98765 41010',
+    address: 'Clinic Road, Ahmedabad',
   },
   {
     id: '11',
@@ -90,6 +99,7 @@ export const SAMPLE_CLIENTS: Client[] = [
     businessName: 'Summit Advisors',
     email: 'leo@summitadv.com',
     phone: '+91 98765 41012',
+    address: '22 Ridge Avenue, Goa',
   },
   {
     id: '13',
@@ -104,6 +114,7 @@ export const SAMPLE_CLIENTS: Client[] = [
     businessName: 'Bluecart Supply',
     email: 'nikhil@bluecart.co',
     phone: '+91 98765 41014',
+    address: 'Warehouse 7, Chennai',
   },
   {
     id: '15',

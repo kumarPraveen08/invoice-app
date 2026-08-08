@@ -1,12 +1,11 @@
 import { useRef, useState } from 'react';
 import { Dimensions, Image, Pressable, StyleSheet, View } from 'react-native';
-import Ionicons from '@expo/vector-icons/Ionicons';
 import SignatureCanvas, {
   type SignatureViewRef,
 } from 'react-native-signature-canvas';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
-import { Screen, Text, useTheme } from '@/shared/design-system';
+import {Icon, Screen, Text, useTheme, type IconName} from '@/shared/design-system';
 import { showSnackbar } from '@/shared/ui';
 import { useSettingsStore } from '../store';
 
@@ -106,21 +105,21 @@ export function SignatureDrawScreen() {
         <View style={{ flexDirection: 'row', gap: space.sm }}>
           <IconBtn
             label="Undo"
-            icon="arrow-undo-outline"
+            icon="undo"
             color={colors.primary}
             background={colors.iconSoft}
             onPress={() => ref.current?.undo()}
           />
           <IconBtn
             label="Redo"
-            icon="arrow-redo-outline"
+            icon="redo"
             color={colors.primary}
             background={colors.iconSoft}
             onPress={() => ref.current?.redo()}
           />
           <IconBtn
             label="Clear"
-            icon="trash-outline"
+            icon="delete"
             color={colors.primary}
             background={colors.iconSoft}
             onPress={() => ref.current?.clearSignature()}
@@ -165,7 +164,7 @@ function IconBtn({
   onPress,
 }: {
   label: string;
-  icon: keyof typeof Ionicons.glyphMap;
+  icon: IconName;
   color: string;
   background: string;
   onPress: () => void;
@@ -180,7 +179,7 @@ function IconBtn({
         { backgroundColor: background, opacity: pressed ? 0.85 : 1 },
       ]}
     >
-      <Ionicons name={icon} size={20} color={color} />
+      <Icon name={icon} size={20} color={color} />
       <Text style={{ color, fontWeight: '600', fontSize: 13 }}>{label}</Text>
     </Pressable>
   );

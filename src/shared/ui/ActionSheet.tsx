@@ -1,12 +1,11 @@
-import Ionicons from '@expo/vector-icons/Ionicons';
 import { Pressable, StyleSheet, View } from 'react-native';
-import { Text, useTheme } from '@/shared/design-system';
+import { Icon, Text, useTheme, type IconName } from '@/shared/design-system';
 import { BottomSheet } from './BottomSheet';
 
 export type SheetAction = {
   key: string;
   label: string;
-  icon?: keyof typeof Ionicons.glyphMap;
+  icon?: IconName;
   destructive?: boolean;
   disabled?: boolean;
   badge?: string;
@@ -17,15 +16,28 @@ type Props = {
   visible: boolean;
   onClose: () => void;
   title: string;
+  /** Details for the list item this sheet acts on. */
+  subtitle?: string;
   actions: SheetAction[];
 };
 
 /** Long-press / overflow actions in a bottom sheet. */
-export function ActionSheet({ visible, onClose, title, actions }: Props) {
+export function ActionSheet({
+  visible,
+  onClose,
+  title,
+  subtitle,
+  actions,
+}: Props) {
   const { colors, radii, space } = useTheme();
 
   return (
-    <BottomSheet visible={visible} onClose={onClose} title={title}>
+    <BottomSheet
+      visible={visible}
+      onClose={onClose}
+      title={title}
+      subtitle={subtitle}
+    >
       <View style={{ gap: space.xs }}>
         {actions.map((action) => {
           const muted = action.disabled;
@@ -55,7 +67,7 @@ export function ActionSheet({ visible, onClose, title, actions }: Props) {
               ]}
             >
               {action.icon ? (
-                <Ionicons
+                <Icon
                   name={action.icon}
                   size={22}
                   color={tint}

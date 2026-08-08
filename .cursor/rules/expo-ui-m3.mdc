@@ -1,0 +1,14 @@
+---
+description: Prefer Expo UI Jetpack Compose for M3 native UI
+alwaysApply: true
+---
+
+# Expo UI / Material 3
+
+- Prefer `@expo/ui/jetpack-compose` for native M3 controls (toolbar, menus, sheets).
+- Shared `Icon` uses **MaterialIcons font glyphs** — never Host-per-icon (steals hits, lags navigation).
+- Compose Material Symbols only inside an existing Host (e.g. `HorizontalFloatingToolbar` tab bar).
+- Filter rows: use `FilterChip` in one Host (`FilterChipRow`). Skip `SegmentedButton` when there are more than ~5 options.
+- Do **not** combine `FloatingActionButtonMenu` with `HorizontalFloatingToolbar` — they fight for layout/hits. More-actions on the toolbar FAB use Compose `DropdownMenu`.
+- Android Compose modules need a **native rebuild** after adding `@expo/ui`.
+- Scroll hide for our tab bar: drive it from RN `SettingsScroll` (`withTabBar`) + `useTabBarVisibility` — Compose `floatingToolbarExitAlwaysScrollBehavior` only works when the list is Compose `LazyColumn` inside the same `Host`.

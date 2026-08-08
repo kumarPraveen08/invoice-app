@@ -104,13 +104,13 @@ export function SettingsScreen({ withTabBar = false }: Props) {
     <SettingsScroll withTabBar={withTabBar}>
       <SettingsGroup title="Business">
         <SettingsRow
-          icon="business-outline"
+          icon="business"
           title="Business details"
           subtitle={business.name || 'Name, contact, tax, address'}
           onPress={() => router.push('/settings/business')}
         />
         <SettingsRow
-          icon="create-outline"
+          icon="edit"
           title="Logo & signature"
           subtitle={
             branding.signatureName || branding.signatureUri
@@ -120,7 +120,7 @@ export function SettingsScreen({ withTabBar = false }: Props) {
           onPress={() => router.push('/settings/branding')}
         />
         <SettingsRow
-          icon="card-outline"
+          icon="credit-card"
           title="Bank & payments"
           subtitle={bank.bankName || 'Account details for invoices'}
           onPress={() => router.push('/settings/bank')}
@@ -130,19 +130,19 @@ export function SettingsScreen({ withTabBar = false }: Props) {
 
       <SettingsGroup title="Preferences">
         <SettingsRow
-          icon="color-palette-outline"
+          icon="palette"
           title="Appearance"
           subtitle="Theme mode and accent color"
           onPress={() => router.push('/settings/appearance')}
         />
         <SettingsRow
-          icon="cash-outline"
+          icon="payments"
           title="Currency, tax & formats"
           subtitle={`${currencyLabel} · ${preferences.dateFormat} · ${preferences.timeFormat}`}
           onPress={() => router.push('/settings/preferences')}
         />
         <SettingsRow
-          icon="document-text-outline"
+          icon="description"
           title="Invoice defaults"
           subtitle={
             invoiceDefaults.notes || invoiceDefaults.terms
@@ -152,7 +152,7 @@ export function SettingsScreen({ withTabBar = false }: Props) {
           onPress={() => router.push('/settings/invoice-defaults')}
         />
         <SettingsRow
-          icon="newspaper-outline"
+          icon="newspaper"
           title="Invoice templates"
           subtitle="Predesigned layouts and custom designs"
           onPress={() => router.push('/settings/invoice-template')}
@@ -162,7 +162,7 @@ export function SettingsScreen({ withTabBar = false }: Props) {
 
       <SettingsGroup title="Subscription">
         <SettingsRow
-          icon="diamond-outline"
+          icon="diamond"
           title="Plan & upgrades"
           subtitle="Free · In-app purchases coming soon"
           onPress={() => router.push('/settings/subscription')}
@@ -172,7 +172,7 @@ export function SettingsScreen({ withTabBar = false }: Props) {
 
       <SettingsGroup title="Data">
         <SettingsRow
-          icon="download-outline"
+          icon="download"
           title="Download backup"
           subtitle="Settings, invoices, catalogue, and clients as JSON"
           onPress={downloadBackup}
@@ -182,7 +182,7 @@ export function SettingsScreen({ withTabBar = false }: Props) {
 
       <SettingsGroup title="Support">
         <SettingsRow
-          icon="mail-outline"
+          icon="mail"
           title="Contact support"
           subtitle={SUPPORT_EMAIL}
           onPress={() => {
@@ -190,14 +190,14 @@ export function SettingsScreen({ withTabBar = false }: Props) {
           }}
         />
         <SettingsRow
-          icon="share-outline"
+          icon="share"
           title="Share app"
           onPress={() => {
             void shareApp();
           }}
         />
         <SettingsRow
-          icon="star-outline"
+          icon="star-border"
           title="Rate app"
           onPress={rateApp}
           last
@@ -206,7 +206,7 @@ export function SettingsScreen({ withTabBar = false }: Props) {
 
       <SettingsGroup title="Legal">
         <SettingsRow
-          icon="shield-checkmark-outline"
+          icon="verified-user"
           title="Privacy policy"
           onPress={() =>
             router.push({
@@ -216,7 +216,7 @@ export function SettingsScreen({ withTabBar = false }: Props) {
           }
         />
         <SettingsRow
-          icon="reader-outline"
+          icon="menu-book"
           title="Terms of use"
           onPress={() =>
             router.push({
@@ -230,7 +230,7 @@ export function SettingsScreen({ withTabBar = false }: Props) {
 
       <SettingsGroup title="About">
         <SettingsRow
-          icon="information-circle-outline"
+          icon="info"
           title="Version"
           subtitle={appVersion()}
           showChevron={false}

@@ -45,6 +45,12 @@
           "contactsPermission": "Allow Invoice App to import clients from your contacts."
         }
       ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Allow Invoice App to attach client profile photos."
+        }
+      ],
       "@react-native-community/datetimepicker",
       "expo-secure-store",
       "expo-web-browser"

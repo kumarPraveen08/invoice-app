@@ -1,9 +1,8 @@
 import { useMemo, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Switch, View } from "react-native";
-import Ionicons from "@expo/vector-icons/Ionicons";
 import { router, useLocalSearchParams } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { Screen, Text, useTheme } from "@/shared/design-system";
+import {Icon, Screen, Text, useTheme} from "@/shared/design-system";
 import { BottomSheet, showSnackbar } from "@/shared/ui";
 import { InvoiceTemplatePreview } from "../components/InvoiceTemplatePreview";
 import {
@@ -267,18 +266,18 @@ export function InvoiceTemplateEditorScreen() {
             [
               {
                 id: "style" as const,
-                icon: "color-palette-outline",
+                icon: "palette",
                 label: "Style",
               },
-              { id: "type" as const, icon: "text-outline", label: "Type" },
+              { id: "type" as const, icon: "text-fields", label: "Type" },
               {
                 id: "fields" as const,
-                icon: "options-outline",
+                icon: "tune",
                 label: "Fields",
               },
               {
                 id: "more" as const,
-                icon: "ellipsis-horizontal",
+                icon: "more-horiz",
                 label: "More",
               },
             ] as const
@@ -305,7 +304,7 @@ export function InvoiceTemplateEditorScreen() {
                   { opacity: pressed ? 0.7 : 1 },
                 ]}
               >
-                <Ionicons
+                <Icon
                   name={item.icon}
                   size={22}
                   color={active ? colors.primary : colors.onSurfaceMuted}

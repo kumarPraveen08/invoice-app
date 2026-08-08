@@ -1,4 +1,4 @@
-import { createContext, useMemo, type ReactNode } from 'react';
+import { createContext, useDeferredValue, useMemo, type ReactNode } from 'react';
 import { useColorScheme } from 'react-native';
 import { useSettingsStore } from '@/features/settings/store';
 import { createTheme, lightTheme, type Theme } from './theme';
@@ -15,16 +15,20 @@ export function ThemeProvider({ children }: Props) {
   const scheme = useColorScheme();
   const preference = useSettingsStore((s) => s.appearance.mode);
   const seed = useSettingsStore((s) => s.appearance.seed);
+  // Defer palette apply so the press (selection ring / sheet dismiss) stays snappy;
+  // Compose Hosts + full tree theming are the expensive part.
+  const deferredPreference = useDeferredValue(preference);
+  const deferredSeed = useDeferredValue(seed);
 
   const theme = useMemo(() => {
     const mode =
-      preference === 'system'
+      deferredPreference === 'system'
         ? scheme === 'dark'
           ? 'dark'
           : 'light'
-        : preference;
-    return createTheme(mode, seed);
-  }, [preference, scheme, seed]);
+        : deferredPreference;
+    return createTheme(mode, deferredSeed);
+  }, [deferredPreference, scheme, deferredSeed]);
 
   return <ThemeContext value={theme}>{children}</ThemeContext>;
 }

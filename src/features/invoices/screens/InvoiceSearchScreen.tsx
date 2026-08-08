@@ -3,8 +3,7 @@ import { View } from 'react-native';
 import { router } from 'expo-router';
 import { Text, useTheme } from '@/shared/design-system';
 import { SearchField } from '@/shared/ui';
-import { SettingsGroup } from '@/features/settings/components/SettingsList';
-import { SettingsScroll } from '@/features/settings/components/SettingsScroll';
+import { SettingsSectionList } from '@/features/settings/components/SettingsScroll';
 import { useSettingsStore } from '@/features/settings/store';
 import { InvoiceRow } from '../components/InvoiceRow';
 import { groupInvoicesByDate } from '../format';
@@ -29,38 +28,43 @@ export default function InvoiceSearchScreen() {
   }, [invoices, q]);
 
   return (
-    <SettingsScroll includeTopInset>
-      <SearchField
-        value={query}
-        onChangeText={setQuery}
-        placeholder="Search invoices"
-      />
-
-      <View style={{ marginTop: space.lg }}>
-        {!q ? (
-          <Text variant="body" muted style={{ marginLeft: space.md }}>
-            Search by invoice number or client
-          </Text>
-        ) : sections.length === 0 ? (
+    <SettingsSectionList
+      includeTopInset
+      sections={sections}
+      keyExtractor={(invoice) => invoice.id}
+      ListHeaderComponent={
+        <View style={{ marginBottom: space.lg }}>
+          <SearchField
+            value={query}
+            onChangeText={setQuery}
+            placeholder="Search invoices"
+          />
+          {!q ? (
+            <Text
+              variant="body"
+              muted
+              style={{ marginLeft: space.md, marginTop: space.lg }}
+            >
+              Search by invoice number or client
+            </Text>
+          ) : null}
+        </View>
+      }
+      ListEmptyComponent={
+        q ? (
           <Text variant="body" muted style={{ marginLeft: space.md }}>
             No results for “{q}”
           </Text>
-        ) : (
-          sections.map((section) => (
-            <SettingsGroup key={section.title} title={section.title}>
-              {section.data.map((invoice, index) => (
-                <InvoiceRow
-                  key={invoice.id}
-                  invoice={invoice}
-                  currency={currency}
-                  last={index === section.data.length - 1}
-                  onPress={() => router.push(`/invoice/${invoice.id}`)}
-                />
-              ))}
-            </SettingsGroup>
-          ))
-        )}
-      </View>
-    </SettingsScroll>
+        ) : null
+      }
+      renderItem={(invoice, index, section) => (
+        <InvoiceRow
+          invoice={invoice}
+          currency={currency}
+          last={index === section.data.length - 1}
+          onPress={() => router.push(`/invoice/${invoice.id}`)}
+        />
+      )}
+    />
   );
 }

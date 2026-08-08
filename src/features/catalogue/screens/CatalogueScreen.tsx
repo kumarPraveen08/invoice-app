@@ -1,7 +1,6 @@
 import { useMemo } from 'react';
 import { EmptyState } from '@/shared/ui';
-import { SettingsGroup } from '@/features/settings/components/SettingsList';
-import { SettingsScroll } from '@/features/settings/components/SettingsScroll';
+import { SettingsSectionList } from '@/features/settings/components/SettingsScroll';
 import { useSettingsStore } from '@/features/settings/store';
 import { CatalogueRow } from '../components/CatalogueRow';
 import { useCatalogueStore } from '../store';
@@ -23,26 +22,23 @@ export default function CatalogueScreen() {
   const sections = useMemo(() => groupByCategory(items), [items]);
 
   return (
-    <SettingsScroll withTabBar>
-      {sections.length === 0 ? (
+    <SettingsSectionList
+      withTabBar
+      sections={sections}
+      keyExtractor={(item) => item.id}
+      ListEmptyComponent={
         <EmptyState
           title="No catalogue yet"
           description="Use + to add products or services."
         />
-      ) : (
-        sections.map((section) => (
-          <SettingsGroup key={section.title} title={section.title}>
-            {section.data.map((item, index) => (
-              <CatalogueRow
-                key={item.id}
-                item={item}
-                currency={currency}
-                last={index === section.data.length - 1}
-              />
-            ))}
-          </SettingsGroup>
-        ))
+      }
+      renderItem={(item, index, section) => (
+        <CatalogueRow
+          item={item}
+          currency={currency}
+          last={index === section.data.length - 1}
+        />
       )}
-    </SettingsScroll>
+    />
   );
 }

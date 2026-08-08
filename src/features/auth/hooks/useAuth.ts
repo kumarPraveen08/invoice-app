@@ -13,6 +13,7 @@ import * as AuthSession from 'expo-auth-session';
 import * as Linking from 'expo-linking';
 import * as WebBrowser from 'expo-web-browser';
 import type { AuthError, Session, User } from '@supabase/supabase-js';
+import { useSettingsStore } from '@/features/settings/store';
 import { supabase } from '@/shared/lib/supabase';
 
 const REDIRECT_PATH = 'auth';
@@ -26,7 +27,10 @@ export type AuthContextValue = {
   user: User | null;
   session: Session | null;
   loading: boolean;
+  /** True when continuing without Google (local guest). */
+  isGuest: boolean;
   signInWithGoogle: () => Promise<string | null>;
+  signInAsGuest: () => void;
   signOut: () => Promise<string | null>;
 };
 
@@ -82,9 +86,16 @@ function parseAuthUrl(url: string): { code: string | null; error: string | null 
   return { code, error: null };
 }
 
+/**
+ * Supabase session + Google OAuth, plus local guest mode (`authSkipped`).
+ * Owns auth state for the app; live under `features/auth`.
+ */
 export function AuthProvider({ children }: Props) {
   const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
+  const authSkipped = useSettingsStore((s) => s.authSkipped);
+  const skipAuth = useSettingsStore((s) => s.skipAuth);
+  const clearAuthSkip = useSettingsStore((s) => s.clearAuthSkip);
 
   useEffect(() => {
     let mounted = true;
@@ -109,13 +120,16 @@ export function AuthProvider({ children }: Props) {
     } = supabase.auth.onAuthStateChange((_event, nextSession) => {
       setSession(nextSession);
       setLoading(false);
+      if (nextSession) {
+        clearAuthSkip();
+      }
     });
 
     return () => {
       mounted = false;
       subscription.unsubscribe();
     };
-  }, []);
+  }, [clearAuthSkip]);
 
   useEffect(() => {
     const onAppStateChange = (state: AppStateStatus) => {
@@ -179,26 +193,37 @@ export function AuthProvider({ children }: Props) {
         return formatAuthError(exchangeError);
       }
 
+      clearAuthSkip();
       return null;
     } catch (error) {
       return formatAuthError(error as Error);
     }
-  }, []);
+  }, [clearAuthSkip]);
+
+  const signInAsGuest = useCallback(() => {
+    skipAuth();
+  }, [skipAuth]);
 
   const signOut = useCallback(async () => {
+    clearAuthSkip();
+    if (!session) {
+      return null;
+    }
     const { error } = await supabase.auth.signOut();
     return error ? formatAuthError(error) : null;
-  }, []);
+  }, [clearAuthSkip, session]);
 
   const value = useMemo<AuthContextValue>(
     () => ({
       user: session?.user ?? null,
       session,
       loading,
+      isGuest: authSkipped && !session,
       signInWithGoogle,
+      signInAsGuest,
       signOut,
     }),
-    [session, loading, signInWithGoogle, signOut],
+    [session, loading, authSkipped, signInWithGoogle, signInAsGuest, signOut],
   );
 
   return createElement(AuthContext.Provider, { value }, children);

@@ -11,8 +11,7 @@ import DateTimePicker, {
   type DateTimePickerEvent,
 } from '@react-native-community/datetimepicker';
 import { format, parseISO, isValid } from 'date-fns';
-import Ionicons from '@expo/vector-icons/Ionicons';
-import { Text, useTheme } from '@/shared/design-system';
+import {Icon, Text, useTheme} from '@/shared/design-system';
 
 const ERROR = '#B3261E';
 
@@ -80,8 +79,8 @@ export function DateField({ label, value, onChange, error, style }: Props) {
         <Text variant="body" style={{ color: colors.onSurface, flex: 1 }}>
           {displayLabel(value)}
         </Text>
-        <Ionicons
-          name={open ? 'chevron-up' : 'calendar-outline'}
+        <Icon
+          name={open ? 'expand-less' : 'calendar-today'}
           size={18}
           color={colors.onSurfaceMuted}
         />

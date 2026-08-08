@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { Pressable, Share, View } from "react-native";
-import Ionicons from "@expo/vector-icons/Ionicons";
+import { Share, View } from "react-native";
 import { router, useLocalSearchParams, useNavigation } from "expo-router";
 import { Text, useTheme } from "@/shared/design-system";
 import {
@@ -10,7 +9,7 @@ import {
 import { SettingsScroll } from "@/features/settings/components/SettingsScroll";
 import { TemplatePickerSheet } from "@/features/settings";
 import { useSettingsStore } from "@/features/settings/store";
-import { showSnackbar } from "@/shared/ui";
+import { showSnackbar, HeaderActionRow, HeaderIconButton } from "@/shared/ui";
 import { STATUS_LABEL, outstandingOf } from "../constants";
 import {
   computeInvoiceTotals,
@@ -44,60 +43,37 @@ export default function InvoiceDetailScreen() {
     navigation.setOptions({
       title: invoice.number,
       headerRight: () => (
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            gap: 4,
-            marginRight: 8,
-          }}
-        >
-          <Pressable
-            accessibilityRole="button"
-            accessibilityLabel="Share invoice"
+        <HeaderActionRow>
+          <HeaderIconButton
+            name="share"
+            label="Share invoice"
+            color={colors.onSurface}
             onPress={() => {
               setPickerMode("share");
               setPickerOpen(true);
             }}
-            hitSlop={8}
-            style={{ padding: 4 }}
-          >
-            <Ionicons name="share-outline" size={22} color={colors.onSurface} />
-          </Pressable>
-          <Pressable
-            accessibilityRole="button"
-            accessibilityLabel="Download invoice"
+          />
+          <HeaderIconButton
+            name="download"
+            label="Download invoice"
+            color={colors.onSurface}
             onPress={() => {
               setPickerMode("download");
               setPickerOpen(true);
             }}
-            hitSlop={8}
-            style={{ padding: 4 }}
-          >
-            <Ionicons
-              name="download-outline"
-              size={22}
-              color={colors.onSurface}
-            />
-          </Pressable>
-          <Pressable
-            accessibilityRole="button"
-            accessibilityLabel="Edit invoice"
+          />
+          <HeaderIconButton
+            name="edit"
+            label="Edit invoice"
+            color={colors.onSurface}
             onPress={() =>
               router.push({
                 pathname: "/invoice/new",
                 params: { id: invoice.id },
               })
             }
-            hitSlop={8}
-          >
-            <Ionicons
-              name="pencil-outline"
-              size={22}
-              color={colors.onSurface}
-            />
-          </Pressable>
-        </View>
+          />
+        </HeaderActionRow>
       ),
     });
   }, [colors.onSurface, invoice, navigation]);
@@ -157,19 +133,19 @@ export default function InvoiceDetailScreen() {
 
         <SettingsGroup title="Summary">
           <SettingsRow
-            icon="cash-outline"
+            icon="payments"
             title="Total"
             subtitle={formatMoney(invoice.total, currency)}
             showChevron={false}
           />
           <SettingsRow
-            icon="wallet-outline"
+            icon="account-balance-wallet"
             title="Paid"
             subtitle={formatMoney(invoice.paid, currency)}
             showChevron={false}
           />
           <SettingsRow
-            icon="time-outline"
+            icon="schedule"
             title="Outstanding"
             subtitle={formatMoney(balance, currency)}
             showChevron={false}
@@ -179,13 +155,13 @@ export default function InvoiceDetailScreen() {
 
         <SettingsGroup title="Dates">
           <SettingsRow
-            icon="calendar-outline"
+            icon="calendar-today"
             title="Issued"
             subtitle={formatInvoiceDate(invoice.issueDate)}
             showChevron={false}
           />
           <SettingsRow
-            icon="flag-outline"
+            icon="flag"
             title="Due"
             subtitle={formatInvoiceDate(invoice.dueDate)}
             showChevron={false}
@@ -198,7 +174,7 @@ export default function InvoiceDetailScreen() {
             {invoice.lines.map((line, index) => (
               <SettingsRow
                 key={line.id}
-                icon="cube-outline"
+                icon="inventory-2"
                 title={line.name}
                 subtitle={`${line.quantity} × ${formatMoney(line.unitPrice, currency)}`}
                 showChevron={false}
@@ -210,25 +186,25 @@ export default function InvoiceDetailScreen() {
 
         <SettingsGroup title="Totals">
           <SettingsRow
-            icon="list-outline"
+            icon="list"
             title="Subtotal"
             subtitle={formatMoney(totals.subtotal, currency)}
             showChevron={false}
           />
           <SettingsRow
-            icon="pricetag-outline"
+            icon="local-offer"
             title="Discount"
             subtitle={formatMoney(totals.discount, currency)}
             showChevron={false}
           />
           <SettingsRow
-            icon="calculator-outline"
+            icon="calculate"
             title={`Tax (${invoice.taxRate}%)`}
             subtitle={formatMoney(totals.tax, currency)}
             showChevron={false}
           />
           <SettingsRow
-            icon="add-circle-outline"
+            icon="add-circle"
             title="Additional charges"
             subtitle={formatMoney(totals.additionalCharges, currency)}
             showChevron={false}
@@ -266,18 +242,20 @@ export default function InvoiceDetailScreen() {
         ) : null}
       </SettingsScroll>
 
-      <TemplatePickerSheet
-        visible={pickerOpen}
-        onClose={() => setPickerOpen(false)}
-        title={
-          pickerMode === "share"
-            ? "Share with template"
-            : "Download PDF with template"
-        }
-        onSelect={(templateId) => {
-          void onPickTemplate(templateId || defaultTemplateId);
-        }}
-      />
+      {pickerOpen ? (
+        <TemplatePickerSheet
+          visible
+          onClose={() => setPickerOpen(false)}
+          title={
+            pickerMode === "share"
+              ? "Share with template"
+              : "Download PDF with template"
+          }
+          onSelect={(templateId) => {
+            void onPickTemplate(templateId || defaultTemplateId);
+          }}
+        />
+      ) : null}
     </>
   );
 }

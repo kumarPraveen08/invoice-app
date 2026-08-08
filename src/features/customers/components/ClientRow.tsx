@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import Ionicons from '@expo/vector-icons/Ionicons';
+import { useRecyclingState } from '@legendapp/list/react-native';
 import { Pressable, StyleSheet, View } from 'react-native';
 import { router } from 'expo-router';
 import { Text, useTheme } from '@/shared/design-system';
 import { ActionSheet, showSnackbar, SwipeableRow } from '@/shared/ui';
 import { useClientsStore } from '../store';
 import type { Client } from '../types';
+import { ClientAvatar } from './ClientAvatar';
 
 type Props = {
   client: Client;
@@ -13,10 +13,10 @@ type Props = {
 };
 
 export function ClientRow({ client, last = false }: Props) {
-  const { colors, radii, space } = useTheme();
+  const { colors, space } = useTheme();
   const removeClient = useClientsStore((s) => s.removeClient);
   const upsertClient = useClientsStore((s) => s.upsertClient);
-  const [actionsOpen, setActionsOpen] = useState(false);
+  const [actionsOpen, setActionsOpen] = useRecyclingState(false);
 
   const onOpen = () => router.push(`/clients/${client.id}`);
   const onEdit = () => {
@@ -32,6 +32,10 @@ export function ClientRow({ client, last = false }: Props) {
       },
     });
   };
+
+  const subtitle = [client.businessName, client.address || client.phone]
+    .filter(Boolean)
+    .join(' · ');
 
   return (
     <>
@@ -53,56 +57,52 @@ export function ClientRow({ client, last = false }: Props) {
             },
           ]}
         >
-          <View
-            style={[
-              styles.iconWrap,
-              {
-                backgroundColor: colors.iconSoft,
-                borderRadius: radii.full,
-                marginRight: space.md,
-              },
-            ]}
-          >
-            <Ionicons name="person-outline" size={20} color={colors.primary} />
+          <View style={{ marginRight: space.md }}>
+            <ClientAvatar
+              name={client.name}
+              imageUri={client.profileImageUri}
+            />
           </View>
           <View style={styles.copy}>
             <Text variant="body" style={{ fontWeight: '600' }} numberOfLines={1}>
               {client.name}
             </Text>
             <Text variant="caption" muted numberOfLines={1}>
-              {client.businessName}
-              {client.phone ? ` · ${client.phone}` : ''}
+              {subtitle}
             </Text>
           </View>
         </Pressable>
       </SwipeableRow>
 
-      <ActionSheet
-        visible={actionsOpen}
-        onClose={() => setActionsOpen(false)}
-        title={client.name}
-        actions={[
-          {
-            key: 'view',
-            label: 'View',
-            icon: 'eye-outline',
-            onPress: onOpen,
-          },
-          {
-            key: 'edit',
-            label: 'Edit',
-            icon: 'create-outline',
-            onPress: onEdit,
-          },
-          {
-            key: 'delete',
-            label: 'Delete',
-            icon: 'trash-outline',
-            destructive: true,
-            onPress: onDelete,
-          },
-        ]}
-      />
+      {actionsOpen ? (
+        <ActionSheet
+          visible
+          onClose={() => setActionsOpen(false)}
+          title={client.name}
+          subtitle={subtitle || undefined}
+          actions={[
+            {
+              key: 'view',
+              label: 'View',
+              icon: 'visibility',
+              onPress: onOpen,
+            },
+            {
+              key: 'edit',
+              label: 'Edit',
+              icon: 'edit',
+              onPress: onEdit,
+            },
+            {
+              key: 'delete',
+              label: 'Delete',
+              icon: 'delete',
+              destructive: true,
+              onPress: onDelete,
+            },
+          ]}
+        />
+      ) : null}
     </>
   );
 }
@@ -111,12 +111,6 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     alignItems: 'center',
-  },
-  iconWrap: {
-    width: 40,
-    height: 40,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   copy: {
     flex: 1,

@@ -1,24 +1,47 @@
-import { useEffect, useState } from 'react';
-import * as WebBrowser from 'expo-web-browser';
-import { Stack, useRouter, useSegments } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { StatusBar } from 'react-native';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { ThemeProvider, useTheme } from '@/shared/design-system';
-import { useSettingsStore } from '@/features/settings/store';
-import { SnackbarHost } from '@/shared/ui';
-import { AuthProvider, useAuth } from '@/hooks/useAuth';
+import { useEffect, useState } from "react";
+import * as WebBrowser from "expo-web-browser";
+import { Stack, useRouter, useSegments } from "expo-router";
+import * as SplashScreen from "expo-splash-screen";
+import { StatusBar } from "react-native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { ThemeProvider, useTheme } from "@/shared/design-system";
+import { useSettingsStore } from "@/features/settings/store";
+import {
+  DeferredMount,
+  HeaderIconButton,
+  SnackbarHost,
+  stackHeaderIconContainerStyle,
+} from "@/shared/ui";
+import { AuthProvider, useAuth } from "@/features/auth";
 
 WebBrowser.maybeCompleteAuthSession();
 void SplashScreen.preventAutoHideAsync().catch(() => undefined);
+
+/** Nested navigators / gate routes — defer inside their own layouts instead.
+ *  Invoice create/pick stay eager so the form flow does not flash a loader. */
+const SKIP_DEFER = new Set([
+  "(tabs)",
+  "auth",
+  "onboarding",
+  "settings",
+  "invoice/new",
+  "invoice/pick",
+]);
+
+function shouldDeferRoute(name: string) {
+  return !SKIP_DEFER.has(name);
+}
 
 function RootNavigator() {
   const { colors, mode } = useTheme();
   const router = useRouter();
   const segments = useSegments();
   const onboardingComplete = useSettingsStore((s) => s.onboardingComplete);
+  const authSkipped = useSettingsStore((s) => s.authSkipped);
   const { session, loading: authLoading } = useAuth();
-  const [hydrated, setHydrated] = useState(() => useSettingsStore.persist.hasHydrated());
+  const [hydrated, setHydrated] = useState(() =>
+    useSettingsStore.persist.hasHydrated(),
+  );
 
   useEffect(() => {
     const unsub = useSettingsStore.persist.onFinishHydration(() => {
@@ -42,29 +65,30 @@ function RootNavigator() {
   useEffect(() => {
     if (!ready) return;
 
-    const inOnboarding = segments[0] === 'onboarding';
-    const inAuth = segments[0] === 'auth';
+    const inOnboarding = segments[0] === "onboarding";
+    const inAuth = segments[0] === "auth";
+    const signedIn = Boolean(session) || authSkipped;
 
     if (!onboardingComplete) {
       if (!inOnboarding) {
-        router.replace('/onboarding');
+        router.replace("/onboarding");
       }
       return;
     }
 
-    if (!session) {
+    if (!signedIn) {
       if (!inAuth) {
-        router.replace('/auth');
+        router.replace("/auth");
       }
       return;
     }
 
     if (inOnboarding || inAuth) {
-      router.replace('/(tabs)');
+      router.replace("/(tabs)");
     }
-  }, [ready, onboardingComplete, session, router, segments]);
+  }, [ready, onboardingComplete, session, authSkipped, router, segments]);
 
-  const statusBarStyle = mode === 'dark' ? 'light-content' : 'dark-content';
+  const statusBarStyle = mode === "dark" ? "light-content" : "dark-content";
 
   if (!ready) {
     return null;
@@ -73,10 +97,28 @@ function RootNavigator() {
   return (
     <>
       <Stack
+        screenLayout={({ children, route }) =>
+          shouldDeferRoute(route.name) ? (
+            <DeferredMount>{children}</DeferredMount>
+          ) : (
+            children
+          )
+        }
         screenOptions={{
           contentStyle: { backgroundColor: colors.background },
           headerStyle: { backgroundColor: colors.surface },
           headerTintColor: colors.onSurface,
+          headerShadowVisible: false,
+          ...stackHeaderIconContainerStyle,
+          headerLeft: ({ canGoBack, tintColor }) =>
+            canGoBack ? (
+              <HeaderIconButton
+                name="arrow-back"
+                label="Back"
+                onPress={() => router.back()}
+                color={tintColor ?? colors.onSurface}
+              />
+            ) : null,
         }}
       >
         <Stack.Screen name="onboarding" options={{ headerShown: false }} />
@@ -86,7 +128,15 @@ function RootNavigator() {
         <Stack.Screen
           name="invoice/new"
           options={{
-            title: 'New invoice',
+            title: "New invoice",
+            headerShadowVisible: false,
+            headerStyle: { backgroundColor: colors.background },
+          }}
+        />
+        <Stack.Screen
+          name="invoice/pick"
+          options={{
+            title: "Select",
             headerShadowVisible: false,
             headerStyle: { backgroundColor: colors.background },
           }}
@@ -95,13 +145,13 @@ function RootNavigator() {
           name="invoice/search"
           options={{
             headerShown: false,
-            animation: 'fade',
+            animation: "fade",
           }}
         />
         <Stack.Screen
           name="invoice/[id]"
           options={{
-            title: 'Invoice',
+            title: "Invoice",
             headerShadowVisible: false,
             headerStyle: { backgroundColor: colors.background },
           }}
@@ -109,7 +159,7 @@ function RootNavigator() {
         <Stack.Screen
           name="catalogue/new"
           options={{
-            title: 'New catalogue item',
+            title: "New catalogue item",
             headerShadowVisible: false,
             headerStyle: { backgroundColor: colors.background },
           }}
@@ -117,7 +167,7 @@ function RootNavigator() {
         <Stack.Screen
           name="catalogue/[id]"
           options={{
-            title: 'Item',
+            title: "Item",
             headerShadowVisible: false,
             headerStyle: { backgroundColor: colors.background },
           }}
@@ -125,7 +175,7 @@ function RootNavigator() {
         <Stack.Screen
           name="catalogue/import"
           options={{
-            title: 'Bulk import',
+            title: "Bulk import",
             headerShadowVisible: false,
             headerStyle: { backgroundColor: colors.background },
           }}
@@ -134,13 +184,13 @@ function RootNavigator() {
           name="catalogue/search"
           options={{
             headerShown: false,
-            animation: 'fade',
+            animation: "fade",
           }}
         />
         <Stack.Screen
           name="clients/new"
           options={{
-            title: 'New client',
+            title: "New client",
             headerShadowVisible: false,
             headerStyle: { backgroundColor: colors.background },
           }}
@@ -148,7 +198,7 @@ function RootNavigator() {
         <Stack.Screen
           name="clients/[id]"
           options={{
-            title: 'Client',
+            title: "Client",
             headerShadowVisible: false,
             headerStyle: { backgroundColor: colors.background },
           }}
@@ -156,7 +206,7 @@ function RootNavigator() {
         <Stack.Screen
           name="clients/import"
           options={{
-            title: 'Bulk import',
+            title: "Bulk import",
             headerShadowVisible: false,
             headerStyle: { backgroundColor: colors.background },
           }}
@@ -165,11 +215,15 @@ function RootNavigator() {
           name="clients/search"
           options={{
             headerShown: false,
-            animation: 'fade',
+            animation: "fade",
           }}
         />
       </Stack>
-      <StatusBar animated backgroundColor={colors.background} barStyle={statusBarStyle} />
+      <StatusBar
+        animated
+        backgroundColor={colors.background}
+        barStyle={statusBarStyle}
+      />
       <SnackbarHost />
     </>
   );

@@ -40,6 +40,8 @@ type SettingsState = AppSettings & {
   ) => void;
   removeCustomTemplate: (id: string) => void;
   completeOnboarding: () => void;
+  skipAuth: () => void;
+  clearAuthSkip: () => void;
 };
 
 export const useSettingsStore = create<SettingsState>()(
@@ -131,6 +133,8 @@ export const useSettingsStore = create<SettingsState>()(
           };
         }),
       completeOnboarding: () => set({ onboardingComplete: true }),
+      skipAuth: () => set({ authSkipped: true }),
+      clearAuthSkip: () => set({ authSkipped: false }),
     }),
     {
       name: "invoice-app-settings",
@@ -144,6 +148,7 @@ export const useSettingsStore = create<SettingsState>()(
         appearance: state.appearance,
         invoiceTemplates: state.invoiceTemplates,
         onboardingComplete: state.onboardingComplete,
+        authSkipped: state.authSkipped,
       }),
       merge: (persisted, current) => {
         const stored = (persisted ?? {}) as Partial<AppSettings> & {
@@ -169,6 +174,7 @@ export const useSettingsStore = create<SettingsState>()(
             customs: library.customs ?? [],
           },
           onboardingComplete,
+          authSkipped: stored.authSkipped ?? false,
         };
       },
     },
