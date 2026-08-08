@@ -1,9 +1,13 @@
 import { format, subMonths } from 'date-fns';
 import { useMemo, useState } from 'react';
-import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { Platform, Pressable, StyleSheet, View } from 'react-native';
 import { router } from 'expo-router';
+import {
+  DateRangePickerDialog,
+  Host,
+} from '@expo/ui/jetpack-compose';
 import { Button, Text, useTheme } from '@/shared/design-system';
-import { BottomSheet, DateField, EmptyState, showSnackbar } from '@/shared/ui';
+import { DateField, EmptyState, FilterChipRow, showSnackbar } from '@/shared/ui';
 import { formatMoney } from '@/features/invoices/format';
 import { useInvoicesStore } from '@/features/invoices';
 import { useClientsStore } from '@/features/customers';
@@ -21,59 +25,6 @@ import {
   type MonthBar,
   type ReportPeriod,
 } from '../compute';
-
-function ChipRow<T extends string>({
-  items,
-  value,
-  labelFor,
-  onChange,
-}: {
-  items: { id: T; label: string }[];
-  value: T;
-  labelFor?: (id: T, fallback: string) => string;
-  onChange: (id: T) => void;
-}) {
-  const { colors, radii, space } = useTheme();
-  return (
-    <ScrollView
-      horizontal
-      showsHorizontalScrollIndicator={false}
-      nestedScrollEnabled
-      style={styles.chipScroll}
-      contentContainerStyle={[styles.chipContent, { gap: space.sm }]}
-    >
-      {items.map((item) => {
-        const selected = item.id === value;
-        const label = labelFor?.(item.id, item.label) ?? item.label;
-        return (
-          <Pressable
-            key={item.id}
-            accessibilityRole="button"
-            accessibilityState={{ selected }}
-            onPress={() => onChange(item.id)}
-            style={({ pressed }) => [
-              styles.chip,
-              {
-                paddingHorizontal: space.lg,
-                borderRadius: radii.full,
-                backgroundColor: selected ? colors.iconSoft : colors.surface,
-                borderColor: selected ? colors.iconSoft : colors.onSurfaceMuted,
-                opacity: pressed ? 0.85 : 1,
-              },
-            ]}
-          >
-            <Text
-              variant="label"
-              style={{ color: selected ? colors.primary : colors.onSurface }}
-            >
-              {label}
-            </Text>
-          </Pressable>
-        );
-      })}
-    </ScrollView>
-  );
-}
 
 function SnapshotCard({
   received,
@@ -282,21 +233,31 @@ export default function ReportsScreen() {
     router.push(`/clients/${match.id}`);
   };
 
-  const openCustomRange = () => {
-    setDraftRange(customRange);
-    setRangeOpen(true);
-  };
-
   const onPeriodChange = (next: ReportPeriod) => {
     if (next === 'custom') {
       setPeriod('custom');
-      openCustomRange();
+      setDraftRange(customRange);
+      setRangeOpen(true);
       return;
     }
+    setRangeOpen(false);
     setPeriod(next);
   };
 
-  const applyCustomRange = () => {
+  const onRangeSelected = (range: { start: Date; end: Date }) => {
+    if (range.start > range.end) {
+      showSnackbar('Start date must be before end date.');
+      return;
+    }
+    setCustomRange({
+      start: format(range.start, 'yyyy-MM-dd'),
+      end: format(range.end, 'yyyy-MM-dd'),
+    });
+    setPeriod('custom');
+    setRangeOpen(false);
+  };
+
+  const applyIosRange = () => {
     const start = parseDateInput(draftRange.start);
     const end = parseDateInput(draftRange.end);
     if (!start || !end) {
@@ -329,7 +290,7 @@ export default function ReportsScreen() {
   return (
     <SettingsScroll withTabBar>
       <View style={{ marginBottom: space.xl }}>
-        <ChipRow
+        <FilterChipRow
           items={REPORT_PERIODS}
           value={period}
           labelFor={(id, fallback) =>
@@ -413,12 +374,19 @@ export default function ReportsScreen() {
         </SettingsGroup>
       ) : null}
 
-      <BottomSheet
-        visible={rangeOpen}
-        onClose={() => setRangeOpen(false)}
-        title="Custom date range"
-      >
-        <View style={{ gap: space.md, marginBottom: space.lg }}>
+      {rangeOpen && Platform.OS === 'android' ? (
+        <Host>
+          <DateRangePickerDialog
+            initialStartDate={customRange.start}
+            initialEndDate={customRange.end}
+            confirmButtonLabel="Apply"
+            onRangeSelected={onRangeSelected}
+            onDismissRequest={() => setRangeOpen(false)}
+          />
+        </Host>
+      ) : null}
+      {rangeOpen && Platform.OS !== 'android' ? (
+        <View style={{ marginBottom: space.xl, gap: space.md }}>
           <DateField
             label="From"
             value={draftRange.start}
@@ -429,31 +397,18 @@ export default function ReportsScreen() {
             value={draftRange.end}
             onChange={(end) => setDraftRange((r) => ({ ...r, end }))}
           />
+          <Button
+            label="Apply range"
+            onPress={applyIosRange}
+            style={{ alignSelf: 'stretch', justifyContent: 'center' }}
+          />
         </View>
-        <Button
-          label="Apply range"
-          onPress={applyCustomRange}
-          style={{ alignSelf: 'stretch', justifyContent: 'center' }}
-        />
-      </BottomSheet>
+      ) : null}
     </SettingsScroll>
   );
 }
 
 const styles = StyleSheet.create({
-  chipScroll: {
-    height: 40,
-  },
-  chipContent: {
-    alignItems: 'center',
-    paddingRight: 4,
-  },
-  chip: {
-    height: 40,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: StyleSheet.hairlineWidth,
-  },
   snapshotRow: {
     flexDirection: 'row',
     alignItems: 'center',

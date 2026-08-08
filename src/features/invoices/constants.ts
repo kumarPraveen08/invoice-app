@@ -12,14 +12,19 @@ export const STATUS_LABEL: Record<InvoiceStatus, string> = {
   void: 'Void',
 };
 
-export const FILTERS: { id: InvoiceFilter; label: string }[] = [
-  { id: 'all', label: 'All' },
-  { id: 'unpaid', label: 'Unpaid' },
-  { id: 'overdue', label: 'Overdue' },
-  { id: 'draft', label: 'Draft' },
-  { id: 'paid', label: 'Paid' },
-  { id: 'cancelled', label: 'Cancelled' },
-  { id: 'void', label: 'Void' },
+export const FILTERS: {
+  id: InvoiceFilter;
+  label: string;
+  icon: number;
+  fontIcon: 'select-all' | 'money-off' | 'warning' | 'edit' | 'paid' | 'cancel' | 'block';
+}[] = [
+  { id: 'all', label: 'All', icon: require('@expo/material-symbols/select_all.xml'), fontIcon: 'select-all' },
+  { id: 'unpaid', label: 'Unpaid', icon: require('@expo/material-symbols/money_off.xml'), fontIcon: 'money-off' },
+  { id: 'overdue', label: 'Overdue', icon: require('@expo/material-symbols/warning.xml'), fontIcon: 'warning' },
+  { id: 'draft', label: 'Draft', icon: require('@expo/material-symbols/draft.xml'), fontIcon: 'edit' },
+  { id: 'paid', label: 'Paid', icon: require('@expo/material-symbols/paid.xml'), fontIcon: 'paid' },
+  { id: 'cancelled', label: 'Cancelled', icon: require('@expo/material-symbols/cancel.xml'), fontIcon: 'cancel' },
+  { id: 'void', label: 'Void', icon: require('@expo/material-symbols/block.xml'), fontIcon: 'block' },
 ];
 
 function dayOffset(daysAgo: number): string {

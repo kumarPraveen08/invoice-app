@@ -29,14 +29,61 @@ export type DateRange = {
   end: string;
 };
 
-export const REPORT_PERIODS: { id: ReportPeriod; label: string }[] = [
-  { id: 'week', label: 'This week' },
-  { id: 'month', label: 'This month' },
-  { id: 'last_month', label: 'Last month' },
-  { id: '30d', label: '30 days' },
-  { id: 'year', label: 'This year' },
-  { id: 'custom', label: 'Custom' },
-  { id: 'all', label: 'All time' },
+export const REPORT_PERIODS: {
+  id: ReportPeriod;
+  label: string;
+  icon: number;
+  fontIcon:
+    | 'view-week'
+    | 'calendar-view-month'
+    | 'history'
+    | 'date-range'
+    | 'event'
+    | 'edit-calendar'
+    | 'public';
+}[] = [
+  {
+    id: 'week',
+    label: 'This week',
+    icon: require('@expo/material-symbols/calendar_view_week.xml'),
+    fontIcon: 'view-week',
+  },
+  {
+    id: 'month',
+    label: 'This month',
+    icon: require('@expo/material-symbols/calendar_view_month.xml'),
+    fontIcon: 'calendar-view-month',
+  },
+  {
+    id: 'last_month',
+    label: 'Last month',
+    icon: require('@expo/material-symbols/history.xml'),
+    fontIcon: 'history',
+  },
+  {
+    id: '30d',
+    label: '30 days',
+    icon: require('@expo/material-symbols/date_range.xml'),
+    fontIcon: 'date-range',
+  },
+  {
+    id: 'year',
+    label: 'This year',
+    icon: require('@expo/material-symbols/calendar_month.xml'),
+    fontIcon: 'event',
+  },
+  {
+    id: 'custom',
+    label: 'Custom',
+    icon: require('@expo/material-symbols/edit_calendar.xml'),
+    fontIcon: 'edit-calendar',
+  },
+  {
+    id: 'all',
+    label: 'All time',
+    icon: require('@expo/material-symbols/all_inclusive.xml'),
+    fontIcon: 'public',
+  },
 ];
 
 const CLOSED = new Set<InvoiceStatus>(['cancelled', 'void', 'draft']);

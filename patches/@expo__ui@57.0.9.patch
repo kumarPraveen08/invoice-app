@@ -1,5 +1,145 @@
+diff --git a/android/src/main/java/expo/modules/ui/ChipView.kt b/android/src/main/java/expo/modules/ui/ChipView.kt
+index a7b3ff8f303a3e88fb3d6c4cca58509c5b92b8b3..5384923defd92e3b88555632d855f59032b61da7 100644
+--- a/android/src/main/java/expo/modules/ui/ChipView.kt
++++ b/android/src/main/java/expo/modules/ui/ChipView.kt
+@@ -2,6 +2,7 @@ package expo.modules.ui
+ 
+ import android.graphics.Color
+ import androidx.compose.foundation.BorderStroke
++import androidx.compose.foundation.shape.RoundedCornerShape
+ import androidx.compose.material3.AssistChip
+ import androidx.compose.material3.AssistChipDefaults
+ import androidx.compose.material3.ExperimentalMaterial3Api
+@@ -200,7 +201,8 @@ fun FunctionalComposableScope.FilterChipContent(
+       FilterChipDefaults.filterChipBorder(enabled = props.enabled, selected = props.selected, borderWidth = props.border.width.dp)
+     }
+   } else {
+-    FilterChipDefaults.filterChipBorder(enabled = props.enabled, selected = props.selected)
++    // Borderless pill chips (app default)
++    BorderStroke(0.dp, ComposeColor.Transparent)
+   }
+ 
+   FilterChip(
+@@ -213,6 +215,7 @@ fun FunctionalComposableScope.FilterChipContent(
+     colors = colors,
+     elevation = elevation,
+     border = border,
++    shape = RoundedCornerShape(percent = 50),
+     modifier = modifier
+   )
+ }
+diff --git a/android/src/main/java/expo/modules/ui/DatePickerView.kt b/android/src/main/java/expo/modules/ui/DatePickerView.kt
+index 71e8643434d8951188153bcfd6f34643a60c50a6..d51a9c99098c5e3605234cae2ce939cd00516765 100644
+--- a/android/src/main/java/expo/modules/ui/DatePickerView.kt
++++ b/android/src/main/java/expo/modules/ui/DatePickerView.kt
+@@ -7,6 +7,7 @@ import androidx.compose.material3.DatePicker
+ import androidx.compose.material3.DatePickerDefaults
+ import androidx.compose.material3.DatePickerDialog
+ import androidx.compose.material3.DatePickerState
++import androidx.compose.material3.DateRangePicker
+ import androidx.compose.material3.DisplayMode
+ import androidx.compose.material3.ExperimentalMaterial3Api
+ import androidx.compose.material3.LocalContentColor
+@@ -17,6 +18,7 @@ import androidx.compose.material3.TimePicker
+ import androidx.compose.material3.TimePickerDefaults
+ import androidx.compose.material3.TimePickerLayoutType
+ import androidx.compose.material3.TimePickerState
++import androidx.compose.material3.rememberDateRangePickerState
+ import android.view.WindowManager
+ import androidx.compose.foundation.layout.wrapContentHeight
+ import androidx.compose.runtime.Composable
+@@ -47,6 +49,14 @@ data class DatePickerResult(
+   val date: Long?
+ ) : Record
+ 
++@OptimizedRecord
++data class DateRangePickerResult(
++  @Field
++  val startDate: Long?,
++  @Field
++  val endDate: Long?
++) : Record
++
+ enum class DisplayedComponents(val value: String) : Enumerable {
+   DATE("date"),
+   HOUR_AND_MINUTE("hourAndMinute"),
+@@ -177,6 +187,16 @@ data class DatePickerDialogProps(
+   val selectableDates: SelectableDatesRecord? = null
+ ) : ComposeProps
+ 
++@OptimizedComposeProps
++data class DateRangePickerDialogProps(
++  val initialStartDate: Long? = null,
++  val initialEndDate: Long? = null,
++  val confirmButtonLabel: String? = null,
++  val dismissButtonLabel: String? = null,
++  val color: AndroidColor? = null,
++  val selectableDates: SelectableDatesRecord? = null
++) : ComposeProps
++
+ @OptimizedComposeProps
+ data class TimePickerDialogProps(
+   val initialDate: Long? = null,
+@@ -391,6 +411,57 @@ fun ExpoDatePickerDialogContent(props: DatePickerDialogProps, onDateSelected: (D
+   }
+ }
+ 
++@OptIn(ExperimentalMaterial3Api::class)
++@Composable
++fun ExpoDateRangePickerDialogContent(
++  props: DateRangePickerDialogProps,
++  onRangeSelected: (DateRangePickerResult) -> Unit,
++  onDismissRequest: () -> Unit
++) {
++  val selectableDates = rememberSelectableDates(props.selectableDates)
++  val yearRange = rememberDatePickerYearRange(
++    props.selectableDates,
++    props.initialStartDate ?: props.initialEndDate ?: Date().time
++  )
++  val state = rememberDateRangePickerState(
++    initialSelectedStartDateMillis = props.initialStartDate,
++    initialSelectedEndDateMillis = props.initialEndDate,
++    yearRange = yearRange,
++    selectableDates = selectableDates
++  )
++  val colors = buildDatePickerColors(DateTimePickerColorOverrides(), props.color.composeOrNull, DatePickerDefaults.colors())
++  val buttonColors = props.color.composeOrNull
++    ?.let { ButtonDefaults.textButtonColors(contentColor = it) } ?: ButtonDefaults.textButtonColors()
++
++  DatePickerDialog(
++    onDismissRequest = { onDismissRequest() },
++    confirmButton = {
++      TextButton(
++        onClick = {
++          onRangeSelected(
++            DateRangePickerResult(
++              startDate = state.selectedStartDateMillis,
++              endDate = state.selectedEndDateMillis
++            )
++          )
++        },
++        enabled = state.selectedStartDateMillis != null && state.selectedEndDateMillis != null,
++        colors = buttonColors
++      ) {
++        Text(props.confirmButtonLabel ?: stringResource(android.R.string.ok))
++      }
++    },
++    dismissButton = {
++      TextButton(onClick = { onDismissRequest() }, colors = buttonColors) {
++        Text(props.dismissButtonLabel ?: stringResource(android.R.string.cancel))
++      }
++    },
++    colors = colors
++  ) {
++    DateRangePicker(state = state, colors = colors)
++  }
++}
++
+ @OptIn(ExperimentalMaterial3Api::class)
+ @Composable
+ fun ExpoTimePickerDialogContent(props: TimePickerDialogProps, onDateSelected: (DatePickerResult) -> Unit, onDismissRequest: () -> Unit) {
 diff --git a/android/src/main/java/expo/modules/ui/ExpoUIModule.kt b/android/src/main/java/expo/modules/ui/ExpoUIModule.kt
-index 435cb67dc6c8a2a0db1602e0374f3ed07bec9dea..607d2d9019526fc7a71ca379bfb6b8b910e4ff32 100644
+index 435cb67dc6c8a2a0db1602e0374f3ed07bec9dea..b27cafb68f8a8373b0380ec3815f1c435c92373a 100644
 --- a/android/src/main/java/expo/modules/ui/ExpoUIModule.kt
 +++ b/android/src/main/java/expo/modules/ui/ExpoUIModule.kt
 @@ -28,11 +28,17 @@ import expo.modules.ui.button.IconButtonContent
@@ -20,7 +160,23 @@ index 435cb67dc6c8a2a0db1602e0374f3ed07bec9dea..607d2d9019526fc7a71ca379bfb6b8b9
  import expo.modules.kotlin.jni.worklets.Worklet
  import expo.modules.ui.state.ObservableState
  import expo.modules.ui.state.WorkletCallback
-@@ -376,6 +382,28 @@ class ExpoUIModule : Module() {
+@@ -351,6 +357,15 @@ class ExpoUIModule : Module() {
+       }
+     }
+ 
++    ExpoUIView<DateRangePickerDialogProps>("DateRangePickerDialogView") {
++      val onRangeSelected by Event<DateRangePickerResult>()
++      val onDismissRequest by Event<Unit>()
++
++      Content { props ->
++        ExpoDateRangePickerDialogContent(props, { onRangeSelected(it) }, { onDismissRequest(Unit) })
++      }
++    }
++
+     ExpoUIView<TimePickerDialogProps>("TimePickerDialogView") {
+       val onDateSelected by Event<DatePickerResult>()
+       val onDismissRequest by Event<Unit>()
+@@ -376,6 +391,28 @@ class ExpoUIModule : Module() {
        }
      }
  
@@ -302,6 +458,34 @@ index 0000000000000000000000000000000000000000..a8a589bd6e83def9223441a4acff26e3
 +    }
 +  }
 +}
+diff --git a/build/jetpack-compose/DatePicker/index.d.ts b/build/jetpack-compose/DatePicker/index.d.ts
+index baf6932344f9b19a1233d85f580a2a9d2b75efcb..33edec1525375cb8536fa3497973f1155b1cda1a 100644
+--- a/build/jetpack-compose/DatePicker/index.d.ts
++++ b/build/jetpack-compose/DatePicker/index.d.ts
+@@ -170,6 +170,23 @@ export interface DatePickerDialogProps {
+     onDismissRequest: () => void;
+ }
+ export declare function DatePickerDialog(props: DatePickerDialogProps): import("react/jsx-runtime").JSX.Element;
++export interface DateRangePickerDialogProps {
++    initialStartDate?: string | null;
++    initialEndDate?: string | null;
++    confirmButtonLabel?: string;
++    dismissButtonLabel?: string;
++    color?: ColorValue;
++    selectableDates?: {
++        start?: Date;
++        end?: Date;
++    };
++    onRangeSelected?: (range: {
++        start: Date;
++        end: Date;
++    }) => void;
++    onDismissRequest: () => void;
++}
++export declare function DateRangePickerDialog(props: DateRangePickerDialogProps): import("react/jsx-runtime").JSX.Element;
+ export interface TimePickerDialogProps {
+     initialDate?: string | null;
+     is24Hour?: boolean;
 diff --git a/build/jetpack-compose/DropdownMenu/index.d.ts b/build/jetpack-compose/DropdownMenu/index.d.ts
 index 05d6909108a74317ac3117327ad19b0c9661b082..c2dd4b3d8563a13174e668a0f182c7e221d308cd 100644
 --- a/build/jetpack-compose/DropdownMenu/index.d.ts
@@ -420,6 +604,59 @@ index f4f73b52e8fa3146fc2cffd02de66d0e1e89639d..06a5db84c4bd39c8511a376c566517e8
  export * from './PullToRefreshBox';
  export * from './RadioButton';
  export * from './Surface';
+diff --git a/src/jetpack-compose/DatePicker/index.tsx b/src/jetpack-compose/DatePicker/index.tsx
+index 3ee5596e2f6fc02471ada733794fba69fbf011ce..da29bc51eb5978ddb111bbfdfa6210776d701afa 100644
+--- a/src/jetpack-compose/DatePicker/index.tsx
++++ b/src/jetpack-compose/DatePicker/index.tsx
+@@ -260,6 +260,48 @@ export function DatePickerDialog(props: DatePickerDialogProps) {
+   return <DatePickerDialogNativeView {...nativeProps} />;
+ }
+ 
++export interface DateRangePickerDialogProps {
++  initialStartDate?: string | null;
++  initialEndDate?: string | null;
++  confirmButtonLabel?: string;
++  dismissButtonLabel?: string;
++  color?: ColorValue;
++  selectableDates?: { start?: Date; end?: Date };
++  onRangeSelected?: (range: { start: Date; end: Date }) => void;
++  onDismissRequest: () => void;
++}
++
++type NativeDateRangePickerDialogProps = Omit<
++  DateRangePickerDialogProps,
++  'onRangeSelected' | 'onDismissRequest' | 'initialStartDate' | 'initialEndDate' | 'selectableDates'
++> & {
++  initialStartDate?: number | null;
++  initialEndDate?: number | null;
++  selectableDates?: { start?: number | null; end?: number | null } | null;
++} & ViewEvent<'onRangeSelected', { startDate: Date; endDate: Date }> &
++  ViewEvent<'onDismissRequest', void>;
++
++const DateRangePickerDialogNativeView: React.ComponentType<NativeDateRangePickerDialogProps> =
++  requireNativeView('ExpoUI', 'DateRangePickerDialogView');
++
++export function DateRangePickerDialog(props: DateRangePickerDialogProps) {
++  const { initialStartDate, initialEndDate, selectableDates, onDismissRequest, ...rest } = props;
++  const nativeProps: NativeDateRangePickerDialogProps = {
++    ...rest,
++    initialStartDate: initialStartDate ? new Date(initialStartDate).getTime() : null,
++    initialEndDate: initialEndDate ? new Date(initialEndDate).getTime() : null,
++    selectableDates: convertSelectableDates(selectableDates),
++    onRangeSelected: ({ nativeEvent: { startDate, endDate } }) => {
++      props.onRangeSelected?.({
++        start: new Date(startDate),
++        end: new Date(endDate),
++      });
++    },
++    onDismissRequest,
++  };
++  return <DateRangePickerDialogNativeView {...nativeProps} />;
++}
++
+ export interface TimePickerDialogProps {
+   initialDate?: string | null;
+   is24Hour?: boolean;
 diff --git a/src/jetpack-compose/DropdownMenu/index.tsx b/src/jetpack-compose/DropdownMenu/index.tsx
 index 6b7e3e7fdabcb43eb192a703cf6479d306eed80e..c01aa43c036ae0561e8a019c6c30b0493028586e 100644
 --- a/src/jetpack-compose/DropdownMenu/index.tsx
