@@ -1,10 +1,15 @@
-import { Tabs } from 'expo-router';
-import { useEffect, useRef, type ComponentProps } from 'react';
+import { router, Tabs } from 'expo-router';
+import { useEffect, useRef, useState, type ComponentProps } from 'react';
 import {
+  DropdownMenu,
+  DropdownMenuItem,
+  FloatingActionButton,
   Host,
   HorizontalFloatingToolbar,
   Icon as ComposeIcon,
   IconButton,
+  Row,
+  Text as ComposeText,
 } from '@expo/ui/jetpack-compose';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import {
@@ -20,6 +25,7 @@ import BarChart from '@expo/material-symbols/bar_chart.xml';
 import GridView from '@expo/material-symbols/grid_view.xml';
 import Group from '@expo/material-symbols/group.xml';
 import MoreHoriz from '@expo/material-symbols/more_horiz.xml';
+import PersonAdd from '@expo/material-symbols/person_add.xml';
 import Receipt from '@expo/material-symbols/receipt.xml';
 import Settings from '@expo/material-symbols/settings.xml';
 import { applyElevation, useTheme } from '@/shared/design-system';
@@ -29,7 +35,10 @@ import type { TabName } from './TabBarIcon';
 type FloatingTabBarProps = Parameters<
   NonNullable<ComponentProps<typeof Tabs>['tabBar']>
 >[0] & {
+  /** Create-tab FAB. More actions use Compose `DropdownMenu` on Android. */
   onFabPress?: (routeName: string) => void;
+  /** iOS fallback when more FAB is pressed. */
+  onMorePress?: () => void;
 };
 
 type IconSource = number;
@@ -61,11 +70,19 @@ const FONT_ICONS: Record<TabName, ComponentProps<typeof MaterialIcons>['name']> 
 
 const CREATE_ROUTES = new Set(['index', 'catalogue', 'clients']);
 
+type MenuAction = {
+  key: string;
+  label: string;
+  icon: IconSource;
+  onPress?: () => void;
+};
+
 export function FloatingTabBar({
   state,
   descriptors,
   navigation,
   onFabPress,
+  onMorePress,
 }: FloatingTabBarProps) {
   const { colors, layout, radii } = useTheme();
   const { tabBar, fab } = layout;
@@ -75,6 +92,7 @@ export function FloatingTabBar({
   const activeRoute = state.routes[state.index]?.name ?? 'index';
   const showCreate = CREATE_ROUTES.has(activeRoute);
   const fabLabel = showCreate ? 'Create' : 'More actions';
+  const [menuOpen, setMenuOpen] = useState(false);
   const hidden = useTabBarVisibility((s) => s.hidden);
   const showTabBar = useTabBarVisibility((s) => s.show);
   const slide = useRef(new Animated.Value(0)).current;
@@ -83,6 +101,7 @@ export function FloatingTabBar({
 
   useEffect(() => {
     showTabBar();
+    setMenuOpen(false);
   }, [state.index, showTabBar]);
 
   useEffect(() => {
@@ -109,6 +128,36 @@ export function FloatingTabBar({
     }
   };
 
+  const closeMenu = () => setMenuOpen(false);
+
+  const menuActions: MenuAction[] = [
+    {
+      key: 'invoice',
+      label: 'Invoice',
+      icon: Receipt,
+      onPress: () => router.push('/invoice/new'),
+    },
+    {
+      key: 'catalogue',
+      label: 'Catalogue item',
+      icon: GridView,
+      onPress: () => router.push('/catalogue/new'),
+    },
+    {
+      key: 'client',
+      label: 'Client',
+      icon: PersonAdd,
+      onPress: () => router.push('/clients/new'),
+    },
+    {
+      key: 'contacts',
+      label: 'Client from contacts',
+      icon: Group,
+      onPress: () =>
+        router.push({ pathname: '/clients/new', params: { from: 'contacts' } }),
+    },
+  ];
+
   if (Platform.OS === 'android') {
     return (
       <View
@@ -129,62 +178,108 @@ export function FloatingTabBar({
             transform: [{ translateY }],
           }}
         >
-          {/* One Host; always IconButton — swapping button types drops toolbar slots. */}
           <Host matchContents>
-            <HorizontalFloatingToolbar
-              variant="standard"
-              colors={{
-                toolbarContainerColor: colors.tabBar,
-                toolbarContentColor: colors.tabInactive,
-                fabContainerColor: colors.primary,
-                fabContentColor: colors.onPrimary,
-              }}
+            {/*
+              DropdownMenu must wrap only the FAB — Compose anchors the popup to that
+              Box. Wrapping the whole toolbar pins the menu to the toolbar's left edge.
+            */}
+            <Row
+              verticalAlignment="center"
+              horizontalArrangement={{ spacedBy: 8 }}
             >
-              {state.routes.map((route, index) => {
-                const focused = state.index === index;
-                const { options } = descriptors[route.key];
-                const label =
-                  typeof options.tabBarLabel === 'string'
-                    ? options.tabBarLabel
-                    : typeof options.title === 'string'
-                      ? options.title
-                      : route.name;
-                const tabName = ROUTE_TAB[route.name] ?? 'invoices';
-                const icon = ICONS[tabName];
+              <HorizontalFloatingToolbar
+                variant="standard"
+                colors={{
+                  toolbarContainerColor: colors.tabBar,
+                  toolbarContentColor: colors.tabInactive,
+                  fabContainerColor: colors.primary,
+                  fabContentColor: colors.onPrimary,
+                }}
+              >
+                {state.routes.map((route, index) => {
+                  const focused = state.index === index;
+                  const { options } = descriptors[route.key];
+                  const label =
+                    typeof options.tabBarLabel === 'string'
+                      ? options.tabBarLabel
+                      : typeof options.title === 'string'
+                        ? options.title
+                        : route.name;
+                  const tabName = ROUTE_TAB[route.name] ?? 'invoices';
+                  const icon = ICONS[tabName];
 
-                return (
-                  <IconButton
-                    key={route.name}
-                    onClick={() => onTabPress(route, focused)}
-                    colors={{
-                      contentColor: focused
-                        ? colors.primary
-                        : colors.tabInactive,
-                    }}
+                  return (
+                    <IconButton
+                      key={route.name}
+                      onClick={() => {
+                        closeMenu();
+                        onTabPress(route, focused);
+                      }}
+                      colors={{
+                        contentColor: focused
+                          ? colors.primary
+                          : colors.tabInactive,
+                        containerColor: focused ? colors.iconSoft : undefined,
+                      }}
+                    >
+                      <ComposeIcon
+                        source={icon}
+                        size={tabBar.iconSize}
+                        tint={focused ? colors.primary : colors.tabInactive}
+                        contentDescription={
+                          options.tabBarAccessibilityLabel ?? label
+                        }
+                      />
+                    </IconButton>
+                  );
+                })}
+              </HorizontalFloatingToolbar>
+
+              <DropdownMenu
+                expanded={!showCreate && menuOpen}
+                onDismissRequest={closeMenu}
+                color={colors.surface}
+                cornerRadius={radii.lg}
+              >
+                <DropdownMenu.Trigger>
+                  <FloatingActionButton
+                    containerColor={colors.primary}
+                    onClick={() =>
+                      showCreate
+                        ? onFabPress?.(activeRoute)
+                        : setMenuOpen(true)
+                    }
                   >
-                    <ComposeIcon
-                      source={icon}
-                      size={tabBar.iconSize}
-                      tint={focused ? colors.primary : colors.tabInactive}
-                      contentDescription={
-                        options.tabBarAccessibilityLabel ?? label
-                      }
-                    />
-                  </IconButton>
-                );
-              })}
-              {onFabPress ? (
-                <HorizontalFloatingToolbar.FloatingActionButton
-                  onPress={() => onFabPress(activeRoute)}
-                >
-                  <ComposeIcon
-                    source={showCreate ? Add : MoreHoriz}
-                    size={fab.iconSize}
-                    contentDescription={fabLabel}
-                  />
-                </HorizontalFloatingToolbar.FloatingActionButton>
-              ) : null}
-            </HorizontalFloatingToolbar>
+                    <FloatingActionButton.Icon>
+                      <ComposeIcon
+                        source={showCreate ? Add : MoreHoriz}
+                        size={fab.iconSize}
+                        tint={colors.onPrimary}
+                        contentDescription={fabLabel}
+                      />
+                    </FloatingActionButton.Icon>
+                  </FloatingActionButton>
+                </DropdownMenu.Trigger>
+                <DropdownMenu.Items>
+                  {menuActions.map((action) => (
+                    <DropdownMenuItem
+                      key={action.key}
+                      onClick={() => {
+                        closeMenu();
+                        action.onPress?.();
+                      }}
+                    >
+                      <DropdownMenuItem.LeadingIcon>
+                        <ComposeIcon source={action.icon} size={22} />
+                      </DropdownMenuItem.LeadingIcon>
+                      <DropdownMenuItem.Text>
+                        <ComposeText>{action.label}</ComposeText>
+                      </DropdownMenuItem.Text>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenu.Items>
+              </DropdownMenu>
+            </Row>
           </Host>
         </Animated.View>
       </View>
@@ -273,11 +368,15 @@ export function FloatingTabBar({
             })}
           </View>
 
-          {onFabPress ? (
+          {onFabPress || onMorePress ? (
             <Pressable
               accessibilityRole="button"
               accessibilityLabel={fabLabel}
-              onPress={() => onFabPress(activeRoute)}
+              onPress={() =>
+                showCreate
+                  ? onFabPress?.(activeRoute)
+                  : onMorePress?.()
+              }
               style={({ pressed }) => [
                 styles.add,
                 {

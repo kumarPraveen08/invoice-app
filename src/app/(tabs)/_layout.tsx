@@ -40,18 +40,18 @@ export default function TabsLayout() {
 
   const onFabPress = (routeName: string) => {
     const path = CREATE_PATH[routeName];
-    if (path) {
-      router.push(path);
-      return;
-    }
-    setMoreOpen(true);
+    if (path) router.push(path);
   };
 
   return (
     <View style={{ flex: 1, backgroundColor: colors.background }}>
       <Tabs
         tabBar={(props) => (
-          <FloatingTabBar {...props} onFabPress={onFabPress} />
+          <FloatingTabBar
+            {...props}
+            onFabPress={onFabPress}
+            onMorePress={() => setMoreOpen(true)}
+          />
         )}
         screenOptions={{
           headerShadowVisible: false,

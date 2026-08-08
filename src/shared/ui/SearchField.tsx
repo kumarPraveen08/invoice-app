@@ -1,12 +1,12 @@
-import { router } from 'expo-router';
+import { router } from "expo-router";
 import {
   Pressable,
   StyleSheet,
   TextInput,
   View,
   type TextInputProps,
-} from 'react-native';
-import {Icon, useTheme} from '@/shared/design-system';
+} from "react-native";
+import { Icon, useTheme } from "@/shared/design-system";
 
 type Props = TextInputProps & {
   value: string;
@@ -19,7 +19,7 @@ type Props = TextInputProps & {
 export function SearchField({
   value,
   onChangeText,
-  placeholder = 'Search',
+  placeholder = "Search",
   onClose,
   ...props
 }: Props) {
@@ -56,17 +56,20 @@ export function SearchField({
         autoCapitalize="none"
         returnKeyType="search"
         clearButtonMode="never"
-        style={[styles.input, { color: colors.onSurface, marginHorizontal: space.sm }]}
+        style={[
+          styles.input,
+          { color: colors.onSurface, marginHorizontal: space.sm },
+        ]}
       />
       {value.length > 0 ? (
         <Pressable
           accessibilityRole="button"
           accessibilityLabel="Clear"
-          onPress={() => onChangeText('')}
+          onPress={() => onChangeText("")}
           hitSlop={8}
           style={styles.iconBtn}
         >
-          <Icon name="cancel" size={20} color={colors.onSurfaceMuted} />
+          <Icon name="close" size={20} color={colors.onSurfaceMuted} />
         </Pressable>
       ) : (
         <View style={styles.iconBtn}>
@@ -79,8 +82,8 @@ export function SearchField({
 
 const styles = StyleSheet.create({
   wrap: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     minHeight: 56,
   },
   input: {
@@ -92,7 +95,7 @@ const styles = StyleSheet.create({
   iconBtn: {
     width: 40,
     height: 40,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

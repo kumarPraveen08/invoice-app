@@ -330,7 +330,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "package",
-      "community": 4,
+      "community": 28,
       "norm_label": "package.json"
     },
     {
@@ -340,7 +340,7 @@
       "source_location": "L2",
       "_origin": "ast",
       "id": "package_name",
-      "community": 4,
+      "community": 28,
       "norm_label": "name"
     },
     {
@@ -350,7 +350,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "package_version",
-      "community": 4,
+      "community": 28,
       "norm_label": "version"
     },
     {
@@ -360,7 +360,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "package_main",
-      "community": 4,
+      "community": 28,
       "norm_label": "main"
     },
     {
@@ -374,10 +374,30 @@
       "norm_label": "dependencies"
     },
     {
-      "label": "@expo/vector-icons",
+      "label": "@expo/material-symbols",
       "file_type": "code",
       "source_file": "package.json",
       "source_location": "L6",
+      "_origin": "ast",
+      "id": "package_dependencies_expo_material_symbols",
+      "community": 4,
+      "norm_label": "@expo/material-symbols"
+    },
+    {
+      "label": "@expo/ui",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "package_dependencies_expo_ui",
+      "community": 4,
+      "norm_label": "@expo/ui"
+    },
+    {
+      "label": "@expo/vector-icons",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L8",
       "_origin": "ast",
       "id": "package_dependencies_expo_vector_icons",
       "community": 4,
@@ -387,7 +407,7 @@
       "label": "@hookform/resolvers",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L7",
+      "source_location": "L9",
       "_origin": "ast",
       "id": "package_dependencies_hookform_resolvers",
       "community": 4,
@@ -397,7 +417,7 @@
       "label": "@lodev09/react-native-true-sheet",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L8",
+      "source_location": "L10",
       "_origin": "ast",
       "id": "package_dependencies_lodev09_react_native_true_sheet",
       "community": 4,
@@ -407,17 +427,27 @@
       "label": "@react-native-community/datetimepicker",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L9",
+      "source_location": "L11",
       "_origin": "ast",
       "id": "package_dependencies_react_native_community_datetimepicker",
       "community": 4,
       "norm_label": "@react-native-community/datetimepicker"
     },
     {
+      "label": "@supabase/supabase-js",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L12",
+      "_origin": "ast",
+      "id": "package_dependencies_supabase_supabase_js",
+      "community": 4,
+      "norm_label": "@supabase/supabase-js"
+    },
+    {
       "label": "date-fns",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L10",
+      "source_location": "L13",
       "_origin": "ast",
       "id": "package_dependencies_date_fns",
       "community": 4,
@@ -427,17 +457,27 @@
       "label": "expo",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L11",
+      "source_location": "L14",
       "_origin": "ast",
       "id": "package_dependencies_expo",
       "community": 4,
       "norm_label": "expo"
     },
     {
+      "label": "expo-auth-session",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L15",
+      "_origin": "ast",
+      "id": "package_dependencies_expo_auth_session",
+      "community": 4,
+      "norm_label": "expo-auth-session"
+    },
+    {
       "label": "expo-constants",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L12",
+      "source_location": "L16",
       "_origin": "ast",
       "id": "package_dependencies_expo_constants",
       "community": 4,
@@ -447,7 +487,7 @@
       "label": "expo-contacts",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L13",
+      "source_location": "L17",
       "_origin": "ast",
       "id": "package_dependencies_expo_contacts",
       "community": 4,
@@ -457,7 +497,7 @@
       "label": "expo-dev-client",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L14",
+      "source_location": "L18",
       "_origin": "ast",
       "id": "package_dependencies_expo_dev_client",
       "community": 4,
@@ -467,7 +507,7 @@
       "label": "expo-document-picker",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L15",
+      "source_location": "L19",
       "_origin": "ast",
       "id": "package_dependencies_expo_document_picker",
       "community": 4,
@@ -477,7 +517,7 @@
       "label": "expo-file-system",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L16",
+      "source_location": "L20",
       "_origin": "ast",
       "id": "package_dependencies_expo_file_system",
       "community": 4,
@@ -487,7 +527,7 @@
       "label": "expo-linking",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L17",
+      "source_location": "L21",
       "_origin": "ast",
       "id": "package_dependencies_expo_linking",
       "community": 4,
@@ -497,27 +537,47 @@
       "label": "expo-navigation-bar",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L18",
+      "source_location": "L22",
       "_origin": "ast",
       "id": "package_dependencies_expo_navigation_bar",
       "community": 4,
       "norm_label": "expo-navigation-bar"
     },
     {
+      "label": "expo-print",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L23",
+      "_origin": "ast",
+      "id": "package_dependencies_expo_print",
+      "community": 4,
+      "norm_label": "expo-print"
+    },
+    {
       "label": "expo-router",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L19",
+      "source_location": "L24",
       "_origin": "ast",
       "id": "package_dependencies_expo_router",
       "community": 4,
       "norm_label": "expo-router"
     },
     {
+      "label": "expo-secure-store",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L25",
+      "_origin": "ast",
+      "id": "package_dependencies_expo_secure_store",
+      "community": 4,
+      "norm_label": "expo-secure-store"
+    },
+    {
       "label": "expo-sharing",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L20",
+      "source_location": "L26",
       "_origin": "ast",
       "id": "package_dependencies_expo_sharing",
       "community": 4,
@@ -527,7 +587,7 @@
       "label": "expo-splash-screen",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L21",
+      "source_location": "L27",
       "_origin": "ast",
       "id": "package_dependencies_expo_splash_screen",
       "community": 4,
@@ -537,17 +597,27 @@
       "label": "expo-status-bar",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L22",
+      "source_location": "L28",
       "_origin": "ast",
       "id": "package_dependencies_expo_status_bar",
       "community": 4,
       "norm_label": "expo-status-bar"
     },
     {
+      "label": "expo-web-browser",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L29",
+      "_origin": "ast",
+      "id": "package_dependencies_expo_web_browser",
+      "community": 4,
+      "norm_label": "expo-web-browser"
+    },
+    {
       "label": "react",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L23",
+      "source_location": "L30",
       "_origin": "ast",
       "id": "package_dependencies_react",
       "community": 4,
@@ -557,7 +627,7 @@
       "label": "react-dom",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L24",
+      "source_location": "L31",
       "_origin": "ast",
       "id": "package_dependencies_react_dom",
       "community": 4,
@@ -567,7 +637,7 @@
       "label": "react-hook-form",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L25",
+      "source_location": "L32",
       "_origin": "ast",
       "id": "package_dependencies_react_hook_form",
       "community": 4,
@@ -577,7 +647,7 @@
       "label": "react-native",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L26",
+      "source_location": "L33",
       "_origin": "ast",
       "id": "package_dependencies_react_native",
       "community": 4,
@@ -587,7 +657,7 @@
       "label": "react-native-mmkv",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L27",
+      "source_location": "L34",
       "_origin": "ast",
       "id": "package_dependencies_react_native_mmkv",
       "community": 4,
@@ -597,7 +667,7 @@
       "label": "react-native-nitro-modules",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L28",
+      "source_location": "L35",
       "_origin": "ast",
       "id": "package_dependencies_react_native_nitro_modules",
       "community": 4,
@@ -607,7 +677,7 @@
       "label": "react-native-safe-area-context",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L29",
+      "source_location": "L36",
       "_origin": "ast",
       "id": "package_dependencies_react_native_safe_area_context",
       "community": 4,
@@ -617,7 +687,7 @@
       "label": "react-native-screens",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L30",
+      "source_location": "L37",
       "_origin": "ast",
       "id": "package_dependencies_react_native_screens",
       "community": 4,
@@ -627,17 +697,27 @@
       "label": "react-native-signature-canvas",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L31",
+      "source_location": "L38",
       "_origin": "ast",
       "id": "package_dependencies_react_native_signature_canvas",
       "community": 4,
       "norm_label": "react-native-signature-canvas"
     },
     {
+      "label": "react-native-url-polyfill",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L39",
+      "_origin": "ast",
+      "id": "package_dependencies_react_native_url_polyfill",
+      "community": 4,
+      "norm_label": "react-native-url-polyfill"
+    },
+    {
       "label": "react-native-web",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L32",
+      "source_location": "L40",
       "_origin": "ast",
       "id": "package_dependencies_react_native_web",
       "community": 4,
@@ -647,7 +727,7 @@
       "label": "react-native-webview",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L33",
+      "source_location": "L41",
       "_origin": "ast",
       "id": "package_dependencies_react_native_webview",
       "community": 4,
@@ -657,7 +737,7 @@
       "label": "uuid",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L34",
+      "source_location": "L42",
       "_origin": "ast",
       "id": "package_dependencies_uuid",
       "community": 4,
@@ -667,7 +747,7 @@
       "label": "zod",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L35",
+      "source_location": "L43",
       "_origin": "ast",
       "id": "package_dependencies_zod",
       "community": 4,
@@ -677,7 +757,7 @@
       "label": "zustand",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L36",
+      "source_location": "L44",
       "_origin": "ast",
       "id": "package_dependencies_zustand",
       "community": 4,
@@ -687,110 +767,150 @@
       "label": "devDependencies",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L38",
+      "source_location": "L46",
       "_origin": "ast",
       "id": "package_devdependencies",
-      "community": 4,
+      "community": 28,
       "norm_label": "devdependencies"
     },
     {
       "label": "@types/react",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L39",
+      "source_location": "L47",
       "_origin": "ast",
       "id": "package_devdependencies_types_react",
-      "community": 4,
+      "community": 28,
       "norm_label": "@types/react"
     },
     {
       "label": "@types/uuid",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L40",
+      "source_location": "L48",
       "_origin": "ast",
       "id": "package_devdependencies_types_uuid",
-      "community": 4,
+      "community": 28,
       "norm_label": "@types/uuid"
     },
     {
       "label": "typescript",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L41",
+      "source_location": "L49",
       "_origin": "ast",
       "id": "package_devdependencies_typescript",
-      "community": 4,
+      "community": 28,
       "norm_label": "typescript"
     },
     {
       "label": "scripts",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L43",
+      "source_location": "L51",
       "_origin": "ast",
       "id": "package_scripts",
-      "community": 4,
+      "community": 29,
       "norm_label": "scripts"
     },
     {
       "label": "start",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L44",
+      "source_location": "L52",
       "_origin": "ast",
       "id": "package_scripts_start",
-      "community": 4,
+      "community": 29,
       "norm_label": "start"
     },
     {
       "label": "android",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L45",
+      "source_location": "L53",
       "_origin": "ast",
       "id": "package_scripts_android",
-      "community": 4,
+      "community": 29,
       "norm_label": "android"
     },
     {
       "label": "ios",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L46",
+      "source_location": "L54",
       "_origin": "ast",
       "id": "package_scripts_ios",
-      "community": 4,
+      "community": 29,
       "norm_label": "ios"
     },
     {
       "label": "web",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L47",
+      "source_location": "L55",
       "_origin": "ast",
       "id": "package_scripts_web",
-      "community": 4,
+      "community": 29,
       "norm_label": "web"
+    },
+    {
+      "label": "expo",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L57",
+      "_origin": "ast",
+      "id": "package_expo",
+      "community": 30,
+      "norm_label": "expo"
+    },
+    {
+      "label": "autolinking",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L58",
+      "_origin": "ast",
+      "id": "package_expo_autolinking",
+      "community": 30,
+      "norm_label": "autolinking"
+    },
+    {
+      "label": "android",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L59",
+      "_origin": "ast",
+      "id": "package_autolinking_android",
+      "community": 30,
+      "norm_label": "android"
+    },
+    {
+      "label": "buildFromSource",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L60",
+      "_origin": "ast",
+      "id": "package_android_buildfromsource",
+      "community": 30,
+      "norm_label": "buildfromsource"
     },
     {
       "label": "private",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L49",
+      "source_location": "L64",
       "_origin": "ast",
       "id": "package_private",
-      "community": 4,
+      "community": 28,
       "norm_label": "private"
     },
     {
       "label": "packageManager",
       "file_type": "code",
       "source_file": "package.json",
-      "source_location": "L50",
+      "source_location": "L65",
       "_origin": "ast",
       "id": "package_packagemanager",
-      "community": 4,
+      "community": 28,
       "norm_label": "packagemanager"
     },
     {
@@ -807,17 +927,17 @@
       "label": "CREATE_PATH",
       "file_type": "code",
       "source_file": "src/app/(tabs)/_layout.tsx",
-      "source_location": "L9",
+      "source_location": "L8",
       "_origin": "ast",
       "id": "tabs_layout_create_path",
       "community": 18,
       "norm_label": "create_path"
     },
     {
-      "label": "HeaderIcon()",
+      "label": "headerIcon()",
       "file_type": "code",
       "source_file": "src/app/(tabs)/_layout.tsx",
-      "source_location": "L18",
+      "source_location": "L17",
       "_origin": "ast",
       "id": "tabs_layout_headericon",
       "community": 18,
@@ -827,7 +947,7 @@
       "label": "TabsLayout()",
       "file_type": "code",
       "source_file": "src/app/(tabs)/_layout.tsx",
-      "source_location": "L41",
+      "source_location": "L36",
       "_origin": "ast",
       "id": "tabs_layout_tabslayout",
       "community": 18,
@@ -870,7 +990,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "tabs_reports",
-      "community": 13,
+      "community": 20,
       "norm_label": "reports.tsx"
     },
     {
@@ -900,27 +1020,27 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_layout",
-      "community": 1,
+      "community": 19,
       "norm_label": "_layout.tsx"
     },
     {
       "label": "RootNavigator()",
       "file_type": "code",
       "source_file": "src/app/_layout.tsx",
-      "source_location": "L13",
+      "source_location": "L15",
       "_origin": "ast",
       "id": "app_layout_rootnavigator",
-      "community": 1,
+      "community": 19,
       "norm_label": "rootnavigator()"
     },
     {
       "label": "RootLayout()",
       "file_type": "code",
       "source_file": "src/app/_layout.tsx",
-      "source_location": "L179",
+      "source_location": "L192",
       "_origin": "ast",
       "id": "app_layout_rootlayout",
-      "community": 1,
+      "community": 19,
       "norm_label": "rootlayout()"
     },
     {
@@ -954,16 +1074,6 @@
       "norm_label": "index.tsx"
     },
     {
-      "label": "AuthWelcomeRoute()",
-      "file_type": "code",
-      "source_file": "src/app/auth/index.tsx",
-      "source_location": "L3",
-      "_origin": "ast",
-      "id": "auth_index_authwelcomeroute",
-      "community": 19,
-      "norm_label": "authwelcomeroute()"
-    },
-    {
       "label": "login.tsx",
       "file_type": "code",
       "source_file": "src/app/auth/login.tsx",
@@ -972,36 +1082,6 @@
       "id": "auth_login",
       "community": 19,
       "norm_label": "login.tsx"
-    },
-    {
-      "label": "AuthLoginRoute()",
-      "file_type": "code",
-      "source_file": "src/app/auth/login.tsx",
-      "source_location": "L3",
-      "_origin": "ast",
-      "id": "auth_login_authloginroute",
-      "community": 19,
-      "norm_label": "authloginroute()"
-    },
-    {
-      "label": "signup.tsx",
-      "file_type": "code",
-      "source_file": "src/app/auth/signup.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "auth_signup",
-      "community": 19,
-      "norm_label": "signup.tsx"
-    },
-    {
-      "label": "AuthSignupRoute()",
-      "file_type": "code",
-      "source_file": "src/app/auth/signup.tsx",
-      "source_location": "L3",
-      "_origin": "ast",
-      "id": "auth_signup_authsignuproute",
-      "community": 19,
-      "norm_label": "authsignuproute()"
     },
     {
       "label": "[id].tsx",
@@ -1020,7 +1100,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "catalogue_import",
-      "community": 3,
+      "community": 16,
       "norm_label": "import.tsx"
     },
     {
@@ -1030,7 +1110,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "catalogue_import_catalogueimportscreen",
-      "community": 3,
+      "community": 16,
       "norm_label": "catalogueimportscreen()"
     },
     {
@@ -1060,7 +1140,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "clients_id",
-      "community": 16,
+      "community": 7,
       "norm_label": "[id].tsx"
     },
     {
@@ -1070,7 +1150,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "clients_import",
-      "community": 3,
+      "community": 16,
       "norm_label": "import.tsx"
     },
     {
@@ -1080,7 +1160,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "clients_import_clientsimportscreen",
-      "community": 3,
+      "community": 16,
       "norm_label": "clientsimportscreen()"
     },
     {
@@ -1120,7 +1200,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "invoice_new",
-      "community": 20,
+      "community": 7,
       "norm_label": "new.tsx"
     },
     {
@@ -1160,17 +1240,17 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "settings_layout",
-      "community": 18,
+      "community": 25,
       "norm_label": "_layout.tsx"
     },
     {
       "label": "SettingsLayout()",
       "file_type": "code",
       "source_file": "src/app/settings/_layout.tsx",
-      "source_location": "L4",
+      "source_location": "L5",
       "_origin": "ast",
       "id": "settings_layout_settingslayout",
-      "community": 18,
+      "community": 25,
       "norm_label": "settingslayout()"
     },
     {
@@ -1190,7 +1270,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "settings_bank",
-      "community": 5,
+      "community": 21,
       "norm_label": "bank.tsx"
     },
     {
@@ -1200,7 +1280,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "settings_branding",
-      "community": 16,
+      "community": 18,
       "norm_label": "branding.tsx"
     },
     {
@@ -1210,7 +1290,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "settings_business",
-      "community": 5,
+      "community": 21,
       "norm_label": "business.tsx"
     },
     {
@@ -1230,7 +1310,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "settings_invoice_defaults",
-      "community": 5,
+      "community": 21,
       "norm_label": "invoice-defaults.tsx"
     },
     {
@@ -1280,7 +1360,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "settings_legal",
-      "community": 16,
+      "community": 21,
       "norm_label": "legal.tsx"
     },
     {
@@ -1320,8 +1400,138 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "settings_subscription",
-      "community": 3,
+      "community": 20,
       "norm_label": "subscription.tsx"
+    },
+    {
+      "label": "GoogleSignInButton.tsx",
+      "file_type": "code",
+      "source_file": "src/features/auth/components/GoogleSignInButton.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "components_googlesigninbutton",
+      "community": 19,
+      "norm_label": "googlesigninbutton.tsx"
+    },
+    {
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "src/features/auth/components/GoogleSignInButton.tsx",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "components_googlesigninbutton_props",
+      "community": 19,
+      "norm_label": "props"
+    },
+    {
+      "label": "GoogleSignInButton()",
+      "file_type": "code",
+      "source_file": "src/features/auth/components/GoogleSignInButton.tsx",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "components_googlesigninbutton_googlesigninbutton",
+      "community": 19,
+      "norm_label": "googlesigninbutton()"
+    },
+    {
+      "label": "styles",
+      "file_type": "code",
+      "source_file": "src/features/auth/components/GoogleSignInButton.tsx",
+      "source_location": "L79",
+      "_origin": "ast",
+      "id": "components_googlesigninbutton_styles",
+      "community": 19,
+      "norm_label": "styles"
+    },
+    {
+      "label": "useAuth.ts",
+      "file_type": "code",
+      "source_file": "src/features/auth/hooks/useAuth.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "hooks_useauth",
+      "community": 19,
+      "norm_label": "useauth.ts"
+    },
+    {
+      "label": "REDIRECT_URL",
+      "file_type": "code",
+      "source_file": "src/features/auth/hooks/useAuth.ts",
+      "source_location": "L21",
+      "_origin": "ast",
+      "id": "hooks_useauth_redirect_url",
+      "community": 19,
+      "norm_label": "redirect_url"
+    },
+    {
+      "label": "AuthContextValue",
+      "file_type": "code",
+      "source_file": "src/features/auth/hooks/useAuth.ts",
+      "source_location": "L26",
+      "_origin": "ast",
+      "id": "hooks_useauth_authcontextvalue",
+      "community": 19,
+      "norm_label": "authcontextvalue"
+    },
+    {
+      "label": "AuthContext",
+      "file_type": "code",
+      "source_file": "src/features/auth/hooks/useAuth.ts",
+      "source_location": "L37",
+      "_origin": "ast",
+      "id": "hooks_useauth_authcontext",
+      "community": 19,
+      "norm_label": "authcontext"
+    },
+    {
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "src/features/auth/hooks/useAuth.ts",
+      "source_location": "L39",
+      "_origin": "ast",
+      "id": "hooks_useauth_props",
+      "community": 19,
+      "norm_label": "props"
+    },
+    {
+      "label": "formatAuthError()",
+      "file_type": "code",
+      "source_file": "src/features/auth/hooks/useAuth.ts",
+      "source_location": "L43",
+      "_origin": "ast",
+      "id": "hooks_useauth_formatautherror",
+      "community": 19,
+      "norm_label": "formatautherror()"
+    },
+    {
+      "label": "parseAuthUrl()",
+      "file_type": "code",
+      "source_file": "src/features/auth/hooks/useAuth.ts",
+      "source_location": "L69",
+      "_origin": "ast",
+      "id": "hooks_useauth_parseauthurl",
+      "community": 19,
+      "norm_label": "parseauthurl()"
+    },
+    {
+      "label": "AuthProvider()",
+      "file_type": "code",
+      "source_file": "src/features/auth/hooks/useAuth.ts",
+      "source_location": "L93",
+      "_origin": "ast",
+      "id": "hooks_useauth_authprovider",
+      "community": 19,
+      "norm_label": "authprovider()"
+    },
+    {
+      "label": "useAuth()",
+      "file_type": "code",
+      "source_file": "src/features/auth/hooks/useAuth.ts",
+      "source_location": "L232",
+      "_origin": "ast",
+      "id": "hooks_useauth_useauth",
+      "community": 19,
+      "norm_label": "useauth()"
     },
     {
       "label": "index.ts",
@@ -1334,82 +1544,32 @@
       "norm_label": "index.ts"
     },
     {
-      "label": "AuthFormScreen.tsx",
+      "label": "AuthScreen.tsx",
       "file_type": "code",
-      "source_file": "src/features/auth/screens/AuthFormScreen.tsx",
+      "source_file": "src/features/auth/screens/AuthScreen.tsx",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "screens_authformscreen",
+      "id": "screens_authscreen",
       "community": 19,
-      "norm_label": "authformscreen.tsx"
+      "norm_label": "authscreen.tsx"
     },
     {
-      "label": "Mode",
+      "label": "AuthScreen()",
       "file_type": "code",
-      "source_file": "src/features/auth/screens/AuthFormScreen.tsx",
-      "source_location": "L16",
+      "source_file": "src/features/auth/screens/AuthScreen.tsx",
+      "source_location": "L6",
       "_origin": "ast",
-      "id": "screens_authformscreen_mode",
+      "id": "screens_authscreen_authscreen",
       "community": 19,
-      "norm_label": "mode"
-    },
-    {
-      "label": "Props",
-      "file_type": "code",
-      "source_file": "src/features/auth/screens/AuthFormScreen.tsx",
-      "source_location": "L18",
-      "_origin": "ast",
-      "id": "screens_authformscreen_props",
-      "community": 19,
-      "norm_label": "props"
-    },
-    {
-      "label": "AuthFormScreen()",
-      "file_type": "code",
-      "source_file": "src/features/auth/screens/AuthFormScreen.tsx",
-      "source_location": "L22",
-      "_origin": "ast",
-      "id": "screens_authformscreen_authformscreen",
-      "community": 19,
-      "norm_label": "authformscreen()"
+      "norm_label": "authscreen()"
     },
     {
       "label": "styles",
       "file_type": "code",
-      "source_file": "src/features/auth/screens/AuthFormScreen.tsx",
-      "source_location": "L227",
+      "source_file": "src/features/auth/screens/AuthScreen.tsx",
+      "source_location": "L74",
       "_origin": "ast",
-      "id": "screens_authformscreen_styles",
-      "community": 19,
-      "norm_label": "styles"
-    },
-    {
-      "label": "AuthWelcomeScreen.tsx",
-      "file_type": "code",
-      "source_file": "src/features/auth/screens/AuthWelcomeScreen.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "screens_authwelcomescreen",
-      "community": 19,
-      "norm_label": "authwelcomescreen.tsx"
-    },
-    {
-      "label": "AuthWelcomeScreen()",
-      "file_type": "code",
-      "source_file": "src/features/auth/screens/AuthWelcomeScreen.tsx",
-      "source_location": "L7",
-      "_origin": "ast",
-      "id": "screens_authwelcomescreen_authwelcomescreen",
-      "community": 19,
-      "norm_label": "authwelcomescreen()"
-    },
-    {
-      "label": "styles",
-      "file_type": "code",
-      "source_file": "src/features/auth/screens/AuthWelcomeScreen.tsx",
-      "source_location": "L118",
-      "_origin": "ast",
-      "id": "screens_authwelcomescreen_styles",
+      "id": "screens_authscreen_styles",
       "community": 19,
       "norm_label": "styles"
     },
@@ -1427,7 +1587,7 @@
       "label": "Props",
       "file_type": "code",
       "source_file": "src/features/catalogue/components/CatalogueRow.tsx",
-      "source_location": "L11",
+      "source_location": "L10",
       "_origin": "ast",
       "id": "components_cataloguerow_props",
       "community": 3,
@@ -1437,7 +1597,7 @@
       "label": "CatalogueRow()",
       "file_type": "code",
       "source_file": "src/features/catalogue/components/CatalogueRow.tsx",
-      "source_location": "L17",
+      "source_location": "L16",
       "_origin": "ast",
       "id": "components_cataloguerow_cataloguerow",
       "community": 3,
@@ -1447,7 +1607,7 @@
       "label": "styles",
       "file_type": "code",
       "source_file": "src/features/catalogue/components/CatalogueRow.tsx",
-      "source_location": "L114",
+      "source_location": "L113",
       "_origin": "ast",
       "id": "components_cataloguerow_styles",
       "community": 3,
@@ -1477,7 +1637,7 @@
       "label": "DetailRow()",
       "file_type": "code",
       "source_file": "src/features/catalogue/screens/CatalogueDetailScreen.tsx",
-      "source_location": "L12",
+      "source_location": "L11",
       "_origin": "ast",
       "id": "screens_cataloguedetailscreen_detailrow",
       "community": 3,
@@ -1487,17 +1647,17 @@
       "label": "CatalogueDetailScreen()",
       "file_type": "code",
       "source_file": "src/features/catalogue/screens/CatalogueDetailScreen.tsx",
-      "source_location": "L47",
+      "source_location": "L46",
       "_origin": "ast",
       "id": "screens_cataloguedetailscreen_cataloguedetailscreen",
-      "community": 3,
+      "community": 7,
       "norm_label": "cataloguedetailscreen()"
     },
     {
       "label": "styles",
       "file_type": "code",
       "source_file": "src/features/catalogue/screens/CatalogueDetailScreen.tsx",
-      "source_location": "L114",
+      "source_location": "L110",
       "_origin": "ast",
       "id": "screens_cataloguedetailscreen_styles",
       "community": 3,
@@ -1657,7 +1817,7 @@
       "label": "Props",
       "file_type": "code",
       "source_file": "src/features/customers/components/ClientRow.tsx",
-      "source_location": "L10",
+      "source_location": "L9",
       "_origin": "ast",
       "id": "components_clientrow_props",
       "community": 16,
@@ -1667,7 +1827,7 @@
       "label": "ClientRow()",
       "file_type": "code",
       "source_file": "src/features/customers/components/ClientRow.tsx",
-      "source_location": "L15",
+      "source_location": "L14",
       "_origin": "ast",
       "id": "components_clientrow_clientrow",
       "community": 16,
@@ -1677,7 +1837,7 @@
       "label": "styles",
       "file_type": "code",
       "source_file": "src/features/customers/components/ClientRow.tsx",
-      "source_location": "L110",
+      "source_location": "L109",
       "_origin": "ast",
       "id": "components_clientrow_styles",
       "community": 16,
@@ -1700,27 +1860,27 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "screens_clientdetailscreen",
-      "community": 16,
+      "community": 7,
       "norm_label": "clientdetailscreen.tsx"
     },
     {
       "label": "invoicesForClient()",
       "file_type": "code",
       "source_file": "src/features/customers/screens/ClientDetailScreen.tsx",
-      "source_location": "L16",
+      "source_location": "L15",
       "_origin": "ast",
       "id": "screens_clientdetailscreen_invoicesforclient",
-      "community": 16,
+      "community": 7,
       "norm_label": "invoicesforclient()"
     },
     {
       "label": "ClientDetailScreen()",
       "file_type": "code",
       "source_file": "src/features/customers/screens/ClientDetailScreen.tsx",
-      "source_location": "L20",
+      "source_location": "L19",
       "_origin": "ast",
       "id": "screens_clientdetailscreen_clientdetailscreen",
-      "community": 16,
+      "community": 7,
       "norm_label": "clientdetailscreen()"
     },
     {
@@ -1937,7 +2097,7 @@
       "label": "Props",
       "file_type": "code",
       "source_file": "src/features/invoices/components/InvoiceRow.tsx",
-      "source_location": "L15",
+      "source_location": "L14",
       "_origin": "ast",
       "id": "components_invoicerow_props",
       "community": 7,
@@ -1947,7 +2107,7 @@
       "label": "STATUS_ICON",
       "file_type": "code",
       "source_file": "src/features/invoices/components/InvoiceRow.tsx",
-      "source_location": "L22",
+      "source_location": "L21",
       "_origin": "ast",
       "id": "components_invoicerow_status_icon",
       "community": 7,
@@ -1957,7 +2117,7 @@
       "label": "unpaidStatusFor()",
       "file_type": "code",
       "source_file": "src/features/invoices/components/InvoiceRow.tsx",
-      "source_location": "L33",
+      "source_location": "L32",
       "_origin": "ast",
       "id": "components_invoicerow_unpaidstatusfor",
       "community": 7,
@@ -1967,7 +2127,7 @@
       "label": "InvoiceRow()",
       "file_type": "code",
       "source_file": "src/features/invoices/components/InvoiceRow.tsx",
-      "source_location": "L38",
+      "source_location": "L37",
       "_origin": "ast",
       "id": "components_invoicerow_invoicerow",
       "community": 7,
@@ -1977,7 +2137,7 @@
       "label": "styles",
       "file_type": "code",
       "source_file": "src/features/invoices/components/InvoiceRow.tsx",
-      "source_location": "L226",
+      "source_location": "L223",
       "_origin": "ast",
       "id": "components_invoicerow_styles",
       "community": 7,
@@ -2214,6 +2374,46 @@
       "norm_label": "index.ts"
     },
     {
+      "label": "invoicePdf.ts",
+      "file_type": "code",
+      "source_file": "src/features/invoices/invoicePdf.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "invoices_invoicepdf",
+      "community": 7,
+      "norm_label": "invoicepdf.ts"
+    },
+    {
+      "label": "escapeHtml()",
+      "file_type": "code",
+      "source_file": "src/features/invoices/invoicePdf.ts",
+      "source_location": "L15",
+      "_origin": "ast",
+      "id": "invoices_invoicepdf_escapehtml",
+      "community": 7,
+      "norm_label": "escapehtml()"
+    },
+    {
+      "label": "buildInvoicePdfHtml()",
+      "file_type": "code",
+      "source_file": "src/features/invoices/invoicePdf.ts",
+      "source_location": "L23",
+      "_origin": "ast",
+      "id": "invoices_invoicepdf_buildinvoicepdfhtml",
+      "community": 7,
+      "norm_label": "buildinvoicepdfhtml()"
+    },
+    {
+      "label": "downloadInvoicePdf()",
+      "file_type": "code",
+      "source_file": "src/features/invoices/invoicePdf.ts",
+      "source_location": "L142",
+      "_origin": "ast",
+      "id": "invoices_invoicepdf_downloadinvoicepdf",
+      "community": 7,
+      "norm_label": "downloadinvoicepdf()"
+    },
+    {
       "label": "InvoiceDetailScreen.tsx",
       "file_type": "code",
       "source_file": "src/features/invoices/screens/InvoiceDetailScreen.tsx",
@@ -2227,7 +2427,7 @@
       "label": "InvoiceDetailScreen()",
       "file_type": "code",
       "source_file": "src/features/invoices/screens/InvoiceDetailScreen.tsx",
-      "source_location": "L24",
+      "source_location": "L23",
       "_origin": "ast",
       "id": "screens_invoicedetailscreen_invoicedetailscreen",
       "community": 7,
@@ -2280,137 +2480,137 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "screens_newinvoicescreen",
-      "community": 20,
+      "community": 7,
       "norm_label": "newinvoicescreen.tsx"
     },
     {
       "label": "LineDraft",
       "file_type": "code",
       "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
-      "source_location": "L25",
+      "source_location": "L24",
       "_origin": "ast",
       "id": "screens_newinvoicescreen_linedraft",
-      "community": 20,
+      "community": 7,
       "norm_label": "linedraft"
     },
     {
       "label": "LineErrors",
       "file_type": "code",
       "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
-      "source_location": "L32",
+      "source_location": "L31",
       "_origin": "ast",
       "id": "screens_newinvoicescreen_lineerrors",
-      "community": 20,
+      "community": 7,
       "norm_label": "lineerrors"
     },
     {
       "label": "FormErrors",
       "file_type": "code",
       "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
-      "source_location": "L38",
+      "source_location": "L37",
       "_origin": "ast",
       "id": "screens_newinvoicescreen_formerrors",
-      "community": 20,
+      "community": 7,
       "norm_label": "formerrors"
     },
     {
       "label": "todayIso()",
       "file_type": "code",
       "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
-      "source_location": "L50",
+      "source_location": "L49",
       "_origin": "ast",
       "id": "screens_newinvoicescreen_todayiso",
-      "community": 20,
+      "community": 7,
       "norm_label": "todayiso()"
     },
     {
       "label": "defaultDueIso()",
       "file_type": "code",
       "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
-      "source_location": "L54",
+      "source_location": "L53",
       "_origin": "ast",
       "id": "screens_newinvoicescreen_defaultdueiso",
-      "community": 20,
+      "community": 7,
       "norm_label": "defaultdueiso()"
     },
     {
       "label": "emptyLine()",
       "file_type": "code",
       "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
-      "source_location": "L58",
+      "source_location": "L57",
       "_origin": "ast",
       "id": "screens_newinvoicescreen_emptyline",
-      "community": 20,
+      "community": 7,
       "norm_label": "emptyline()"
     },
     {
       "label": "toLineDrafts()",
       "file_type": "code",
       "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
-      "source_location": "L62",
+      "source_location": "L61",
       "_origin": "ast",
       "id": "screens_newinvoicescreen_tolinedrafts",
-      "community": 20,
+      "community": 7,
       "norm_label": "tolinedrafts()"
     },
     {
       "label": "parseAmount()",
       "file_type": "code",
       "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
-      "source_location": "L71",
+      "source_location": "L70",
       "_origin": "ast",
       "id": "screens_newinvoicescreen_parseamount",
-      "community": 20,
+      "community": 7,
       "norm_label": "parseamount()"
     },
     {
       "label": "issuedStatusFor()",
       "file_type": "code",
       "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
-      "source_location": "L76",
+      "source_location": "L75",
       "_origin": "ast",
       "id": "screens_newinvoicescreen_issuedstatusfor",
-      "community": 20,
+      "community": 7,
       "norm_label": "issuedstatusfor()"
     },
     {
       "label": "CompactInput()",
       "file_type": "code",
       "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
-      "source_location": "L81",
+      "source_location": "L80",
       "_origin": "ast",
       "id": "screens_newinvoicescreen_compactinput",
-      "community": 20,
+      "community": 7,
       "norm_label": "compactinput()"
     },
     {
       "label": "FieldError()",
       "file_type": "code",
       "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
-      "source_location": "L123",
+      "source_location": "L122",
       "_origin": "ast",
       "id": "screens_newinvoicescreen_fielderror",
-      "community": 20,
+      "community": 7,
       "norm_label": "fielderror()"
     },
     {
       "label": "NewInvoiceScreen()",
       "file_type": "code",
       "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
-      "source_location": "L132",
+      "source_location": "L131",
       "_origin": "ast",
       "id": "screens_newinvoicescreen_newinvoicescreen",
-      "community": 20,
+      "community": 7,
       "norm_label": "newinvoicescreen()"
     },
     {
       "label": "styles",
       "file_type": "code",
       "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
-      "source_location": "L876",
+      "source_location": "L875",
       "_origin": "ast",
       "id": "screens_newinvoicescreen_styles",
-      "community": 20,
+      "community": 7,
       "norm_label": "styles"
     },
     {
@@ -2527,7 +2727,7 @@
       "label": "{ width: SCREEN_W, height: SCREEN_H }",
       "file_type": "code",
       "source_file": "src/features/onboarding/components/OverviewGuide.tsx",
-      "source_location": "L17",
+      "source_location": "L16",
       "_origin": "ast",
       "id": "components_overviewguide_width_screen_w_height_screen_h",
       "community": 12,
@@ -2537,7 +2737,7 @@
       "label": "STAGE",
       "file_type": "code",
       "source_file": "src/features/onboarding/components/OverviewGuide.tsx",
-      "source_location": "L18",
+      "source_location": "L17",
       "_origin": "ast",
       "id": "components_overviewguide_stage",
       "community": 12,
@@ -2547,7 +2747,7 @@
       "label": "Props",
       "file_type": "code",
       "source_file": "src/features/onboarding/components/OverviewGuide.tsx",
-      "source_location": "L20",
+      "source_location": "L19",
       "_origin": "ast",
       "id": "components_overviewguide_props",
       "community": 12,
@@ -2557,7 +2757,7 @@
       "label": "FloatingTag()",
       "file_type": "code",
       "source_file": "src/features/onboarding/components/OverviewGuide.tsx",
-      "source_location": "L27",
+      "source_location": "L26",
       "_origin": "ast",
       "id": "components_overviewguide_floatingtag",
       "community": 12,
@@ -2567,7 +2767,7 @@
       "label": "VisualStack()",
       "file_type": "code",
       "source_file": "src/features/onboarding/components/OverviewGuide.tsx",
-      "source_location": "L123",
+      "source_location": "L122",
       "_origin": "ast",
       "id": "components_overviewguide_visualstack",
       "community": 12,
@@ -2577,7 +2777,7 @@
       "label": "VisualOrbit()",
       "file_type": "code",
       "source_file": "src/features/onboarding/components/OverviewGuide.tsx",
-      "source_location": "L188",
+      "source_location": "L187",
       "_origin": "ast",
       "id": "components_overviewguide_visualorbit",
       "community": 12,
@@ -2587,7 +2787,7 @@
       "label": "VisualChart()",
       "file_type": "code",
       "source_file": "src/features/onboarding/components/OverviewGuide.tsx",
-      "source_location": "L282",
+      "source_location": "L281",
       "_origin": "ast",
       "id": "components_overviewguide_visualchart",
       "community": 12,
@@ -2597,7 +2797,7 @@
       "label": "SlideVisual()",
       "file_type": "code",
       "source_file": "src/features/onboarding/components/OverviewGuide.tsx",
-      "source_location": "L362",
+      "source_location": "L361",
       "_origin": "ast",
       "id": "components_overviewguide_slidevisual",
       "community": 12,
@@ -2607,7 +2807,7 @@
       "label": "SlidePage()",
       "file_type": "code",
       "source_file": "src/features/onboarding/components/OverviewGuide.tsx",
-      "source_location": "L368",
+      "source_location": "L367",
       "_origin": "ast",
       "id": "components_overviewguide_slidepage",
       "community": 12,
@@ -2617,7 +2817,7 @@
       "label": "OverviewGuide()",
       "file_type": "code",
       "source_file": "src/features/onboarding/components/OverviewGuide.tsx",
-      "source_location": "L538",
+      "source_location": "L537",
       "_origin": "ast",
       "id": "components_overviewguide_overviewguide",
       "community": 12,
@@ -2627,7 +2827,7 @@
       "label": "styles",
       "file_type": "code",
       "source_file": "src/features/onboarding/components/OverviewGuide.tsx",
-      "source_location": "L600",
+      "source_location": "L599",
       "_origin": "ast",
       "id": "components_overviewguide_styles",
       "community": 12,
@@ -2697,7 +2897,7 @@
       "label": "OverviewTag",
       "file_type": "code",
       "source_file": "src/features/onboarding/steps.ts",
-      "source_location": "L4",
+      "source_location": "L3",
       "_origin": "ast",
       "id": "onboarding_steps_overviewtag",
       "community": 12,
@@ -2707,7 +2907,7 @@
       "label": "OverviewVisual",
       "file_type": "code",
       "source_file": "src/features/onboarding/steps.ts",
-      "source_location": "L12",
+      "source_location": "L11",
       "_origin": "ast",
       "id": "onboarding_steps_overviewvisual",
       "community": 12,
@@ -2717,7 +2917,7 @@
       "label": "OverviewSlide",
       "file_type": "code",
       "source_file": "src/features/onboarding/steps.ts",
-      "source_location": "L14",
+      "source_location": "L13",
       "_origin": "ast",
       "id": "onboarding_steps_overviewslide",
       "community": 12,
@@ -2727,7 +2927,7 @@
       "label": "OVERVIEW_SLIDES",
       "file_type": "code",
       "source_file": "src/features/onboarding/steps.ts",
-      "source_location": "L29",
+      "source_location": "L28",
       "_origin": "ast",
       "id": "onboarding_steps_overview_slides",
       "community": 12,
@@ -2737,7 +2937,7 @@
       "label": "SurveyStepId",
       "file_type": "code",
       "source_file": "src/features/onboarding/steps.ts",
-      "source_location": "L86",
+      "source_location": "L85",
       "_origin": "ast",
       "id": "onboarding_steps_surveystepid",
       "community": 12,
@@ -2747,7 +2947,7 @@
       "label": "SurveyStep",
       "file_type": "code",
       "source_file": "src/features/onboarding/steps.ts",
-      "source_location": "L95",
+      "source_location": "L94",
       "_origin": "ast",
       "id": "onboarding_steps_surveystep",
       "community": 12,
@@ -2757,7 +2957,7 @@
       "label": "SURVEY_STEPS",
       "file_type": "code",
       "source_file": "src/features/onboarding/steps.ts",
-      "source_location": "L103",
+      "source_location": "L102",
       "_origin": "ast",
       "id": "onboarding_steps_survey_steps",
       "community": 12,
@@ -2770,7 +2970,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "reports_compute",
-      "community": 7,
+      "community": 26,
       "norm_label": "compute.ts"
     },
     {
@@ -2780,7 +2980,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "reports_compute_reportperiod",
-      "community": 7,
+      "community": 26,
       "norm_label": "reportperiod"
     },
     {
@@ -2790,7 +2990,7 @@
       "source_location": "L27",
       "_origin": "ast",
       "id": "reports_compute_daterange",
-      "community": 7,
+      "community": 26,
       "norm_label": "daterange"
     },
     {
@@ -2800,7 +3000,7 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "reports_compute_report_periods",
-      "community": 7,
+      "community": 26,
       "norm_label": "report_periods"
     },
     {
@@ -2810,7 +3010,7 @@
       "source_location": "L42",
       "_origin": "ast",
       "id": "reports_compute_closed",
-      "community": 7,
+      "community": 26,
       "norm_label": "closed"
     },
     {
@@ -2820,7 +3020,7 @@
       "source_location": "L44",
       "_origin": "ast",
       "id": "reports_compute_periodrange",
-      "community": 7,
+      "community": 26,
       "norm_label": "periodrange()"
     },
     {
@@ -2830,7 +3030,7 @@
       "source_location": "L69",
       "_origin": "ast",
       "id": "reports_compute_inrange",
-      "community": 7,
+      "community": 26,
       "norm_label": "inrange()"
     },
     {
@@ -2840,7 +3040,7 @@
       "source_location": "L80",
       "_origin": "ast",
       "id": "reports_compute_parsedateinput",
-      "community": 7,
+      "community": 26,
       "norm_label": "parsedateinput()"
     },
     {
@@ -2850,7 +3050,7 @@
       "source_location": "L90",
       "_origin": "ast",
       "id": "reports_compute_formatrangelabel",
-      "community": 7,
+      "community": 26,
       "norm_label": "formatrangelabel()"
     },
     {
@@ -2860,7 +3060,7 @@
       "source_location": "L97",
       "_origin": "ast",
       "id": "reports_compute_invoicesinperiod",
-      "community": 7,
+      "community": 26,
       "norm_label": "invoicesinperiod()"
     },
     {
@@ -2870,7 +3070,7 @@
       "source_location": "L120",
       "_origin": "ast",
       "id": "reports_compute_reportsummary",
-      "community": 7,
+      "community": 26,
       "norm_label": "reportsummary"
     },
     {
@@ -2880,7 +3080,7 @@
       "source_location": "L130",
       "_origin": "ast",
       "id": "reports_compute_summarizeinvoices",
-      "community": 7,
+      "community": 26,
       "norm_label": "summarizeinvoices()"
     },
     {
@@ -2890,7 +3090,7 @@
       "source_location": "L186",
       "_origin": "ast",
       "id": "reports_compute_monthbar",
-      "community": 7,
+      "community": 26,
       "norm_label": "monthbar"
     },
     {
@@ -2900,7 +3100,7 @@
       "source_location": "L193",
       "_origin": "ast",
       "id": "reports_compute_monthlycollected",
-      "community": 7,
+      "community": 26,
       "norm_label": "monthlycollected()"
     },
     {
@@ -2910,7 +3110,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "reports_index",
-      "community": 13,
+      "community": 26,
       "norm_label": "index.ts"
     },
     {
@@ -2920,7 +3120,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "screens_reportsscreen",
-      "community": 7,
+      "community": 26,
       "norm_label": "reportsscreen.tsx"
     },
     {
@@ -2930,7 +3130,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "screens_reportsscreen_chiprow",
-      "community": 7,
+      "community": 26,
       "norm_label": "chiprow()"
     },
     {
@@ -2940,7 +3140,7 @@
       "source_location": "L78",
       "_origin": "ast",
       "id": "screens_reportsscreen_snapshotcard",
-      "community": 7,
+      "community": 26,
       "norm_label": "snapshotcard()"
     },
     {
@@ -2950,7 +3150,7 @@
       "source_location": "L164",
       "_origin": "ast",
       "id": "screens_reportsscreen_monthbars",
-      "community": 7,
+      "community": 26,
       "norm_label": "monthbars()"
     },
     {
@@ -2960,7 +3160,7 @@
       "source_location": "L217",
       "_origin": "ast",
       "id": "screens_reportsscreen_metricrow",
-      "community": 7,
+      "community": 26,
       "norm_label": "metricrow()"
     },
     {
@@ -2970,7 +3170,7 @@
       "source_location": "L249",
       "_origin": "ast",
       "id": "screens_reportsscreen_defaultcustomrange",
-      "community": 7,
+      "community": 26,
       "norm_label": "defaultcustomrange()"
     },
     {
@@ -2990,7 +3190,7 @@
       "source_location": "L443",
       "_origin": "ast",
       "id": "screens_reportsscreen_styles",
-      "community": 7,
+      "community": 26,
       "norm_label": "styles"
     },
     {
@@ -3047,7 +3247,7 @@
       "label": "styles",
       "file_type": "code",
       "source_file": "src/features/settings/components/InvoiceTemplatePreview.tsx",
-      "source_location": "L468",
+      "source_location": "L469",
       "_origin": "ast",
       "id": "components_invoicetemplatepreview_styles",
       "community": 5,
@@ -3060,7 +3260,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_settingsfield",
-      "community": 16,
+      "community": 21,
       "norm_label": "settingsfield.tsx"
     },
     {
@@ -3070,7 +3270,7 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "components_settingsfield_fieldprops",
-      "community": 16,
+      "community": 21,
       "norm_label": "fieldprops"
     },
     {
@@ -3080,7 +3280,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "components_settingsfield_settingsfield",
-      "community": 16,
+      "community": 21,
       "norm_label": "settingsfield()"
     },
     {
@@ -3090,7 +3290,7 @@
       "source_location": "L59",
       "_origin": "ast",
       "id": "components_settingsfield_styles",
-      "community": 16,
+      "community": 21,
       "norm_label": "styles"
     },
     {
@@ -3107,7 +3307,7 @@
       "label": "SettingsGroupProps",
       "file_type": "code",
       "source_file": "src/features/settings/components/SettingsList.tsx",
-      "source_location": "L6",
+      "source_location": "L5",
       "_origin": "ast",
       "id": "components_settingslist_settingsgroupprops",
       "community": 3,
@@ -3117,17 +3317,17 @@
       "label": "SettingsGroup()",
       "file_type": "code",
       "source_file": "src/features/settings/components/SettingsList.tsx",
-      "source_location": "L11",
+      "source_location": "L10",
       "_origin": "ast",
       "id": "components_settingslist_settingsgroup",
-      "community": 3,
+      "community": 7,
       "norm_label": "settingsgroup()"
     },
     {
       "label": "SettingsRowProps",
       "file_type": "code",
       "source_file": "src/features/settings/components/SettingsList.tsx",
-      "source_location": "L45",
+      "source_location": "L44",
       "_origin": "ast",
       "id": "components_settingslist_settingsrowprops",
       "community": 3,
@@ -3137,7 +3337,7 @@
       "label": "SettingsRow()",
       "file_type": "code",
       "source_file": "src/features/settings/components/SettingsList.tsx",
-      "source_location": "L55",
+      "source_location": "L54",
       "_origin": "ast",
       "id": "components_settingslist_settingsrow",
       "community": 3,
@@ -3147,7 +3347,7 @@
       "label": "styles",
       "file_type": "code",
       "source_file": "src/features/settings/components/SettingsList.tsx",
-      "source_location": "L116",
+      "source_location": "L111",
       "_origin": "ast",
       "id": "components_settingslist_styles",
       "community": 3,
@@ -3160,37 +3360,37 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_settingsscroll",
-      "community": 16,
+      "community": 21,
       "norm_label": "settingsscroll.tsx"
     },
     {
       "label": "Props",
       "file_type": "code",
       "source_file": "src/features/settings/components/SettingsScroll.tsx",
-      "source_location": "L6",
+      "source_location": "L12",
       "_origin": "ast",
       "id": "components_settingsscroll_props",
-      "community": 16,
+      "community": 21,
       "norm_label": "props"
     },
     {
       "label": "SettingsScroll()",
       "file_type": "code",
       "source_file": "src/features/settings/components/SettingsScroll.tsx",
-      "source_location": "L13",
+      "source_location": "L21",
       "_origin": "ast",
       "id": "components_settingsscroll_settingsscroll",
-      "community": 16,
+      "community": 21,
       "norm_label": "settingsscroll()"
     },
     {
       "label": "styles",
       "file_type": "code",
       "source_file": "src/features/settings/components/SettingsScroll.tsx",
-      "source_location": "L46",
+      "source_location": "L71",
       "_origin": "ast",
       "id": "components_settingsscroll_styles",
-      "community": 16,
+      "community": 21,
       "norm_label": "styles"
     },
     {
@@ -3207,7 +3407,7 @@
       "label": "Option",
       "file_type": "code",
       "source_file": "src/features/settings/components/SettingsSelect.tsx",
-      "source_location": "L7",
+      "source_location": "L6",
       "_origin": "ast",
       "id": "components_settingsselect_option",
       "community": 20,
@@ -3217,7 +3417,7 @@
       "label": "Props",
       "file_type": "code",
       "source_file": "src/features/settings/components/SettingsSelect.tsx",
-      "source_location": "L12",
+      "source_location": "L11",
       "_origin": "ast",
       "id": "components_settingsselect_props",
       "community": 20,
@@ -3227,7 +3427,7 @@
       "label": "SettingsSelect()",
       "file_type": "code",
       "source_file": "src/features/settings/components/SettingsSelect.tsx",
-      "source_location": "L19",
+      "source_location": "L18",
       "_origin": "ast",
       "id": "components_settingsselect_settingsselect",
       "community": 20,
@@ -3237,7 +3437,7 @@
       "label": "styles",
       "file_type": "code",
       "source_file": "src/features/settings/components/SettingsSelect.tsx",
-      "source_location": "L102",
+      "source_location": "L101",
       "_origin": "ast",
       "id": "components_settingsselect_styles",
       "community": 20,
@@ -3257,7 +3457,7 @@
       "label": "Props",
       "file_type": "code",
       "source_file": "src/features/settings/components/TemplatePickerSheet.tsx",
-      "source_location": "L8",
+      "source_location": "L7",
       "_origin": "ast",
       "id": "components_templatepickersheet_props",
       "community": 5,
@@ -3267,7 +3467,7 @@
       "label": "TemplatePickerSheet()",
       "file_type": "code",
       "source_file": "src/features/settings/components/TemplatePickerSheet.tsx",
-      "source_location": "L15",
+      "source_location": "L14",
       "_origin": "ast",
       "id": "components_templatepickersheet_templatepickersheet",
       "community": 5,
@@ -3277,7 +3477,7 @@
       "label": "styles",
       "file_type": "code",
       "source_file": "src/features/settings/components/TemplatePickerSheet.tsx",
-      "source_location": "L73",
+      "source_location": "L72",
       "_origin": "ast",
       "id": "components_templatepickersheet_styles",
       "community": 5,
@@ -3380,7 +3580,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "screens_bankdetailsscreen",
-      "community": 5,
+      "community": 21,
       "norm_label": "bankdetailsscreen.tsx"
     },
     {
@@ -3390,7 +3590,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "screens_bankdetailsscreen_bankdetailsscreen",
-      "community": 5,
+      "community": 21,
       "norm_label": "bankdetailsscreen()"
     },
     {
@@ -3400,7 +3600,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "screens_brandingscreen",
-      "community": 16,
+      "community": 18,
       "norm_label": "brandingscreen.tsx"
     },
     {
@@ -3410,7 +3610,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "screens_brandingscreen_brandingscreen",
-      "community": 16,
+      "community": 18,
       "norm_label": "brandingscreen()"
     },
     {
@@ -3420,17 +3620,17 @@
       "source_location": "L55",
       "_origin": "ast",
       "id": "screens_brandingscreen_assetrow",
-      "community": 16,
+      "community": 18,
       "norm_label": "assetrow()"
     },
     {
       "label": "styles",
       "file_type": "code",
       "source_file": "src/features/settings/screens/BrandingScreen.tsx",
-      "source_location": "L114",
+      "source_location": "L115",
       "_origin": "ast",
       "id": "screens_brandingscreen_styles",
-      "community": 16,
+      "community": 18,
       "norm_label": "styles"
     },
     {
@@ -3440,7 +3640,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "screens_businessdetailsscreen",
-      "community": 5,
+      "community": 21,
       "norm_label": "businessdetailsscreen.tsx"
     },
     {
@@ -3450,7 +3650,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "screens_businessdetailsscreen_businessdetailsscreen",
-      "community": 5,
+      "community": 21,
       "norm_label": "businessdetailsscreen()"
     },
     {
@@ -3460,7 +3660,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "screens_invoicedefaultsscreen",
-      "community": 5,
+      "community": 21,
       "norm_label": "invoicedefaultsscreen.tsx"
     },
     {
@@ -3470,7 +3670,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "screens_invoicedefaultsscreen_invoicedefaultsscreen",
-      "community": 5,
+      "community": 21,
       "norm_label": "invoicedefaultsscreen()"
     },
     {
@@ -3487,7 +3687,7 @@
       "label": "Tool",
       "file_type": "code",
       "source_file": "src/features/settings/screens/InvoiceTemplateEditorScreen.tsx",
-      "source_location": "L20",
+      "source_location": "L19",
       "_origin": "ast",
       "id": "screens_invoicetemplateeditorscreen_tool",
       "community": 5,
@@ -3497,7 +3697,7 @@
       "label": "InvoiceTemplateEditorScreen()",
       "file_type": "code",
       "source_file": "src/features/settings/screens/InvoiceTemplateEditorScreen.tsx",
-      "source_location": "L22",
+      "source_location": "L21",
       "_origin": "ast",
       "id": "screens_invoicetemplateeditorscreen_invoicetemplateeditorscreen",
       "community": 5,
@@ -3507,7 +3707,7 @@
       "label": "styles",
       "file_type": "code",
       "source_file": "src/features/settings/screens/InvoiceTemplateEditorScreen.tsx",
-      "source_location": "L365",
+      "source_location": "L364",
       "_origin": "ast",
       "id": "screens_invoicetemplateeditorscreen_styles",
       "community": 5,
@@ -3550,7 +3750,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "screens_legalscreen",
-      "community": 16,
+      "community": 21,
       "norm_label": "legalscreen.tsx"
     },
     {
@@ -3560,7 +3760,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "screens_legalscreen_copy",
-      "community": 16,
+      "community": 21,
       "norm_label": "copy"
     },
     {
@@ -3570,7 +3770,7 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "screens_legalscreen_kind",
-      "community": 16,
+      "community": 21,
       "norm_label": "kind"
     },
     {
@@ -3580,7 +3780,7 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "screens_legalscreen_legalscreen",
-      "community": 16,
+      "community": 21,
       "norm_label": "legalscreen()"
     },
     {
@@ -3657,17 +3857,27 @@
       "label": "SignatureDrawScreen()",
       "file_type": "code",
       "source_file": "src/features/settings/screens/SignatureDrawScreen.tsx",
-      "source_location": "L12",
+      "source_location": "L17",
       "_origin": "ast",
       "id": "screens_signaturedrawscreen_signaturedrawscreen",
       "community": 25,
       "norm_label": "signaturedrawscreen()"
     },
     {
+      "label": "IconBtn()",
+      "file_type": "code",
+      "source_file": "src/features/settings/screens/SignatureDrawScreen.tsx",
+      "source_location": "L159",
+      "_origin": "ast",
+      "id": "screens_signaturedrawscreen_iconbtn",
+      "community": 25,
+      "norm_label": "iconbtn()"
+    },
+    {
       "label": "styles",
       "file_type": "code",
       "source_file": "src/features/settings/screens/SignatureDrawScreen.tsx",
-      "source_location": "L137",
+      "source_location": "L188",
       "_origin": "ast",
       "id": "screens_signaturedrawscreen_styles",
       "community": 25,
@@ -3680,7 +3890,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "screens_subscriptionscreen",
-      "community": 3,
+      "community": 20,
       "norm_label": "subscriptionscreen.tsx"
     },
     {
@@ -3690,7 +3900,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "screens_subscriptionscreen_subscriptionscreen",
-      "community": 3,
+      "community": 20,
       "norm_label": "subscriptionscreen()"
     },
     {
@@ -3720,7 +3930,7 @@
       "source_location": "L47",
       "_origin": "ast",
       "id": "settings_store_usesettingsstore",
-      "community": 5,
+      "community": 7,
       "norm_label": "usesettingsstore"
     },
     {
@@ -3810,7 +4020,7 @@
       "source_location": "L166",
       "_origin": "ast",
       "id": "settings_templateconstants_findtemplate",
-      "community": 5,
+      "community": 7,
       "norm_label": "findtemplate()"
     },
     {
@@ -3977,7 +4187,7 @@
       "label": "defaultSettings",
       "file_type": "code",
       "source_file": "src/features/settings/types.ts",
-      "source_location": "L105",
+      "source_location": "L104",
       "_origin": "ast",
       "id": "settings_types_defaultsettings",
       "community": 5,
@@ -4070,7 +4280,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_button",
-      "community": 1,
+      "community": 13,
       "norm_label": "button.tsx"
     },
     {
@@ -4080,7 +4290,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "components_button_buttonvariant",
-      "community": 1,
+      "community": 13,
       "norm_label": "buttonvariant"
     },
     {
@@ -4090,7 +4300,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "components_button_props",
-      "community": 1,
+      "community": 13,
       "norm_label": "props"
     },
     {
@@ -4100,8 +4310,58 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "components_button_button",
-      "community": 19,
+      "community": 13,
       "norm_label": "button()"
+    },
+    {
+      "label": "Icon.tsx",
+      "file_type": "code",
+      "source_file": "src/shared/design-system/components/Icon.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "components_icon",
+      "community": 13,
+      "norm_label": "icon.tsx"
+    },
+    {
+      "label": "ICONS",
+      "file_type": "code",
+      "source_file": "src/shared/design-system/components/Icon.tsx",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "components_icon_icons",
+      "community": 13,
+      "norm_label": "icons"
+    },
+    {
+      "label": "IconName",
+      "file_type": "code",
+      "source_file": "src/shared/design-system/components/Icon.tsx",
+      "source_location": "L78",
+      "_origin": "ast",
+      "id": "components_icon_iconname",
+      "community": 13,
+      "norm_label": "iconname"
+    },
+    {
+      "label": "Props",
+      "file_type": "code",
+      "source_file": "src/shared/design-system/components/Icon.tsx",
+      "source_location": "L80",
+      "_origin": "ast",
+      "id": "components_icon_props",
+      "community": 13,
+      "norm_label": "props"
+    },
+    {
+      "label": "Icon()",
+      "file_type": "code",
+      "source_file": "src/shared/design-system/components/Icon.tsx",
+      "source_location": "L89",
+      "_origin": "ast",
+      "id": "components_icon_icon",
+      "community": 25,
+      "norm_label": "icon()"
     },
     {
       "label": "IconButton.tsx",
@@ -4180,7 +4440,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_text",
-      "community": 1,
+      "community": 13,
       "norm_label": "text.tsx"
     },
     {
@@ -4190,7 +4450,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "components_text_textvariant",
-      "community": 1,
+      "community": 13,
       "norm_label": "textvariant"
     },
     {
@@ -4200,7 +4460,7 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "components_text_props",
-      "community": 1,
+      "community": 13,
       "norm_label": "props"
     },
     {
@@ -4210,7 +4470,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "components_text_text",
-      "community": 16,
+      "community": 20,
       "norm_label": "text()"
     },
     {
@@ -4410,7 +4670,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "tokens_elevation",
-      "community": 22,
+      "community": 1,
       "norm_label": "elevation.ts"
     },
     {
@@ -4420,7 +4680,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "tokens_elevation_elevationlevel",
-      "community": 22,
+      "community": 1,
       "norm_label": "elevationlevel"
     },
     {
@@ -4540,7 +4800,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "design_system_usetheme",
-      "community": 1,
+      "community": 13,
       "norm_label": "usetheme.ts"
     },
     {
@@ -4560,7 +4820,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_csv",
-      "community": 3,
+      "community": 16,
       "norm_label": "csv.ts"
     },
     {
@@ -4570,7 +4830,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "lib_csv_splitcsvline",
-      "community": 3,
+      "community": 16,
       "norm_label": "splitcsvline()"
     },
     {
@@ -4580,7 +4840,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "lib_csv_parsecsv",
-      "community": 3,
+      "community": 16,
       "norm_label": "parsecsv()"
     },
     {
@@ -4590,7 +4850,7 @@
       "source_location": "L39",
       "_origin": "ast",
       "id": "lib_csv_tocsv",
-      "community": 3,
+      "community": 16,
       "norm_label": "tocsv()"
     },
     {
@@ -4620,7 +4880,7 @@
       "source_location": "L35",
       "_origin": "ast",
       "id": "lib_files_readpickedtext",
-      "community": 3,
+      "community": 16,
       "norm_label": "readpickedtext()"
     },
     {
@@ -4630,7 +4890,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_id",
-      "community": 3,
+      "community": 16,
       "norm_label": "id.ts"
     },
     {
@@ -4640,7 +4900,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "lib_id_createid",
-      "community": 3,
+      "community": 16,
       "norm_label": "createid()"
     },
     {
@@ -4650,7 +4910,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_index",
-      "community": 5,
+      "community": 19,
       "norm_label": "index.ts"
     },
     {
@@ -4660,7 +4920,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_mmkv",
-      "community": 5,
+      "community": 19,
       "norm_label": "mmkv.ts"
     },
     {
@@ -4670,7 +4930,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "lib_mmkv_mmkv",
-      "community": 5,
+      "community": 19,
       "norm_label": "mmkv"
     },
     {
@@ -4680,8 +4940,108 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "lib_mmkv_mmkvstorage",
-      "community": 5,
+      "community": 19,
       "norm_label": "mmkvstorage"
+    },
+    {
+      "label": "supabase.ts",
+      "file_type": "code",
+      "source_file": "src/shared/lib/supabase.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "lib_supabase",
+      "community": 19,
+      "norm_label": "supabase.ts"
+    },
+    {
+      "label": "Database",
+      "file_type": "code",
+      "source_file": "src/shared/lib/supabase.ts",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "lib_supabase_database",
+      "community": 19,
+      "norm_label": "database"
+    },
+    {
+      "label": "AppSupabaseClient",
+      "file_type": "code",
+      "source_file": "src/shared/lib/supabase.ts",
+      "source_location": "L16",
+      "_origin": "ast",
+      "id": "lib_supabase_appsupabaseclient",
+      "community": 19,
+      "norm_label": "appsupabaseclient"
+    },
+    {
+      "label": "chunkKey()",
+      "file_type": "code",
+      "source_file": "src/shared/lib/supabase.ts",
+      "source_location": "L21",
+      "_origin": "ast",
+      "id": "lib_supabase_chunkkey",
+      "community": 19,
+      "norm_label": "chunkkey()"
+    },
+    {
+      "label": "chunkCountKey()",
+      "file_type": "code",
+      "source_file": "src/shared/lib/supabase.ts",
+      "source_location": "L22",
+      "_origin": "ast",
+      "id": "lib_supabase_chunkcountkey",
+      "community": 19,
+      "norm_label": "chunkcountkey()"
+    },
+    {
+      "label": "secureStoreOptions",
+      "file_type": "code",
+      "source_file": "src/shared/lib/supabase.ts",
+      "source_location": "L24",
+      "_origin": "ast",
+      "id": "lib_supabase_securestoreoptions",
+      "community": 19,
+      "norm_label": "securestoreoptions"
+    },
+    {
+      "label": "ExpoSecureStoreAdapter",
+      "file_type": "code",
+      "source_file": "src/shared/lib/supabase.ts",
+      "source_location": "L28",
+      "_origin": "ast",
+      "id": "lib_supabase_exposecurestoreadapter",
+      "community": 19,
+      "norm_label": "exposecurestoreadapter"
+    },
+    {
+      "label": "requireSupabaseEnv()",
+      "file_type": "code",
+      "source_file": "src/shared/lib/supabase.ts",
+      "source_location": "L94",
+      "_origin": "ast",
+      "id": "lib_supabase_requiresupabaseenv",
+      "community": 19,
+      "norm_label": "requiresupabaseenv()"
+    },
+    {
+      "label": "{ url: supabaseUrl, anonKey: supabaseAnonKey }",
+      "file_type": "code",
+      "source_file": "src/shared/lib/supabase.ts",
+      "source_location": "L112",
+      "_origin": "ast",
+      "id": "lib_supabase_url_supabaseurl_anonkey_supabaseanonkey",
+      "community": 19,
+      "norm_label": "{ url: supabaseurl, anonkey: supabaseanonkey }"
+    },
+    {
+      "label": "supabase",
+      "file_type": "code",
+      "source_file": "src/shared/lib/supabase.ts",
+      "source_location": "L114",
+      "_origin": "ast",
+      "id": "lib_supabase_supabase",
+      "community": 19,
+      "norm_label": "supabase"
     },
     {
       "label": "ActionSheet.tsx",
@@ -4697,7 +5057,7 @@
       "label": "SheetAction",
       "file_type": "code",
       "source_file": "src/shared/ui/ActionSheet.tsx",
-      "source_location": "L6",
+      "source_location": "L5",
       "_origin": "ast",
       "id": "ui_actionsheet_sheetaction",
       "community": 8,
@@ -4707,7 +5067,7 @@
       "label": "Props",
       "file_type": "code",
       "source_file": "src/shared/ui/ActionSheet.tsx",
-      "source_location": "L16",
+      "source_location": "L15",
       "_origin": "ast",
       "id": "ui_actionsheet_props",
       "community": 8,
@@ -4717,7 +5077,7 @@
       "label": "ActionSheet()",
       "file_type": "code",
       "source_file": "src/shared/ui/ActionSheet.tsx",
-      "source_location": "L24",
+      "source_location": "L23",
       "_origin": "ast",
       "id": "ui_actionsheet_actionsheet",
       "community": 8,
@@ -4727,7 +5087,7 @@
       "label": "styles",
       "file_type": "code",
       "source_file": "src/shared/ui/ActionSheet.tsx",
-      "source_location": "L107",
+      "source_location": "L106",
       "_origin": "ast",
       "id": "ui_actionsheet_styles",
       "community": 8,
@@ -4747,7 +5107,7 @@
       "label": "Props",
       "file_type": "code",
       "source_file": "src/shared/ui/BottomSheet.tsx",
-      "source_location": "L15",
+      "source_location": "L14",
       "_origin": "ast",
       "id": "ui_bottomsheet_props",
       "community": 8,
@@ -4757,7 +5117,7 @@
       "label": "BottomSheet()",
       "file_type": "code",
       "source_file": "src/shared/ui/BottomSheet.tsx",
-      "source_location": "L24",
+      "source_location": "L23",
       "_origin": "ast",
       "id": "ui_bottomsheet_bottomsheet",
       "community": 8,
@@ -4767,7 +5127,7 @@
       "label": "styles",
       "file_type": "code",
       "source_file": "src/shared/ui/BottomSheet.tsx",
-      "source_location": "L88",
+      "source_location": "L87",
       "_origin": "ast",
       "id": "ui_bottomsheet_styles",
       "community": 8,
@@ -4780,7 +5140,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "ui_bulkimportguide",
-      "community": 3,
+      "community": 16,
       "norm_label": "bulkimportguide.tsx"
     },
     {
@@ -4790,7 +5150,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "ui_bulkimportguide_props",
-      "community": 3,
+      "community": 16,
       "norm_label": "props"
     },
     {
@@ -4800,7 +5160,7 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "ui_bulkimportguide_copy",
-      "community": 3,
+      "community": 16,
       "norm_label": "copy"
     },
     {
@@ -4810,7 +5170,7 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "ui_bulkimportguide_parsecataloguerows",
-      "community": 3,
+      "community": 16,
       "norm_label": "parsecataloguerows()"
     },
     {
@@ -4820,7 +5180,7 @@
       "source_location": "L82",
       "_origin": "ast",
       "id": "ui_bulkimportguide_parseclientrows",
-      "community": 3,
+      "community": 16,
       "norm_label": "parseclientrows()"
     },
     {
@@ -4830,7 +5190,7 @@
       "source_location": "L123",
       "_origin": "ast",
       "id": "ui_bulkimportguide_bulkimportguide",
-      "community": 3,
+      "community": 16,
       "norm_label": "bulkimportguide()"
     },
     {
@@ -4847,7 +5207,7 @@
       "label": "Props",
       "file_type": "code",
       "source_file": "src/shared/ui/DateField.tsx",
-      "source_location": "L19",
+      "source_location": "L18",
       "_origin": "ast",
       "id": "ui_datefield_props",
       "community": 24,
@@ -4857,7 +5217,7 @@
       "label": "toDate()",
       "file_type": "code",
       "source_file": "src/shared/ui/DateField.tsx",
-      "source_location": "L27",
+      "source_location": "L26",
       "_origin": "ast",
       "id": "ui_datefield_todate",
       "community": 24,
@@ -4867,7 +5227,7 @@
       "label": "displayLabel()",
       "file_type": "code",
       "source_file": "src/shared/ui/DateField.tsx",
-      "source_location": "L36",
+      "source_location": "L35",
       "_origin": "ast",
       "id": "ui_datefield_displaylabel",
       "community": 24,
@@ -4877,7 +5237,7 @@
       "label": "DateField()",
       "file_type": "code",
       "source_file": "src/shared/ui/DateField.tsx",
-      "source_location": "L49",
+      "source_location": "L48",
       "_origin": "ast",
       "id": "ui_datefield_datefield",
       "community": 24,
@@ -4887,7 +5247,7 @@
       "label": "styles",
       "file_type": "code",
       "source_file": "src/shared/ui/DateField.tsx",
-      "source_location": "L125",
+      "source_location": "L124",
       "_origin": "ast",
       "id": "ui_datefield_styles",
       "community": 24,
@@ -4947,17 +5307,27 @@
       "label": "FloatingTabBarProps",
       "file_type": "code",
       "source_file": "src/shared/ui/FloatingTabBar.tsx",
-      "source_location": "L9",
+      "source_location": "L35",
       "_origin": "ast",
       "id": "ui_floatingtabbar_floatingtabbarprops",
       "community": 21,
       "norm_label": "floatingtabbarprops"
     },
     {
+      "label": "IconSource",
+      "file_type": "code",
+      "source_file": "src/shared/ui/FloatingTabBar.tsx",
+      "source_location": "L44",
+      "_origin": "ast",
+      "id": "ui_floatingtabbar_iconsource",
+      "community": 21,
+      "norm_label": "iconsource"
+    },
+    {
       "label": "ROUTE_TAB",
       "file_type": "code",
       "source_file": "src/shared/ui/FloatingTabBar.tsx",
-      "source_location": "L15",
+      "source_location": "L46",
       "_origin": "ast",
       "id": "ui_floatingtabbar_route_tab",
       "community": 21,
@@ -4967,27 +5337,47 @@
       "label": "ICONS",
       "file_type": "code",
       "source_file": "src/shared/ui/FloatingTabBar.tsx",
-      "source_location": "L23",
+      "source_location": "L54",
       "_origin": "ast",
       "id": "ui_floatingtabbar_icons",
       "community": 21,
       "norm_label": "icons"
     },
     {
+      "label": "FONT_ICONS",
+      "file_type": "code",
+      "source_file": "src/shared/ui/FloatingTabBar.tsx",
+      "source_location": "L62",
+      "_origin": "ast",
+      "id": "ui_floatingtabbar_font_icons",
+      "community": 21,
+      "norm_label": "font_icons"
+    },
+    {
       "label": "CREATE_ROUTES",
       "file_type": "code",
       "source_file": "src/shared/ui/FloatingTabBar.tsx",
-      "source_location": "L34",
+      "source_location": "L71",
       "_origin": "ast",
       "id": "ui_floatingtabbar_create_routes",
       "community": 21,
       "norm_label": "create_routes"
     },
     {
+      "label": "MenuAction",
+      "file_type": "code",
+      "source_file": "src/shared/ui/FloatingTabBar.tsx",
+      "source_location": "L73",
+      "_origin": "ast",
+      "id": "ui_floatingtabbar_menuaction",
+      "community": 21,
+      "norm_label": "menuaction"
+    },
+    {
       "label": "FloatingTabBar()",
       "file_type": "code",
       "source_file": "src/shared/ui/FloatingTabBar.tsx",
-      "source_location": "L36",
+      "source_location": "L80",
       "_origin": "ast",
       "id": "ui_floatingtabbar_floatingtabbar",
       "community": 18,
@@ -4997,7 +5387,7 @@
       "label": "styles",
       "file_type": "code",
       "source_file": "src/shared/ui/FloatingTabBar.tsx",
-      "source_location": "L164",
+      "source_location": "L405",
       "_origin": "ast",
       "id": "ui_floatingtabbar_styles",
       "community": 21,
@@ -5010,37 +5400,37 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "ui_searchfield",
-      "community": 18,
+      "community": 25,
       "norm_label": "searchfield.tsx"
     },
     {
       "label": "Props",
       "file_type": "code",
       "source_file": "src/shared/ui/SearchField.tsx",
-      "source_location": "L12",
+      "source_location": "L11",
       "_origin": "ast",
       "id": "ui_searchfield_props",
-      "community": 18,
+      "community": 25,
       "norm_label": "props"
     },
     {
       "label": "SearchField()",
       "file_type": "code",
       "source_file": "src/shared/ui/SearchField.tsx",
-      "source_location": "L20",
+      "source_location": "L19",
       "_origin": "ast",
       "id": "ui_searchfield_searchfield",
-      "community": 18,
+      "community": 25,
       "norm_label": "searchfield()"
     },
     {
       "label": "styles",
       "file_type": "code",
       "source_file": "src/shared/ui/SearchField.tsx",
-      "source_location": "L81",
+      "source_location": "L83",
       "_origin": "ast",
       "id": "ui_searchfield_styles",
-      "community": 18,
+      "community": 25,
       "norm_label": "styles"
     },
     {
@@ -5057,7 +5447,7 @@
       "label": "PickerOption",
       "file_type": "code",
       "source_file": "src/shared/ui/SearchablePickerSheet.tsx",
-      "source_location": "L13",
+      "source_location": "L12",
       "_origin": "ast",
       "id": "ui_searchablepickersheet_pickeroption",
       "community": 8,
@@ -5067,7 +5457,7 @@
       "label": "Props",
       "file_type": "code",
       "source_file": "src/shared/ui/SearchablePickerSheet.tsx",
-      "source_location": "L19",
+      "source_location": "L18",
       "_origin": "ast",
       "id": "ui_searchablepickersheet_props",
       "community": 8,
@@ -5077,7 +5467,7 @@
       "label": "SearchablePickerSheet()",
       "file_type": "code",
       "source_file": "src/shared/ui/SearchablePickerSheet.tsx",
-      "source_location": "L31",
+      "source_location": "L30",
       "_origin": "ast",
       "id": "ui_searchablepickersheet_searchablepickersheet",
       "community": 8,
@@ -5087,7 +5477,7 @@
       "label": "styles",
       "file_type": "code",
       "source_file": "src/shared/ui/SearchablePickerSheet.tsx",
-      "source_location": "L207",
+      "source_location": "L206",
       "_origin": "ast",
       "id": "ui_searchablepickersheet_styles",
       "community": 8,
@@ -5130,7 +5520,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "ui_swipeablerow",
-      "community": 18,
+      "community": 31,
       "norm_label": "swipeablerow.tsx"
     },
     {
@@ -5140,7 +5530,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "ui_swipeablerow_props",
-      "community": 18,
+      "community": 31,
       "norm_label": "props"
     },
     {
@@ -5150,7 +5540,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "ui_swipeablerow_swipeablerow",
-      "community": 18,
+      "community": 31,
       "norm_label": "swipeablerow()"
     },
     {
@@ -5160,7 +5550,7 @@
       "source_location": "L109",
       "_origin": "ast",
       "id": "ui_swipeablerow_styles",
-      "community": 18,
+      "community": 31,
       "norm_label": "styles"
     },
     {
@@ -5174,20 +5564,10 @@
       "norm_label": "tabbaricon.tsx"
     },
     {
-      "label": "IconPair",
-      "file_type": "code",
-      "source_file": "src/shared/ui/TabBarIcon.tsx",
-      "source_location": "L5",
-      "_origin": "ast",
-      "id": "ui_tabbaricon_iconpair",
-      "community": 8,
-      "norm_label": "iconpair"
-    },
-    {
       "label": "TabName",
       "file_type": "code",
       "source_file": "src/shared/ui/TabBarIcon.tsx",
-      "source_location": "L18",
+      "source_location": "L12",
       "_origin": "ast",
       "id": "ui_tabbaricon_tabname",
       "community": 8,
@@ -5197,7 +5577,7 @@
       "label": "Props",
       "file_type": "code",
       "source_file": "src/shared/ui/TabBarIcon.tsx",
-      "source_location": "L20",
+      "source_location": "L14",
       "_origin": "ast",
       "id": "ui_tabbaricon_props",
       "community": 8,
@@ -5207,7 +5587,7 @@
       "label": "TabBarIcon()",
       "file_type": "code",
       "source_file": "src/shared/ui/TabBarIcon.tsx",
-      "source_location": "L26",
+      "source_location": "L19",
       "_origin": "ast",
       "id": "ui_tabbaricon_tabbaricon",
       "community": 8,
@@ -5282,6 +5662,36 @@
       "id": "ui_snackbarstore_showsnackbar",
       "community": 22,
       "norm_label": "showsnackbar()"
+    },
+    {
+      "label": "tabBarVisibility.ts",
+      "file_type": "code",
+      "source_file": "src/shared/ui/tabBarVisibility.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "ui_tabbarvisibility",
+      "community": 21,
+      "norm_label": "tabbarvisibility.ts"
+    },
+    {
+      "label": "TabBarVisibilityState",
+      "file_type": "code",
+      "source_file": "src/shared/ui/tabBarVisibility.ts",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "ui_tabbarvisibility_tabbarvisibilitystate",
+      "community": 21,
+      "norm_label": "tabbarvisibilitystate"
+    },
+    {
+      "label": "useTabBarVisibility",
+      "file_type": "code",
+      "source_file": "src/shared/ui/tabBarVisibility.ts",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "ui_tabbarvisibility_usetabbarvisibility",
+      "community": 21,
+      "norm_label": "usetabbarvisibility"
     },
     {
       "label": "tsconfig.json",
@@ -5377,7 +5787,7 @@
       "label": "include",
       "file_type": "code",
       "source_file": "tsconfig.json",
-      "source_location": "L12",
+      "source_location": "L14",
       "_origin": "ast",
       "id": "tsconfig_include",
       "community": 9,
@@ -6429,6 +6839,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "package.json",
+      "source_location": "L57",
+      "weight": 1.0,
+      "source": "package",
+      "target": "package_expo",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
       "source_location": "L4",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -6509,6 +6929,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "package.json",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_expo_auth_session",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
       "source_location": "L9",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -6569,6 +6999,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "package.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_expo_material_symbols",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
       "source_location": "L12",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -6579,11 +7019,31 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "package.json",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_expo_print",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
       "source_location": "L11",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "package_dependencies",
       "target": "package_dependencies_expo_router"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_expo_secure_store",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -6619,11 +7079,31 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "package.json",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_expo_ui",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
       "source_location": "L6",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "package_dependencies",
       "target": "package_dependencies_expo_vector_icons"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_expo_web_browser",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -6741,8 +7221,18 @@
       "source_file": "package.json",
       "source_location": "L31",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "package_dependencies",
-      "target": "package_dependencies_react_native_signature_canvas",
+      "target": "package_dependencies_react_native_signature_canvas"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_react_native_url_polyfill",
       "confidence_score": 1.0
     },
     {
@@ -6761,8 +7251,18 @@
       "source_file": "package.json",
       "source_location": "L33",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "package_dependencies",
-      "target": "package_dependencies_react_native_webview",
+      "target": "package_dependencies_react_native_webview"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "package_dependencies",
+      "target": "package_dependencies_supabase_supabase_js",
       "confidence_score": 1.0
     },
     {
@@ -6864,6 +7364,58 @@
       "confidence_score": 1.0,
       "source": "package_scripts",
       "target": "package_scripts_web"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L58",
+      "weight": 1.0,
+      "source": "package_expo",
+      "target": "package_expo_autolinking",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L59",
+      "weight": 1.0,
+      "source": "package_expo_autolinking",
+      "target": "package_autolinking_android",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L60",
+      "weight": 1.0,
+      "source": "package_autolinking_android",
+      "target": "package_android_buildfromsource",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/(tabs)/_layout.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "tabs_layout",
+      "target": "components_icon_icon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/(tabs)/_layout.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "tabs_layout",
+      "target": "components_icon_iconname",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -7017,8 +7569,8 @@
       "target": "customers_index"
     },
     {
-      "relation": "imports_from",
-      "context": "import",
+      "relation": "re_exports",
+      "context": "export",
       "confidence": "EXTRACTED",
       "source_file": "src/app/(tabs)/index.tsx",
       "source_location": "L1",
@@ -7177,9 +7729,9 @@
       "source_file": "src/app/(tabs)/tools.tsx",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tabs_tools",
-      "target": "screens_settingsscreen",
-      "confidence_score": 1.0
+      "target": "screens_settingsscreen"
     },
     {
       "relation": "imports",
@@ -7234,6 +7786,17 @@
       "target": "app_layout_rootnavigator"
     },
     {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/_layout.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "app_layout",
+      "target": "components_icon_icon",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -7278,15 +7841,37 @@
       "target": "design_system_usetheme_usetheme"
     },
     {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/_layout.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "app_layout",
+      "target": "hooks_useauth_authprovider",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/_layout.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "app_layout",
+      "target": "hooks_useauth_useauth",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/app/_layout.tsx",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "app_layout",
-      "target": "settings_store",
-      "confidence_score": 1.0
+      "target": "settings_store"
     },
     {
       "relation": "imports",
@@ -7331,6 +7916,17 @@
       "weight": 1.0,
       "source": "app_layout_rootnavigator",
       "target": "design_system_usetheme_usetheme"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/_layout.tsx",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "app_layout_rootnavigator",
+      "target": "hooks_useauth_useauth"
     },
     {
       "relation": "calls",
@@ -7387,25 +7983,15 @@
       "target": "design_system_usetheme_usetheme"
     },
     {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/app/auth/index.tsx",
-      "source_location": "L3",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_app_auth_index_tsx_auth_index",
-      "target": "auth_index_authwelcomeroute"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
+      "relation": "re_exports",
+      "context": "export",
       "confidence": "EXTRACTED",
       "source_file": "src/app/auth/index.tsx",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "src_app_auth_index_tsx_auth_index",
-      "target": "screens_authwelcomescreen_authwelcomescreen"
+      "target": "auth_login",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -7414,51 +8000,20 @@
       "source_file": "src/app/auth/index.tsx",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_app_auth_index_tsx_auth_index",
-      "target": "src_app_auth_index_tsx_auth_index",
+      "target": "src_app_auth_index_tsx_auth_index"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/auth/login.tsx",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "auth_login",
+      "target": "screens_authscreen",
       "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/app/auth/login.tsx",
-      "source_location": "L3",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "auth_login",
-      "target": "auth_login_authloginroute"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/app/auth/login.tsx",
-      "source_location": "L1",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "auth_login",
-      "target": "screens_authformscreen_authformscreen"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/app/auth/signup.tsx",
-      "source_location": "L3",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "auth_signup",
-      "target": "auth_signup_authsignuproute"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/app/auth/signup.tsx",
-      "source_location": "L1",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "auth_signup",
-      "target": "screens_authformscreen_authformscreen"
     },
     {
       "relation": "imports_from",
@@ -7656,6 +8211,17 @@
       "target": "screens_onboardingscreen_onboardingscreen"
     },
     {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/settings/_layout.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "settings_layout",
+      "target": "components_icon_icon",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -7727,9 +8293,9 @@
       "source_file": "src/app/settings/bank.tsx",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "settings_bank",
-      "target": "screens_bankdetailsscreen",
-      "confidence_score": 1.0
+      "target": "screens_bankdetailsscreen"
     },
     {
       "relation": "imports",
@@ -7749,9 +8315,9 @@
       "source_file": "src/app/settings/branding.tsx",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "settings_branding",
-      "target": "screens_brandingscreen",
-      "confidence_score": 1.0
+      "target": "screens_brandingscreen"
     },
     {
       "relation": "imports",
@@ -7771,9 +8337,9 @@
       "source_file": "src/app/settings/business.tsx",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "settings_business",
-      "target": "screens_businessdetailsscreen",
-      "confidence_score": 1.0
+      "target": "screens_businessdetailsscreen"
     },
     {
       "relation": "imports",
@@ -7793,9 +8359,9 @@
       "source_file": "src/app/settings/index.tsx",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_app_settings_index_tsx_settings_index",
-      "target": "screens_settingsscreen",
-      "confidence_score": 1.0
+      "target": "screens_settingsscreen"
     },
     {
       "relation": "imports",
@@ -7826,9 +8392,9 @@
       "source_file": "src/app/settings/invoice-defaults.tsx",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "settings_invoice_defaults",
-      "target": "screens_invoicedefaultsscreen",
-      "confidence_score": 1.0
+      "target": "screens_invoicedefaultsscreen"
     },
     {
       "relation": "imports",
@@ -7848,9 +8414,9 @@
       "source_file": "src/app/settings/invoice-template-edit.tsx",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "settings_invoice_template_edit",
-      "target": "screens_invoicetemplateeditorscreen",
-      "confidence_score": 1.0
+      "target": "screens_invoicetemplateeditorscreen"
     },
     {
       "relation": "imports",
@@ -7880,9 +8446,9 @@
       "source_file": "src/app/settings/invoice-template.tsx",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "settings_invoice_template",
-      "target": "screens_invoicetemplatescreen",
-      "confidence_score": 1.0
+      "target": "screens_invoicetemplatescreen"
     },
     {
       "relation": "imports",
@@ -7934,9 +8500,9 @@
       "source_file": "src/app/settings/preferences.tsx",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "settings_preferences",
-      "target": "screens_preferencesscreen",
-      "confidence_score": 1.0
+      "target": "screens_preferencesscreen"
     },
     {
       "relation": "imports",
@@ -7956,9 +8522,9 @@
       "source_file": "src/app/settings/signature.tsx",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "settings_signature",
-      "target": "screens_signaturedrawscreen",
-      "confidence_score": 1.0
+      "target": "screens_signaturedrawscreen"
     },
     {
       "relation": "imports",
@@ -7967,9 +8533,9 @@
       "source_file": "src/app/settings/signature.tsx",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "settings_signature",
-      "target": "screens_signaturedrawscreen_signaturedrawscreen",
-      "confidence_score": 1.0
+      "target": "screens_signaturedrawscreen_signaturedrawscreen"
     },
     {
       "relation": "contains",
@@ -7977,9 +8543,9 @@
       "source_file": "src/app/settings/signature.tsx",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "settings_signature",
-      "target": "settings_signature_signatureroute",
-      "confidence_score": 1.0
+      "target": "settings_signature_signatureroute"
     },
     {
       "relation": "imports_from",
@@ -8004,306 +8570,464 @@
       "target": "screens_subscriptionscreen_subscriptionscreen"
     },
     {
-      "relation": "re_exports",
-      "context": "export",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/auth/index.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_features_auth_index_ts_auth_index",
-      "target": "screens_authformscreen"
-    },
-    {
-      "relation": "re_exports",
-      "context": "re-export",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/auth/index.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_features_auth_index_ts_auth_index",
-      "target": "screens_authformscreen_authformscreen"
-    },
-    {
-      "relation": "re_exports",
-      "context": "export",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/auth/index.ts",
-      "source_location": "L1",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_features_auth_index_ts_auth_index",
-      "target": "screens_authwelcomescreen"
-    },
-    {
-      "relation": "re_exports",
-      "context": "re-export",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/auth/index.ts",
-      "source_location": "L1",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_features_auth_index_ts_auth_index",
-      "target": "screens_authwelcomescreen_authwelcomescreen"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/auth/screens/AuthFormScreen.tsx",
-      "source_location": "L11",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "screens_authformscreen",
-      "target": "components_button_button"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/auth/screens/AuthFormScreen.tsx",
-      "source_location": "L11",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "screens_authformscreen",
-      "target": "components_screen_screen"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/auth/screens/AuthFormScreen.tsx",
-      "source_location": "L11",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "screens_authformscreen",
-      "target": "components_text_text"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/auth/screens/AuthFormScreen.tsx",
-      "source_location": "L11",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "screens_authformscreen",
-      "target": "design_system_index"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/auth/screens/AuthFormScreen.tsx",
-      "source_location": "L11",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "screens_authformscreen",
-      "target": "design_system_usetheme_usetheme"
-    },
-    {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "src/features/auth/screens/AuthFormScreen.tsx",
-      "source_location": "L20",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "screens_authformscreen",
-      "target": "screens_authformscreen_authformscreen"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/auth/screens/AuthFormScreen.tsx",
-      "source_location": "L14",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "screens_authformscreen",
-      "target": "screens_authformscreen_mode"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/auth/screens/AuthFormScreen.tsx",
-      "source_location": "L16",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "screens_authformscreen",
-      "target": "screens_authformscreen_props"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/auth/screens/AuthFormScreen.tsx",
-      "source_location": "L154",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "screens_authformscreen",
-      "target": "screens_authformscreen_styles"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/auth/screens/AuthFormScreen.tsx",
-      "source_location": "L12",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "screens_authformscreen",
-      "target": "settings_store"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/auth/screens/AuthFormScreen.tsx",
-      "source_location": "L12",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "screens_authformscreen",
-      "target": "settings_store_usesettingsstore"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/features/auth/screens/AuthFormScreen.tsx",
-      "source_location": "L21",
-      "weight": 1.0,
-      "source": "screens_authformscreen_authformscreen",
-      "target": "design_system_usetheme_usetheme"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/features/auth/screens/AuthFormScreen.tsx",
-      "source_location": "L23",
-      "weight": 1.0,
-      "source": "screens_authformscreen_authformscreen",
-      "target": "settings_store_usesettingsstore"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/auth/screens/AuthWelcomeScreen.tsx",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "screens_authwelcomescreen",
-      "target": "components_button_button"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/auth/screens/AuthWelcomeScreen.tsx",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "screens_authwelcomescreen",
-      "target": "components_screen_screen"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/auth/screens/AuthWelcomeScreen.tsx",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "screens_authwelcomescreen",
-      "target": "components_text_text"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/auth/screens/AuthWelcomeScreen.tsx",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "screens_authwelcomescreen",
-      "target": "design_system_index"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/auth/screens/AuthWelcomeScreen.tsx",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "screens_authwelcomescreen",
-      "target": "design_system_usetheme_usetheme"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/auth/screens/AuthWelcomeScreen.tsx",
-      "source_location": "L7",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "screens_authwelcomescreen",
-      "target": "screens_authwelcomescreen_authwelcomescreen"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/auth/screens/AuthWelcomeScreen.tsx",
-      "source_location": "L61",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "screens_authwelcomescreen",
-      "target": "screens_authwelcomescreen_styles"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/auth/screens/AuthWelcomeScreen.tsx",
-      "source_location": "L5",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "screens_authwelcomescreen",
-      "target": "settings_store"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/auth/screens/AuthWelcomeScreen.tsx",
-      "source_location": "L5",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "screens_authwelcomescreen",
-      "target": "settings_store_usesettingsstore"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/features/auth/screens/AuthWelcomeScreen.tsx",
-      "source_location": "L8",
-      "weight": 1.0,
-      "source": "screens_authwelcomescreen_authwelcomescreen",
-      "target": "design_system_usetheme_usetheme"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/features/auth/screens/AuthWelcomeScreen.tsx",
+      "source_file": "src/features/auth/components/GoogleSignInButton.tsx",
       "source_location": "L10",
       "weight": 1.0,
-      "source": "screens_authwelcomescreen_authwelcomescreen",
+      "source": "components_googlesigninbutton",
+      "target": "components_googlesigninbutton_googlesigninbutton",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/components/GoogleSignInButton.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "components_googlesigninbutton",
+      "target": "components_googlesigninbutton_props",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/components/GoogleSignInButton.tsx",
+      "source_location": "L79",
+      "weight": 1.0,
+      "source": "components_googlesigninbutton",
+      "target": "components_googlesigninbutton_styles",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/components/GoogleSignInButton.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "components_googlesigninbutton",
+      "target": "components_text_text",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/components/GoogleSignInButton.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "components_googlesigninbutton",
+      "target": "design_system_index",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/components/GoogleSignInButton.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "components_googlesigninbutton",
+      "target": "design_system_usetheme_usetheme",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/components/GoogleSignInButton.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "components_googlesigninbutton",
+      "target": "hooks_useauth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/components/GoogleSignInButton.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "components_googlesigninbutton",
+      "target": "hooks_useauth_useauth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/screens/AuthScreen.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "screens_authscreen",
+      "target": "components_googlesigninbutton",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "re_exports",
+      "context": "export",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/index.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "src_features_auth_index_ts_auth_index",
+      "target": "components_googlesigninbutton",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/features/auth/components/GoogleSignInButton.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "components_googlesigninbutton_googlesigninbutton",
+      "target": "design_system_usetheme_usetheme"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/features/auth/components/GoogleSignInButton.tsx",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "components_googlesigninbutton_googlesigninbutton",
+      "target": "hooks_useauth_useauth"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/screens/AuthScreen.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "screens_authscreen",
+      "target": "components_googlesigninbutton_googlesigninbutton",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "re_exports",
+      "context": "re-export",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/index.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "src_features_auth_index_ts_auth_index",
+      "target": "components_googlesigninbutton_googlesigninbutton",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/hooks/useAuth.ts",
+      "source_location": "L37",
+      "weight": 1.0,
+      "source": "hooks_useauth",
+      "target": "hooks_useauth_authcontext",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/hooks/useAuth.ts",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "hooks_useauth",
+      "target": "hooks_useauth_authcontextvalue",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/hooks/useAuth.ts",
+      "source_location": "L93",
+      "weight": 1.0,
+      "source": "hooks_useauth",
+      "target": "hooks_useauth_authprovider",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/hooks/useAuth.ts",
+      "source_location": "L43",
+      "weight": 1.0,
+      "source": "hooks_useauth",
+      "target": "hooks_useauth_formatautherror",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/hooks/useAuth.ts",
+      "source_location": "L69",
+      "weight": 1.0,
+      "source": "hooks_useauth",
+      "target": "hooks_useauth_parseauthurl",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/hooks/useAuth.ts",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "hooks_useauth",
+      "target": "hooks_useauth_props",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/hooks/useAuth.ts",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "hooks_useauth",
+      "target": "hooks_useauth_redirect_url",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/hooks/useAuth.ts",
+      "source_location": "L232",
+      "weight": 1.0,
+      "source": "hooks_useauth",
+      "target": "hooks_useauth_useauth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/hooks/useAuth.ts",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "hooks_useauth",
+      "target": "lib_supabase",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/hooks/useAuth.ts",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "hooks_useauth",
+      "target": "lib_supabase_supabase",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/hooks/useAuth.ts",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "hooks_useauth",
+      "target": "settings_store",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/hooks/useAuth.ts",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "hooks_useauth",
+      "target": "settings_store_usesettingsstore",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/screens/AuthScreen.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "screens_authscreen",
+      "target": "hooks_useauth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "re_exports",
+      "context": "export",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/index.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "src_features_auth_index_ts_auth_index",
+      "target": "hooks_useauth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "re_exports",
+      "context": "re-export",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/index.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "src_features_auth_index_ts_auth_index",
+      "target": "hooks_useauth_authcontextvalue",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "re_exports",
+      "context": "re-export",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/index.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "src_features_auth_index_ts_auth_index",
+      "target": "hooks_useauth_authcontext",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/features/auth/hooks/useAuth.ts",
+      "source_location": "L96",
+      "weight": 1.0,
+      "source": "hooks_useauth_authprovider",
       "target": "settings_store_usesettingsstore"
+    },
+    {
+      "relation": "re_exports",
+      "context": "re-export",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/index.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "src_features_auth_index_ts_auth_index",
+      "target": "hooks_useauth_authprovider",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/screens/AuthScreen.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "screens_authscreen",
+      "target": "hooks_useauth_useauth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/features/auth/screens/AuthScreen.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "screens_authscreen_authscreen",
+      "target": "hooks_useauth_useauth"
+    },
+    {
+      "relation": "re_exports",
+      "context": "re-export",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/index.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "src_features_auth_index_ts_auth_index",
+      "target": "hooks_useauth_useauth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "re_exports",
+      "context": "export",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/index.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "src_features_auth_index_ts_auth_index",
+      "target": "screens_authscreen",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/screens/AuthScreen.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "screens_authscreen",
+      "target": "components_screen_screen",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/screens/AuthScreen.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "screens_authscreen",
+      "target": "components_text_text",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/screens/AuthScreen.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "screens_authscreen",
+      "target": "design_system_index",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/screens/AuthScreen.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "screens_authscreen",
+      "target": "design_system_usetheme_usetheme",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/screens/AuthScreen.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "screens_authscreen",
+      "target": "screens_authscreen_authscreen",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/screens/AuthScreen.tsx",
+      "source_location": "L74",
+      "weight": 1.0,
+      "source": "screens_authscreen",
+      "target": "screens_authscreen_styles",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/features/auth/screens/AuthScreen.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "screens_authscreen_authscreen",
+      "target": "design_system_usetheme_usetheme"
     },
     {
       "relation": "imports_from",
@@ -8378,6 +9102,17 @@
       "confidence_score": 1.0,
       "source": "components_cataloguerow",
       "target": "components_cataloguerow_styles"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/catalogue/components/CatalogueRow.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "components_cataloguerow",
+      "target": "components_icon_icon",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -8644,6 +9379,17 @@
       "target": "catalogue_store_usecataloguestore"
     },
     {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/catalogue/screens/CatalogueDetailScreen.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "screens_cataloguedetailscreen",
+      "target": "components_icon_icon",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -8779,9 +9525,9 @@
       "source_file": "src/features/catalogue/screens/CatalogueDetailScreen.tsx",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "screens_cataloguedetailscreen",
-      "target": "settings_store",
-      "confidence_score": 1.0
+      "target": "settings_store"
     },
     {
       "relation": "imports",
@@ -8964,9 +9710,9 @@
       "source_file": "src/features/catalogue/screens/CatalogueScreen.tsx",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "screens_cataloguescreen",
-      "target": "settings_store",
-      "confidence_score": 1.0
+      "target": "settings_store"
     },
     {
       "relation": "imports",
@@ -9139,9 +9885,9 @@
       "source_file": "src/features/catalogue/screens/CatalogueSearchScreen.tsx",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "screens_cataloguesearchscreen",
-      "target": "settings_store",
-      "confidence_score": 1.0
+      "target": "settings_store"
     },
     {
       "relation": "imports",
@@ -9579,6 +10325,17 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/features/customers/components/ClientRow.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "components_clientrow",
+      "target": "components_icon_icon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/customers/components/ClientRow.tsx",
       "source_location": "L5",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -9839,6 +10596,17 @@
       "target": "customers_index"
     },
     {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/customers/screens/ClientDetailScreen.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "screens_clientdetailscreen",
+      "target": "components_icon_icon",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -10074,9 +10842,9 @@
       "source_file": "src/features/customers/screens/ClientDetailScreen.tsx",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "screens_clientdetailscreen",
-      "target": "settings_store",
-      "confidence_score": 1.0
+      "target": "settings_store"
     },
     {
       "relation": "imports",
@@ -11057,6 +11825,28 @@
       "target": "components_invoicefilters_invoicefilters"
     },
     {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/components/InvoiceRow.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "components_invoicerow",
+      "target": "components_icon_icon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/components/InvoiceRow.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "components_invoicerow",
+      "target": "components_icon_iconname",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/features/invoices/components/InvoiceRow.tsx",
@@ -11226,6 +12016,28 @@
       "confidence_score": 1.0,
       "source": "components_invoicerow",
       "target": "invoices_format_invoicesummarytext"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/components/InvoiceRow.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "components_invoicerow",
+      "target": "invoices_invoicepdf",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/components/InvoiceRow.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "components_invoicerow",
+      "target": "invoices_invoicepdf_downloadinvoicepdf",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -12037,6 +12849,17 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/invoicePdf.ts",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "invoices_invoicepdf",
+      "target": "invoices_format",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "src/features/invoices/shareMessage.ts",
       "source_location": "L2",
       "weight": 1.0,
@@ -12108,6 +12931,28 @@
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "invoices_format_invoicesummarytext",
+      "target": "invoices_format_formatmoney"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/invoicePdf.ts",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "invoices_invoicepdf",
+      "target": "invoices_format_formatmoney",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/features/invoices/invoicePdf.ts",
+      "source_location": "L126",
+      "weight": 1.0,
+      "source": "invoices_invoicepdf_buildinvoicepdfhtml",
       "target": "invoices_format_formatmoney"
     },
     {
@@ -12191,6 +13036,28 @@
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/invoicePdf.ts",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "invoices_invoicepdf",
+      "target": "invoices_format_formatinvoicedate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/features/invoices/invoicePdf.ts",
+      "source_location": "L108",
+      "weight": 1.0,
+      "source": "invoices_invoicepdf_buildinvoicepdfhtml",
+      "target": "invoices_format_formatinvoicedate"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "src/features/invoices/screens/InvoiceDetailScreen.tsx",
       "source_location": "L8",
       "weight": 1.0,
@@ -12208,6 +13075,28 @@
       "weight": 1.0,
       "source": "screens_invoicedetailscreen_invoicedetailscreen",
       "target": "invoices_format_formatinvoicedate"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/invoicePdf.ts",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "invoices_invoicepdf",
+      "target": "invoices_format_computeinvoicetotals",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/features/invoices/invoicePdf.ts",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "invoices_invoicepdf_buildinvoicepdfhtml",
+      "target": "invoices_format_computeinvoicetotals"
     },
     {
       "relation": "imports",
@@ -12397,6 +13286,168 @@
       "target": "invoices_index"
     },
     {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/invoicePdf.ts",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "invoices_invoicepdf",
+      "target": "invoices_invoicepdf_buildinvoicepdfhtml",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/invoicePdf.ts",
+      "source_location": "L142",
+      "weight": 1.0,
+      "source": "invoices_invoicepdf",
+      "target": "invoices_invoicepdf_downloadinvoicepdf",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/invoicePdf.ts",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "invoices_invoicepdf",
+      "target": "invoices_invoicepdf_escapehtml",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/invoicePdf.ts",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "invoices_invoicepdf",
+      "target": "invoices_types",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/invoicePdf.ts",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "invoices_invoicepdf",
+      "target": "invoices_types_invoice",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/invoicePdf.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "invoices_invoicepdf",
+      "target": "settings_store",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/invoicePdf.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "invoices_invoicepdf",
+      "target": "settings_store_usesettingsstore",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/invoicePdf.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "invoices_invoicepdf",
+      "target": "settings_templateconstants",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/invoicePdf.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "invoices_invoicepdf",
+      "target": "settings_templateconstants_findtemplate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/screens/InvoiceDetailScreen.tsx",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "screens_invoicedetailscreen",
+      "target": "invoices_invoicepdf",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/invoicePdf.ts",
+      "source_location": "L55",
+      "weight": 1.0,
+      "source": "invoices_invoicepdf_buildinvoicepdfhtml",
+      "target": "invoices_invoicepdf_escapehtml",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/features/invoices/invoicePdf.ts",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "invoices_invoicepdf_buildinvoicepdfhtml",
+      "target": "settings_templateconstants_findtemplate"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/invoicePdf.ts",
+      "source_location": "L157",
+      "weight": 1.0,
+      "source": "invoices_invoicepdf_downloadinvoicepdf",
+      "target": "invoices_invoicepdf_buildinvoicepdfhtml",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/screens/InvoiceDetailScreen.tsx",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "screens_invoicedetailscreen",
+      "target": "invoices_invoicepdf_downloadinvoicepdf",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/screens/InvoiceDetailScreen.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "screens_invoicedetailscreen",
+      "target": "components_icon_icon",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -12578,9 +13629,9 @@
       "source_file": "src/features/invoices/screens/InvoiceDetailScreen.tsx",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "screens_invoicedetailscreen",
-      "target": "settings_store",
-      "confidence_score": 1.0
+      "target": "settings_store"
     },
     {
       "relation": "imports",
@@ -12764,9 +13815,9 @@
       "source_file": "src/features/invoices/screens/InvoiceSearchScreen.tsx",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "screens_invoicesearchscreen",
-      "target": "settings_store",
-      "confidence_score": 1.0
+      "target": "settings_store"
     },
     {
       "relation": "imports",
@@ -12961,9 +14012,9 @@
       "source_file": "src/features/invoices/screens/InvoicesScreen.tsx",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "screens_invoicesscreen",
-      "target": "settings_store",
-      "confidence_score": 1.0
+      "target": "settings_store"
     },
     {
       "relation": "imports",
@@ -13030,6 +14081,17 @@
       "confidence_score": 1.0,
       "source": "screens_newinvoicescreen",
       "target": "components_button_button"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "screens_newinvoicescreen",
+      "target": "components_icon_icon",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -13366,9 +14428,9 @@
       "source_file": "src/features/invoices/screens/NewInvoiceScreen.tsx",
       "source_location": "L17",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "screens_newinvoicescreen",
-      "target": "settings_store",
-      "confidence_score": 1.0
+      "target": "settings_store"
     },
     {
       "relation": "imports",
@@ -13585,9 +14647,9 @@
       "source_file": "src/features/invoices/shareMessage.ts",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "invoices_sharemessage",
-      "target": "settings_store",
-      "confidence_score": 1.0
+      "target": "settings_store"
     },
     {
       "relation": "imports",
@@ -13791,6 +14853,17 @@
       "confidence_score": 1.0,
       "source": "reports_compute",
       "target": "invoices_types_invoice"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/onboarding/components/OverviewGuide.tsx",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "components_overviewguide",
+      "target": "components_icon_icon",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14148,9 +15221,9 @@
       "source_file": "src/features/onboarding/screens/OnboardingScreen.tsx",
       "source_location": "L16",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "screens_onboardingscreen",
-      "target": "settings_store",
-      "confidence_score": 1.0
+      "target": "settings_store"
     },
     {
       "relation": "imports",
@@ -14184,6 +15257,28 @@
       "weight": 1.0,
       "source": "screens_onboardingscreen_onboardingscreen",
       "target": "settings_store_usesettingsstore"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/onboarding/steps.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "onboarding_steps",
+      "target": "components_icon_iconname",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/onboarding/steps.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "onboarding_steps",
+      "target": "design_system_index",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -14726,9 +15821,9 @@
       "source_file": "src/features/reports/screens/ReportsScreen.tsx",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "screens_reportsscreen",
-      "target": "settings_store",
-      "confidence_score": 1.0
+      "target": "settings_store"
     },
     {
       "relation": "imports",
@@ -15262,6 +16357,28 @@
       "target": "components_settingsfield_settingsfield"
     },
     {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/settings/components/SettingsList.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "components_settingslist",
+      "target": "components_icon_icon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/settings/components/SettingsList.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "components_settingslist",
+      "target": "components_icon_iconname",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/features/settings/components/SettingsList.tsx",
@@ -15565,6 +16682,28 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "src/features/settings/components/SettingsScroll.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "components_settingsscroll",
+      "target": "ui_tabbarvisibility",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/settings/components/SettingsScroll.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "components_settingsscroll",
+      "target": "ui_tabbarvisibility_usetabbarvisibility",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "src/features/settings/screens/AppearanceScreen.tsx",
       "source_location": "L7",
       "weight": 1.0,
@@ -15694,6 +16833,17 @@
       "target": "design_system_usetheme_usetheme"
     },
     {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/features/settings/components/SettingsScroll.tsx",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "components_settingsscroll_settingsscroll",
+      "target": "ui_tabbarvisibility_usetabbarvisibility"
+    },
+    {
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -15813,6 +16963,17 @@
       "confidence_score": 1.0,
       "source": "ui_bulkimportguide",
       "target": "components_settingsscroll_settingsscroll"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/settings/components/SettingsSelect.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "components_settingsselect",
+      "target": "components_icon_icon",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -15963,6 +17124,17 @@
       "confidence_score": 1.0,
       "source": "screens_preferencesscreen",
       "target": "components_settingsselect_settingsselect"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/settings/components/TemplatePickerSheet.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "components_templatepickersheet",
+      "target": "components_icon_icon",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -17010,6 +18182,17 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/features/settings/screens/InvoiceTemplateEditorScreen.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "screens_invoicetemplateeditorscreen",
+      "target": "components_icon_icon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/settings/screens/InvoiceTemplateEditorScreen.tsx",
       "source_location": "L12",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -17793,7 +18976,7 @@
       "source_location": "L8",
       "weight": 1.0,
       "source": "screens_signaturedrawscreen",
-      "target": "components_screen_screen",
+      "target": "components_icon_icon",
       "confidence_score": 1.0
     },
     {
@@ -17804,8 +18987,30 @@
       "source_location": "L8",
       "weight": 1.0,
       "source": "screens_signaturedrawscreen",
-      "target": "components_text_text",
+      "target": "components_icon_iconname",
       "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/settings/screens/SignatureDrawScreen.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "screens_signaturedrawscreen",
+      "target": "components_screen_screen"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/settings/screens/SignatureDrawScreen.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "screens_signaturedrawscreen",
+      "target": "components_text_text"
     },
     {
       "relation": "imports_from",
@@ -17814,9 +19019,9 @@
       "source_file": "src/features/settings/screens/SignatureDrawScreen.tsx",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "screens_signaturedrawscreen",
-      "target": "design_system_index",
-      "confidence_score": 1.0
+      "target": "design_system_index"
     },
     {
       "relation": "imports",
@@ -17825,8 +19030,18 @@
       "source_file": "src/features/settings/screens/SignatureDrawScreen.tsx",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "screens_signaturedrawscreen",
-      "target": "design_system_usetheme_usetheme",
+      "target": "design_system_usetheme_usetheme"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/settings/screens/SignatureDrawScreen.tsx",
+      "source_location": "L159",
+      "weight": 1.0,
+      "source": "screens_signaturedrawscreen",
+      "target": "screens_signaturedrawscreen_iconbtn",
       "confidence_score": 1.0
     },
     {
@@ -17835,9 +19050,9 @@
       "source_file": "src/features/settings/screens/SignatureDrawScreen.tsx",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "screens_signaturedrawscreen",
-      "target": "screens_signaturedrawscreen_signaturedrawscreen",
-      "confidence_score": 1.0
+      "target": "screens_signaturedrawscreen_signaturedrawscreen"
     },
     {
       "relation": "contains",
@@ -17845,9 +19060,9 @@
       "source_file": "src/features/settings/screens/SignatureDrawScreen.tsx",
       "source_location": "L137",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "screens_signaturedrawscreen",
-      "target": "screens_signaturedrawscreen_styles",
-      "confidence_score": 1.0
+      "target": "screens_signaturedrawscreen_styles"
     },
     {
       "relation": "imports_from",
@@ -17856,9 +19071,9 @@
       "source_file": "src/features/settings/screens/SignatureDrawScreen.tsx",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "screens_signaturedrawscreen",
-      "target": "settings_store",
-      "confidence_score": 1.0
+      "target": "settings_store"
     },
     {
       "relation": "imports",
@@ -17867,9 +19082,9 @@
       "source_file": "src/features/settings/screens/SignatureDrawScreen.tsx",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "screens_signaturedrawscreen",
-      "target": "settings_store_usesettingsstore",
-      "confidence_score": 1.0
+      "target": "settings_store_usesettingsstore"
     },
     {
       "relation": "imports_from",
@@ -17878,9 +19093,9 @@
       "source_file": "src/features/settings/screens/SignatureDrawScreen.tsx",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "screens_signaturedrawscreen",
-      "target": "ui_index",
-      "confidence_score": 1.0
+      "target": "ui_index"
     },
     {
       "relation": "imports",
@@ -17889,9 +19104,9 @@
       "source_file": "src/features/settings/screens/SignatureDrawScreen.tsx",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "screens_signaturedrawscreen",
-      "target": "ui_snackbarstore_showsnackbar",
-      "confidence_score": 1.0
+      "target": "ui_snackbarstore_showsnackbar"
     },
     {
       "relation": "calls",
@@ -18875,6 +20090,39 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/shared/design-system/components/Button.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "components_button",
+      "target": "components_icon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/design-system/components/Button.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "components_button",
+      "target": "components_icon_icon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/design-system/components/Button.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "components_button",
+      "target": "components_icon_iconname",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/design-system/components/Button.tsx",
       "source_location": "L10",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -19001,6 +20249,200 @@
       "confidence_score": 1.0,
       "source": "ui_searchablepickersheet",
       "target": "components_button_button"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/design-system/components/Icon.tsx",
+      "source_location": "L89",
+      "weight": 1.0,
+      "source": "components_icon",
+      "target": "components_icon_icon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/design-system/components/Icon.tsx",
+      "source_location": "L78",
+      "weight": 1.0,
+      "source": "components_icon",
+      "target": "components_icon_iconname",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/design-system/components/Icon.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "components_icon",
+      "target": "components_icon_icons",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/design-system/components/Icon.tsx",
+      "source_location": "L80",
+      "weight": 1.0,
+      "source": "components_icon",
+      "target": "components_icon_props",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/design-system/components/IconButton.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "components_iconbutton",
+      "target": "components_icon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "re_exports",
+      "context": "export",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/design-system/components/index.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "components_index",
+      "target": "components_icon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/design-system/components/IconButton.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "components_iconbutton",
+      "target": "components_icon_iconname",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "re_exports",
+      "context": "re-export",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/design-system/components/index.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "components_index",
+      "target": "components_icon_iconname",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/ui/ActionSheet.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "ui_actionsheet",
+      "target": "components_icon_iconname",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/ui/TabBarIcon.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "ui_tabbaricon",
+      "target": "components_icon_iconname",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/design-system/components/IconButton.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "components_iconbutton",
+      "target": "components_icon_icon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "re_exports",
+      "context": "re-export",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/design-system/components/index.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "components_index",
+      "target": "components_icon_icon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/ui/ActionSheet.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "ui_actionsheet",
+      "target": "components_icon_icon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/ui/BottomSheet.tsx",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "ui_bottomsheet",
+      "target": "components_icon_icon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/ui/DateField.tsx",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "ui_datefield",
+      "target": "components_icon_icon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/ui/SearchablePickerSheet.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "ui_searchablepickersheet",
+      "target": "components_icon_icon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/ui/SearchField.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "ui_searchfield",
+      "target": "components_icon_icon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/ui/TabBarIcon.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "ui_tabbaricon",
+      "target": "components_icon_icon",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -20660,6 +22102,50 @@
       "target": "lib_mmkv_mmkvstorage"
     },
     {
+      "relation": "re_exports",
+      "context": "export",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/lib/index.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "lib_index",
+      "target": "lib_supabase",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "re_exports",
+      "context": "re-export",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/lib/index.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "lib_index",
+      "target": "lib_supabase_appsupabaseclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "re_exports",
+      "context": "re-export",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/lib/index.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "lib_index",
+      "target": "lib_supabase_database",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "re_exports",
+      "context": "re-export",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/lib/index.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "lib_index",
+      "target": "lib_supabase_supabase",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/shared/lib/mmkv.ts",
@@ -20678,6 +22164,96 @@
       "confidence_score": 1.0,
       "source": "lib_mmkv",
       "target": "lib_mmkv_mmkvstorage"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/lib/supabase.ts",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "lib_supabase",
+      "target": "lib_supabase_appsupabaseclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/lib/supabase.ts",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "lib_supabase",
+      "target": "lib_supabase_chunkcountkey",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/lib/supabase.ts",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "lib_supabase",
+      "target": "lib_supabase_chunkkey",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/lib/supabase.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "lib_supabase",
+      "target": "lib_supabase_database",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/lib/supabase.ts",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "lib_supabase",
+      "target": "lib_supabase_exposecurestoreadapter",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/lib/supabase.ts",
+      "source_location": "L94",
+      "weight": 1.0,
+      "source": "lib_supabase",
+      "target": "lib_supabase_requiresupabaseenv",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/lib/supabase.ts",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "lib_supabase",
+      "target": "lib_supabase_securestoreoptions",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/lib/supabase.ts",
+      "source_location": "L114",
+      "weight": 1.0,
+      "source": "lib_supabase",
+      "target": "lib_supabase_supabase",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/lib/supabase.ts",
+      "source_location": "L112",
+      "weight": 1.0,
+      "source": "lib_supabase",
+      "target": "lib_supabase_url_supabaseurl_anonkey_supabaseanonkey",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -21100,11 +22676,41 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/shared/ui/FloatingTabBar.tsx",
+      "source_location": "L62",
+      "weight": 1.0,
+      "source": "ui_floatingtabbar",
+      "target": "ui_floatingtabbar_font_icons",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/ui/FloatingTabBar.tsx",
       "source_location": "L21",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "ui_floatingtabbar",
       "target": "ui_floatingtabbar_icons"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/ui/FloatingTabBar.tsx",
+      "source_location": "L44",
+      "weight": 1.0,
+      "source": "ui_floatingtabbar",
+      "target": "ui_floatingtabbar_iconsource",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/ui/FloatingTabBar.tsx",
+      "source_location": "L73",
+      "weight": 1.0,
+      "source": "ui_floatingtabbar",
+      "target": "ui_floatingtabbar_menuaction",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -21149,6 +22755,28 @@
       "target": "ui_tabbaricon_tabname"
     },
     {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/ui/FloatingTabBar.tsx",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "ui_floatingtabbar",
+      "target": "ui_tabbarvisibility",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/ui/FloatingTabBar.tsx",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "ui_floatingtabbar",
+      "target": "ui_tabbarvisibility_usetabbarvisibility",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "re_exports",
       "context": "export",
       "confidence": "EXTRACTED",
@@ -21158,6 +22786,17 @@
       "confidence_score": 1.0,
       "source": "ui_index",
       "target": "ui_floatingtabbar"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/shared/ui/FloatingTabBar.tsx",
+      "source_location": "L96",
+      "weight": 1.0,
+      "source": "ui_floatingtabbar_floatingtabbar",
+      "target": "ui_tabbarvisibility_usetabbarvisibility"
     },
     {
       "relation": "re_exports",
@@ -21437,16 +23076,6 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/shared/ui/TabBarIcon.tsx",
-      "source_location": "L5",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "ui_tabbaricon",
-      "target": "ui_tabbaricon_iconpair"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/shared/ui/TabBarIcon.tsx",
       "source_location": "L20",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -21581,6 +23210,26 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "src/shared/ui/tabBarVisibility.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "ui_tabbarvisibility",
+      "target": "ui_tabbarvisibility_tabbarvisibilitystate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/shared/ui/tabBarVisibility.ts",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "ui_tabbarvisibility",
+      "target": "ui_tabbarvisibility_usetabbarvisibility",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "tsconfig.json",
       "source_location": "L3",
       "weight": 1.0,
@@ -21614,9 +23263,9 @@
       "source_file": "tsconfig.json",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tsconfig_compileroptions",
-      "target": "tsconfig_compileroptions_baseurl",
-      "confidence_score": 1.0
+      "target": "tsconfig_compileroptions_baseurl"
     },
     {
       "relation": "contains",
@@ -21624,9 +23273,9 @@
       "source_file": "tsconfig.json",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tsconfig_compileroptions",
-      "target": "tsconfig_compileroptions_ignoredeprecations",
-      "confidence_score": 1.0
+      "target": "tsconfig_compileroptions_ignoredeprecations"
     },
     {
       "relation": "contains",
@@ -22340,5 +23989,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "822caba8c5c7555eae53c56d5a195ad640654234"
+  "built_at_commit": "bf5b33fa5fb86a0ad70d5323065ec8b8c1098b07"
 }
