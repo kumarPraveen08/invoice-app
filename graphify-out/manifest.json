@@ -95,8 +95,8 @@
     "semantic_hash": ""
   },
   "src/shared/ui/index.ts": {
-    "mtime": 1786164428.942589,
-    "ast_hash": "5baa19c0276da42d7a733be620bd3c34",
+    "mtime": 1786173135.6851463,
+    "ast_hash": "8e57bf7719adf9a06ff6f95fb2370c50",
     "semantic_hash": ""
   },
   "src/app/(tabs)/_layout.tsx": {
@@ -105,8 +105,8 @@
     "semantic_hash": ""
   },
   "src/app/(tabs)/clients.tsx": {
-    "mtime": 1785148111.551087,
-    "ast_hash": "dde39699089c0d1e9614293af4f2ec3b",
+    "mtime": 1786173137.0203874,
+    "ast_hash": "18dcc166dbf2f8a0df1ac73f8b43b05c",
     "semantic_hash": ""
   },
   "src/app/(tabs)/index.tsx": {
@@ -115,13 +115,13 @@
     "semantic_hash": ""
   },
   "src/app/(tabs)/reports.tsx": {
-    "mtime": 1785656407.6567135,
-    "ast_hash": "f26b06f3cdebeb056ef26aa711bdb3fe",
+    "mtime": 1786173137.2509115,
+    "ast_hash": "28bf9d7cdbb15315afcfc62a3e916ca5",
     "semantic_hash": ""
   },
   "src/app/(tabs)/tools.tsx": {
-    "mtime": 1786162054.0392087,
-    "ast_hash": "ea2ca1f1684ef6bfbb063fe4775cd654",
+    "mtime": 1786173137.9564872,
+    "ast_hash": "08b9758a608caff4dae3e00fd234175d",
     "semantic_hash": ""
   },
   "src/features/customers/screens/ClientsScreen.tsx": {
@@ -360,8 +360,8 @@
     "semantic_hash": ""
   },
   "src/app/(tabs)/catalogue.tsx": {
-    "mtime": 1785656407.6557698,
-    "ast_hash": "fdf71e96523f3a58ddf6be1f9d03b2e4",
+    "mtime": 1786173136.1816413,
+    "ast_hash": "5772ddcc5c4aa869c0eaf821d62608d0",
     "semantic_hash": ""
   },
   "src/app/catalogue/[id].tsx": {
@@ -787,6 +787,16 @@
   "src/shared/ui/tabBarVisibility.ts": {
     "mtime": 1786166411.495317,
     "ast_hash": "96de4361221b589b9665c95850a44899",
+    "semantic_hash": ""
+  },
+  "src/shared/ui/DeferredMount.tsx": {
+    "mtime": 1786173135.3507044,
+    "ast_hash": "6c1a9f148932d4ec62a431466753b5a3",
+    "semantic_hash": ""
+  },
+  "src/shared/ui/ScreenLoading.tsx": {
+    "mtime": 1786173132.9555,
+    "ast_hash": "93c4de0f87f3bc8354806bb86e28083b",
     "semantic_hash": ""
   }
 }

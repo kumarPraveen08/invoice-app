@@ -1,3 +1,10 @@
 import { CatalogueScreen } from '@/features/catalogue';
+import { DeferredMount } from '@/shared/ui';
 
-export default CatalogueScreen;
+export default function CatalogueTab() {
+  return (
+    <DeferredMount>
+      <CatalogueScreen />
+    </DeferredMount>
+  );
+}

@@ -1,3 +1,10 @@
 import { ReportsScreen } from '@/features/reports';
+import { DeferredMount } from '@/shared/ui';
 
-export default ReportsScreen;
+export default function ReportsTab() {
+  return (
+    <DeferredMount>
+      <ReportsScreen />
+    </DeferredMount>
+  );
+}
