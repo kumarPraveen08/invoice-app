@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "main": "expo-router/entry",
   "dependencies": {
+    "@expo/material-symbols": "^0.1.1",
+    "@expo/ui": "~57.0.9",
     "@expo/vector-icons": "^15.1.1",
     "@hookform/resolvers": "^5.4.0",
     "@lodev09/react-native-true-sheet": "^3.11.9",

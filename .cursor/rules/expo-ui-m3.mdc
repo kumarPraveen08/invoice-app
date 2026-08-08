@@ -1,0 +1,12 @@
+---
+description: Prefer Expo UI Jetpack Compose for M3 native UI
+alwaysApply: true
+---
+
+# Expo UI / Material 3
+
+- Prefer `@expo/ui/jetpack-compose` (and `@expo/material-symbols` for icons) over reinventing Material 3 in RN.
+- Use existing Expo UI components first. Only build custom Compose-backed UI later when Expo has no equivalent.
+- Keep app `Icon` as the single call-site API; do not add thin header/icon wrappers.
+- Android Compose icons need a **native rebuild** after adding `@expo/ui`.
+- iOS may keep a temporary fallback until universal/`@expo/ui` SwiftUI parity is adopted.
