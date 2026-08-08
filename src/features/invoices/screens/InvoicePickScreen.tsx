@@ -16,6 +16,7 @@ type PickRow = {
   id: string;
   title: string;
   subtitle: string;
+  selected: boolean;
 };
 
 export default function InvoicePickScreen() {
@@ -73,11 +74,13 @@ export default function InvoicePickScreen() {
             ]
               .filter(Boolean)
               .join(" · "),
+            selected: false,
           }))
         : catalogue.map((item) => ({
             id: item.id,
             title: item.name,
             subtitle: `${item.sku} · ${item.unit} · ${formatMoney(item.price, currency)}`,
+            selected: picked.includes(item.id),
           }));
     if (!q) return base;
     return base.filter(
@@ -85,7 +88,7 @@ export default function InvoicePickScreen() {
         row.title.toLowerCase().includes(q) ||
         row.subtitle.toLowerCase().includes(q),
     );
-  }, [catalogue, clients, currency, mode, q]);
+  }, [catalogue, clients, currency, mode, picked, q]);
 
   const toggle = (id: string) => {
     if (mode === "client") {
@@ -121,12 +124,11 @@ export default function InvoicePickScreen() {
         </Text>
       }
       renderItem={(row, index) => {
-        const selected = picked.includes(row.id);
         const last = index === rows.length - 1;
         return (
           <Pressable
             accessibilityRole="button"
-            accessibilityState={{ selected }}
+            accessibilityState={{ selected: row.selected }}
             onPress={() => toggle(row.id)}
             style={[
               styles.row,
@@ -140,9 +142,9 @@ export default function InvoicePickScreen() {
           >
             {mode === "catalogue" ? (
               <Icon
-                name={selected ? "check-box" : "check-box-outline-blank"}
+                name={row.selected ? "check-box" : "check-box-outline-blank"}
                 size={22}
-                color={selected ? colors.primary : colors.onSurfaceMuted}
+                color={row.selected ? colors.primary : colors.onSurfaceMuted}
                 style={{ marginRight: space.md }}
               />
             ) : null}
